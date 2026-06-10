@@ -334,14 +334,14 @@
           <div class="ci"><div class="ic"><svg fill="none" stroke-width="1.7" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="lbl">Votre interlocuteur</div><b>David Bitton</b></div></div>
         </div>
       </div>
-      <form class="card" onsubmit="event.preventDefault();this.querySelector('button').textContent='Message envoyé ✓'">
+      <form class="card" action="https://formspree.io/f/mwvjnpak" method="POST">
         <div class="two">
-          <div class="field"><label>Prénom</label><input type="text" placeholder="Votre prénom" /></div>
-          <div class="field"><label>Nom</label><input type="text" placeholder="Votre nom" /></div>
+          <div class="field"><label>Prénom</label><input type="text" name="prenom" placeholder="Votre prénom" required /></div>
+          <div class="field"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required /></div>
         </div>
-        <div class="field"><label>Vous êtes</label><input type="text" placeholder="Pharmacie / Laboratoire" /></div>
-        <div class="field"><label>Email</label><input type="email" placeholder="vous@exemple.fr" /></div>
-        <div class="field"><label>Votre message</label><textarea placeholder="Quelques mots sur votre besoin…"></textarea></div>
+        <div class="field"><label>Vous êtes</label><input type="text" name="profil" placeholder="Pharmacie / Laboratoire" /></div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="vous@exemple.fr" required /></div>
+        <div class="field"><label>Votre message</label><textarea name="message" placeholder="Quelques mots sur votre besoin…"></textarea></div>
         <button class="btn btn-primary" type="submit">Envoyer le message <span class="arr">→</span></button>
       </form>
     </div>
