@@ -56,17 +56,19 @@
   .btn:hover .arr{transform:translateX(3px)}
 
   /* HERO */
-  .hero{position:relative;padding:88px 0 96px;background:
+  .hero{position:relative;padding:46px 0 50px;background:
      radial-gradient(120% 86% at 88% -12%, #F7E2C6 0%, rgba(247,226,198,0) 56%),
      radial-gradient(95% 72% at 4% 6%, #DCE7F4 0%, rgba(220,231,244,0) 54%);
      overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-  .hero-head{align-self:center}
-  .hero h1{font-size:clamp(44px,5.2vw,72px)}
+  .hero-head{align-self:center;position:relative}
+  .hero-grid{position:relative;z-index:1}
+  .hero-head .eyebrow,.hero-head h1{position:relative;z-index:1}
+  .hero h1{font-size:clamp(24px,2.9vw,38px)}
   .hero h1 em{font-style:italic;color:var(--blue)}
   .hero p.lead{font-size:20px;color:var(--slate);margin-top:0;max-width:42ch}
-  .hero .cta-row{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
-  .hero-meta{display:flex;gap:40px;margin-top:54px;padding-top:30px;border-top:1px solid var(--line)}
+  .hero .cta-row{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:40px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
   .hero-meta .k{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--blue)}
   .hero-meta .l{font-size:13.5px;color:var(--slate);margin-top:2px}
   .hero-visual{position:relative}
@@ -79,10 +81,10 @@
 
   /* MARQUEE labs teaser */
   .partners-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--sky-tint);padding:26px 0}
-  .partners-strip .wrap{display:flex;align-items:center;gap:34px}
+  .partners-strip .wrap{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
   .partners-strip .lbl{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);white-space:nowrap}
-  .partners-strip .row{display:flex;gap:46px;flex:1;flex-wrap:wrap;align-items:center}
-  .partners-strip .ph{font-family:var(--serif);font-size:19px;font-weight:600;color:#8aa1c2;letter-spacing:.02em}
+  .partners-strip .row{display:flex;gap:16px 38px;flex-wrap:wrap;align-items:center;justify-content:center;max-width:1000px}
+  .partners-strip .ph{font-family:var(--serif);font-size:18px;font-weight:600;color:#5f7aa0;letter-spacing:.01em;white-space:nowrap}
 
   /* SECTION */
   section.block{padding:104px 0}
@@ -199,32 +201,9 @@
   .labm-offer .otxt span{font-size:13px;color:var(--slate)}
   @keyframes labm-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
-  /* 3D stage */
-  .labm-stage{position:relative;align-self:stretch;min-height:520px;display:flex;align-items:center;justify-content:center;perspective:1100px;overflow:hidden}
-  .labm-halo{position:absolute;width:360px;height:360px;border-radius:50%;background:conic-gradient(from 0deg,#FFD9A0,#FFB36B,#FF8A4C,#FFD9A0);filter:blur(46px);opacity:.55;animation:labm-spin 14s linear infinite}
-  .labm-ring{position:absolute;border-radius:50%;border:1.5px dashed rgba(194,65,12,.35)}
-  .labm-ring.r1{width:300px;height:300px;animation:labm-spin 26s linear infinite}
-  .labm-ring.r2{width:400px;height:400px;animation:labm-spin 38s linear infinite reverse}
-  .labm-spark{position:absolute;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle,#fff,#FFB36B);box-shadow:0 0 10px 2px rgba(255,179,107,.8)}
-  .labm-spark.s1{top:18%;left:24%;animation:labm-float 5s ease-in-out infinite}
-  .labm-spark.s2{top:30%;right:20%;width:7px;height:7px;animation:labm-float 6.5s ease-in-out infinite .6s}
-  .labm-spark.s3{bottom:22%;left:30%;width:6px;height:6px;animation:labm-float 7s ease-in-out infinite 1.2s}
-  .labm-spark.s4{bottom:30%;right:26%;animation:labm-float 5.8s ease-in-out infinite .3s}
-  .labm-pedestal{position:absolute;bottom:84px;width:230px;height:46px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(194,65,12,.32),rgba(194,65,12,0) 70%);filter:blur(3px);animation:labm-shadow 5.5s ease-in-out infinite}
-  .labm-float{position:relative;z-index:3;transform-style:preserve-3d;animation:labm-bob 5.5s ease-in-out infinite}
-  .labm-float .cme-bottle{height:440px;width:auto;display:block;filter:drop-shadow(0 26px 26px rgba(170,120,30,.34));animation:labm-sway 7s ease-in-out infinite}
-  @keyframes labm-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(-1.5deg)}}
-  .labm-tagm{position:absolute;z-index:5;background:#fff;border:1px solid #F0D6B4;border-radius:12px;padding:9px 13px;box-shadow:0 16px 30px -16px rgba(28,22,17,.4);font-size:12px}
-  .labm-tagm b{display:block;color:var(--blue-ink);font-weight:800;font-size:13px;white-space:nowrap}
-  .labm-tagm span{color:var(--slate);white-space:nowrap}
-  .labm-tagm.t1{top:60px;right:34px;animation:labm-bob 6s ease-in-out infinite .4s}
-  .labm-tagm.t2{bottom:96px;left:30px;animation:labm-bob 6.6s ease-in-out infinite .9s}
-  @keyframes labm-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-  @keyframes labm-spin{to{transform:rotate(360deg)}}
-  @keyframes labm-float{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-14px);opacity:1}}
-  @keyframes labm-shadow{0%,100%{transform:scaleX(1);opacity:.7}50%{transform:scaleX(.8);opacity:.45}}
-  @keyframes labm-shine{0%,100%{background-position:140% 0}45%,55%{background-position:-40% 0}}
-  @media(prefers-reduced-motion:reduce){.labm-float,.labm-halo,.labm-ring,.labm-spark,.labm-pedestal,.labm-tagm,.labm-offer .badge,.labm-float .cme-bottle{animation:none}}
+  /* 3D stage — remplacé par image simple */
+  .labm-img{align-self:center;display:flex;align-items:center;justify-content:center;padding:20px 16px}
+  .labm-img .cme-bottle{width:494px;height:546px;object-fit:cover;object-position:center 20%;border-radius:24px;display:block;box-shadow:0 30px 60px -20px rgba(80,60,20,.38)}
 
   @media(max-width:980px){
     .hero-grid,.role-grid,.aud-grid,.contact-grid,.foot-top{grid-template-columns:1fr}
@@ -248,8 +227,6 @@
       <span class="wm"><b>David Bitton</b><span>PARTENAIRE PHARMACEUTIQUE</span></span>
     </a>
     <nav class="links">
-      <a href="#role">Notre rôle</a>
-      <a href="#labs">Laboratoires</a>
       <a href="DBN - Espace Catalogues.html">Catalogues</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -272,8 +249,8 @@
         <a class="btn btn-ghost" href="#contact">Nous contacter</a>
       </div>
       <div class="hero-meta">
-        <div><div class="k">12+</div><div class="l">Laboratoires représentés</div></div>
-        <div><div class="k">B2B</div><div class="l">Officines &amp; partenaires</div></div>
+        <div><div class="k">16</div><div class="l">Laboratoires représentés</div></div>
+        <div><div class="k">+400</div><div class="l">Officines partenaires</div></div>
         <div><div class="k">1</div><div class="l">Interlocuteur dédié</div></div>
       </div>
     </div>
@@ -285,11 +262,23 @@
   <div class="wrap">
     <span class="lbl">Ils nous font confiance</span>
     <div class="row">
-      <span class="ph">Laboratoire</span>
-      <span class="ph">Laboratoire</span>
-      <span class="ph">Laboratoire</span>
-      <span class="ph">Laboratoire</span>
-      <span class="ph">Laboratoire</span>
+      <span class="ph">Biosynex</span>
+      <span class="ph">Innoxa</span>
+      <span class="ph">Hydratis</span>
+      <span class="ph">Bonjour Drink</span>
+      <span class="ph">Du Monde à la Provence</span>
+      <span class="ph">Flayre</span>
+      <span class="ph">Veegreen</span>
+      <span class="ph">Séfia</span>
+      <span class="ph">Cible Skin</span>
+      <span class="ph">Fré Skincare</span>
+      <span class="ph">Martine Skin</span>
+      <span class="ph">Cut by Fred</span>
+      <span class="ph">TALM</span>
+      <span class="ph">Sisters Republic</span>
+      <span class="ph">Owari</span>
+      <span class="ph">Maison Matine</span>
+      <span class="ph">POP</span>
     </div>
   </div>
 </div>
@@ -323,114 +312,9 @@
           </div>
         </div>
 
-        <div class="labm-stage">
-          <div class="labm-halo"></div>
-          <div class="labm-ring r1"></div>
-          <div class="labm-ring r2"></div>
-          <span class="labm-spark s1"></span>
-          <span class="labm-spark s2"></span>
-          <span class="labm-spark s3"></span>
-          <span class="labm-spark s4"></span>
-          <div class="labm-pedestal"></div>
-          <div class="labm-float">
-            <img class="cme-bottle" src="assets/cme2.png" alt="Sérum éclat C ME — Fré, vitamine C 10%, 30 ml" />
-          </div>
-          <div class="labm-tagm t1"><b>Éclat immédiat</b><span>Teint unifié</span></div>
-          <div class="labm-tagm t2"><b>VC-IP + Argan</b><span>Formule clean</span></div>
+        <div class="labm-img">
+          <img class="cme-bottle" src="assets/cme_pro.jpg" alt="Sérum éclat C ME — Fré, vitamine C 10%, 30 ml" />
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ROLE -->
-<section class="block" id="role">
-  <div class="wrap">
-    <div class="role-grid">
-      <div class="role-head">
-        <span class="eyebrow">Notre rôle</span>
-        <div class="sec-head"><h2>Un intermédiaire de confiance, du laboratoire au comptoir.</h2></div>
-      </div>
-      <div class="role-list">
-        <div class="role-item"><div class="n">01</div><div><h3>Sélection des laboratoires</h3><p>Nous représentons des laboratoires choisis pour la qualité et la pertinence de leurs gammes.</p></div></div>
-        <div class="role-item"><div class="n">02</div><div><h3>Conseil &amp; présentation</h3><p>Nous présentons les produits aux officines et identifions ce qui répond réellement à vos besoins.</p></div></div>
-        <div class="role-item"><div class="n">03</div><div><h3>Accompagnement durable</h3><p>Un interlocuteur unique, disponible, qui suit la relation dans le temps.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LABS -->
-<section class="block labs" id="labs">
-  <div class="wrap">
-    <span class="eyebrow">Nos partenaires</span>
-    <div class="sec-head"><h2>Les laboratoires que nous représentons.</h2>
-      <p>Une sélection de partenaires reconnus. Découvrez les gammes que nous portons auprès des pharmacies.</p></div>
-    <div class="lab-grid">
-      <div class="lab-card"><image-slot id="a-lab1" placeholder=" " shape="rect"></image-slot><span class="nm">Biosynex</span></div>
-      <div class="lab-card"><image-slot id="a-lab2" placeholder=" " shape="rect"></image-slot><span class="nm">Hydratis</span></div>
-      <div class="lab-card"><image-slot id="a-lab3" placeholder=" " shape="rect"></image-slot><span class="nm">Sefia</span></div>
-      <div class="lab-card"><image-slot id="a-lab4" placeholder=" " shape="rect"></image-slot><span class="nm">Veegreen</span></div>
-      <div class="lab-card"><image-slot id="a-lab5" placeholder=" " shape="rect"></image-slot><span class="nm">Bonjour Drink</span></div>
-      <div class="lab-card"><image-slot id="a-lab6" placeholder=" " shape="rect"></image-slot><span class="nm">Fré Skincare</span></div>
-      <div class="lab-card"><image-slot id="a-lab7" placeholder=" " shape="rect"></image-slot><span class="nm">Du Monde à la Provence</span></div>
-      <div class="lab-card"><image-slot id="a-lab8" placeholder=" " shape="rect"></image-slot><span class="nm">+ 4 autres marques</span></div>
-    </div>
-    <div class="foot">
-      <p>Consultez et téléchargez les catalogues de toutes nos marques dans l'espace dédié.</p>
-      <a class="btn btn-white" href="DBN - Espace Catalogues.html">Voir les catalogues <span class="arr">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- PILLARS -->
-<section class="block" id="pourquoi">
-  <div class="wrap">
-    <span class="eyebrow">Pourquoi David Bitton</span>
-    <div class="sec-head"><h2>Une approche commerciale, humaine et premium.</h2></div>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="ic"><svg fill="none" stroke-width="1.7" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <h3>Relation humaine</h3>
-        <p>Un interlocuteur dédié qui connaît votre officine et reste joignable, simplement.</p>
-      </div>
-      <div class="pillar">
-        <div class="ic"><svg fill="none" stroke-width="1.7" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3>Sélection exigeante</h3>
-        <p>Nous ne portons que des laboratoires dont nous sommes convaincus de la qualité.</p>
-      </div>
-      <div class="pillar">
-        <div class="ic"><svg fill="none" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div>
-        <h3>Un seul contact</h3>
-        <p>Toute une gamme de partenaires, réunis derrière une relation unique et lisible.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AUDIENCES -->
-<section class="block aud">
-  <div class="wrap">
-    <span class="eyebrow">Pour qui</span>
-    <div class="sec-head"><h2>Deux mondes, un même partenaire.</h2></div>
-    <div class="aud-grid">
-      <div class="aud-card">
-        <span class="tag">Pharmacies</span>
-        <h3>Pour les officines</h3>
-        <ul>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Découvrez des gammes sélectionnées, sans démarchage dispersé.</li>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Un conseil adapté à votre patientèle et à votre rayon.</li>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Un interlocuteur réactif, du premier contact au réassort.</li>
-        </ul>
-      </div>
-      <div class="aud-card">
-        <span class="tag">Laboratoires</span>
-        <h3>Pour les laboratoires</h3>
-        <ul>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Un relais commercial de proximité auprès des pharmacies.</li>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Une présentation soignée de vos produits et de votre marque.</li>
-          <li><svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/></svg>Une connaissance fine du terrain et des décideurs officinaux.</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -474,9 +358,6 @@
       </div>
       <div class="foot-col">
         <h4>Navigation</h4>
-        <a href="#role">Notre rôle</a>
-        <a href="#labs">Laboratoires</a>
-        <a href="#pourquoi">Pourquoi David Bitton</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="foot-col">

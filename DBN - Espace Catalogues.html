@@ -54,7 +54,7 @@
      radial-gradient(120% 90% at 90% -20%, #F7E2C6 0%, rgba(247,226,198,0) 58%),
      radial-gradient(95% 80% at 2% -10%, #DCE7F4 0%, rgba(220,231,244,0) 56%);
      overflow:hidden}
-  .hero h1{font-size:clamp(38px,4.6vw,60px);margin-top:16px;max-width:18ch}
+  .hero h1{font-size:clamp(26px,2.8vw,36px);margin-top:14px;max-width:24ch}
   .hero h1 em{font-style:italic;color:var(--blue)}
   .hero p.lead{font-size:19px;color:var(--slate);margin-top:18px;max-width:54ch}
   .pro-note{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-size:14px;color:var(--slate);background:var(--white);border:1px solid var(--line);border-left:4px solid var(--sky);padding:11px 18px;border-radius:12px}
@@ -85,11 +85,11 @@
   .fam-title .fc{font-size:13px;font-weight:700;color:var(--blue);background:var(--sky-soft);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
   .cat{background:var(--white);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.24s}
   .cat:hover{transform:translateY(-5px);box-shadow:0 36px 64px -40px rgba(28,22,17,.4);border-color:#ddd0bb}
-  .cover{height:212px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:22px;overflow:hidden}
+  .cover{height:150px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:20px 22px;overflow:hidden}
   .cover .fold{position:absolute;top:0;right:0;width:46px;height:46px;background:rgba(255,255,255,.28);clip-path:polygon(100% 0,0 0,100% 100%);z-index:3}
   .cover .thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:2}
   .cover .kase{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;opacity:.78}
-  .cover .bn{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.02;letter-spacing:-.01em}
+  .cover .bn{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.02;letter-spacing:-.01em}
   .cover .bn-by{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;opacity:.78;margin-top:3px}
   .cover .dt{font-size:13px;font-weight:600;opacity:.82}
   /* accents */
@@ -99,7 +99,41 @@
   .c-ink{background:linear-gradient(150deg,#2A2118,#1C1611);color:#fff}
   .c-sand{background:linear-gradient(150deg,#F0E2CB,#E7D5B6);color:#4a3f2c}
   .c-sky .kase,.c-sand .kase{opacity:.6}
-  .cover .prod-icon{position:absolute;right:12px;bottom:12px;width:56px;height:72px;opacity:.82;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
+  .cover .prod-icon{position:absolute;right:12px;bottom:12px;width:48px;height:60px;opacity:.82;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
+
+  /* VIEW TOGGLE */
+  .viewtog{display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--white)}
+  .vpill{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--slate);background:transparent;border:none;padding:9px 15px;cursor:pointer;transition:.18s}
+  .vpill svg{width:15px;height:15px}
+  .vpill:hover{color:var(--ink)}
+  .vpill.active{background:var(--blue);color:#fff}
+
+  /* ROW / LIST VIEW */
+  .rows{display:flex;flex-direction:column;gap:12px}
+  .catrow{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.2s}
+  .catrow:hover{border-color:#ddd0bb;box-shadow:0 22px 46px -34px rgba(28,22,17,.42)}
+  .catrow .rc{width:128px;flex:none;position:relative;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center}
+  .catrow .rc .rbn{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.05;letter-spacing:-.01em}
+  .catrow .rc .rby{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.05em;opacity:.78;margin-top:3px;display:block}
+  .catrow .rc .prod-icon{position:absolute;right:8px;bottom:8px;width:32px;height:42px;opacity:.7;filter:drop-shadow(0 2px 5px rgba(0,0,0,.18))}
+  .catrow .rinfo{flex:1;min-width:0;padding:16px 22px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+  .catrow .rtop{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+  .catrow .rname{font-size:18px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .catrow .rtag{font-size:11px;font-weight:700;color:var(--blue);background:var(--sky-soft);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .catrow .rdesc{font-size:13px;color:var(--slate);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .catrow .rfmt{flex:none;align-self:center;padding:0 22px;font-size:12px;font-weight:600;color:var(--slate);white-space:nowrap;display:flex;align-items:center;gap:7px;border-left:1px solid var(--line)}
+  .catrow .rfmt .pdf{display:inline-flex;align-items:center;gap:5px;background:#FBEDEA;color:var(--red);padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:.03em}
+  .catrow .ract{flex:none;align-self:center;display:flex;gap:8px;padding:0 18px 0 0}
+  .catrow .ract a{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;padding:10px 16px;border-radius:10px;transition:.18s;white-space:nowrap}
+  .catrow .ract svg{width:15px;height:15px;flex:none}
+  @media(max-width:880px){
+    .catrow{flex-wrap:wrap}
+    .catrow .rc{width:96px}
+    .catrow .rinfo{flex:1 1 60%}
+    .catrow .rfmt{border-left:none;width:100%;justify-content:flex-start;padding:0 22px 10px 22px;align-self:flex-start}
+    .catrow .ract{width:100%;padding:0 22px 16px;align-self:flex-start}
+    .catrow .ract a{flex:1}
+  }
 
   .cat .meta{padding:18px 20px 18px;display:flex;flex-direction:column;gap:3px;flex:1}
   .cat .meta .postag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--blue);background:var(--sky-soft);padding:4px 10px;border-radius:999px;margin-bottom:6px;white-space:nowrap}
@@ -161,11 +195,6 @@
   <div class="wrap">
     <span class="eyebrow">Espace pharmacies</span>
     <h1>Les catalogues de nos <em>marques</em>, en un seul endroit.</h1>
-    <p class="lead">Consultez et téléchargez les catalogues des laboratoires que représente David Bitton. Toujours à jour, prêts à l'emploi pour votre officine.</p>
-    <div class="pro-note">
-      <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Espace réservé aux professionnels de santé · usage interne officine
-    </div>
   </div>
 </section>
 
@@ -181,6 +210,10 @@
       <button class="pill active" data-sort="fam">Par famille</button>
       <button class="pill" data-sort="recent">Plus récents</button>
       <button class="pill" data-sort="az">A → Z</button>
+    </div>
+    <div class="viewtog" role="group" aria-label="Affichage">
+      <button class="vpill" data-view="grid" title="Vue grille"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Grille</button>
+      <button class="vpill active" data-view="list" title="Vue liste"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3.5" y1="6" x2="3.5" y2="6"/><line x1="3.5" y1="12" x2="3.5" y2="12"/><line x1="3.5" y1="18" x2="3.5" y2="18"/></svg> Liste</button>
     </div>
   </div>
 </div>
@@ -237,23 +270,23 @@
   const DL = id => "https://drive.google.com/uc?export=download&id="+id;
   // fam = famille (G = Généralistes, C = Cosmétiques) · fo = ordre dans la famille
   const cats = [
-    {b:"TALM",         d:"Juin 2026",  o:202606, mb:"13 Mo",  id:"19MjV0W3e-2E8yRmFjsKfZByEKq29HB1T", c:"c-blue",  fam:"C", fo:6, ptype:"bottle", tag:"Maternité & peaux sensibles", desc:"Marque française de skincare certifié bio, spécialisée dans les peaux sensibles et la maternité (grossesse, post-partum, allaitement). Des soins sûrs, hautement tolérés et sensoriels, vegan et fabriqués en France."},
-    {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink",   fam:"C", fo:7, ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
-    {b:"Owari",        d:"2026",       o:202606, mb:"5 Mo",   id:"1SR20pXi7nNKxq76K8BPFnnCRlH2BOOP-", c:"c-brick", fam:"C", fo:8, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
-    {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky",   fam:"C", fo:5, ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
-    {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand",  fam:"C", fo:4, ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
-    {b:"Hydratis",     d:"Juin 2026",  o:202606, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky",   fam:"G", fo:3, ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
-    {b:"Sefia",        d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1GNDRph2bnxVtlW3I_jcPx9BBIJTJfL8_", c:"c-brick", fam:"C", fo:1, ptype:"pad", tag:"Cosmétique au curcuma", desc:"Première marque française de cosmétiques au curcuma distribuée en pharmacie. Des soins naturels (curcuma, vitamine C, acide kojique) pour atténuer taches brunes, hyperpigmentation et imperfections, même sur peaux sensibles."},
-    {b:"Biosynex",     d:"Mai 2026",   o:202605, mb:"10 Mo",  id:"1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb", c:"c-ink",   fam:"G", fo:1, ptype:"test", tag:"Expert de l'autodiagnostic", desc:"Groupe français leader des tests de diagnostic rapide. Large gamme d'autotests fiables et simples (grossesse, ovulation, infections…) pour le dépistage à l'officine et à domicile."},
-    {b:"Innoxa",       d:"Juin 2026", o:202606, mb:"0,9 Mo", id:"12tZKopK9d5wvkbOI6Opdzl0gohtz0O7u", c:"c-sky",   fam:"G", fo:2, by:"Biosynex", ptype:"drops", tag:"Soin des yeux", desc:"Les soins oculaires INNOXA, marque de la division Pharmacie de Biosynex : gouttes (Formule Bleue, Hydralose), sprays, solutions lentilles et hygiène du regard. Un nom culte à fort réachat."},
-    {b:"Bonjour Drink", d:"Mai 2026",  o:202605, mb:"3 Mo",   id:"1HLq0fMmpQykqnJWxS0uN7zYXi6TIu_vb", c:"c-sand",  fam:"G", fo:4, ptype:"drink", tag:"Champignons adaptogènes", desc:"Bonjour Drink : des boissons-compléments alimentaires à base de champignons adaptogènes, pensées pour le bien-être au quotidien. Une catégorie tendance à proposer au comptoir."},
-    {b:"Fré Skincare",  d:"Avril 2026", o:202604, mb:"26 Mo",  id:"1-3Wj_c7THS3uiqS4Rra7Jv7GoPpwaA_F", c:"c-blue",  fam:"C", fo:3, ptype:"suncare", tag:"Soin solaire & anti-âge", desc:"Soins « clean » à SPF minéral et complexe breveté à l'argan. Pensés pour la peau active : protéger, réparer et préserver face au soleil. Vegan, testés dermatologiquement."},
-    {b:"Flayre",       d:"2026",       o:202601, mb:"2 Mo",   id:"15jTp00luUpCfUyAAt4WkpYDA-ehrZWly", c:"c-sky",   fam:"G", fo:6, ptype:"soap", tag:"Soin des mains",        desc:"Nettoyants pour les mains parfumés : l'hygiène au quotidien associée à une expérience olfactive soignée. Un geste simple, un parfum qui fait la différence au comptoir."},
-    {b:"Du Monde à la Provence",d:"2026",o:202601, mb:"10 Mo",  id:"1peDseTPG8X5WC0b47Eau0cpYZGYBA0nA", c:"c-brick", fam:"G", fo:5, ptype:"soap", tag:"Fabriqué en France",     desc:"Du Monde à la Provence : une gamme provençale fabriquée en France. Des produits ancrés dans le savoir-faire local, pour une parapharmacie authentique."},
-    {b:"Veegreen",     d:"2026",       o:202601, mb:"16 Mo",  id:"1ka42CegAVNw7mgtxcPLAnBfVHxqXvyEb", c:"c-ink",   fam:"G", fo:7, ptype:"herb", tag:"Bien-être naturel",     desc:"Marque française d'Auvergne spécialisée dans le bien-être naturel : yerba maté bio, sauge blanche et palo santo. Des rituels sensoriels éco-responsables, sélectionnés avec exigence."},
-    {b:"POP",          d:"2026",       o:202601, mb:"4 Mo",   id:"1d3tOhapA4pG8PKhinJ6UnmIaenU9eUZ4", c:"c-sand",  fam:"C", fo:10, ptype:"parfum", tag:"Parfum petit prix",     desc:"Des eaux de parfum à petit prix : une façon accessible de se faire plaisir, un bon volume de vente à proposer en officine."},
-    {b:"Maison Matine",d:"2026",       o:202601, mb:"1 Mo",   id:"11fiXngofscfHY1lfKplsIQYtW7VIF-V5", c:"c-blue",  fam:"C", fo:9, ptype:"parfum", tag:"Parfums de niche",      desc:"Maison de parfums parisienne à l'esprit clean et joyeux : des eaux de parfum expressives et accessibles, une jolie touche sensorielle en parapharmacie."},
-    {b:"Cible Skin",   d:"Sept. 2025", o:202509, mb:"37 Mo",  id:"11lycITj704h-yhNFCRHMqkf__4rjGWkY", c:"c-sky",   fam:"C", fo:2, ptype:"serum", tag:"Anti-âge premium",      desc:"Dermocosmétique premium française, formulée par un Docteur en Pharmacie et des dermatologues. Soins anti-âge ultra-actifs à technologie brevetée, 100% clean, à l'efficacité cliniquement prouvée."},
+    {b:"TALM",         d:"Juin 2026",  o:202606, mb:"13 Mo",  id:"19MjV0W3e-2E8yRmFjsKfZByEKq29HB1T", c:"c-blue", col:"#8FAE94", dark:1,  fam:"C", fo:6, ptype:"bottle", tag:"Maternité & peaux sensibles", desc:"Marque française de skincare certifié bio, spécialisée dans les peaux sensibles et la maternité (grossesse, post-partum, allaitement). Des soins sûrs, hautement tolérés et sensoriels, vegan et fabriqués en France."},
+    {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink", col:"#E0524A",   fam:"C", fo:7, ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
+    {b:"Owari",        d:"2026",       o:202606, mb:"5 Mo",   id:"1SR20pXi7nNKxq76K8BPFnnCRlH2BOOP-", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
+    {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky", col:"#34302B",   fam:"C", fo:5, ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
+    {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand", col:"#D96E8C",  fam:"C", fo:4, ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
+    {b:"Hydratis",     d:"Juin 2026",  o:202606, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky", col:"#1FA8BE",   fam:"G", fo:3, ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
+    {b:"Sefia",        d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1GNDRph2bnxVtlW3I_jcPx9BBIJTJfL8_", c:"c-brick", col:"#E2A21C", dark:1, fam:"C", fo:1, ptype:"pad", tag:"Cosmétique au curcuma", desc:"Première marque française de cosmétiques au curcuma distribuée en pharmacie. Des soins naturels (curcuma, vitamine C, acide kojique) pour atténuer taches brunes, hyperpigmentation et imperfections, même sur peaux sensibles."},
+    {b:"Biosynex",     d:"Mai 2026",   o:202605, mb:"10 Mo",  id:"1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb", c:"c-ink", col:"#2FA84F",   fam:"G", fo:1, ptype:"test", tag:"Expert de l'autodiagnostic", desc:"Groupe français leader des tests de diagnostic rapide. Large gamme d'autotests fiables et simples (grossesse, ovulation, infections…) pour le dépistage à l'officine et à domicile."},
+    {b:"Innoxa",       d:"Juin 2026", o:202606, mb:"0,9 Mo", id:"12tZKopK9d5wvkbOI6Opdzl0gohtz0O7u", c:"c-sky", col:"#1D63B0",   fam:"G", fo:2, by:"Biosynex", ptype:"drops", tag:"Soin des yeux", desc:"Les soins oculaires INNOXA, marque de la division Pharmacie de Biosynex : gouttes (Formule Bleue, Hydralose), sprays, solutions lentilles et hygiène du regard. Un nom culte à fort réachat."},
+    {b:"Bonjour Drink", d:"Mai 2026",  o:202605, mb:"3 Mo",   id:"1HLq0fMmpQykqnJWxS0uN7zYXi6TIu_vb", c:"c-sand", col:"#C0894C",  fam:"G", fo:4, ptype:"drink", tag:"Champignons adaptogènes", desc:"Bonjour Drink : des boissons-compléments alimentaires à base de champignons adaptogènes, pensées pour le bien-être au quotidien. Une catégorie tendance à proposer au comptoir."},
+    {b:"Fré Skincare",  d:"Avril 2026", o:202604, mb:"26 Mo",  id:"1-3Wj_c7THS3uiqS4Rra7Jv7GoPpwaA_F", c:"c-blue", col:"#D9785A",  fam:"C", fo:3, ptype:"suncare", tag:"Soin solaire & anti-âge", desc:"Soins « clean » à SPF minéral et complexe breveté à l'argan. Pensés pour la peau active : protéger, réparer et préserver face au soleil. Vegan, testés dermatologiquement."},
+    {b:"Flayre",       d:"2026",       o:202601, mb:"2 Mo",   id:"15jTp00luUpCfUyAAt4WkpYDA-ehrZWly", c:"c-sky", col:"#4FA39B",   fam:"G", fo:6, ptype:"soap", tag:"Soin des mains",        desc:"Nettoyants pour les mains parfumés : l'hygiène au quotidien associée à une expérience olfactive soignée. Un geste simple, un parfum qui fait la différence au comptoir."},
+    {b:"Du Monde à la Provence",d:"2026",o:202601, mb:"10 Mo",  id:"1peDseTPG8X5WC0b47Eau0cpYZGYBA0nA", c:"c-brick", col:"#7E6BA8", fam:"G", fo:5, ptype:"soap", tag:"Fabriqué en France",     desc:"Du Monde à la Provence : une gamme provençale fabriquée en France. Des produits ancrés dans le savoir-faire local, pour une parapharmacie authentique."},
+    {b:"Veegreen",     d:"2026",       o:202601, mb:"16 Mo",  id:"1ka42CegAVNw7mgtxcPLAnBfVHxqXvyEb", c:"c-ink", col:"#5B8C3E",   fam:"G", fo:7, ptype:"herb", tag:"Bien-être naturel",     desc:"Marque française d'Auvergne spécialisée dans le bien-être naturel : yerba maté bio, sauge blanche et palo santo. Des rituels sensoriels éco-responsables, sélectionnés avec exigence."},
+    {b:"POP",          d:"2026",       o:202601, mb:"4 Mo",   id:"1d3tOhapA4pG8PKhinJ6UnmIaenU9eUZ4", c:"c-sand", col:"#E0457B",  fam:"C", fo:10, ptype:"parfum", tag:"Parfum petit prix",     desc:"Des eaux de parfum à petit prix : une façon accessible de se faire plaisir, un bon volume de vente à proposer en officine."},
+    {b:"Maison Matine",d:"2026",       o:202601, mb:"1 Mo",   id:"11fiXngofscfHY1lfKplsIQYtW7VIF-V5", c:"c-blue", col:"#E07A5F",  fam:"C", fo:9, ptype:"parfum", tag:"Parfums de niche",      desc:"Maison de parfums parisienne à l'esprit clean et joyeux : des eaux de parfum expressives et accessibles, une jolie touche sensorielle en parapharmacie."},
+    {b:"Cible Skin",   d:"Sept. 2025", o:202509, mb:"37 Mo",  id:"11lycITj704h-yhNFCRHMqkf__4rjGWkY", c:"c-sky", col:"#1C4E6B",   fam:"C", fo:2, ptype:"serum", tag:"Anti-âge premium",      desc:"Dermocosmétique premium française, formulée par un Docteur en Pharmacie et des dermatologues. Soins anti-âge ultra-actifs à technologie brevetée, 100% clean, à l'efficacité cliniquement prouvée."},
   ];
   const FAMS=[{k:"G",label:"Généralistes",note:"Diagnostic, hydratation, bien-être & quotidien"},{k:"C",label:"Cosmétiques",note:"Soin, dermocosmétique, capillaire & parfums"}];
   const PROD_ICONS={
@@ -275,12 +308,12 @@
   // en « Tous les utilisateurs disposant du lien » : les vraies couvertures (1re page
   // de chaque PDF) s'afficheront automatiquement à la place des tuiles colorées.
   const SHOW_COVERS=false;
-  let sort='fam', q='';
+  let sort='fam', q='', view='list';
   const ICON_VIEW='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
   const ICON_DL='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>';
   function card(c){return `
       <article class="cat">
-        <div class="cover ${c.c}">
+        <div class="cover ${c.c}"${c.col?` style="background:linear-gradient(150deg, ${c.col}, color-mix(in srgb, ${c.col} 82%, #000));color:${c.dark?'#1C1611':'#fff'}"`:''}>
           <div class="fold"></div>
           <div class="kase">Catalogue</div>
           <div>
@@ -303,7 +336,24 @@
           <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener">${ICON_DL} Télécharger</a>
         </div>
       </article>`;}
+  function row(c){return `
+      <article class="catrow">
+        <div class="rc ${c.c}"${c.col?` style="background:linear-gradient(150deg, ${c.col}, color-mix(in srgb, ${c.col} 82%, #000));color:${c.dark?'#1C1611':'#fff'}"`:''}>
+          <div><span class="rbn">${c.b}</span>${c.by?`<span class="rby">By ${c.by}</span>`:''}</div>
+        </div>
+        <div class="rinfo">
+          <div class="rtop"><span class="rname">${c.b}</span>${c.tag?`<span class="rtag">${c.tag}</span>`:''}</div>
+          <div class="rdesc">${c.desc}</div>
+        </div>
+        <div class="rfmt"><span class="pdf">PDF</span> · ${c.mb} · ${c.d}</div>
+        <div class="ract">
+          <a class="a-view" href="${DRIVE(c.id)}" target="_blank" rel="noopener">${ICON_VIEW} Consulter</a>
+          <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener">${ICON_DL} Télécharger</a>
+        </div>
+      </article>`;}
   function render(){
+    const item = view==='list' ? row : card;
+    const wrapCls = view==='list' ? 'rows' : 'grid';
     let list=cats.filter(c=>(c.b+' '+(c.by||'')).toLowerCase().includes(q));
     if(sort==='fam'){
       grid.className='';
@@ -312,13 +362,13 @@
         if(!items.length) return '';
         return `<div class="fam-block">
           <div class="fam-title"><span class="ft-l"><span class="fl">${f.label}</span><span class="fn">${f.note}</span></span><span class="fc">${items.length}</span></div>
-          <div class="grid">${items.map(card).join('')}</div>
+          <div class="${wrapCls}">${items.map(item).join('')}</div>
         </div>`;
       }).join('');
     } else {
       list.sort((a,b)=> sort==='az' ? a.b.localeCompare(b.b,'fr') : (b.o-a.o)||a.b.localeCompare(b.b,'fr'));
       grid.className='';
-      grid.innerHTML=`<div class="grid">${list.map(card).join('')}</div>`;
+      grid.innerHTML=`<div class="${wrapCls}">${list.map(item).join('')}</div>`;
     }
     nEl.textContent=list.length;
     emptyEl.style.display=list.length?'none':'block';
@@ -327,6 +377,10 @@
   document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',()=>{
     document.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
     p.classList.add('active');sort=p.dataset.sort;render();
+  }));
+  document.querySelectorAll('.vpill').forEach(p=>p.addEventListener('click',()=>{
+    document.querySelectorAll('.vpill').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');view=p.dataset.view;render();
   }));
   render();
 </script>
