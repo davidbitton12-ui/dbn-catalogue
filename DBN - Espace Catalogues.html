@@ -151,6 +151,20 @@
   .cat .actions svg{width:16px;height:16px;flex:none}
   .empty{text-align:center;color:var(--slate);padding:60px 0;font-size:17px;display:none}
 
+  /* LAB GROUP (labo regroupant plusieurs marques) */
+  .lab-block{position:relative;border:1px solid var(--line);border-left:5px solid var(--lab);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--lab) 8%,#fff),var(--white))}
+  .grid > .lab-block{grid-column:1/-1}
+  .lab-head{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;padding:18px 24px;flex-wrap:wrap;border-bottom:1px solid color-mix(in srgb,var(--lab) 22%,var(--line))}
+  .lab-id{display:flex;align-items:center;gap:13px;min-width:0}
+  .lab-badge{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--lab);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .lab-name{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--lab);letter-spacing:-.01em;line-height:1}
+  .lab-note{font-size:13px;color:var(--slate)}
+  .lab-note b{color:var(--ink);font-weight:700}
+  .lab-body{padding:16px}
+  .lab-body .rows{gap:10px}
+  .lab-body .grid{gap:16px}
+  @media(max-width:880px){.lab-head{padding:16px 18px}.lab-name{font-size:21px}.lab-body{padding:12px}}
+
   /* CONTACT STRIP */
   .strip{background:var(--blue);color:#fff;border-radius:24px;padding:46px 50px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:10px}
   .strip h2{color:#fff;font-size:30px}
@@ -297,8 +311,9 @@
     {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand", col:"#D96E8C",  fam:"C", fo:4, ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
     {b:"Hydratis",     d:"Juin 2026",  o:202606, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky", col:"#1FA8BE",   fam:"G", fo:3, ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
     {b:"Sefia",        d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1GNDRph2bnxVtlW3I_jcPx9BBIJTJfL8_", c:"c-brick", col:"#E2A21C", dark:1, fam:"C", fo:1, ptype:"pad", tag:"Cosmétique au curcuma", desc:"Première marque française de cosmétiques au curcuma distribuée en pharmacie. Des soins naturels (curcuma, vitamine C, acide kojique) pour atténuer taches brunes, hyperpigmentation et imperfections, même sur peaux sensibles."},
-    {b:"Biosynex",     d:"Mai 2026",   o:202605, mb:"10 Mo",  id:"1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb", c:"c-ink", col:"#2FA84F",   fam:"G", fo:1, ptype:"test", tag:"Expert de l'autodiagnostic", desc:"Groupe français leader des tests de diagnostic rapide. Large gamme d'autotests fiables et simples (grossesse, ovulation, infections…) pour le dépistage à l'officine et à domicile."},
-    {b:"Innoxa",       d:"Juin 2026", o:202606, mb:"0,9 Mo", id:"12tZKopK9d5wvkbOI6Opdzl0gohtz0O7u", c:"c-sky", col:"#1D63B0",   fam:"G", fo:2, by:"Biosynex", ptype:"drops", tag:"Soin des yeux", desc:"Les soins oculaires INNOXA, marque de la division Pharmacie de Biosynex : gouttes (Formule Bleue, Hydralose), sprays, solutions lentilles et hygiène du regard. Un nom culte à fort réachat."},
+    {b:"Biosynex",     d:"Mai 2026",   o:202605, mb:"10 Mo",  id:"1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb", c:"c-ink", col:"#2FA84F",   fam:"G", fo:1, lab:"Biosynex", ptype:"test", tag:"Expert de l'autodiagnostic", desc:"Groupe français leader des tests de diagnostic rapide. Large gamme d'autotests fiables et simples (grossesse, ovulation, infections…) pour le dépistage à l'officine et à domicile."},
+    {b:"Offres Biosynex", d:"Juin 2026", o:202606, mb:"5 Mo", id:"1aV_v8BUDwA7EVRkDFS5yrNREE3y2k3MZ", c:"c-ink", col:"#2FA84F", fam:"G", fo:1.5, lab:"Biosynex", ptype:"test", tag:"Offres 1er sem. 2026", desc:"Sélection d'offres commerciales Biosynex pour le 1er semestre 2026 : autotests, autodiagnostic et dispositifs — conditions dédiées aux pharmacies partenaires."},
+    {b:"Innoxa",       d:"Juin 2026", o:202606, mb:"0,9 Mo", id:"12tZKopK9d5wvkbOI6Opdzl0gohtz0O7u", c:"c-sky", col:"#1D63B0",   fam:"G", fo:2, lab:"Biosynex", by:"Biosynex", ptype:"drops", tag:"Soin des yeux", desc:"Les soins oculaires INNOXA, marque de la division Pharmacie de Biosynex : gouttes (Formule Bleue, Hydralose), sprays, solutions lentilles et hygiène du regard. Un nom culte à fort réachat."},
     {b:"Bonjour Drink", d:"Mai 2026",  o:202605, mb:"3 Mo",   id:"1HLq0fMmpQykqnJWxS0uN7zYXi6TIu_vb", c:"c-sand", col:"#C0894C",  fam:"G", fo:4, ptype:"drink", tag:"Champignons adaptogènes", desc:"Bonjour Drink : des boissons-compléments alimentaires à base de champignons adaptogènes, pensées pour le bien-être au quotidien. Une catégorie tendance à proposer au comptoir."},
     {b:"Fré Skincare",  d:"Avril 2026", o:202604, mb:"26 Mo",  id:"1-3Wj_c7THS3uiqS4Rra7Jv7GoPpwaA_F", c:"c-blue", col:"#D9785A",  fam:"C", fo:3, ptype:"suncare", tag:"Soin solaire & anti-âge", desc:"Soins « clean » à SPF minéral et complexe breveté à l'argan. Pensés pour la peau active : protéger, réparer et préserver face au soleil. Vegan, testés dermatologiquement."},
     {b:"Flayre",       d:"2026",       o:202601, mb:"2 Mo",   id:"15jTp00luUpCfUyAAt4WkpYDA-ehrZWly", c:"c-sky", col:"#4FA39B",   fam:"G", fo:6, ptype:"soap", tag:"Soin des mains",        desc:"Nettoyants pour les mains parfumés : l'hygiène au quotidien associée à une expérience olfactive soignée. Un geste simple, un parfum qui fait la différence au comptoir."},
@@ -371,6 +386,17 @@
           <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener">${ICON_DL} Télécharger</a>
         </div>
       </article>`;}
+  const LAB_COL={Biosynex:"#2FA84F"};
+  const LAB_NOTE={Biosynex:"Autodiagnostic, offres commerciales & soin des yeux Innoxa"};
+  function labBlock(g,item,wrapCls){
+    const col=LAB_COL[g.lab]||g.members[0].col;
+    return `<div class="lab-block" style="--lab:${col}">
+        <div class="lab-head">
+          <div class="lab-id"><span class="lab-badge">Laboratoire</span><span class="lab-name">${g.lab}</span></div>
+          <div class="lab-note"><b>${g.members.length} catalogues</b>${LAB_NOTE[g.lab]?` · ${LAB_NOTE[g.lab]}`:''}</div>
+        </div>
+        <div class="lab-body"><div class="${wrapCls}">${g.members.map(item).join('')}</div></div>
+      </div>`;}
   function render(){
     const item = view==='list' ? row : card;
     const wrapCls = view==='list' ? 'rows' : 'grid';
@@ -380,9 +406,15 @@
       grid.innerHTML=FAMS.map(f=>{
         const items=list.filter(c=>c.fam===f.k).sort((a,b)=>a.fo-b.fo);
         if(!items.length) return '';
+        const labs={}, seq=[];
+        items.forEach(c=>{
+          if(c.lab){ if(!labs[c.lab]){labs[c.lab]={isLab:1,lab:c.lab,members:[]};seq.push(labs[c.lab]);} labs[c.lab].members.push(c); }
+          else seq.push(c);
+        });
+        const inner=seq.map(e=> e.isLab ? labBlock(e,item,wrapCls) : item(e)).join('');
         return `<div class="fam-block">
           <div class="fam-title"><span class="ft-l"><span class="fl">${f.label}</span><span class="fn">${f.note}</span></span><span class="fc">${items.length}</span></div>
-          <div class="${wrapCls}">${items.map(item).join('')}</div>
+          <div class="${wrapCls}">${inner}</div>
         </div>`;
       }).join('');
     } else {
