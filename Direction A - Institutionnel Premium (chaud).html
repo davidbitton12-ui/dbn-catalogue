@@ -93,6 +93,68 @@
   .partners-strip .row{display:flex;gap:16px 38px;flex-wrap:wrap;align-items:center;justify-content:center;max-width:1000px}
   .partners-strip .ph{font-family:var(--serif);font-size:18px;font-weight:600;color:#5f7aa0;letter-spacing:.01em;white-space:nowrap}
 
+  /* ===== OFFRE DU MOMENT (Biosynex × Universal) ===== */
+  .offer{padding:72px 0}
+  .offer-card{position:relative;border-radius:30px;overflow:hidden;border:1px solid #E7DBC6;
+     background:
+       radial-gradient(110% 120% at 95% -8%, #FFE9CF 0%, rgba(255,233,207,0) 50%),
+       radial-gradient(90% 120% at -5% 110%, #E7F3EA 0%, rgba(231,243,234,0) 52%),
+       linear-gradient(135deg,#FFFBF4,#FBF2E2);
+     box-shadow:0 50px 90px -52px rgba(28,22,17,.45);padding:42px 48px}
+  .offer-kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C2410C;background:rgba(255,255,255,.72);border:1px solid #F0D6B4;padding:7px 14px;border-radius:999px}
+  .offer-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:offer-pulse 1.8s infinite}
+  @keyframes offer-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .offer-brand{display:flex;align-items:center;gap:13px;margin-top:18px}
+  .offer-brand .bio{font-family:var(--serif);font-weight:700;font-size:30px;color:#2FA84F;letter-spacing:.01em}
+  .offer-brand .x{color:var(--slate);font-size:18px}
+  .offer-brand .uni{font-weight:800;font-size:15px;letter-spacing:.18em;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:5px 14px}
+  .offer h2{font-size:clamp(30px,3.4vw,46px);color:var(--ink);line-height:1.04;margin-top:14px}
+  .offer h2 em{font-style:italic;color:#C2410C}
+  .offer .sub{font-size:15.5px;color:var(--slate);margin-top:10px;max-width:60ch}
+  .offer-body{display:grid;grid-template-columns:1.18fr .82fr;gap:34px;align-items:stretch;margin-top:26px}
+  .offer-visuals{display:flex;gap:18px;align-items:stretch}
+  .peluche-card{flex:1;background:#fff;border:1px solid #EFE6D6;border-radius:22px;padding:22px 22px 16px;box-shadow:0 30px 60px -34px rgba(40,30,15,.4);display:flex;flex-direction:column}
+  .peluche-card img{width:100%;height:auto;margin:auto 0}
+  .peluche-card .cap{text-align:center;font-size:12px;color:var(--slate);margin-top:14px;letter-spacing:.04em}
+  .presentoir{flex:none;width:158px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+  .presentoir img{height:340px;width:auto;filter:drop-shadow(0 24px 30px rgba(40,30,15,.28))}
+  .pbadge{background:#2B3138;color:#fff;border-radius:12px;padding:9px 13px;font-size:10.5px;font-weight:700;letter-spacing:.03em;line-height:1.3;text-align:center;margin-top:12px;box-shadow:0 14px 26px -16px rgba(0,0,0,.5)}
+  .pbadge b{color:#FF7A45;display:block;font-size:12px}
+  .offer-deals{display:flex;flex-direction:column;gap:14px}
+  .off{background:#2B3138;border-radius:18px;padding:16px 20px;color:#fff;position:relative;overflow:hidden}
+  .off::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 100% 0%,rgba(232,68,42,.35),transparent 60%)}
+  .off .lab{position:relative;font-weight:800;font-size:16px;letter-spacing:.02em;color:#FF7A45}
+  .off .price{position:relative;font-family:var(--serif);font-weight:700;font-size:30px;margin-top:4px;line-height:1;display:flex;align-items:baseline;gap:10px}
+  .off .price small{font-size:14px;font-weight:600;color:rgba(255,255,255,.7)}
+  .off .price .strike{font-family:var(--sans);font-size:13px;font-weight:500;color:rgba(255,255,255,.5);text-decoration:line-through}
+  .off .ug{position:relative;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
+  .deal-cta{margin-top:auto}
+  .deal-btn{width:100%;justify-content:center;border-radius:14px}
+  .deal-note{font-size:12.5px;color:var(--slate);text-align:center;margin-top:8px}
+  .eau{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-top:24px;padding:18px 22px;background:rgba(255,255,255,.6);border:1px solid #EFE2CC;border-radius:20px}
+  .eau-photo{width:340px;max-width:42vw}
+  .eau-info .et{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink)}
+  .eau-info .es{font-size:13px;color:var(--slate);margin-top:2px}
+  .eau-chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E7DBC6;border-radius:14px;padding:10px 14px}
+  .chip .ct{font-size:13px;font-weight:600;color:var(--slate)}
+  .chip .cp{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--blue);white-space:nowrap}
+  .chip .cp small{font-size:12px;color:var(--slate);font-weight:600;margin-left:3px}
+  @media(max-width:920px){
+    .offer{padding:40px 0}
+    .offer-card{padding:30px 22px}
+    .offer-body{grid-template-columns:1fr;gap:22px}
+    .presentoir{width:120px}
+    .presentoir img{height:260px}
+    .eau{grid-template-columns:1fr}
+    .eau-photo{width:100%;max-width:420px;margin:0 auto}
+  }
+  @media(max-width:560px){
+    .offer-visuals{flex-direction:column}
+    .presentoir{width:100%;flex-direction:row;justify-content:center;gap:14px}
+    .presentoir img{height:220px}
+  }
+
   /* SECTION */
   section.block{padding:104px 0}
   .sec-head{max-width:680px}
@@ -307,31 +369,61 @@
   </div>
 </section>
 
-<!-- PARTNERS STRIP -->
-<div class="partners-strip">
+<!-- OFFRE DU MOMENT (Biosynex × Universal) -->
+<section class="offer" id="offre">
   <div class="wrap">
-    <span class="lbl">Ils nous font confiance</span>
-    <div class="row">
-      <span class="ph">Biosynex</span>
-      <span class="ph">Innoxa</span>
-      <span class="ph">Hydratis</span>
-      <span class="ph">Bonjour Drink</span>
-      <span class="ph">Du Monde à la Provence</span>
-      <span class="ph">Flayre</span>
-      <span class="ph">Veegreen</span>
-      <span class="ph">Séfia</span>
-      <span class="ph">Cible Skin</span>
-      <span class="ph">Fré Skincare</span>
-      <span class="ph">Martine Skin</span>
-      <span class="ph">Cut by Fred</span>
-      <span class="ph">TALM</span>
-      <span class="ph">Sisters Republic</span>
-      <span class="ph">Owari</span>
-      <span class="ph">Maison Matine</span>
-      <span class="ph">POP</span>
+    <div class="offer-card">
+      <span class="offer-kicker"><span class="dot"></span> Offre du moment · Précommande</span>
+      <div class="offer-brand">
+        <span class="bio">Biosynex</span><span class="x">×</span><span class="uni">UNIVERSAL</span>
+      </div>
+      <h2>Bouillottes <em>Peluches</em></h2>
+      <p class="sub">Déhoussables &amp; micro-ondables, avec sachet de billes d'argile — convient dès la naissance. 10 personnages cultes DreamWorks. Nouveauté 2026 livrée en boîte unitaire.</p>
+
+      <div class="offer-body">
+        <div class="offer-visuals">
+          <div class="peluche-card">
+            <img src="assets/universal_peluches.png" alt="Les 10 bouillottes peluches Universal" />
+            <div class="cap">10 personnages · déhoussables &amp; micro-ondables</div>
+          </div>
+          <div class="presentoir">
+            <img src="assets/universal_presentoir.png" alt="Présentoir Biosynex Universal" />
+            <div class="pbadge">Présentoir offert<b>dès 20 peluches</b></div>
+          </div>
+        </div>
+
+        <div class="offer-deals">
+          <div class="off">
+            <div class="lab">OFFRE 10+1 OFFERTE</div>
+            <div class="price">13,64 € <small>HT</small> <span class="strike">25,00 €</span></div>
+            <div class="ug">UG comprise</div>
+          </div>
+          <div class="off">
+            <div class="lab">OFFRE 20+3 OFFERTES</div>
+            <div class="price">13,04 € <small>HT</small> <span class="strike">25,00 €</span></div>
+            <div class="ug">UG comprises</div>
+          </div>
+          <div class="deal-cta">
+            <a class="btn btn-primary deal-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Précommander cette offre →</a>
+            <div class="deal-note">Précommande jusqu'au 30/06/2026 · Livraison oct. 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eau">
+        <img class="eau-photo" src="assets/universal_bouillottes.png" alt="Bouillottes à eau 2L" />
+        <div class="eau-info">
+          <div class="et">Bouillottes à eau 2L</div>
+          <div class="es">Caoutchouc naturel · conforme à la norme BS1970:2012 · housses Oeko-Tek® lavables.</div>
+          <div class="eau-chips">
+            <div class="chip"><span class="ct">Classic<br>sans housse</span><span class="cp">3,50 € <small>HT</small></span></div>
+            <div class="chip"><span class="ct">Version<br>fourrure</span><span class="cp">5,90 € <small>HT</small></span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- LABO DU MOIS -->
 <section class="labm">
