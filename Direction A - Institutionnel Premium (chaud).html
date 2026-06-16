@@ -20,6 +20,7 @@
   :root{
     --blue:#1206A6;
     --blue-700:#1A12C4;
+    --blue-ink:#140A6B;
     --blue-soft:#F4E7D2;   /* warm sand fill */
     --blue-mist:#F6EEE0;   /* warm ivory section */
     --sky:#9DB8D6;         /* secondary sky blue */
@@ -269,6 +270,14 @@
   /* 3D stage — remplacé par image simple */
   .labm-img{align-self:center;display:flex;align-items:center;justify-content:center;padding:20px 16px}
   .labm-img .cme-bottle{width:494px;height:546px;object-fit:cover;object-position:center 20%;border-radius:24px;display:block;box-shadow:0 30px 60px -20px rgba(80,60,20,.38)}
+  /* DLA labo du mois */
+  .dla-logo{font-family:var(--serif);font-weight:700;font-size:44px;letter-spacing:.06em;color:var(--blue-ink);line-height:.9}
+  .dla-logo small{display:block;font-family:var(--sans);font-weight:700;font-size:10.5px;letter-spacing:.42em;color:#C2410C;margin-top:6px;padding-left:.06em}
+  .labm-img .dla-stack{width:100%;max-width:460px;display:flex;flex-direction:column;gap:16px;padding:8px}
+  .dla-slot{width:100%;aspect-ratio:714/532;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 24px 50px -22px rgba(120,80,20,.42)}
+  .dla-slot img{width:100%;height:100%;object-fit:cover;display:block}
+  .dla-slot-wide{aspect-ratio:840/585}
+  .dla-slot image-slot{width:100%;height:100%;display:block}
 
   @media(max-width:980px){
     .hero-grid,.role-grid,.aud-grid,.contact-grid,.foot-top{grid-template-columns:1fr}
@@ -280,6 +289,7 @@
     .labm-copy{padding:48px 32px 8px}
     .labm-img{order:-1}
     .labm-img .cme-bottle{width:100%;max-width:380px;height:320px}
+    .labm-img .dla-stack{max-width:420px;padding:0}
   }
   @media(max-width:600px){
     .wrap{padding:0 20px}
@@ -456,29 +466,37 @@
         <div class="labm-copy">
           <span class="labm-kicker"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9L22 9.5l-5.3 4.6L18.3 22 12 18.1 5.7 22l1.6-7.9L2 9.5l7.1-.6z"/></svg> Labo du mois — Juin</span>
           <div class="labm-brand">
-            <span class="fre-logo">FR<span class="ac">É</span></span>
-            <span class="pill-by">Skincare solaire &amp; anti-âge<br />Vegan · Argania Active Complex™</span>
+            <span class="dla-logo">DLA<small>PARIS</small></span>
+            <span class="pill-by">Maquillage clean &amp; vegan<br />Par Déborah &amp; Laurence, maquilleuses pro</span>
           </div>
-          <h2>Le sérum éclat <em>C ME</em> à la vitamine C.</h2>
-          <p>La pépite de Fré : une formule waterless concentrée qui marie une vitamine C puissante (VC-IP) à l'huile d'argan, pour raviver l'éclat, estomper les taches et lisser le grain de peau.</p>
+          <h2>Le bronzer fluide <em>Sun Chic</em>, effet bonne mine.</h2>
+          <p>Le premier soin-maquillage de DLA : une texture fine et veloutée qui dépose un voile « journée au soleil » lumineux, sans brillance. Modulable, il s'adapte à toutes les carnations — et l'algue brune Wakame améliore élasticité et hydratation.</p>
           <div class="labm-tags">
-            <span>Vitamine C 10%</span>
-            <span>Huile d'argan</span>
-            <span>Anti-taches</span>
-            <span>30 ml</span>
+            <span>Effet bonne mine</span>
+            <span>Algue Wakame</span>
+            <span>Clean &amp; vegan</span>
+            <span>Toutes carnations</span>
+            <span>19 ml</span>
           </div>
           <div class="labm-offer">
-            <div class="badge"><b>1+1</b><span>OFFERT</span></div>
-            <div class="otxt"><b>Offre sell-out : 1 acheté = 1 offert</b><span>Opération de lancement, durée limitée.</span></div>
+            <div class="badge"><b>PLV</b><span>OFFERTE</span></div>
+            <div class="otxt"><b>Présentoir comptoir offert</b><span>Dès le Pack S — packs S / M / L au choix.</span></div>
           </div>
           <div class="labm-cta">
-            <a class="btn btn-fre" href="DBN - Espace Catalogues.html">Voir le catalogue Fré <span class="arr">→</span></a>
+            <a class="btn btn-fre" href="DBN - Espace Catalogues.html">Voir le catalogue DLA <span class="arr">→</span></a>
             <span class="small">Réservé aux pharmacies partenaires</span>
           </div>
         </div>
 
         <div class="labm-img">
-          <img class="cme-bottle" src="assets/cme_pro.jpg" alt="Sérum éclat C ME — Fré, vitamine C 10%, 30 ml" />
+          <div class="dla-stack">
+            <div class="dla-slot dla-slot-wide">
+              <img src="assets/dla-sunchic-2.png" alt="DLA Sun Chic — modèle et texture du produit" />
+            </div>
+            <div class="dla-slot">
+              <img src="assets/dla-sunchic.png" alt="DLA Sun Chic — bronzer fluide effet bonne mine" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
