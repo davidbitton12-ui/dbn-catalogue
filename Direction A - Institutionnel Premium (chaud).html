@@ -41,7 +41,10 @@
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
-  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+  .eyebrow{display:block;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+  .hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .hero-brand img{height:114px;width:auto}
+  .hero-brand b{font-family:var(--sans);font-size:24px;font-weight:700;color:var(--blue);letter-spacing:0;white-space:nowrap}
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
 
   /* NAV */
@@ -64,7 +67,7 @@
   .btn:hover .arr{transform:translateX(3px)}
 
   /* HERO */
-  .hero{position:relative;padding:46px 0 50px;background:
+  .hero{position:relative;padding:20px 0 26px;background:
      radial-gradient(120% 86% at 88% -12%, #F7E2C6 0%, rgba(247,226,198,0) 56%),
      radial-gradient(95% 72% at 4% 6%, #DCE7F4 0%, rgba(220,231,244,0) 54%);
      overflow:hidden}
@@ -74,9 +77,9 @@
   .hero-head .eyebrow,.hero-head h1{position:relative;z-index:1}
   .hero h1{font-size:clamp(24px,2.9vw,38px)}
   .hero h1 em{font-style:italic;color:var(--blue)}
-  .hero p.lead{font-size:20px;color:var(--slate);margin-top:0;max-width:42ch}
-  .hero .cta-row{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
-  .hero-meta{display:flex;gap:40px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+  .hero p.lead{font-size:17px;color:var(--slate);margin-top:0;max-width:42ch}
+  .hero .cta-row{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:40px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
   .hero-meta .k{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--blue)}
   .hero-meta .l{font-size:13.5px;color:var(--slate);margin-top:2px}
   .hero-visual{position:relative}
@@ -151,6 +154,96 @@
     .eau-photo{width:100%;max-width:420px;margin:0 auto}
   }
 
+
+  /* OFFRE BOOSTER ÉTÉ — ma petite brume */
+  .brume{padding:56px 0;position:relative}
+  .brume-card{position:relative;overflow:hidden;border-radius:28px;padding:42px 44px;
+    background:radial-gradient(120% 120% at 86% -12%, #FFF4D6 0%, rgba(255,244,214,0) 46%),
+               linear-gradient(135deg,#EFF4FB 0%,#E1ECF8 58%,#DAE8F5 100%);
+    border:1px solid #CFE0F1;box-shadow:0 50px 90px -50px rgba(18,40,80,.42)}
+  .brume-card > *{position:relative;z-index:1}
+  /* soleil décoratif en transparence */
+  .brume-sun{position:absolute;top:-150px;right:-110px;width:540px;height:540px;z-index:0;pointer-events:none}
+  .brume-sun .disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle, rgba(255,196,60,.5) 0%, rgba(255,210,95,.3) 32%, rgba(255,228,150,0) 66%)}
+  .brume-sun .rays{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(255,180,40,.34) 0deg 3.4deg, transparent 3.4deg 15deg);
+    -webkit-mask:radial-gradient(circle, #000 14%, rgba(0,0,0,.55) 30%, transparent 58%);
+    mask:radial-gradient(circle, #000 14%, rgba(0,0,0,.55) 30%, transparent 58%);
+    animation:brume-spin 90s linear infinite}
+  @keyframes brume-spin{to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.brume-sun .rays{animation:none}}
+  .brume-kicker{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C2410C;background:#FFEFD6;border:1px solid #F7DCB0;padding:7px 14px;border-radius:999px}
+  .brume-kicker svg{width:16px;height:16px;color:#F59E0B}
+  .brume-brand{display:flex;align-items:center;gap:16px;margin-top:22px}
+  .brume-brand img{height:48px;width:auto}
+  .brume-brand .by{font-size:12.5px;color:var(--slate);border-left:1px solid #C3D4E6;padding-left:14px;line-height:1.4}
+  .brume h2{font-size:clamp(30px,3.4vw,46px);color:var(--blue-ink);line-height:1.04;margin-top:16px}
+  .brume h2 em{font-style:italic;color:#0EA0C0}
+  .brume-slogan{display:inline-flex;align-items:center;gap:11px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(18px,2vw,24px);color:#C2410C;margin-top:14px}
+  .brume-slogan svg{width:23px;height:23px;color:#F59E0B;flex:none}
+  .brume .sub{font-size:15.5px;color:var(--slate);margin-top:10px;max-width:62ch}
+  .brume-body{display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:stretch;margin-top:26px}
+  .brume-visuals{display:flex;flex-direction:column;gap:16px}
+  .brume-hero{flex:1;background:#fff;border:1px solid #E1EAF4;border-radius:22px;padding:24px 22px 16px;box-shadow:0 30px 60px -34px rgba(18,40,80,.4);display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .brume-hero img{width:100%;max-width:470px;height:auto}
+  .brume-hero .cap{text-align:center;font-size:12px;color:var(--slate);margin-top:12px;letter-spacing:.04em}
+  .brume-pres{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.62);border:1px solid #D7E4F1;border-radius:18px;padding:14px 18px}
+  .brume-pres img{height:118px;width:auto;filter:drop-shadow(0 16px 22px rgba(18,40,80,.22))}
+  .brume-pres .pt{font-size:13.5px;color:var(--slate)}
+  .brume-pres .pt b{display:block;font-family:var(--serif);font-size:18px;color:var(--blue-ink);font-weight:700;margin-bottom:3px}
+  .brume-deals{display:flex;flex-direction:column;gap:14px}
+  .bdeal{background:var(--blue-ink);border-radius:18px;padding:17px 20px;color:#fff;position:relative;overflow:hidden}
+  .bdeal::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 100% 0%,rgba(14,160,192,.42),transparent 60%)}
+  .bdeal.feat::after{background:radial-gradient(120% 120% at 100% 0%,rgba(245,158,11,.46),transparent 62%)}
+  .bdeal .lab{position:relative;font-weight:800;font-size:15px;letter-spacing:.03em;color:#7DD3E8}
+  .bdeal.feat .lab{color:#FBBF24}
+  .bdeal .qty{position:relative;font-size:12.5px;color:rgba(255,255,255,.78);margin-top:3px}
+  .bdeal .price{position:relative;font-family:var(--serif);font-weight:700;font-size:27px;margin-top:9px;line-height:1;display:flex;align-items:baseline;gap:9px}
+  .bdeal .price small{font-size:13px;font-weight:600;color:rgba(255,255,255,.7)}
+  .bdeal .each{position:relative;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:6px}
+  .brume-unit{display:flex;align-items:baseline;gap:8px;justify-content:center;flex-wrap:wrap;background:#fff;border:1px solid #E1EAF4;border-radius:14px;padding:12px 16px;text-align:center}
+  .brume-unit b{font-family:var(--serif);font-size:22px;color:var(--blue);font-weight:700}
+  .brume-unit span{font-size:12.5px;color:var(--slate)}
+  .brume-cta .btn{width:100%;justify-content:center;border-radius:14px}
+  .brume-cta .note{font-size:12.5px;color:var(--slate);text-align:center;margin-top:8px}
+  .brume-feats{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .brume-feats span{font-size:12.5px;font-weight:600;color:var(--blue-ink);background:rgba(255,255,255,.7);border:1px solid #D7E4F1;border-radius:999px;padding:7px 13px}
+  .brume-foot{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin-top:18px;font-size:12.5px;color:var(--slate)}
+  .brume-foot .d{display:inline-flex;align-items:center;gap:7px}
+  .brume-foot .d::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sky)}
+  /* Aix les Bains — sous-bloc */
+  .aix{display:grid;grid-template-columns:240px 1fr;gap:30px;align-items:center;margin-top:22px;padding:22px 26px;background:rgba(255,255,255,.62);border:1px solid #D7E4F1;border-radius:22px}
+  .aix-photo{border-radius:16px;overflow:hidden;background:#EAF3FB;border:1px solid #DCE8F4}
+  .aix-photo img{width:100%;height:auto;display:block}
+  .aix-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C2410C}
+  .aix-title{font-family:var(--serif);font-size:clamp(20px,2.2vw,27px);font-weight:600;color:var(--blue-ink);margin-top:8px;line-height:1.1}
+  .aix-claim{font-family:var(--serif);font-style:italic;font-size:19px;color:#0EA0C0;margin-top:5px}
+  .aix-uses{list-style:none;display:flex;flex-wrap:wrap;gap:11px 26px;margin-top:18px}
+  .aix-uses li{display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--ink);font-weight:500}
+  .aix-uses svg{width:20px;height:20px;flex:none;color:#0EA0C0}
+  .aix-formats{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .afmt{font-size:13px;color:var(--slate);background:#fff;border:1px solid #D7E4F1;border-radius:12px;padding:10px 16px}
+  .afmt .ft{display:block;line-height:1.1}
+  .afmt .ft b{font-family:var(--serif);font-size:17px;color:var(--blue);font-weight:700}
+  .afmt .from{display:block;font-size:12.5px;color:var(--slate);line-height:1.15;margin-top:7px;white-space:nowrap}
+  .afmt .from b{font-family:var(--serif);font-size:30px;color:#C2410C;font-weight:700;display:block;margin-top:2px}
+  .aix-btn{margin-top:18px;border-radius:14px}
+  @media(max-width:760px){
+    .aix{grid-template-columns:1fr;gap:18px}
+    .aix-photo{max-width:240px;margin:0 auto}
+  }
+  @media(max-width:920px){
+    .brume{padding:34px 0}
+    .brume-card{padding:28px 20px;border-radius:20px}
+    .brume-body{grid-template-columns:1fr;gap:22px}
+    .brume-hero img{max-width:380px}
+  }
+  @media(max-width:600px){
+    .brume-brand{flex-wrap:wrap;gap:12px}
+    .brume-brand .by{border-left:none;padding-left:0}
+    .brume-hero img{max-width:300px}
+    .brume-pres img{height:96px}
+    .bdeal .price{font-size:24px}
+  }
 
   /* SECTION */
   section.block{padding:104px 0}
@@ -365,25 +458,15 @@
 <body>
 
 <!-- NAV -->
-<header class="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="#top">
-      <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
-      <span class="wm"><b>David Bitton</b><span>PARTENAIRE PHARMACEUTIQUE</span></span>
-    </a>
-    <nav class="links">
-      <a href="DBN - Espace Catalogues.html">Catalogues</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn btn-primary" href="#contact">Nous contacter <span class="arr">→</span></a>
-  </div>
-</header>
-
 <a id="top"></a>
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-head">
+      <a class="hero-brand" href="#top">
+        <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+        <b>David Bitton</b>
+      </a>
       <span class="eyebrow">Partenaire commercial pharmaceutique</span>
       <h1>Le trait d'union entre les <em>laboratoires</em> et votre officine.</h1>
     </div>
@@ -394,7 +477,7 @@
         <a class="btn btn-ghost" href="#contact">Nous contacter</a>
       </div>
       <div class="hero-meta">
-        <div><div class="k">16</div><div class="l">Laboratoires représentés</div></div>
+        <div><div class="k">18</div><div class="l">Laboratoires représentés</div></div>
         <div><div class="k">+400</div><div class="l">Officines partenaires</div></div>
         <div><div class="k">1</div><div class="l">Interlocuteur dédié</div></div>
       </div>
@@ -402,102 +485,86 @@
   </div>
 </section>
 
-<!-- OFFRE DU MOMENT (Biosynex × Universal) -->
-<section class="offer" id="offre">
+<!-- OFFRE BOOSTER ÉTÉ — ma petite brume -->
+<section class="brume" id="offre">
   <div class="wrap">
-    <div class="offer-card">
-      <span class="offer-kicker"><span class="dot"></span> Offre du moment · Précommande</span>
-      <div class="offer-brand">
-        <span class="bio">Biosynex</span><span class="x">×</span><span class="uni">UNIVERSAL</span>
+    <div class="brume-card">
+      <div class="brume-sun" aria-hidden="true"><span class="disc"></span><span class="rays"></span></div>
+      <span class="brume-kicker"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41"/><circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none"/></svg> Offre Booster Été · Juin</span>
+      <div class="brume-brand">
+        <img src="assets/brume_logo.png" alt="ma petite brume" />
+        <span class="by">par SHINE Santé<br />Made in Europe</span>
       </div>
-      <h2>Bouillottes <em>Peluches</em></h2>
-      <p class="sub">Déhoussables &amp; micro-ondables, avec sachet de billes d'argile — convient dès la naissance. 10 personnages cultes DreamWorks. Nouveauté 2026 livrée en boîte unitaire.</p>
+      <h2>Les brumisateurs <em>nomades</em></h2>
+      <div class="brume-slogan"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 3V1m0 22v-2m9-9h2M1 12h2m15.36-6.36 1.4-1.4M4.24 19.76l1.4-1.4m0-12.72-1.4-1.4m15.52 15.52-1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Soyez prêts pour les fortes chaleurs.</div>
+      <p class="sub">160 ml de fraîcheur immédiate. Format nomade rechargeable, écologique &amp; ludique — toutes les couleurs en panaché, livrées avec un présentoir prêt à dynamiser votre point de vente.</p>
 
-      <div class="offer-body">
-        <div class="offer-visuals">
-          <div class="peluche-card">
-            <img src="assets/universal_peluches.png" alt="Les 10 bouillottes peluches Universal" />
-            <div class="cap">10 personnages · déhoussables &amp; micro-ondables</div>
+      <div class="brume-body">
+        <div class="brume-visuals">
+          <div class="brume-hero">
+            <img src="assets/brume_lineup.png" alt="Les brumisateurs nomades ma petite brume — 7 coloris panachés" />
+            <div class="cap">7 coloris en panaché · 160 ml · rechargeables</div>
           </div>
-          <div class="presentoir">
-            <img src="assets/universal_presentoir.png" alt="Présentoir Biosynex Universal" />
-            <div class="pbadge">Présentoir offert<b>dès 20 peluches</b></div>
+          <div class="brume-pres">
+            <img src="assets/brume_presentoir.png" alt="Présentoir ma petite brume" />
+            <div class="pt"><b>Display offert</b>Présentoir comptoir prêt à poser, inclus avec chaque pack.</div>
           </div>
         </div>
 
-        <div class="offer-deals">
-          <div class="off">
-            <div class="lab">OFFRE 10+1 OFFERTE</div>
-            <div class="price">13,64 € <small>HT</small> <span class="strike">25,00 €</span></div>
-            <div class="ug">UG comprise</div>
+        <div class="brume-deals">
+          <div class="bdeal">
+            <div class="lab">PACK DÉCOUVERTE</div>
+            <div class="qty">24 unités + 2 UG au choix</div>
+            <div class="price">71,76 € <small>HT</small></div>
+            <div class="each">Soit 2,99 € HT l'unité</div>
           </div>
-          <div class="off">
-            <div class="lab">OFFRE 20+3 OFFERTES</div>
-            <div class="price">13,04 € <small>HT</small> <span class="strike">25,00 €</span></div>
-            <div class="ug">UG comprises</div>
+          <div class="bdeal feat">
+            <div class="lab">PACK PREMIUM</div>
+            <div class="qty">48 unités + 8 UG au choix</div>
+            <div class="price">133,92 € <small>HT</small></div>
+            <div class="each">Soit 2,79 € HT l'unité</div>
           </div>
-          <div class="deal-cta">
-            <a class="btn btn-primary deal-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Précommander cette offre →</a>
-            <div class="deal-note">Précommande jusqu'au 30/06/2026 · Livraison oct. 2026</div>
+          <div class="brume-unit">
+            <b>2,79 € HT</b><span>l'unité · ou 2,38 € HT avec UG</span>
           </div>
-        </div>
-      </div>
-
-      <div class="eau">
-        <img class="eau-photo" src="assets/universal_bouillottes.png" alt="Bouillottes à eau 2L" />
-        <div class="eau-info">
-          <div class="et">Bouillottes à eau 2L</div>
-          <div class="es">Caoutchouc naturel · conforme à la norme BS1970:2012 · housses Oeko-Tek® lavables.</div>
-          <div class="eau-chips">
-            <div class="chip"><span class="ct">Classic<br>sans housse</span><span class="cp">3,50 € <small>HT</small></span></div>
-            <div class="chip"><span class="ct">Version<br>fourrure</span><span class="cp">5,90 € <small>HT</small></span></div>
+          <div class="brume-cta">
+            <a class="btn btn-primary" href="#contact">Commander via David Bitton →</a>
+            <div class="note">Valable sur le mois de juin · Réservé aux pharmacies</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- LABO DU MOIS -->
-<section class="labm">
-  <div class="wrap">
-    <div class="labm-card">
-      <div class="labm-grid">
-        <div class="labm-copy">
-          <span class="labm-kicker"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9L22 9.5l-5.3 4.6L18.3 22 12 18.1 5.7 22l1.6-7.9L2 9.5l7.1-.6z"/></svg> Labo du mois — Juin</span>
-          <div class="labm-brand">
-            <span class="dla-logo">DLA<small>PARIS</small></span>
-            <span class="pill-by">Maquillage clean &amp; vegan<br />Par Déborah &amp; Laurence, maquilleuses pro</span>
+      <div class="aix">
+        <div class="aix-photo"><img src="assets/aix_duo_final.png" alt="Brumisateurs Aix les Bains — 400 ml et 150 ml" /></div>
+        <div class="aix-info">
+          <div class="aix-eyebrow">Aussi au catalogue · Aix les Bains</div>
+          <div class="aix-title">L'expertise eau minérale naturelle</div>
+          <div class="aix-claim">Hydrate, rafraîchit, tonifie.</div>
+          <ul class="aix-uses">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Les fortes chaleurs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> L'après-épilation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> La routine soins</li>
+          </ul>
+          <div class="aix-formats">
+            <span class="afmt"><span class="ft"><b>400 ml</b></span><span class="from">à partir de <b>1,89 € HT</b></span></span>
+            <span class="afmt"><span class="ft"><b>150 ml</b></span><span class="from">à partir de <b>1,35 € HT</b></span></span>
           </div>
-          <h2>Le bronzer fluide <em>Sun Chic</em>, effet bonne mine.</h2>
-          <p>Le premier soin-maquillage de DLA : une texture fine et veloutée qui dépose un voile « journée au soleil » lumineux, sans brillance. Modulable, il s'adapte à toutes les carnations — et l'algue brune Wakame améliore élasticité et hydratation.</p>
-          <div class="labm-tags">
-            <span>Effet bonne mine</span>
-            <span>Algue Wakame</span>
-            <span>Clean &amp; vegan</span>
-            <span>Toutes carnations</span>
-            <span>19 ml</span>
-          </div>
-          <div class="labm-offer">
-            <div class="badge"><b>PLV</b><span>OFFERTE</span></div>
-            <div class="otxt"><b>Présentoir comptoir offert</b><span>Dès le Pack S — packs S / M / L au choix.</span></div>
-          </div>
-          <div class="labm-cta">
-            <a class="btn btn-fre" href="DBN - Espace Catalogues.html">Voir le catalogue DLA <span class="arr">→</span></a>
-            <span class="small">Réservé aux pharmacies partenaires</span>
-          </div>
+          <a class="btn btn-primary aix-btn" href="https://drive.google.com/file/d/1WrgUGxjJv4Yqw7by4LsOlIxzp34EYmwy/view" target="_blank" rel="noopener">Consulter les offres <span class="arr">→</span></a>
         </div>
+      </div>
 
-        <div class="labm-img">
-          <div class="dla-stack">
-            <div class="dla-slot dla-slot-wide">
-              <img src="assets/dla-sunchic-2.png" alt="DLA Sun Chic — modèle et texture du produit" />
-            </div>
-            <div class="dla-slot">
-              <img src="assets/dla-sunchic.png" alt="DLA Sun Chic — bronzer fluide effet bonne mine" />
-            </div>
-          </div>
-        </div>
+      <div class="brume-feats">
+        <span>160 ml</span>
+        <span>Rechargeable</span>
+        <span>Écologique &amp; ludique</span>
+        <span>Toutes couleurs panaché</span>
+        <span>Format nomade</span>
+      </div>
+      <div class="brume-foot">
+        <span class="d">Made in Europe</span>
+        <span class="d">Franco 100 € HT</span>
+        <span class="d">Livraison 72 h</span>
+        <span class="d">TVA 20 %</span>
       </div>
     </div>
   </div>
