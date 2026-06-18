@@ -473,15 +473,15 @@
   <span class="rb-lab">Sisters Republic</span>
   <h4>Pensez à précommander vos culottes menstruelles</h4>
   <p>La gamme <b>Tina</b> de <b>Sisters Republic</b>, remboursée dès septembre 2026. Précommandez pour être livré en priorité.</p>
-  <a class="rb-cta" href="Direction A - Institutionnel Premium (chaud).html#offre" id="rbGo">Découvrir l'offre →</a>
+  <a class="rb-cta" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener" id="rbGo">Découvrir le catalogue →</a>
 </div>
 <script>
   (function(){
     var pop=document.getElementById('rbPop');
     if(!pop) return;
-    if(sessionStorage.getItem('rbPopClosed')==='1') return;
+    if(sessionStorage.getItem('rbPopClosedCat')==='1') return;
     setTimeout(function(){pop.classList.add('show');},1500);
-    function close(){pop.classList.remove('show');try{sessionStorage.setItem('rbPopClosed','1');}catch(e){}}
+    function close(){pop.classList.remove('show');try{sessionStorage.setItem('rbPopClosedCat','1');}catch(e){}}
     document.getElementById('rbClose').addEventListener('click',close);
     document.getElementById('rbGo').addEventListener('click',close);
   })();
