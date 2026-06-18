@@ -231,6 +231,75 @@
     .aix{grid-template-columns:1fr;gap:18px}
     .aix-photo{max-width:240px;margin:0 auto}
   }
+
+  /* MISE EN AVANT — Sisters Republic · Culotte Tina (gamme remboursée) */
+  .tina{padding:54px 0}
+  .tina-card{position:relative;overflow:hidden;border-radius:28px;padding:38px 42px;
+    background:radial-gradient(110% 120% at 92% -10%, #FBE3DD 0%, rgba(251,227,221,0) 50%),
+               linear-gradient(135deg,#FBF5EB 0%,#F7EBDD 60%,#F3E2D2 100%);
+    border:1px solid #E6D2C4;box-shadow:0 50px 92px -52px rgba(80,30,22,.4)}
+  /* 2 columns aligned from the top: text (left) + photo & price (right) */
+  .tina-grid{display:grid;grid-template-columns:1fr 348px;gap:34px;align-items:start}
+  .tina-kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;background:#E0524A;padding:8px 15px;border-radius:999px;box-shadow:0 8px 20px -8px rgba(224,82,74,.7)}
+  .tina-kicker .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:offer-pulse 1.8s infinite}
+  .tina-wm{display:flex;align-items:baseline;gap:10px;margin-top:18px}
+  .tina-wm b{font-family:var(--sans);font-weight:800;font-size:30px;color:#E0524A;letter-spacing:-.01em}
+  .tina-wm span{font-size:11px;font-weight:600;letter-spacing:.38em;text-transform:lowercase;color:var(--slate)}
+  .tina h2{font-size:clamp(28px,3vw,40px);color:var(--ink);line-height:1.06;margin-top:12px}
+  .tina h2 em{font-style:italic;color:#E0524A}
+  .tina .sub{font-size:15px;color:var(--slate);margin-top:11px;line-height:1.5}
+  .tina-bio{font-size:13.5px;color:var(--slate);margin-top:12px;line-height:1.5}
+  .tina-bio b{color:var(--ink);font-weight:700}
+  .tina-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .tstat{background:rgba(255,255,255,.66);border:1px solid #EBD7C8;border-radius:14px;padding:9px 13px}
+  .tstat .v{font-family:var(--serif);font-size:21px;font-weight:700;color:#E0524A;line-height:1}
+  .tstat .k{font-size:11px;color:var(--slate);margin-top:3px}
+  /* flag */
+  .tina-flag{display:flex;gap:15px;align-items:center;background:#2B0E0A;color:#fff;border-radius:18px;padding:16px 22px;position:relative;overflow:hidden;margin-top:18px}
+  .tina-flag::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 160% at 100% 0%,rgba(224,82,74,.5),transparent 58%)}
+  .tina-flag .ic{position:relative;width:38px;height:38px;flex:none;border-radius:11px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+  .tina-flag .ic svg{width:21px;height:21px;color:#FCA5A0}
+  .tina-flag .ft{position:relative}
+  .tina-flag .ft b{font-family:var(--serif);font-size:18px;font-weight:700;display:block}
+  .tina-flag .ft span{font-size:13px;color:rgba(255,255,255,.82);margin-top:3px;display:block;line-height:1.45}
+  .tina-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-top:18px}
+  .tina-feats li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink);line-height:1.4}
+  .tina-feats svg{width:18px;height:18px;flex:none;color:#E0524A;margin-top:1px}
+  .tina-feats b{font-weight:700}
+  /* right column — 2 modules aligned to top */
+  .tina-side{display:flex;flex-direction:column;gap:18px}
+  .tina-photo{position:relative;background:radial-gradient(circle at 50% 42%, #F3E6CF 0%, #EAD9BE 80%);border:1px solid #E6D2C4;border-radius:22px;padding:22px;display:flex;flex-direction:column;align-items:center;box-shadow:0 30px 60px -36px rgba(80,30,22,.4)}
+  .tina-photo img{width:100%;max-width:240px;height:auto;border-radius:50%}
+  .tina-photo .cap{text-align:center;font-size:12px;color:var(--slate);margin-top:12px;letter-spacing:.03em}
+  /* buy card */
+  .tina-buy{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 30px 60px -40px rgba(80,30,22,.35);display:flex;flex-direction:column}
+  .tina-buy .from{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+  .tina-buy .big{font-family:var(--serif);font-size:40px;font-weight:700;color:#E0524A;line-height:1;margin-top:3px}
+  .tina-buy .big small{font-size:15px;font-weight:600;color:var(--slate)}
+  .tina-buy .unit{font-size:12.5px;color:var(--slate);margin-top:4px}
+  .tina-buy .ppc{display:flex;align-items:baseline;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .tina-buy .ppc .p{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink)}
+  .tina-buy .ppc .l{font-size:12px;color:var(--slate)}
+  .tina-precmd{display:flex;gap:11px;align-items:flex-start;background:#FBEFE9;border:1px solid #F2D7CC;border-radius:14px;padding:12px 14px;margin-top:14px}
+  .tina-precmd svg{width:19px;height:19px;flex:none;color:#E0524A;margin-top:1px}
+  .tina-precmd p{font-size:12.5px;color:#7A3A2E;line-height:1.45}
+  .tina-precmd b{font-weight:700}
+  .tina-buy .cta{margin-top:14px}
+  .tina-buy .cta .btn{width:100%;justify-content:center;border-radius:14px;background:#E0524A}
+  .tina-buy .cta .btn:hover{background:#c93f38}
+  @media(max-width:920px){
+    .tina{padding:34px 0}
+    .tina-card{padding:26px 20px;border-radius:20px}
+    .tina-grid{grid-template-columns:1fr;gap:22px}
+    .tina-side{flex-direction:row;flex-wrap:wrap}
+    .tina-photo,.tina-buy{flex:1;min-width:250px}
+  }
+  @media(max-width:600px){
+    .tina-feats{grid-template-columns:1fr}
+    .tina-flag{align-items:flex-start}
+    .tina-stats{grid-template-columns:repeat(2,1fr);gap:8px}
+    .tina-side{flex-direction:column}
+  }
   @media(max-width:920px){
     .brume{padding:34px 0}
     .brume-card{padding:28px 20px;border-radius:20px}
@@ -477,7 +546,7 @@
         <a class="btn btn-ghost" href="#contact">Nous contacter</a>
       </div>
       <div class="hero-meta">
-        <div><div class="k">18</div><div class="l">Laboratoires représentés</div></div>
+        <div><div class="k">17</div><div class="l">Laboratoires représentés</div></div>
         <div><div class="k">+400</div><div class="l">Officines partenaires</div></div>
         <div><div class="k">1</div><div class="l">Interlocuteur dédié</div></div>
       </div>
@@ -485,86 +554,61 @@
   </div>
 </section>
 
-<!-- OFFRE BOOSTER ÉTÉ — ma petite brume -->
-<section class="brume" id="offre">
+<!-- MISE EN AVANT — Sisters Republic · Culotte Tina -->
+<section class="tina" id="offre">
   <div class="wrap">
-    <div class="brume-card">
-      <div class="brume-sun" aria-hidden="true"><span class="disc"></span><span class="rays"></span></div>
-      <span class="brume-kicker"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41"/><circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none"/></svg> Offre Booster Été · Juin</span>
-      <div class="brume-brand">
-        <img src="assets/brume_logo.png" alt="ma petite brume" />
-        <span class="by">par SHINE Santé<br />Made in Europe</span>
-      </div>
-      <h2>Les brumisateurs <em>nomades</em></h2>
-      <div class="brume-slogan"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 3V1m0 22v-2m9-9h2M1 12h2m15.36-6.36 1.4-1.4M4.24 19.76l1.4-1.4m0-12.72-1.4-1.4m15.52 15.52-1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg> Soyez prêts pour les fortes chaleurs.</div>
-      <p class="sub">160 ml de fraîcheur immédiate. Format nomade rechargeable, écologique &amp; ludique — toutes les couleurs en panaché, livrées avec un présentoir prêt à dynamiser votre point de vente.</p>
+    <div class="tina-card">
+      <div class="tina-grid">
+        <div class="tina-main">
+          <span class="tina-kicker"><span class="dot"></span> Nouveauté réglementaire · Dès septembre 2026</span>
+          <div class="tina-wm"><b>sisters</b><span>republic</span></div>
+          <h2>La culotte <em>Tina</em>, bientôt remboursée par la Sécurité Sociale.</h2>
+          <p class="sub">La gamme remboursée de Sisters Republic : une culotte menstruelle en coton bio, inscrite au dispositif de prise en charge des protections périodiques réutilisables qui entre en vigueur à la rentrée 2026.</p>
+          <p class="tina-bio"><b>Pionnière française de la culotte menstruelle</b> (Paris, depuis 2019), Sisters Republic accompagne une communauté de <b>+ 176 000 abonnés</b> et signe avec le modèle Super l'une des culottes <b>les plus fines du marché</b> (&lt; 3 mm).</p>
+          <div class="tina-stats">
+            <div class="tstat"><div class="v">2019</div><div class="k">Marque française</div></div>
+            <div class="tstat"><div class="v">176K</div><div class="k">Abonnés</div></div>
+            <div class="tstat"><div class="v">8</div><div class="k">Tailles · 10/11 ans → 2XL</div></div>
+            <div class="tstat"><div class="v">&lt;3mm</div><div class="k">La plus fine</div></div>
+          </div>
 
-      <div class="brume-body">
-        <div class="brume-visuals">
-          <div class="brume-hero">
-            <img src="assets/brume_lineup.png" alt="Les brumisateurs nomades ma petite brume — 7 coloris panachés" />
-            <div class="cap">7 coloris en panaché · 160 ml · rechargeables</div>
+          <div class="tina-flag">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div class="ft">
+              <b>Exclusivité officine jusqu'en 2028</b>
+              <span>Pendant la phase de lancement, seules les pharmacies délivrent les protections remboursées — un trafic patient à capter. Éligibles : −26 ans &amp; C2S · ~60 % (max 12,35 €) · 2 produits / an.</span>
+            </div>
           </div>
-          <div class="brume-pres">
-            <img src="assets/brume_presentoir.png" alt="Présentoir ma petite brume" />
-            <div class="pt"><b>Display offert</b>Présentoir comptoir prêt à poser, inclus avec chaque pack.</div>
-          </div>
-        </div>
 
-        <div class="brume-deals">
-          <div class="bdeal">
-            <div class="lab">PACK DÉCOUVERTE</div>
-            <div class="qty">24 unités + 2 UG au choix</div>
-            <div class="price">71,76 € <small>HT</small></div>
-            <div class="each">Soit 2,99 € HT l'unité</div>
-          </div>
-          <div class="bdeal feat">
-            <div class="lab">PACK PREMIUM</div>
-            <div class="qty">48 unités + 8 UG au choix</div>
-            <div class="price">133,92 € <small>HT</small></div>
-            <div class="each">Soit 2,79 € HT l'unité</div>
-          </div>
-          <div class="brume-unit">
-            <b>2,79 € HT</b><span>l'unité · ou 2,38 € HT avec UG</span>
-          </div>
-          <div class="brume-cta">
-            <a class="btn btn-primary" href="#contact">Commander via David Bitton →</a>
-            <div class="note">Valable sur le mois de juin · Réservé aux pharmacies</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="aix">
-        <div class="aix-photo"><img src="assets/aix_duo_final.png" alt="Brumisateurs Aix les Bains — 400 ml et 150 ml" /></div>
-        <div class="aix-info">
-          <div class="aix-eyebrow">Aussi au catalogue · Aix les Bains</div>
-          <div class="aix-title">L'expertise eau minérale naturelle</div>
-          <div class="aix-claim">Hydrate, rafraîchit, tonifie.</div>
-          <ul class="aix-uses">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Les fortes chaleurs</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> L'après-épilation</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> La routine soins</li>
+          <ul class="tina-feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Coton bio GOTS</b> · Oeko-tex Standard 100 classe 2</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>8 tailles</b> sur ce modèle · du 10/11 ans au 2XL (44)</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>+ de 52 cycles</b> de lavage · durabilité prouvée</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Absorption Super</b> &gt; 20 ml · flux abondant</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Tests dermato &amp; gynéco</b> · sur au moins 20 sujets</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Entreprise à mission</b> · ISO 14001</span></li>
           </ul>
-          <div class="aix-formats">
-            <span class="afmt"><span class="ft"><b>400 ml</b></span><span class="from">à partir de <b>1,89 € HT</b></span></span>
-            <span class="afmt"><span class="ft"><b>150 ml</b></span><span class="from">à partir de <b>1,35 € HT</b></span></span>
-          </div>
-          <a class="btn btn-primary aix-btn" href="https://drive.google.com/file/d/1WrgUGxjJv4Yqw7by4LsOlIxzp34EYmwy/view" target="_blank" rel="noopener">Consulter les offres <span class="arr">→</span></a>
         </div>
-      </div>
 
-      <div class="brume-feats">
-        <span>160 ml</span>
-        <span>Rechargeable</span>
-        <span>Écologique &amp; ludique</span>
-        <span>Toutes couleurs panaché</span>
-        <span>Format nomade</span>
-      </div>
-      <div class="brume-foot">
-        <span class="d">Made in Europe</span>
-        <span class="d">Franco 100 € HT</span>
-        <span class="d">Livraison 72 h</span>
-        <span class="d">TVA 20 %</span>
+        <div class="tina-side">
+          <div class="tina-photo">
+            <img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic, gamme remboursée" />
+            <div class="cap">Culotte Tina · Noir · absorption Super</div>
+          </div>
+          <div class="tina-buy">
+            <span class="from">À partir de</span>
+            <div class="big">11,66 €<small> HT / u</small></div>
+            <div class="unit">Prix net dégressif · <b>RFA jusqu'à 10 %</b> dès les packs 72 / 96 / 120 u</div>
+            <div class="ppc"><span class="p">19,00 € TTC</span><span class="l">prix public conseillé</span></div>
+            <div class="tina-precmd">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+              <p><b>Précommandez dès maintenant</b> pour être livré en priorité à l'ouverture du remboursement (septembre 2026).</p>
+            </div>
+            <div class="cta">
+              <a class="btn btn-primary" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme Sisters Republic <span class="arr">→</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -627,6 +671,55 @@
     </div>
   </div>
 </footer>
+
+<!-- POP-UP ALERTE REMBOURSEMENT -->
+<style>
+  .rb-pop{position:fixed;left:24px;bottom:24px;z-index:1200;width:min(360px,calc(100vw - 32px));
+    background:#fff;border:1px solid #F2D7CC;border-radius:18px;padding:18px 18px 16px;
+    box-shadow:0 30px 70px -24px rgba(80,30,22,.45);
+    transform:translateY(140%);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s;
+    font-family:var(--sans)}
+  .rb-pop.show{transform:translateY(0);opacity:1}
+  .rb-pop::before{content:"";position:absolute;inset:0;border-radius:18px;border:2px solid #E0524A;opacity:0;animation:rb-flash 1.5s ease-in-out infinite;pointer-events:none}
+  @keyframes rb-flash{0%,100%{opacity:0}50%{opacity:.85}}
+  @media(prefers-reduced-motion:reduce){.rb-pop::before{animation:none;opacity:.5}}
+  .rb-pop .rb-x{position:absolute;top:11px;right:12px;width:24px;height:24px;border:none;background:#F6ECE6;border-radius:8px;color:#7A3A2E;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .rb-pop .rb-x:hover{background:#EFD9CE}
+  .rb-head{display:flex;align-items:center;gap:9px}
+  .rb-bell{width:30px;height:30px;flex:none;border-radius:9px;background:#FBEAE3;display:flex;align-items:center;justify-content:center}
+  .rb-bell svg{width:17px;height:17px;color:#E0524A;animation:rb-ring 1.5s ease-in-out infinite;transform-origin:50% 12%}
+  @keyframes rb-ring{0%,72%,100%{transform:rotate(0)}78%{transform:rotate(13deg)}86%{transform:rotate(-11deg)}94%{transform:rotate(5deg)}}
+  @media(prefers-reduced-motion:reduce){.rb-bell svg{animation:none}}
+  .rb-kick{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E0524A}
+  .rb-lab{display:inline-block;margin-top:11px;font-size:11px;font-weight:700;letter-spacing:.03em;color:#fff;background:#E0524A;border-radius:999px;padding:4px 11px}
+  .rb-pop h4{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin:8px 0 0;line-height:1.25}
+  .rb-pop p{font-size:13px;color:var(--slate);margin:6px 0 0;line-height:1.45}
+  .rb-cta{display:inline-flex;align-items:center;gap:7px;margin-top:13px;background:#E0524A;color:#fff;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:11px;cursor:pointer}
+  .rb-cta:hover{background:#c93f38}
+  @media(max-width:600px){.rb-pop{left:12px;right:12px;bottom:12px;width:auto}}
+</style>
+<div class="rb-pop" id="rbPop" role="alert" aria-live="polite">
+  <button class="rb-x" id="rbClose" aria-label="Fermer">✕</button>
+  <div class="rb-head">
+    <span class="rb-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+    <span class="rb-kick">Alerte remboursement Sécu</span>
+  </div>
+  <span class="rb-lab">Sisters Republic</span>
+  <h4>Pensez à précommander vos culottes menstruelles</h4>
+  <p>La gamme <b>Tina</b> de <b>Sisters Republic</b>, remboursée dès septembre 2026. Précommandez pour être livré en priorité.</p>
+  <a class="rb-cta" href="#offre" id="rbGo">Découvrir l'offre →</a>
+</div>
+<script>
+  (function(){
+    var pop=document.getElementById('rbPop');
+    if(!pop) return;
+    if(sessionStorage.getItem('rbPopClosed')==='1') return;
+    setTimeout(function(){pop.classList.add('show');},1500);
+    function close(){pop.classList.remove('show');try{sessionStorage.setItem('rbPopClosed','1');}catch(e){}}
+    document.getElementById('rbClose').addEventListener('click',close);
+    document.getElementById('rbGo').addEventListener('click',close);
+  })();
+</script>
 
 </body>
 </html>

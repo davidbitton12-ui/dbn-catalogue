@@ -304,7 +304,6 @@
   const DL = id => "https://drive.google.com/uc?export=download&id="+id;
   // fam = famille (G = Généralistes, C = Cosmétiques) · fo = ordre dans la famille
   const cats = [
-    {b:"TALM",         d:"Juin 2026",  o:202606, mb:"13 Mo",  id:"19MjV0W3e-2E8yRmFjsKfZByEKq29HB1T", c:"c-blue", col:"#8FAE94", dark:1,  fam:"C", fo:6, ptype:"bottle", tag:"Maternité & peaux sensibles", desc:"Marque française de skincare certifié bio, spécialisée dans les peaux sensibles et la maternité (grossesse, post-partum, allaitement). Des soins sûrs, hautement tolérés et sensoriels, vegan et fabriqués en France."},
     {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink", col:"#E0524A",   fam:"C", fo:7, ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
     {b:"Owari",        d:"2026",       o:202606, mb:"5 Mo",   id:"1SR20pXi7nNKxq76K8BPFnnCRlH2BOOP-", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
     {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky", col:"#34302B",   fam:"C", fo:5, ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
@@ -437,6 +436,55 @@
     p.classList.add('active');view=p.dataset.view;render();
   }));
   render();
+</script>
+
+<!-- POP-UP ALERTE REMBOURSEMENT -->
+<style>
+  .rb-pop{position:fixed;left:24px;bottom:24px;z-index:1200;width:min(360px,calc(100vw - 32px));
+    background:#fff;border:1px solid #F2D7CC;border-radius:18px;padding:18px 18px 16px;
+    box-shadow:0 30px 70px -24px rgba(80,30,22,.45);
+    transform:translateY(140%);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s;
+    font-family:var(--sans)}
+  .rb-pop.show{transform:translateY(0);opacity:1}
+  .rb-pop::before{content:"";position:absolute;inset:0;border-radius:18px;border:2px solid #E0524A;opacity:0;animation:rb-flash 1.5s ease-in-out infinite;pointer-events:none}
+  @keyframes rb-flash{0%,100%{opacity:0}50%{opacity:.85}}
+  @media(prefers-reduced-motion:reduce){.rb-pop::before{animation:none;opacity:.5}}
+  .rb-pop .rb-x{position:absolute;top:11px;right:12px;width:24px;height:24px;border:none;background:#F6ECE6;border-radius:8px;color:#7A3A2E;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .rb-pop .rb-x:hover{background:#EFD9CE}
+  .rb-head{display:flex;align-items:center;gap:9px}
+  .rb-bell{width:30px;height:30px;flex:none;border-radius:9px;background:#FBEAE3;display:flex;align-items:center;justify-content:center}
+  .rb-bell svg{width:17px;height:17px;color:#E0524A;animation:rb-ring 1.5s ease-in-out infinite;transform-origin:50% 12%}
+  @keyframes rb-ring{0%,72%,100%{transform:rotate(0)}78%{transform:rotate(13deg)}86%{transform:rotate(-11deg)}94%{transform:rotate(5deg)}}
+  @media(prefers-reduced-motion:reduce){.rb-bell svg{animation:none}}
+  .rb-kick{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E0524A}
+  .rb-lab{display:inline-block;margin-top:11px;font-size:11px;font-weight:700;letter-spacing:.03em;color:#fff;background:#E0524A;border-radius:999px;padding:4px 11px}
+  .rb-pop h4{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin:8px 0 0;line-height:1.25}
+  .rb-pop p{font-size:13px;color:var(--slate);margin:6px 0 0;line-height:1.45}
+  .rb-cta{display:inline-flex;align-items:center;gap:7px;margin-top:13px;background:#E0524A;color:#fff;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:11px;cursor:pointer}
+  .rb-cta:hover{background:#c93f38}
+  @media(max-width:600px){.rb-pop{left:12px;right:12px;bottom:12px;width:auto}}
+</style>
+<div class="rb-pop" id="rbPop" role="alert" aria-live="polite">
+  <button class="rb-x" id="rbClose" aria-label="Fermer">✕</button>
+  <div class="rb-head">
+    <span class="rb-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+    <span class="rb-kick">Alerte remboursement Sécu</span>
+  </div>
+  <span class="rb-lab">Sisters Republic</span>
+  <h4>Pensez à précommander vos culottes menstruelles</h4>
+  <p>La gamme <b>Tina</b> de <b>Sisters Republic</b>, remboursée dès septembre 2026. Précommandez pour être livré en priorité.</p>
+  <a class="rb-cta" href="Direction A - Institutionnel Premium (chaud).html#offre" id="rbGo">Découvrir l'offre →</a>
+</div>
+<script>
+  (function(){
+    var pop=document.getElementById('rbPop');
+    if(!pop) return;
+    if(sessionStorage.getItem('rbPopClosed')==='1') return;
+    setTimeout(function(){pop.classList.add('show');},1500);
+    function close(){pop.classList.remove('show');try{sessionStorage.setItem('rbPopClosed','1');}catch(e){}}
+    document.getElementById('rbClose').addEventListener('click',close);
+    document.getElementById('rbGo').addEventListener('click',close);
+  })();
 </script>
 </body>
 </html>
