@@ -100,6 +100,10 @@
   .c-sand{background:linear-gradient(150deg,#F0E2CB,#E7D5B6);color:#4a3f2c}
   .c-sky .kase,.c-sand .kase{opacity:.6}
   .cover .prod-icon{position:absolute;right:12px;bottom:12px;width:48px;height:60px;opacity:.82;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
+  .newbadge{position:absolute;top:13px;left:13px;z-index:4;background:#FF000A;color:#fff;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 11px;border-radius:999px;box-shadow:0 6px 16px -4px rgba(255,0,10,.6);animation:nbpulse 1.8s ease-in-out infinite}
+  @keyframes nbpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @media(prefers-reduced-motion:reduce){.newbadge{animation:none}}
+  .newbadge-row{top:8px;left:8px;font-size:9.5px;padding:3px 8px}
 
   /* VIEW TOGGLE */
   .viewtog{display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--white)}
@@ -307,6 +311,7 @@
     {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink", col:"#E0524A",   fam:"C", fo:7, ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
     {b:"Owari",        d:"2026",       o:202606, mb:"5 Mo",   id:"1SR20pXi7nNKxq76K8BPFnnCRlH2BOOP-", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
     {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky", col:"#34302B",   fam:"C", fo:5, ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
+    {b:"TALM",         d:"Juin 2026",  o:202606, mb:"12 Mo",  id:"19MjV0W3e-2E8yRmFjsKfZByEKq29HB1T", c:"c-sand", col:"#8FAE94", dark:1, fam:"C", fo:6, ptype:"serum", tag:"Soin des peaux sensibles", desc:"L'expertise des peaux sensibles à chaque étape de la vie de femme — grossesse, allaitement et au-delà. Soins d'origine naturelle Cosmos Organic, vegan, sans alcool ni huiles essentielles, fabriqués en France. Marque fondée par Kenza Keller, +110K fans."},
     {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand", col:"#D96E8C",  fam:"C", fo:4, ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
     {b:"Hydratis",     d:"Juin 2026",  o:202606, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky", col:"#1FA8BE",   fam:"G", fo:3, ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
     {b:"Sefia",        d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1GNDRph2bnxVtlW3I_jcPx9BBIJTJfL8_", c:"c-brick", col:"#E2A21C", dark:1, fam:"C", fo:1, ptype:"pad", tag:"Cosmétique au curcuma", desc:"Première marque française de cosmétiques au curcuma distribuée en pharmacie. Des soins naturels (curcuma, vitamine C, acide kojique) pour atténuer taches brunes, hyperpigmentation et imperfections, même sur peaux sensibles."},
@@ -318,6 +323,7 @@
     {b:"Flayre",       d:"2026",       o:202601, mb:"2 Mo",   id:"15jTp00luUpCfUyAAt4WkpYDA-ehrZWly", c:"c-sky", col:"#4FA39B",   fam:"G", fo:6, ptype:"soap", tag:"Soin des mains",        desc:"Nettoyants pour les mains parfumés : l'hygiène au quotidien associée à une expérience olfactive soignée. Un geste simple, un parfum qui fait la différence au comptoir."},
     {b:"Du Monde à la Provence",d:"2026",o:202601, mb:"10 Mo",  id:"1peDseTPG8X5WC0b47Eau0cpYZGYBA0nA", c:"c-brick", col:"#7E6BA8", fam:"G", fo:5, ptype:"soap", tag:"Fabriqué en France",     desc:"Du Monde à la Provence : une gamme provençale fabriquée en France. Des produits ancrés dans le savoir-faire local, pour une parapharmacie authentique."},
     {b:"Veegreen",     d:"2026",       o:202601, mb:"16 Mo",  id:"1ka42CegAVNw7mgtxcPLAnBfVHxqXvyEb", c:"c-ink", col:"#5B8C3E",   fam:"G", fo:7, ptype:"herb", tag:"Bien-être naturel",     desc:"Marque française d'Auvergne spécialisée dans le bien-être naturel : yerba maté bio, sauge blanche et palo santo. Des rituels sensoriels éco-responsables, sélectionnés avec exigence."},
+    {b:"Pulse",        d:"Juin 2026",  o:202606, mb:"6 Mo",   id:"1kL1ff6D-JGfd1H2VgVB85yUtq0jH7oRD", c:"c-ink", col:"#2E9E7A",   fam:"G", fo:8, nv:1, ptype:"drink", tag:"Protéines végétales", desc:"Marque de nutrition protéinée 100 % végétale, locale et gourmande, certifiée B-Corp. Poudres multisources, eaux pétillantes, barres et granola — sans sucre ajouté, pensés pour la clientèle wellness des officines."},
     {b:"POP",          d:"2026",       o:202601, mb:"4 Mo",   id:"1d3tOhapA4pG8PKhinJ6UnmIaenU9eUZ4", c:"c-sand", col:"#E0457B",  fam:"C", fo:10, ptype:"parfum", tag:"Parfum petit prix",     desc:"Des eaux de parfum à petit prix : une façon accessible de se faire plaisir, un bon volume de vente à proposer en officine."},
     {b:"Maison Matine",d:"2026",       o:202601, mb:"1 Mo",   id:"11fiXngofscfHY1lfKplsIQYtW7VIF-V5", c:"c-blue", col:"#E07A5F",  fam:"C", fo:9, ptype:"parfum", tag:"Parfums de niche",      desc:"Maison de parfums parisienne à l'esprit clean et joyeux : des eaux de parfum expressives et accessibles, une jolie touche sensorielle en parapharmacie."},
     {b:"Beauty Miracle", d:"Avril 2026", o:202604, mb:"3 Mo", id:"1FJneNnU3E7Am56gFHWHe46aDpqPxw-jy", c:"c-sand", col:"#E48AA6", fam:"C", fo:11, ptype:"serum", tag:"Gammes coréennes (K-Beauty)", desc:"Sélection de gammes de cosmétiques coréens (K-Beauty) : soins du visage à la routine multi-étapes, textures innovantes et actifs phares de la beauté coréenne pour une peau éclatante et hydratée."},
@@ -359,6 +365,7 @@
           </div>
           ${SHOW_COVERS?`<img class="thumb-img" src="https://drive.google.com/thumbnail?id=${c.id}&sz=w600" alt="" loading="lazy" onerror="this.remove()" />`:''}
           ${c.ptype && PROD_ICONS[c.ptype] ? `<div class="prod-icon">${PROD_ICONS[c.ptype]}</div>` : ''}
+          ${c.nv?`<span class="newbadge">Nouveau</span>`:''}
         </div>
         <div class="meta">
           ${c.tag?`<span class="postag">${c.tag}</span>`:''}
@@ -376,6 +383,7 @@
       <article class="catrow">
         <div class="rc ${c.c}"${c.col?` style="background:linear-gradient(150deg, ${c.col}, color-mix(in srgb, ${c.col} 82%, #000));color:${c.dark?'#1C1611':'#fff'}"`:''}>
           <div><span class="rbn">${c.b}</span>${c.by?`<span class="rby">By ${c.by}</span>`:''}</div>
+          ${c.nv?`<span class="newbadge newbadge-row">Nouveau</span>`:''}
         </div>
         <div class="rinfo">
           <div class="rtop"><span class="rname">${c.b}</span>${c.tag?`<span class="rtag">${c.tag}</span>`:''}</div>
