@@ -12,7 +12,7 @@
    ============================================================ */
 
 (function () {
-  var GA_ID = 'G-XXXXXXXXXX';   // <-- REMPLACE par ton ID de mesure GA4
+  var GA_ID = 'G-NN5YVFMTNW';   // <-- REMPLACE par ton ID de mesure GA4
 
   /* --- Récupère la pharmacie depuis le lien tracké (?ref= ou utm_campaign) --- */
   var p = new URLSearchParams(location.search);
