@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DBN — Liens trackés &amp; suivi des visites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#1206A6;
+    --red:#E8442A;
+    --ink:#1C1611;
+    --slate:#6E6557;
+    --sand:#F4E7D2;
+    --ivory:#FBF5EB;
+    --sky:#9DB8D6;
+    --sky-soft:#E4ECF6;
+    --sky-tint:#EDF2FA;
+    --line:#EBE0CE;
+    --wa:#25D366;
+    --wa-d:#1da851;
+    --serif:'Spectral',Georgia,serif;
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  a{color:var(--blue)}
+
+  /* header */
+  header{background:linear-gradient(135deg,var(--ink) 0%,#2A2017 100%);color:#fff;padding:30px 0 28px}
+  header .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  header img{height:64px;width:auto}
+  header .ht{flex:1;min-width:220px}
+  header .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+  header h1{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3vw,32px);margin:6px 0 0;line-height:1.1}
+  header p{margin:8px 0 0;color:rgba(255,255,255,.72);font-size:14.5px;max-width:60ch}
+  .admin-tag{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:#FCD9A8;background:rgba(232,68,42,.18);border:1px solid rgba(232,68,42,.4);border-radius:999px;padding:5px 12px;margin-top:12px}
+
+  main{padding:34px 0 60px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;box-shadow:0 30px 60px -44px rgba(80,30,22,.34)}
+  .card h2{font-family:var(--serif);font-weight:600;font-size:20px;margin:0 0 4px}
+  .card .hint{font-size:13px;color:var(--slate);margin:0 0 18px}
+
+  label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);margin:0 0 7px}
+  input[type=text], select{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline:none}
+  input[type=text]:focus, select:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(18,6,166,.1)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+  .field{margin-bottom:16px}
+  .slug-note{font-size:12px;color:var(--slate);margin-top:6px}
+  .slug-note b{color:var(--blue);font-family:var(--serif)}
+
+  /* generated link box */
+  .out{background:var(--sky-tint);border:1px solid #D6E2F1;border-radius:14px;padding:14px 16px;margin-top:4px}
+  .out .lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+  .out .lnk{font-family:var(--sans);font-size:13px;color:var(--blue);word-break:break-all;margin-top:6px;line-height:1.5}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;border:none;border-radius:12px;padding:11px 17px;cursor:pointer;transition:background .15s,transform .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:#0d0480}
+  .btn-wa{background:var(--wa);color:#073b21}
+  .btn-wa:hover{background:var(--wa-d);color:#fff}
+  .btn-mail{background:var(--blue);color:#fff}
+  .btn-mail:hover{background:#0d0480}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+  .btn svg{width:17px;height:17px}
+
+  /* setup steps */
+  .steps{list-style:none;counter-reset:s;margin:0;padding:0}
+  .steps li{counter-increment:s;position:relative;padding:0 0 16px 40px;font-size:14px;color:var(--ink)}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:27px;height:27px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:27px;bottom:2px;width:2px;background:var(--sky-soft)}
+  .steps b{font-weight:700}
+  .steps code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--sand);border-radius:6px;padding:2px 6px;color:var(--ink)}
+  .ga-link{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font-weight:600;font-size:13.5px}
+
+  /* table */
+  .list-card{margin-top:24px}
+  .list-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .list-head h2{margin:0}
+  .count{font-size:13px;color:var(--slate)}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:0 12px 10px;border-bottom:1px solid var(--line)}
+  td{padding:13px 12px;border-bottom:1px solid var(--sky-soft);font-size:14px;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  .ph-name{font-weight:600}
+  .ph-slug{font-family:var(--serif);color:var(--blue);font-size:13px}
+  .src-chip{display:inline-block;font-size:11.5px;font-weight:600;color:var(--slate);background:var(--sky-tint);border:1px solid #D6E2F1;border-radius:999px;padding:3px 10px}
+  .ta{display:flex;gap:7px;justify-content:flex-end}
+  .ic-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;border-radius:9px;cursor:pointer;color:var(--slate)}
+  .ic-btn:hover{border-color:var(--blue);color:var(--blue)}
+  .ic-btn.wa:hover{border-color:var(--wa-d);color:var(--wa-d)}
+  .ic-btn.del:hover{border-color:var(--red);color:var(--red)}
+  .ic-btn svg{width:16px;height:16px}
+  .empty{text-align:center;color:var(--slate);font-size:14px;padding:30px 0}
+  .search-wrap{position:relative;margin:0 0 14px}
+  .search-ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--slate);pointer-events:none}
+  #search{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:11px 40px 11px 40px;outline:none}
+  #search:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(18,6,166,.1)}
+  .search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;border:none;background:transparent;color:var(--slate);font-size:15px;cursor:pointer;border-radius:8px;display:none}
+  .search-clear:hover{background:var(--sky-soft);color:var(--ink)}
+  .search-wrap.has-val .search-clear{display:block}
+  .toast{position:fixed;left:50%;bottom:30px;transform:transl-x(-50%) translateY(140%);transform:translate(-50%,140%);background:var(--ink);color:#fff;font-size:14px;font-weight:500;padding:12px 20px;border-radius:12px;box-shadow:0 20px 40px -16px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.22,1,.36,1);z-index:50}
+  .toast.show{transform:translate(-50%,0)}
+  .foot{font-size:12.5px;color:var(--slate);text-align:center;margin-top:34px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+    <div class="ht">
+      <div class="eyebrow">Outil interne · David Bitton</div>
+      <h1>Liens trackés &amp; suivi des visites</h1>
+      <p>Génère un lien unique par pharmacie pour savoir qui consulte ta vitrine, et suis l'audience dans Google Analytics.</p>
+      <span class="admin-tag">🔒 Page privée — à garder pour toi, ne pas diffuser</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- GENERATEUR -->
+      <section class="card">
+        <h2>1 · Générer un lien pour une pharmacie</h2>
+        <p class="hint">Le lien reste identique à ta vitrine, mais contient une signature invisible qui identifie la pharmacie dans tes statistiques.</p>
+
+        <div class="row">
+          <div>
+            <label for="phName">Nom de la pharmacie</label>
+            <input type="text" id="phName" placeholder="Ex. Pharmacie Bailly" autocomplete="off" />
+          </div>
+          <div>
+            <label for="phCity">Ville <span style="text-transform:none;font-weight:400">(optionnel)</span></label>
+            <input type="text" id="phCity" placeholder="Ex. Paris" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="src">Canal d'envoi</label>
+          <select id="src">
+            <option value="whatsapp|message">WhatsApp</option>
+            <option value="email|email">E-mail</option>
+            <option value="sms|sms">SMS</option>
+            <option value="qrcode|print">QR code / flyer</option>
+            <option value="direct|referral">Autre / en main propre</option>
+          </select>
+        </div>
+
+        <div class="slug-note">Identifiant généré : <b id="slugPreview">—</b></div>
+
+        <div class="out" style="margin-top:16px">
+          <div class="lbl">Lien tracké</div>
+          <div class="lnk" id="linkOut">Saisis un nom de pharmacie pour générer le lien…</div>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-wa" id="waBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+            Envoyer via WhatsApp
+          </button>
+          <button class="btn btn-mail" id="mailBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Envoyer par e-mail
+          </button>
+          <button class="btn btn-ghost" id="copyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copier le lien
+          </button>
+          <button class="btn btn-blue" id="addBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Ajouter à ma liste
+          </button>
+        </div>
+      </section>
+
+      <!-- SETUP GA4 -->
+      <section class="card">
+        <h2>2 · Activer le suivi (une seule fois)</h2>
+        <p class="hint">Sans cette étape, les liens fonctionnent déjà mais aucune donnée n'est encore collectée.</p>
+        <ol class="steps">
+          <li>Crée un compte gratuit sur <b>Google Analytics</b> et une propriété pour ta vitrine.<a class="ga-link" href="https://analytics.google.com" target="_blank" rel="noopener">Ouvrir Google Analytics →</a></li>
+          <li>Dans le flux « Web », indique l'URL <code>davidbitton12-ui.github.io/dbn-catalogue/</code> et récupère ton <b>ID de mesure</b> (format <code>G-XXXXXXXXXX</code>).</li>
+          <li>Ouvre le fichier <code>analytics.js</code> du site et colle ton ID à la place de <code>G-XXXXXXXXXX</code>.</li>
+          <li>Renvoie le site sur GitHub. <b>C'est tout</b> — pages vues, durée, source du trafic et pharmacie remontent automatiquement.</li>
+        </ol>
+        <p class="hint" style="margin:6px 0 0">Dans GA4 : <b>Rapports → Acquisition</b> pour les sources, et <b>Explorer</b> (dimension « pharmacie ») pour voir qui a visité.</p>
+      </section>
+    </div>
+
+    <!-- LISTE -->
+    <section class="card list-card">
+      <div class="list-head">
+        <div>
+          <h2>Mes pharmacies suivies</h2>
+          <span class="count" id="count">Aucun lien enregistré</span>
+        </div>
+        <div class="btns" style="margin:0">
+          <button class="btn btn-ghost" id="importBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Importer un CSV
+          </button>
+          <input type="file" id="importFile" accept=".csv,text/csv" style="display:none" />
+          <button class="btn btn-ghost" id="csvBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exporter en CSV
+          </button>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search" placeholder="Rechercher une pharmacie (ex. bailly)…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" title="Effacer" aria-label="Effacer">✕</button>
+      </div>
+      <div id="tableWrap">
+        <div class="empty" id="emptyState">Tes liens générés apparaîtront ici. Ils sont enregistrés dans ce navigateur.</div>
+      </div>
+    </section>
+
+    <p class="foot">
+      Les liens et la liste sont stockés uniquement dans ce navigateur (rien n'est envoyé en ligne).<br/>
+      Vitrine : <a href="https://davidbitton12-ui.github.io/dbn-catalogue/" target="_blank" rel="noopener">davidbitton12-ui.github.io/dbn-catalogue/</a>
+    </p>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var BASE = 'https://davidbitton12-ui.github.io/dbn-catalogue/';
+  var STORE = 'dbn_tracked_links';
+
+  var phName = document.getElementById('phName');
+  var phCity = document.getElementById('phCity');
+  var srcSel = document.getElementById('src');
+  var slugPreview = document.getElementById('slugPreview');
+  var linkOut = document.getElementById('linkOut');
+
+  function slugify(s){
+    return (s||'').toString().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')   // accents
+      .replace(/[^a-z0-9]+/g,'-')
+      .replace(/^-+|-+$/g,'')
+      .replace(/-{2,}/g,'-');
+  }
+
+  function currentSlug(){
+    var base = slugify(phName.value);
+    var city = slugify(phCity.value);
+    if(!base) return '';
+    return city ? base + '-' + city : base;
+  }
+
+  function buildLink(slug, srcVal){
+    var parts = (srcVal || srcSel.value).split('|');
+    var source = parts[0], medium = parts[1] || 'referral';
+    var qs = 'utm_source=' + source +
+             '&utm_medium=' + medium +
+             '&utm_campaign=' + encodeURIComponent(slug) +
+             '&ref=' + encodeURIComponent(slug);
+    return BASE + '?' + qs;
+  }
+
+  function refresh(){
+    var slug = currentSlug();
+    slugPreview.textContent = slug || '—';
+    linkOut.textContent = slug ? buildLink(slug) : 'Saisis un nom de pharmacie pour générer le lien…';
+  }
+
+  phName.addEventListener('input', refresh);
+  phCity.addEventListener('input', refresh);
+  srcSel.addEventListener('change', refresh);
+
+  /* ---- toast ---- */
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg){
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(function(){toastEl.classList.remove('show');}, 2200);
+  }
+
+  function copy(text){
+    function fallback(){
+      var t=document.createElement('textarea');
+      t.value=text; t.setAttribute('readonly','');
+      t.style.position='fixed'; t.style.top='-1000px'; t.style.opacity='0';
+      document.body.appendChild(t); t.focus(); t.select();
+      t.setSelectionRange(0, text.length);
+      var ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(t);
+      return ok;
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(
+        function(){ toast('Lien copié ✓'); },
+        function(){ toast(fallback() ? 'Lien copié ✓' : 'Copie impossible — sélectionne le lien à la main'); }
+      );
+    } else {
+      toast(fallback() ? 'Lien copié ✓' : 'Copie impossible — sélectionne le lien à la main');
+    }
+  }
+
+  function waShare(name, link){
+    var msg = 'Bonjour, voici l\'accès aux catalogues des laboratoires que je représente — ' +
+              (name ? name + ' : ' : '') + '\n' + link;
+    window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  function mailShare(name, link){
+    var subject = 'Vos catalogues laboratoires — David Bitton (DBN Développement)';
+    var body = 'Bonjour' + (name ? ' (' + name + ')' : '') + ',\n\n' +
+               'Voici l\'accès en ligne aux catalogues des laboratoires que je représente :\n' +
+               link + '\n\n' +
+               'Vous pouvez consulter et télécharger les catalogues à tout moment.\n' +
+               'Bien cordialement,\n' +
+               'David Bitton — DBN Développement\n' +
+               '06 78 00 78 32 · dbitton@dbn-pharma.fr';
+    var href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var a = document.createElement('a');
+    a.href = href; a.style.display = 'none';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ document.body.removeChild(a); }, 0);
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var slug = currentSlug();
+    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    copy(buildLink(slug));
+  });
+  document.getElementById('waBtn').addEventListener('click', function(){
+    var slug = currentSlug();
+    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    srcSel.value = 'whatsapp|message'; refresh();   // le canal suit le bouton
+    waShare(phName.value.trim(), buildLink(slug));
+  });
+  document.getElementById('mailBtn').addEventListener('click', function(){
+    var slug = currentSlug();
+    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    srcSel.value = 'email|email'; refresh();         // le canal suit le bouton
+    mailShare(phName.value.trim(), buildLink(slug));
+  });
+
+  /* ---- storage ---- */
+  function load(){ try{ return JSON.parse(localStorage.getItem(STORE)) || []; }catch(e){ return []; } }
+  function save(list){ try{ localStorage.setItem(STORE, JSON.stringify(list)); }catch(e){} }
+
+  document.getElementById('addBtn').addEventListener('click', function(){
+    var slug = currentSlug();
+    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    var list = load();
+    if(list.some(function(r){ return r.slug === slug && r.src === srcSel.value; })){
+      toast('Ce lien existe déjà'); return;
+    }
+    list.unshift({
+      name: phName.value.trim() || slug,
+      city: phCity.value.trim(),
+      slug: slug,
+      src: srcSel.value,
+      srcLabel: srcSel.options[srcSel.selectedIndex].text,
+      link: buildLink(slug),
+      date: new Date().toISOString()
+    });
+    save(list); render();
+    toast('Pharmacie ajoutée ✓');
+    phName.value=''; phCity.value=''; refresh(); phName.focus();
+  });
+
+  function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function render(){
+    var list = load();
+    var wrap = document.getElementById('tableWrap');
+    var count = document.getElementById('count');
+    if(!list.length){
+      wrap.innerHTML = '<div class="empty">Tes liens générés apparaîtront ici. Ils sont enregistrés dans ce navigateur.</div>';
+      count.textContent = 'Aucun lien enregistré';
+      return;
+    }
+    count.textContent = list.length + (list.length>1 ? ' pharmacies suivies' : ' pharmacie suivie');
+    var q = (document.getElementById('search').value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+    var shown = 0;
+    var rows = list.map(function(r, i){
+      if(q){
+        var hay = (r.name+' '+(r.city||'')+' '+r.slug).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        if(hay.indexOf(q) === -1) return '';
+      }
+      shown++;
+      return '<tr>'+
+        '<td><div class="ph-name">'+esc(r.name)+'</div>'+ (r.city ? '<div style="font-size:12px;color:var(--slate)">'+esc(r.city)+'</div>':'') +'</td>'+
+        '<td><span class="ph-slug">'+esc(r.slug)+'</span></td>'+
+        '<td><span class="src-chip">'+esc(r.srcLabel)+'</span></td>'+
+        '<td class="ta">'+
+          '<button class="ic-btn wa" data-act="wa" data-i="'+i+'" title="Envoyer via WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg></button>'+
+          '<button class="ic-btn" data-act="mail" data-i="'+i+'" title="Envoyer par e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></button>'+
+          '<button class="ic-btn" data-act="copy" data-i="'+i+'" title="Copier le lien"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>'+
+          '<button class="ic-btn del" data-act="del" data-i="'+i+'" title="Supprimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>'+
+        '</td>'+
+      '</tr>';
+    }).join('');
+    if(q){
+      count.textContent = shown + ' / ' + list.length + ' affichée' + (shown>1?'s':'');
+    } else {
+      count.textContent = list.length + (list.length>1 ? ' pharmacies suivies' : ' pharmacie suivie');
+    }
+    if(!rows){
+      wrap.innerHTML = '<div class="empty">Aucune pharmacie ne correspond à «\u00a0'+esc(q)+'\u00a0».</div>';
+      return;
+    }
+    wrap.innerHTML = '<table><thead><tr><th>Pharmacie</th><th>Identifiant</th><th>Canal</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>';
+  }
+
+  document.getElementById('tableWrap').addEventListener('click', function(e){
+    var btn = e.target.closest('.ic-btn'); if(!btn) return;
+    var list = load(); var i = +btn.getAttribute('data-i'); var r = list[i]; if(!r) return;
+    var act = btn.getAttribute('data-act');
+    if(act==='copy') copy(r.link);
+    else if(act==='wa') waShare(r.name, r.link);
+    else if(act==='mail') mailShare(r.name, r.link);
+    else if(act==='del'){ list.splice(i,1); save(list); render(); toast('Supprimé'); }
+  });
+
+  document.getElementById('csvBtn').addEventListener('click', function(){
+    var list = load();
+    if(!list.length){ toast('Aucun lien à exporter'); return; }
+    var head = ['Pharmacie','Ville','Identifiant','Canal','Lien','Date'];
+    var lines = [head.join(';')].concat(list.map(function(r){
+      return [r.name, r.city||'', r.slug, r.srcLabel, r.link, (r.date||'').slice(0,10)]
+        .map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(';');
+    }));
+    var blob = new Blob(['\uFEFF'+lines.join('\n')], {type:'text/csv;charset=utf-8;'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'pharmacies-liens-trackes.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('CSV exporté ✓');
+  });
+
+  /* ---- import CSV (fusion avec la liste existante) ---- */
+  var LABEL_TO_SRC = {
+    'WhatsApp':'whatsapp|message',
+    'E-mail':'email|email',
+    'SMS':'sms|sms',
+    'QR code / flyer':'qrcode|print',
+    'Autre / en main propre':'direct|referral'
+  };
+  function parseCsvLine(line){
+    var out=[], cur='', q=false;
+    for(var i=0;i<line.length;i++){
+      var c=line[i];
+      if(q){
+        if(c==='"'){ if(line[i+1]==='"'){ cur+='"'; i++; } else { q=false; } }
+        else cur+=c;
+      } else {
+        if(c==='"') q=true;
+        else if(c===';'){ out.push(cur); cur=''; }
+        else cur+=c;
+      }
+    }
+    out.push(cur);
+    return out;
+  }
+  document.getElementById('importBtn').addEventListener('click', function(){
+    document.getElementById('importFile').click();
+  });
+  document.getElementById('importFile').addEventListener('change', function(e){
+    var file = e.target.files && e.target.files[0];
+    if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var text = String(reader.result || '').replace(/^\uFEFF/, '');
+        var lines = text.split(/\r?\n/).filter(function(l){ return l.trim() !== ''; });
+        if(lines.length < 2){ toast('Fichier vide ou illisible'); return; }
+        var list = load();
+        var existing = {};
+        list.forEach(function(r){ existing[r.slug + '|' + r.src] = true; });
+        var added = 0;
+        for(var i=1;i<lines.length;i++){
+          var f = parseCsvLine(lines[i]);
+          var name = (f[0]||'').trim();
+          var slug = (f[2]||'').trim() || slugify(name);
+          var srcLabel = (f[3]||'').trim() || 'WhatsApp';
+          var src = LABEL_TO_SRC[srcLabel] || 'whatsapp|message';
+          var link = (f[4]||'').trim() || buildLink(slug, src);
+          if(!name && !slug) continue;
+          var key = slug + '|' + src;
+          if(existing[key]) continue;
+          existing[key] = true;
+          list.push({ name:name||slug, city:(f[1]||'').trim(), slug:slug, src:src, srcLabel:srcLabel, link:link, date:(f[5]||'').trim() || new Date().toISOString() });
+          added++;
+        }
+        save(list); render();
+        toast(added ? (added + (added>1?' pharmacies ajoutées ✓':' pharmacie ajoutée ✓')) : 'Aucune nouvelle pharmacie');
+      } catch(err){ toast('Import impossible — vérifie le fichier'); }
+    };
+    reader.readAsText(file, 'utf-8');
+    e.target.value = '';
+  });
+
+  var searchEl = document.getElementById('search');
+  var searchWrap = searchEl.closest('.search-wrap');
+  searchEl.addEventListener('input', function(){
+    searchWrap.classList.toggle('has-val', !!searchEl.value);
+    render();
+  });
+  document.getElementById('searchClear').addEventListener('click', function(){
+    searchEl.value=''; searchWrap.classList.remove('has-val'); render(); searchEl.focus();
+  });
+
+  refresh(); render();
+</script>
+</body>
+</html>
