@@ -147,6 +147,17 @@
           </div>
         </div>
 
+        <div class="row">
+          <div>
+            <label for="phCp">Code postal <span style="text-transform:none;font-weight:400">(optionnel)</span></label>
+            <input type="text" id="phCp" placeholder="Ex. 75005" autocomplete="off" inputmode="numeric" />
+          </div>
+          <div>
+            <label for="phEmail">E-mail de la pharmacie <span style="text-transform:none;font-weight:400">(optionnel)</span></label>
+            <input type="text" id="phEmail" placeholder="Ex. contact@pharmacie.fr" autocomplete="off" />
+          </div>
+        </div>
+
         <div class="field">
           <label for="src">Canal d'envoi</label>
           <select id="src">
@@ -243,6 +254,8 @@
 
   var phName = document.getElementById('phName');
   var phCity = document.getElementById('phCity');
+  var phCp = document.getElementById('phCp');
+  var phEmail = document.getElementById('phEmail');
   var srcSel = document.getElementById('src');
   var slugPreview = document.getElementById('slugPreview');
   var linkOut = document.getElementById('linkOut');
@@ -320,7 +333,7 @@
     window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
   }
 
-  function mailShare(name, link){
+  function mailShare(name, link, email){
     var subject = 'Vos catalogues laboratoires en ligne — David Bitton (DBN Développement)';
     var hello = name ? ('Bonjour ' + name + ',') : 'Bonjour,';
     var body = hello + '\n\n' +
@@ -331,7 +344,7 @@
                'Bien cordialement,\n' +
                'David Bitton — DBN Développement\n' +
                '06 78 00 78 32 · dbitton@dbn-pharma.fr';
-    var href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var href = 'mailto:' + (email ? encodeURIComponent(email) : '') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     var a = document.createElement('a');
     a.href = href; a.style.display = 'none';
     document.body.appendChild(a); a.click();
@@ -355,7 +368,7 @@
     if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
     srcSel.value = 'email|email'; refresh();         // le canal suit le bouton
     recordPharmacy();                                // envoyer = enregistrer dans la liste
-    mailShare(phName.value.trim(), buildLink(slug));
+    mailShare(phName.value.trim(), buildLink(slug), phEmail.value.trim());
   });
 
   /* ---- storage ---- */
@@ -370,6 +383,8 @@
     list.unshift({
       name: phName.value.trim() || slug,
       city: phCity.value.trim(),
+      cp: phCp.value.trim(),
+      email: phEmail.value.trim(),
       slug: slug,
       src: srcSel.value,
       srcLabel: srcSel.options[srcSel.selectedIndex].text,
@@ -386,7 +401,7 @@
     var res = recordPharmacy();
     if(res === 'dup'){ toast('Cette pharmacie est déjà dans ta liste'); return; }
     toast('Pharmacie ajoutée ✓');
-    phName.value=''; phCity.value=''; refresh(); phName.focus();
+    phName.value=''; phCity.value=''; phCp.value=''; phEmail.value=''; refresh(); phName.focus();
   });
 
   function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
@@ -405,13 +420,15 @@
     var shown = 0;
     var rows = list.map(function(r, i){
       if(q){
-        var hay = (r.name+' '+(r.city||'')+' '+r.slug).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        var hay = (r.name+' '+(r.city||'')+' '+(r.cp||'')+' '+(r.email||'')+' '+r.slug).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
         if(hay.indexOf(q) === -1) return '';
       }
       shown++;
+      var sub = [r.city, r.cp].filter(Boolean).map(esc).join(' · ');
       return '<tr>'+
-        '<td><div class="ph-name">'+esc(r.name)+'</div>'+ (r.city ? '<div style="font-size:12px;color:var(--slate)">'+esc(r.city)+'</div>':'') +'</td>'+
+        '<td><div class="ph-name">'+esc(r.name)+'</div>'+ (sub ? '<div style="font-size:12px;color:var(--slate)">'+sub+'</div>':'') +'</td>'+
         '<td><span class="ph-slug">'+esc(r.slug)+'</span></td>'+
+        '<td>'+ (r.email ? '<a href="mailto:'+esc(r.email)+'" style="color:var(--blue);font-size:13px;word-break:break-all">'+esc(r.email)+'</a>' : '<span style="color:var(--slate)">—</span>') +'</td>'+
         '<td><span class="src-chip">'+esc(r.srcLabel)+'</span></td>'+
         '<td class="ta">'+
           '<button class="ic-btn wa" data-act="wa" data-i="'+i+'" title="Envoyer via WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg></button>'+
@@ -430,7 +447,7 @@
       wrap.innerHTML = '<div class="empty">Aucune pharmacie ne correspond à «\u00a0'+esc(q)+'\u00a0».</div>';
       return;
     }
-    wrap.innerHTML = '<table><thead><tr><th>Pharmacie</th><th>Identifiant</th><th>Canal</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>';
+    wrap.innerHTML = '<table><thead><tr><th>Pharmacie</th><th>Identifiant</th><th>E-mail</th><th>Canal</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>';
   }
 
   document.getElementById('tableWrap').addEventListener('click', function(e){
@@ -439,16 +456,16 @@
     var act = btn.getAttribute('data-act');
     if(act==='copy') copy(r.link);
     else if(act==='wa') waShare(r.name, r.link);
-    else if(act==='mail') mailShare(r.name, r.link);
+    else if(act==='mail') mailShare(r.name, r.link, r.email);
     else if(act==='del'){ list.splice(i,1); save(list); render(); toast('Supprimé'); }
   });
 
   document.getElementById('csvBtn').addEventListener('click', function(){
     var list = load();
     if(!list.length){ toast('Aucun lien à exporter'); return; }
-    var head = ['Pharmacie','Ville','Identifiant','Canal','Lien','Date'];
+    var head = ['Pharmacie','Ville','Code postal','E-mail','Identifiant','Canal','Lien','Date'];
     var lines = [head.join(';')].concat(list.map(function(r){
-      return [r.name, r.city||'', r.slug, r.srcLabel, r.link, (r.date||'').slice(0,10)]
+      return [r.name, r.city||'', r.cp||'', r.email||'', r.slug, r.srcLabel, r.link, (r.date||'').slice(0,10)]
         .map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(';');
     }));
     var blob = new Blob(['\uFEFF'+lines.join('\n')], {type:'text/csv;charset=utf-8;'});
@@ -499,19 +516,33 @@
         var list = load();
         var existing = {};
         list.forEach(function(r){ existing[r.slug + '|' + r.src] = true; });
+        function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+        var header = parseCsvLine(lines[0]).map(norm);
+        function col(row, names){
+          for(var k=0;k<names.length;k++){
+            var idx = header.indexOf(names[k]);
+            if(idx !== -1 && row[idx] !== undefined) return String(row[idx]).trim();
+          }
+          return '';
+        }
         var added = 0;
         for(var i=1;i<lines.length;i++){
           var f = parseCsvLine(lines[i]);
-          var name = (f[0]||'').trim();
-          var slug = (f[2]||'').trim() || slugify(name);
-          var srcLabel = (f[3]||'').trim() || 'WhatsApp';
+          var name = col(f, ['pharmacie','nom']);
+          var city = col(f, ['ville']);
+          var cp = col(f, ['code postal','cp']);
+          var email = col(f, ['e-mail','email','mail']);
+          var slug = col(f, ['identifiant','slug']);
+          if(!slug){ var b=slugify(name), c=slugify(city); slug = b ? (c ? b+'-'+c : b) : ''; }
+          var srcLabel = col(f, ['canal']) || 'WhatsApp';
           var src = LABEL_TO_SRC[srcLabel] || 'whatsapp|message';
-          var link = (f[4]||'').trim() || buildLink(slug, src);
+          var link = col(f, ['lien','url']) || buildLink(slug, src);
+          var date = col(f, ['date']) || new Date().toISOString();
           if(!name && !slug) continue;
           var key = slug + '|' + src;
           if(existing[key]) continue;
           existing[key] = true;
-          list.push({ name:name||slug, city:(f[1]||'').trim(), slug:slug, src:src, srcLabel:srcLabel, link:link, date:(f[5]||'').trim() || new Date().toISOString() });
+          list.push({ name:name||slug, city:city, cp:cp, email:email, slug:slug, src:src, srcLabel:srcLabel, link:link, date:date });
           added++;
         }
         save(list); render();
