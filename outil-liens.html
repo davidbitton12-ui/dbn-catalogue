@@ -311,17 +311,23 @@
   }
 
   function waShare(name, link){
-    var msg = 'Bonjour, voici l\'accès aux catalogues des laboratoires que je représente — ' +
-              (name ? name + ' : ' : '') + '\n' + link;
+    var hello = name ? ('Bonjour ' + name + ' 👋') : 'Bonjour 👋';
+    var msg = hello + '\n\n' +
+              'Voici votre accès à mon *catalogue digital* — tous les laboratoires que je représente, à consulter et télécharger à tout moment :\n\n' +
+              link + '\n\n' +
+              '📌 Enregistrez-le dans vos favoris : il est *mis à jour en temps réel* (nouveautés, offres du moment, nouvelles marques).\n\n' +
+              'Bien à vous,\nDavid Bitton — DBN Développement';
     window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
   }
 
   function mailShare(name, link){
-    var subject = 'Vos catalogues laboratoires — David Bitton (DBN Développement)';
-    var body = 'Bonjour' + (name ? ' (' + name + ')' : '') + ',\n\n' +
-               'Voici l\'accès en ligne aux catalogues des laboratoires que je représente :\n' +
+    var subject = 'Vos catalogues laboratoires en ligne — David Bitton (DBN Développement)';
+    var hello = name ? ('Bonjour ' + name + ',') : 'Bonjour,';
+    var body = hello + '\n\n' +
+               'Je vous transmets votre accès personnel à mon catalogue digital : l\'ensemble des laboratoires que je représente, à consulter et télécharger quand vous le souhaitez, depuis votre ordinateur, tablette ou téléphone.\n\n' +
                link + '\n\n' +
-               'Vous pouvez consulter et télécharger les catalogues à tout moment.\n' +
+               'Pensez à l\'enregistrer dans vos favoris. Ce n\'est pas un document figé : c\'est un catalogue mis à jour en temps réel. Vous y retrouverez automatiquement les nouveautés, les offres du moment et les nouvelles marques — sans rien à réinstaller, toujours à la bonne adresse.\n\n' +
+               'Je reste à votre disposition pour toute commande ou information.\n\n' +
                'Bien cordialement,\n' +
                'David Bitton — DBN Développement\n' +
                '06 78 00 78 32 · dbitton@dbn-pharma.fr';
@@ -341,12 +347,14 @@
     var slug = currentSlug();
     if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
     srcSel.value = 'whatsapp|message'; refresh();   // le canal suit le bouton
+    recordPharmacy();                               // envoyer = enregistrer dans la liste
     waShare(phName.value.trim(), buildLink(slug));
   });
   document.getElementById('mailBtn').addEventListener('click', function(){
     var slug = currentSlug();
     if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
     srcSel.value = 'email|email'; refresh();         // le canal suit le bouton
+    recordPharmacy();                                // envoyer = enregistrer dans la liste
     mailShare(phName.value.trim(), buildLink(slug));
   });
 
@@ -354,13 +362,11 @@
   function load(){ try{ return JSON.parse(localStorage.getItem(STORE)) || []; }catch(e){ return []; } }
   function save(list){ try{ localStorage.setItem(STORE, JSON.stringify(list)); }catch(e){} }
 
-  document.getElementById('addBtn').addEventListener('click', function(){
+  function recordPharmacy(){
     var slug = currentSlug();
-    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    if(!slug) return false;
     var list = load();
-    if(list.some(function(r){ return r.slug === slug && r.src === srcSel.value; })){
-      toast('Ce lien existe déjà'); return;
-    }
+    if(list.some(function(r){ return r.slug === slug && r.src === srcSel.value; })) return 'dup';
     list.unshift({
       name: phName.value.trim() || slug,
       city: phCity.value.trim(),
@@ -371,6 +377,14 @@
       date: new Date().toISOString()
     });
     save(list); render();
+    return 'added';
+  }
+
+  document.getElementById('addBtn').addEventListener('click', function(){
+    var slug = currentSlug();
+    if(!slug){ toast('Renseigne d\'abord une pharmacie'); return; }
+    var res = recordPharmacy();
+    if(res === 'dup'){ toast('Cette pharmacie est déjà dans ta liste'); return; }
     toast('Pharmacie ajoutée ✓');
     phName.value=''; phCity.value=''; refresh(); phName.focus();
   });
