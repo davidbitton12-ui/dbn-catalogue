@@ -251,6 +251,41 @@
 <script>
   var BASE = 'https://davidbitton12-ui.github.io/dbn-catalogue/';
   var STORE = 'dbn_tracked_links';
+  var GATEWAY_URL = 'https://script.google.com/macros/s/AKfycbxcM9kinzkUaIPULuDPp8TcpB54trkzTJX4b1hSA15MKIwvfmHyeSdYR1kwqgaGxvo9Mg/exec';
+  var REMOTE = null; // liste commune (Google Sheet), chargee depuis la passerelle
+
+  function gwCall(params, cb){
+    if(!GATEWAY_URL){ if(cb) cb(null); return; }
+    var fn = 'gw_cb_' + Date.now() + '_' + Math.floor(Math.random()*1e6);
+    var s = document.createElement('script');
+    var qs = Object.keys(params).map(function(k){ return encodeURIComponent(k)+'='+encodeURIComponent(params[k]); }).join('&');
+    window[fn] = function(data){ try{ if(cb) cb(data); } finally { delete window[fn]; if(s.parentNode) s.parentNode.removeChild(s); } };
+    s.onerror = function(){ try{ if(cb) cb(null); } finally { delete window[fn]; if(s.parentNode) s.parentNode.removeChild(s); } };
+    s.src = GATEWAY_URL + '?' + qs + '&callback=' + fn + '&_=' + Date.now();
+    document.body.appendChild(s);
+  }
+
+  function gwRowToItem(r){
+    var src = (typeof LABEL_TO_SRC !== 'undefined' && LABEL_TO_SRC[r.channel]) ? LABEL_TO_SRC[r.channel] : 'whatsapp|message';
+    var slug = r.slug || '';
+    return { name: r.name || slug, city: '', cp: r.cp || '', email: r.email || '', slug: slug, src: src, srcLabel: r.channel || 'WhatsApp', link: buildLink(slug, src), date: r.date || '' };
+  }
+
+  function syncFromServer(){
+    if(!GATEWAY_URL) return;
+    gwCall({ action: 'list' }, function(data){
+      if(!data || !data.ok || !data.rows) return;
+      var rows = data.rows.slice().reverse();
+      var seen = {}, out = [];
+      rows.forEach(function(r){
+        var it = gwRowToItem(r);
+        if(!it.slug || seen[it.slug]) return;
+        seen[it.slug] = true; out.push(it);
+      });
+      REMOTE = out;
+      render();
+    });
+  }
 
   var phName = document.getElementById('phName');
   var phCity = document.getElementById('phCity');
@@ -372,8 +407,8 @@
   });
 
   /* ---- storage ---- */
-  function load(){ try{ return JSON.parse(localStorage.getItem(STORE)) || []; }catch(e){ return []; } }
-  function save(list){ try{ localStorage.setItem(STORE, JSON.stringify(list)); }catch(e){} }
+  function load(){ if(REMOTE){ return REMOTE; } try{ return JSON.parse(localStorage.getItem(STORE)) || []; }catch(e){ return []; } }
+  function save(list){ if(REMOTE) return; try{ localStorage.setItem(STORE, JSON.stringify(list)); }catch(e){} }
 
   function recordPharmacy(){
     var slug = currentSlug();
@@ -392,6 +427,8 @@
       date: new Date().toISOString()
     });
     save(list); render();
+    gwCall({ action: 'add', name: (phName.value.trim() || slug), cp: phCp.value.trim(), email: phEmail.value.trim(), channel: srcSel.options[srcSel.selectedIndex].text, slug: slug });
+    setTimeout(syncFromServer, 1200);
     return 'added';
   }
 
@@ -411,7 +448,7 @@
     var wrap = document.getElementById('tableWrap');
     var count = document.getElementById('count');
     if(!list.length){
-      wrap.innerHTML = '<div class="empty">Tes liens générés apparaîtront ici. Ils sont enregistrés dans ce navigateur.</div>';
+      wrap.innerHTML = '<div class="empty">Tes envois apparaîtront ici — synchronisés avec ton Google Sheet, visibles sur tous tes appareils.</div>';
       count.textContent = 'Aucun lien enregistré';
       return;
     }
@@ -563,7 +600,7 @@
     searchEl.value=''; searchWrap.classList.remove('has-val'); render(); searchEl.focus();
   });
 
-  refresh(); render();
+  refresh(); render(); syncFromServer();
 </script>
 </body>
 </html>
