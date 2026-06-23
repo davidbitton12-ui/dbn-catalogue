@@ -67,13 +67,93 @@
   .btn-ghost:hover{border-color:var(--blue);background:var(--blue-mist)}
   .btn .arr{transition:transform .22s}
   .btn:hover .arr{transform:translateX(3px)}
+  .btn-lg{font-size:17px;padding:17px 32px;font-weight:700;box-shadow:0 20px 40px -18px rgba(18,6,166,.6)}
+  .btn-lg .arr{font-size:19px}
+
+  /* ===== DUO mises en avant côte à côte ===== */
+  .duo{padding:24px 0 44px}
+  .duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+  .promo{position:relative;overflow:hidden;border-radius:24px;padding:26px 28px;display:flex;flex-direction:column;box-shadow:0 40px 80px -50px rgba(28,22,17,.5)}
+  .promo-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:6px 12px;border-radius:999px;align-self:flex-start}
+  .promo-eyebrow .dot{width:6px;height:6px;border-radius:50%;animation:offer-pulse 1.8s infinite}
+  .promo h3{font-family:var(--serif);line-height:1.06;margin:14px 0 0;min-height:56px}
+  .promo h3 em{font-style:italic}
+  .promo-mid{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;margin-top:16px}
+  .promo-photo{position:relative;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:210px}
+  .promo-photo img{max-width:100%;max-height:100%;width:auto;height:auto;display:block}
+  .promo-pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .promo-pts li{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.35;color:var(--ink)}
+  .promo-pts svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .promo-pts b{font-weight:700}
+  .promo-foot{margin-top:auto;padding-top:18px}
+  .promo-metaline{display:flex;align-items:flex-end;flex-wrap:wrap;gap:6px;min-height:40px;margin-bottom:12px;font-size:12.5px;color:var(--slate);line-height:1.35}
+  .promo-price{display:flex;align-items:flex-end;gap:9px;flex-wrap:wrap;margin-bottom:12px;min-height:40px}
+  .promo-price .big{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1}
+  .promo-price small{font-size:13px;color:var(--slate)}
+  .promo-price .ttc{font-size:12.5px;color:var(--slate);margin-left:auto}
+  .promo .btn{width:100%;justify-content:center;border-radius:14px}
+  .promo-note{font-size:12px;color:var(--slate);text-align:center;margin-top:9px}
+
+  /* Tina promo */
+  .tina-promo{background:radial-gradient(120% 110% at 95% -10%, #FBE3DD 0%, rgba(251,227,221,0) 52%),linear-gradient(140deg,#FBF5EB 0%,#F6E9DA 100%);border:1px solid #E6D2C4}
+  .tina-promo .promo-eyebrow{color:#fff;background:#E0524A;font-size:16px;padding:10px 18px;letter-spacing:.04em;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(224,82,74,.75);animation:remb-blink 1.1s ease-in-out infinite}
+  @keyframes remb-blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.04)}}
+  @media(prefers-reduced-motion:reduce){.tina-promo .promo-eyebrow{animation:none}}
+  .tina-promo .promo-eyebrow .dot{background:#fff}
+  .tina-promo .tina-wm2{display:flex;align-items:flex-end;gap:9px;margin-top:14px;min-height:42px}
+  .tina-promo .tina-wm2 b{font-family:var(--sans);font-weight:800;font-size:24px;color:#E0524A;letter-spacing:-.01em}
+  .tina-promo .tina-wm2 span{font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:lowercase;color:var(--slate)}
+  .tina-promo h3{font-size:clamp(21px,2vw,27px);color:var(--ink)}
+  .tina-promo h3 em{color:#E0524A}
+  .tina-promo .promo-mid{grid-template-columns:1fr;gap:14px;margin-top:16px}
+  .tina-promo .promo-photo{background:radial-gradient(circle at 50% 42%, #F3E6CF 0%, #EAD9BE 80%);border:1px solid #E6D2C4;padding:12px}
+  .tina-promo .promo-photo img{border-radius:50%;max-height:186px}
+  .tina-promo .promo-pts{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+  .tina-promo .promo-pts svg{color:#E0524A}
+  .tina-promo .promo-price .big{color:#E0524A}
+  .tina-promo .btn-primary{background:#E0524A}
+  .tina-promo .btn-primary:hover{background:#c93f38}
+
+  /* Brume promo (sold out) */
+  .brume-promo{background:radial-gradient(120% 120% at 88% -12%, #FFF4D6 0%, rgba(255,244,214,0) 46%),linear-gradient(140deg,#EFF4FB 0%,#DCEAF6 100%);border:1px solid #CFE0F1}
+  .brume-promo .promo-eyebrow{color:#C2410C;background:#FFE7D2;min-height:42px}
+  .brume-tip{position:absolute;top:16px;right:16px;z-index:4;max-width:172px;background:#fff;border:1px solid #CFE0F1;border-radius:15px;padding:11px 13px;box-shadow:0 18px 34px -16px rgba(18,40,80,.45);display:flex;gap:9px;align-items:flex-start;animation:tip-pop 2.8s ease-in-out infinite}
+  @keyframes tip-pop{0%,90%,100%{transform:translateY(0)}95%{transform:translateY(-4px)}}
+  @media(prefers-reduced-motion:reduce){.brume-tip{animation:none}}
+  .brume-tip .ic{width:27px;height:27px;flex:none;border-radius:8px;background:#E4F4F8;display:flex;align-items:center;justify-content:center}
+  .brume-tip .ic svg{width:16px;height:16px;color:#0EA0C0}
+  .brume-tip b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#0EA0C0;margin-bottom:2px}
+  .brume-tip .t{display:block;font-size:11.5px;line-height:1.32;color:var(--blue-ink)}
+  .brume-promo .promo-brand img{height:32px}
+  .brume-promo .promo-eyebrow .dot{background:var(--red)}
+  .brume-promo .promo-brand{display:flex;align-items:center;gap:13px;margin-top:14px;min-height:42px}
+  .brume-promo .promo-brand img{height:38px;width:auto}
+  .brume-promo .promo-brand .by{font-size:11.5px;color:var(--slate);border-left:1px solid #C3D4E6;padding-left:11px;line-height:1.35}
+  .brume-promo h3{font-size:clamp(21px,2vw,27px);color:var(--blue-ink)}
+  .brume-promo h3 em{color:#0EA0C0}
+  .brume-promo .promo-photo{margin-top:16px;background:#fff;border:1px solid #E1EAF4;padding:14px}
+  .brume-promo .promo-photo img{max-height:100%;width:auto;object-fit:contain;filter:grayscale(.55) opacity(.5)}
+  .brume-promo .sold-stamp2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-9deg);pointer-events:none}
+  .brume-promo .sold-stamp2 .big{display:inline-block;font-family:var(--sans);font-weight:800;font-size:clamp(20px,2.6vw,30px);color:#fff;background:var(--red);padding:9px 18px;border-radius:9px;box-shadow:0 16px 34px -12px rgba(232,68,42,.7);text-transform:uppercase;line-height:1.05;white-space:nowrap}
+  .brume-promo .promo-p{font-size:13.5px;color:var(--slate);line-height:1.5;margin:14px 0 0}
+  .brume-promo .promo-p strong{color:var(--ink)}
+  .brume-promo .btn-primary{background:var(--red)}
+  .brume-promo .btn-primary:hover{background:#cf361f}
+  @media(max-width:860px){
+    .duo-grid{grid-template-columns:1fr;gap:18px}
+    .duo{padding:14px 0 30px}
+  }
+  @media(max-width:440px){
+    .promo{padding:22px 18px}
+    .promo-mid{grid-template-columns:96px 1fr;gap:14px}
+  }
 
   /* HERO */
-  .hero{position:relative;padding:20px 0 26px;background:
+  .hero{position:relative;padding:16px 0 18px;background:
      radial-gradient(120% 86% at 88% -12%, #F7E2C6 0%, rgba(247,226,198,0) 56%),
      radial-gradient(95% 72% at 4% 6%, #DCE7F4 0%, rgba(220,231,244,0) 54%);
      overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
   .hero-head{align-self:center;position:relative}
   .hero-grid{position:relative;z-index:1}
   .hero-head .eyebrow,.hero-head h1{position:relative;z-index:1}
@@ -81,7 +161,7 @@
   .hero h1 em{font-style:italic;color:var(--blue)}
   .hero p.lead{font-size:17px;color:var(--slate);margin-top:0;max-width:42ch}
   .hero .cta-row{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap}
-  .hero-meta{display:flex;gap:40px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .hero-meta{display:flex;gap:40px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
   .hero-meta .k{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--blue)}
   .hero-meta .l{font-size:13.5px;color:var(--slate);margin-top:2px}
   .hero-visual{position:relative}
@@ -581,7 +661,7 @@
     <div class="hero-body">
       <p class="lead">David Bitton représente une sélection de laboratoires de confiance et accompagne les pharmacies dans le choix des produits qui comptent.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="DBN - Espace Catalogues.html">Consulter les catalogues <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-lg" href="DBN - Espace Catalogues.html">Consulter les catalogues <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="#contact">Nous contacter</a>
       </div>
       <div class="hero-meta">
@@ -593,91 +673,54 @@
   </div>
 </section>
 
-<!-- MISE EN AVANT — Sisters Republic · Culotte Tina -->
-<section class="tina" id="offre">
+<!-- MISES EN AVANT — duo côte à côte -->
+<section class="duo">
   <div class="wrap">
-    <div class="tina-card">
-      <div class="tina-grid">
-        <div class="tina-main">
-          <span class="tina-kicker"><span class="dot"></span> Nouveauté réglementaire · Dès septembre 2026</span>
-          <div class="tina-wm"><b>sisters</b><span>republic</span></div>
-          <h2>La culotte <em>Tina</em>, bientôt remboursée par la Sécurité Sociale.</h2>
-          <p class="sub">La gamme remboursée de Sisters Republic : une culotte menstruelle en coton bio, inscrite au dispositif de prise en charge des protections périodiques réutilisables qui entre en vigueur à la rentrée 2026.</p>
-          <p class="tina-bio"><b>Pionnière française de la culotte menstruelle</b> (Paris, depuis 2019), Sisters Republic accompagne une communauté de <b>+ 176 000 abonnés</b> et signe avec le modèle Super l'une des culottes <b>les plus fines du marché</b> (&lt; 3 mm).</p>
-          <div class="tina-stats">
-            <div class="tstat"><div class="v">2019</div><div class="k">Marque française</div></div>
-            <div class="tstat"><div class="v">176K</div><div class="k">Abonnés</div></div>
-            <div class="tstat"><div class="v">8</div><div class="k">Tailles · 10/11 ans → 2XL</div></div>
-            <div class="tstat"><div class="v">&lt;3mm</div><div class="k">La plus fine</div></div>
-          </div>
+    <div class="duo-grid">
 
-          <div class="tina-flag">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
-            <div class="ft">
-              <b>Exclusivité officine jusqu'en 2028</b>
-              <span>Pendant la phase de lancement, seules les pharmacies délivrent les protections remboursées — un trafic patient à capter. Éligibles : −26 ans &amp; C2S · ~60 % (max 12,35 €) · 2 produits / an.</span>
-            </div>
-          </div>
-
-          <ul class="tina-feats">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Coton bio GOTS</b> · Oeko-tex Standard 100 classe 2</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>8 tailles</b> sur ce modèle · du 10/11 ans au 2XL (44)</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>+ de 52 cycles</b> de lavage · durabilité prouvée</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Absorption Super</b> &gt; 20 ml · flux abondant</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Tests dermato &amp; gynéco</b> · sur au moins 20 sujets</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Entreprise à mission</b> · ISO 14001</span></li>
+      <!-- Sisters Republic · Tina -->
+      <div class="promo tina-promo" id="offre">
+        <span class="promo-eyebrow"><span class="dot"></span> Remboursée dès sept. 2026</span>
+        <div class="tina-wm2"><b>sisters</b><span>republic</span></div>
+        <h3>La culotte <em>Tina</em>, bientôt remboursée par la Sécu.</h3>
+        <div class="promo-mid">
+          <div class="promo-photo"><img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic" /></div>
+          <ul class="promo-pts">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Exclusivité officine</b> jusqu'en 2028</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Coton bio</b> · 8 tailles · la plus fine &lt;3 mm</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Précommandez</b> pour être livré en priorité</span></li>
           </ul>
         </div>
-
-        <div class="tina-side">
-          <div class="tina-photo">
-            <img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic, gamme remboursée" />
-            <div class="cap">Culotte Tina · Noir · absorption Super</div>
-          </div>
-          <div class="tina-buy">
-            <span class="from">À partir de</span>
-            <div class="big">11,66 €<small> HT / u</small></div>
-            <div class="unit">Prix net dégressif · <b>RFA jusqu'à 10 %</b> dès les packs 72 / 96 / 120 u</div>
-            <div class="ppc"><span class="p">19,00 € TTC</span><span class="l">prix public conseillé</span></div>
-            <div class="tina-precmd">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
-              <p><b>Précommandez dès maintenant</b> pour être livré en priorité à l'ouverture du remboursement (septembre 2026).</p>
-            </div>
-            <div class="cta">
-              <a class="btn btn-primary" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme Sisters Republic <span class="arr">→</span></a>
-            </div>
-          </div>
+        <div class="promo-foot">
+          <div class="promo-price"><span class="big">11,66 €</span><small>HT / u · RFA jusqu'à 10 %</small><span class="ttc">19,00 € TTC conseillé</span></div>
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme Sisters Republic <span class="arr">→</span></a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- MISE EN AVANT — ma petite brume (SOLD OUT / réassort) -->
-<section class="brume" id="brume">
-  <div class="wrap">
-    <div class="brume-card">
-      <div class="brume-sun" aria-hidden="true"><span class="disc"></span><span class="rays"></span></div>
-      <div class="brume-brand">
-        <img src="assets/brume_logo.png" alt="ma petite brume" />
-        <span class="by">par SHINE Santé<br />Made in Europe</span>
-      </div>
-      <h2>Les brumisateurs <em>nomades</em></h2>
-      <div class="sold-grid">
-        <div class="sold-photo">
+      <!-- ma petite brume (sold out) -->
+      <div class="promo brume-promo" id="brume">
+        <div class="brume-sun" aria-hidden="true"><span class="disc"></span></div>
+        <div class="brume-tip">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span class="tx"><b>Nouvelles offres</b><span class="t">Revenez me voir régulièrement pour les découvrir avant tout le monde&nbsp;!</span></span>
+        </div>
+        <span class="promo-eyebrow"><span class="dot"></span> Rupture de stock</span>
+        <div class="promo-brand">
+          <img src="assets/brume_logo.png" alt="ma petite brume" />
+          <span class="by">SHINE Santé</span>
+        </div>
+        <h3>Les brumisateurs <em>nomades</em></h3>
+        <div class="promo-photo">
           <img src="assets/brume_trio.png" alt="Brumisateurs ma petite brume" />
-          <div class="sold-stamp"><span class="big">Tout a été vendu</span></div>
+          <div class="sold-stamp2"><span class="big">Tout a été vendu</span></div>
         </div>
-        <div class="sold-copy">
-          <span class="badge">● Rupture de stock</span>
-          <h3>Mais ça revient <em>très bientôt</em>.</h3>
-          <p>Les brumisateurs sont partis en un éclair ! Le réassort arrive. <strong>Revenez me voir bientôt</strong> pour être informé — et faire partie des <strong>premiers servis</strong> dès le retour en stock.</p>
-          <div class="sold-cta">
-            <a class="btn btn-primary" id="reassortBtn" href="#contact">Prévenez-moi du réassort <span class="arr">→</span></a>
-            <span class="sold-note">Réservé aux pharmacies partenaires</span>
-          </div>
+        <p class="promo-p">Partis en un éclair ! <strong>Ça revient très bientôt.</strong> Revenez me voir pour être informé — et faire partie des <strong>premiers servis</strong>.</p>
+        <div class="promo-foot">
+          <div class="promo-metaline">Réservé aux pharmacies partenaires · réassort imminent</div>
+          <a class="btn btn-primary" id="reassortBtn" href="#contact">Prévenez-moi du réassort <span class="arr">→</span></a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -687,8 +730,8 @@
   var b=document.getElementById('reassortBtn'); if(!b) return;
   var ref='';
   try{ var q=new URLSearchParams(location.search); ref=q.get('ref')||q.get('utm_campaign')||''; }catch(e){}
-  var subject='Réassort brumisateurs — me prévenir';
-  var body='Bonjour David,\n\nJe souhaite être prévenu(e) dès le retour en stock des brumisateurs « ma petite brume ».\n\nPharmacie : '+ref+'\nCode postal : \nE-mail : \nTéléphone : \n\nMerci !';
+  var subject = ref ? ('Réassort brumisateurs — ' + ref) : 'Réassort brumisateurs — me prévenir';
+  var body='Bonjour David,\n\nJe souhaite être prévenu(e) dès le retour en stock des brumisateurs « ma petite brume ».\n\nPharmacie : '+ref+'\nCode postal : \nE-mail : \nTéléphone : \n\nMerci !';
   b.setAttribute('href','mailto:dbitton@dbn-pharma.fr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body));
 })();
 </script>
