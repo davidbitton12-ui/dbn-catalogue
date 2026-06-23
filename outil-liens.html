@@ -441,7 +441,7 @@
     phName.value=''; phCity.value=''; phCp.value=''; phEmail.value=''; refresh(); phName.focus();
   });
 
-  function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
   function render(){
     var list = load();
