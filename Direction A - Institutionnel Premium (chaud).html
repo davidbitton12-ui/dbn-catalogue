@@ -114,9 +114,99 @@
   .tina-promo .btn-primary{background:#E0524A}
   .tina-promo .btn-primary:hover{background:#c93f38}
 
-  /* Brume promo (sold out) */
-  .brume-promo{background:radial-gradient(120% 120% at 88% -12%, #FFF4D6 0%, rgba(255,244,214,0) 46%),linear-gradient(140deg,#EFF4FB 0%,#DCEAF6 100%);border:1px solid #CFE0F1}
-  .brume-promo .promo-eyebrow{color:#C2410C;background:#FFE7D2;min-height:42px}
+  /* ECLIPSE — bandeau */
+  .eclipse-band{padding:16px 0}
+  .eclipse-band .wrap{padding-left:40px;padding-right:40px}
+  .eclipse-band-in{display:flex;align-items:center;gap:0;min-height:192px;overflow:hidden;position:relative;border-radius:24px;background:linear-gradient(100deg,#0D0D20 0%,#18102E 55%,#0D1A2E 100%);border:1px solid rgba(200,136,58,.35);box-shadow:0 40px 80px -40px rgba(200,136,58,.22);padding:0 36px}
+  .eclipse-band-in::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 30%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 15%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 80% 70%,rgba(255,200,80,.7) 0%,transparent 100%),radial-gradient(1px 1px at 45% 80%,rgba(255,255,255,.4) 0%,transparent 100%);pointer-events:none}
+  .eb-event{display:none}
+  .eb-badge{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#F5C97A;display:flex;align-items:center;gap:7px}
+  .eb-badge .dot{width:6px;height:6px;border-radius:50%;background:#F5C97A;animation:pulse-gold 1.4s infinite}
+  .eb-cd{display:flex;gap:6px}
+  .eb-bl{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(200,136,58,.2);border-radius:10px;padding:9px 14px;min-width:62px}
+  .eb-bl .v{font-family:var(--serif);font-size:30px;font-weight:700;color:#F5C97A;line-height:1}
+  .eb-bl .k{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px}
+  .eb-copy{flex:1;padding:0 32px;position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .eb-copy h3{font-family:var(--serif);font-size:clamp(24px,2.8vw,38px);font-weight:700;color:#fff;margin:12px 0 10px;line-height:1.08;background:linear-gradient(135deg,#fff 0%,#F5C97A 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .eb-copy p{font-size:14.5px;color:rgba(255,255,255,.7);margin:0;line-height:1.5}
+  .eb-img{flex:0 0 190px;height:192px;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible}
+  .eb-img img{height:220px;width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6))}
+  .eb-right{flex:0 0 auto;padding:0 0 0 24px;border-left:1px solid rgba(200,136,58,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative}
+  .eb-right .lun{height:130px;width:auto;filter:drop-shadow(0 8px 20px rgba(200,136,58,.5));transform:rotate(-8deg)}
+  .eb-prix{flex:0 0 auto;display:flex;flex-direction:column;gap:4px;position:relative;align-items:center;text-align:center}
+  .eb-prix .qt{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em}
+  .eb-prix .p{font-family:var(--serif);font-size:32px;font-weight:700;color:#F5C97A;line-height:1}
+  .eb-prix small{font-size:12px;color:rgba(255,255,255,.45)}
+  .eb-cta{flex:0 0 auto;padding:0;position:relative}
+  .eb-cta a{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#C8883A 0%,#E8A84A 100%);color:#0D0D20;font-weight:800;font-size:15px;padding:15px 24px;border-radius:13px;text-decoration:none;white-space:nowrap;box-shadow:0 16px 34px -12px rgba(200,136,58,.65)}
+  .eb-cta a:hover{background:linear-gradient(135deg,#E8A84A 0%,#C8883A 100%)}
+  /* Éclipse décorative */
+  .eb-sun{position:absolute;top:50%;right:18%;transform:translateY(-50%);width:260px;height:260px;pointer-events:none;z-index:0;opacity:.28}
+  .eb-sun .halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(245,165,35,0) 34%,rgba(245,165,35,.55) 42%,rgba(245,165,35,.25) 55%,transparent 68%)}
+  .eb-sun .halo2{display:none}
+  .eb-sun .disc{position:absolute;inset:22%;border-radius:50%;background:#05030F;box-shadow:0 0 0 3px rgba(245,165,35,.3)}
+  @keyframes eb-spin{to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.eb-sun .halo2{animation:none}}
+  @media(max-width:860px){
+    .eclipse-band{padding:12px 0}
+    .eclipse-band .wrap{padding-left:16px;padding-right:16px}
+    .eclipse-band-in{flex-direction:column;min-height:auto;padding:22px 20px;border-radius:18px;gap:16px;align-items:stretch}
+    .eb-event{display:none}
+    .eb-img{flex:none;height:auto;display:flex;align-items:center;justify-content:center;order:-1}
+    .eb-img img{height:140px}
+    .eb-copy{padding:0;text-align:center}
+    .eb-copy h3{font-size:clamp(20px,5.5vw,28px);margin:8px 0 6px}
+    .eb-cd{justify-content:center}
+    .eb-right{padding:0;border-left:none;border-top:1px solid rgba(200,136,58,.25);padding-top:14px;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .eb-right .lun{height:80px;transform:rotate(-8deg)}
+    .eb-prix{align-items:flex-start;text-align:left}
+    .eb-cta a{padding:12px 18px;font-size:14px;white-space:nowrap}
+  }
+  @media(max-width:480px){
+    .eb-right{flex-direction:column;align-items:center;text-align:center}
+    .eb-prix{align-items:center}
+    .eb-cta{width:100%}
+    .eb-cta a{width:100%;justify-content:center}
+    .eb-right .lun{display:none}
+  }
+  .eclipse-card{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#0D0D20 0%,#12102A 50%,#1A1028 100%);border:1px solid rgba(200,136,58,.35);box-shadow:0 50px 100px -40px rgba(200,136,58,.22),0 0 0 1px rgba(255,255,255,.04);color:#fff}
+  .eclipse-stars{position:absolute;inset:0;pointer-events:none;border-radius:inherit;background-image:radial-gradient(1px 1px at 12% 22%,rgba(255,255,255,.7) 0%,transparent 100%),radial-gradient(1px 1px at 70% 12%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 36% 65%,rgba(255,200,80,.8) 0%,transparent 100%),radial-gradient(1px 1px at 86% 40%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(2px 2px at 88% 75%,rgba(255,200,80,.55) 0%,transparent 100%),radial-gradient(1px 1px at 52% 85%,rgba(255,255,255,.4) 0%,transparent 100%);z-index:0}
+  .eclipse-halo{position:absolute;top:-80px;right:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(200,136,58,.45) 0%,rgba(200,136,58,.12) 38%,transparent 60%);pointer-events:none;z-index:0}
+  .eclipse-inner{display:grid;grid-template-columns:1fr 400px;gap:36px;align-items:center;padding:34px 36px;position:relative;z-index:1}
+  .eclipse-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(200,136,58,.2);border:1px solid rgba(200,136,58,.5);border-radius:999px;padding:7px 14px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5C97A}
+  .eclipse-badge .dot{width:7px;height:7px;border-radius:50%;background:#F5C97A;animation:pulse-gold 1.4s infinite}
+  @keyframes pulse-gold{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+  .eclipse-countdown{display:flex;gap:10px;margin-top:16px}
+  .ecbl{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(200,136,58,.22);border-radius:12px;padding:10px 16px;min-width:66px}
+  .ecbl .v{font-family:var(--serif);font-size:28px;font-weight:700;color:#F5C97A;line-height:1}
+  .ecbl .k{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+  .eclipse-shine{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:18px}
+  .eclipse-title{font-family:var(--serif);font-size:clamp(28px,3.4vw,44px);font-weight:700;line-height:1.04;margin:8px 0 0;background:linear-gradient(135deg,#fff 0%,#F5C97A 55%,#C8883A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .eclipse-sub{font-size:15px;color:rgba(255,255,255,.72);line-height:1.55;margin:10px 0 0;max-width:54ch}
+  .eclipse-certif{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:12px;padding:10px 14px;margin-top:14px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.45}
+  .eclipse-certif svg{width:18px;height:18px;color:#F5C97A;flex:none;margin-top:1px}
+  .eclipse-prices{display:flex;gap:10px;margin-top:14px}
+  .epx{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(200,136,58,.28);border-radius:13px;padding:11px 14px}
+  .epx .qt{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em}
+  .epx .p{font-family:var(--serif);font-size:24px;font-weight:700;color:#F5C97A;margin-top:2px;line-height:1}
+  .epx .p small{font-size:12px;color:rgba(255,255,255,.5)}
+  .eclipse-cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .eclipse-cta .btn-eclipse{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#C8883A 0%,#E8A84A 100%);color:#0D0D20;font-weight:800;font-size:15px;padding:13px 22px;border-radius:13px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(200,136,58,.65);border:none;cursor:pointer}
+  .eclipse-cta .btn-eclipse:hover{background:linear-gradient(135deg,#E8A84A 0%,#C8883A 100%)}
+  .eclipse-note{font-size:12px;color:rgba(255,255,255,.38);margin-top:8px}
+  /* visuels droite */
+  .eclipse-visuals{display:flex;flex-direction:column;gap:14px}
+  .eclipse-v-main{background:rgba(255,255,255,.04);border:1px solid rgba(200,136,58,.18);border-radius:18px;padding:22px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 24px 50px rgba(200,136,58,.35))}
+  .eclipse-v-main img{width:100%;max-width:300px;height:auto}
+  .eclipse-v-pres{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:12px 14px}
+  .eclipse-v-pres img{height:120px;width:auto;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5))}
+  .eclipse-v-pres .pt{font-size:12.5px;color:rgba(255,255,255,.7);line-height:1.4}
+  .eclipse-v-pres .pt b{display:block;font-size:14px;color:#fff;margin-bottom:3px}
+  @media(max-width:860px){
+    .eclipse-inner{grid-template-columns:1fr;padding:24px 20px;gap:22px}
+    .eclipse-visuals{order:-1}
+    .eclipse-v-main img{max-width:240px}
+  }
   .brume-tip{position:absolute;top:16px;right:16px;z-index:4;max-width:172px;background:#fff;border:1px solid #CFE0F1;border-radius:15px;padding:11px 13px;box-shadow:0 18px 34px -16px rgba(18,40,80,.45);display:flex;gap:9px;align-items:flex-start;animation:tip-pop 2.8s ease-in-out infinite}
   @keyframes tip-pop{0%,90%,100%{transform:translateY(0)}95%{transform:translateY(-4px)}}
   @media(prefers-reduced-motion:reduce){.brume-tip{animation:none}}
@@ -672,6 +762,56 @@
     </div>
   </div>
 </section>
+
+<!-- ECLIPSE — bandeau pleine largeur -->
+<div class="eclipse-band">
+  <div class="wrap">
+    <div class="eclipse-band-in">
+      <div class="eb-sun" aria-hidden="true"><span class="halo"></span><span class="halo2"></span><span class="disc"></span></div>
+      <!-- présentoir -->
+      <div class="eb-img">
+        <img src="assets/eclipse_presentoir.png" alt="Présentoir ÉCLIPSE" />
+      </div>
+      <!-- texte centré -->
+      <div class="eb-copy">
+        <span class="eb-badge"><span class="dot"></span> Éclipse solaire · 12 août 2026</span>
+        <div class="eb-cd" id="eclipseCD">
+          <div class="eb-bl"><div class="v" id="ecdJ">--</div><div class="k">Jours</div></div>
+          <div class="eb-bl"><div class="v" id="ecdH">--</div><div class="k">H</div></div>
+          <div class="eb-bl"><div class="v" id="ecdM">--</div><div class="k">Min</div></div>
+        </div>
+        <h3>Lunettes ÉCLIPSE solaire<br>Anticipez le 12 août !</h3>
+        <p>EPI Cat. II certifié · EN ISO 12312-2 · Filtre photo inclus · Franco 100 €</p>
+      </div>
+      <!-- lunettes + prix + CTA -->
+      <div class="eb-right">
+        <img class="lun" src="assets/eclipse_lunettes.png" alt="Lunettes ÉCLIPSE" />
+        <div class="eb-prix">
+          <div class="qt">À partir de</div>
+          <div class="p">0,89 €<small> HT/u</small></div>
+          <div class="qt">PVTTC 5,90€–6,90€</div>
+        </div>
+        <div class="eb-cta">
+          <a href="https://drive.google.com/file/d/10trBbtP5NHk8ifw6doSs4icz2qw7FvUw/view" target="_blank" rel="noopener">Commander →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var target=new Date('2026-08-12T10:00:00');
+  function tick(){
+    var now=new Date(),diff=target-now;
+    if(diff<=0){document.getElementById('eclipseCD').innerHTML='<div class="eb-bl"><div class="v" style="font-size:14px">Aujourd\'hui !</div></div>';return;}
+    var j=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4);
+    document.getElementById('ecdJ').textContent=String(j).padStart(2,'0');
+    document.getElementById('ecdH').textContent=String(h).padStart(2,'0');
+    document.getElementById('ecdM').textContent=String(m).padStart(2,'0');
+  }
+  tick();setInterval(tick,60000);
+})();
+</script>
 
 <!-- MISES EN AVANT — duo côte à côte -->
 <section class="duo">

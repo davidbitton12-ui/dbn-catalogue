@@ -131,7 +131,10 @@
   .catrow .rfmt .pdf{display:inline-flex;align-items:center;gap:5px;background:#FBEDEA;color:var(--red);padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:.03em}
   .catrow .ract{flex:none;align-self:center;display:flex;gap:8px;padding:0 18px 0 0}
   .catrow .ract a{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;padding:10px 16px;border-radius:10px;transition:.18s;white-space:nowrap}
-  .catrow .ract svg{width:15px;height:15px;flex:none}
+  .catrow .ract a.a-view{font-size:14px;padding:11px 18px;background:var(--blue);color:#fff}
+  .catrow .ract a.a-view:hover{background:#0c0488}
+  .catrow .ract a.a-dl{font-size:12px;padding:9px 13px;background:var(--sky-soft);color:var(--blue)}
+  .catrow .ract a.a-dl:hover{background:#d6e3f3}
   @media(max-width:880px){
     .catrow{flex-wrap:wrap}
     .catrow .rc{width:96px}
@@ -150,10 +153,10 @@
   .cat .meta .fmt .pdf{display:inline-flex;align-items:center;gap:5px;background:#FBEDEA;color:var(--red);padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:.03em}
   .cat .actions{display:flex;gap:8px;padding:0 20px 20px}
   .cat .actions a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13.5px;font-weight:600;padding:11px;border-radius:11px;transition:.18s}
-  .a-view{background:var(--sky-soft);color:var(--blue)}
-  .a-view:hover{background:#d6e3f3}
-  .a-dl{background:var(--blue);color:#fff}
-  .a-dl:hover{background:#0c0488}
+  .a-view{background:var(--blue);color:#fff;font-size:14.5px;padding:13px 18px}
+  .a-view:hover{background:#0c0488}
+  .a-dl{background:var(--sky-soft);color:var(--blue);font-size:12.5px;padding:10px 14px}
+  .a-dl:hover{background:#d6e3f3}
   .cat .actions svg{width:16px;height:16px;flex:none}
   .empty{text-align:center;color:var(--slate);padding:60px 0;font-size:17px;display:none}
 
@@ -325,10 +328,12 @@
     {b:"Flayre",       d:"2026",       o:202601, mb:"2 Mo",   id:"15jTp00luUpCfUyAAt4WkpYDA-ehrZWly", c:"c-sky", col:"#4FA39B",   fam:"G", fo:6, ptype:"soap", tag:"Soin des mains",        desc:"Nettoyants pour les mains parfumés : l'hygiène au quotidien associée à une expérience olfactive soignée. Un geste simple, un parfum qui fait la différence au comptoir."},
     {b:"Du Monde à la Provence",d:"2026",o:202601, mb:"10 Mo",  id:"1peDseTPG8X5WC0b47Eau0cpYZGYBA0nA", c:"c-brick", col:"#7E6BA8", fam:"G", fo:5, ptype:"soap", tag:"Fabriqué en France",     desc:"Du Monde à la Provence : une gamme provençale fabriquée en France. Des produits ancrés dans le savoir-faire local, pour une parapharmacie authentique."},
     {b:"Veegreen",     d:"2026",       o:202601, mb:"16 Mo",  id:"1ka42CegAVNw7mgtxcPLAnBfVHxqXvyEb", c:"c-ink", col:"#5B8C3E",   fam:"G", fo:7, ptype:"herb", tag:"Bien-être naturel",     desc:"Marque française d'Auvergne spécialisée dans le bien-être naturel : yerba maté bio, sauge blanche et palo santo. Des rituels sensoriels éco-responsables, sélectionnés avec exigence."},
-    {b:"Pulse",        d:"Juin 2026",  o:202606, mb:"6 Mo",   id:"1kL1ff6D-JGfd1H2VgVB85yUtq0jH7oRD", c:"c-ink", col:"#2E9E7A",   fam:"G", fo:8, nv:1, ptype:"drink", tag:"Protéines végétales", desc:"Marque de nutrition protéinée 100 % végétale, locale et gourmande, certifiée B-Corp. Poudres multisources, eaux pétillantes, barres et granola — sans sucre ajouté, pensés pour la clientèle wellness des officines."},
+    {b:"Pulse",        d:"Juin 2026",  o:202606, mb:"6 Mo",   id:"1kL1ff6D-JGfd1H2VgVB85yUtq0jH7oRD", c:"c-ink", col:"#2E9E7A",   fam:"G", fo:8, nv:1, ptype:"drink", tag:"Protéines végétales", desc:"Marque de nutrition protéinée 100 % végétale, locale et gourmande, certifiée B-Corp. Poudres multisources, eaux pétillantes, barres et granola — sans sucre ajouté, pensés pour la clientèle wellness des officines."},
+    {b:"SHINE Santé",   d:"Mai 2026",   o:202605, mb:"5 Mo",   id:"10trBbtP5NHk8ifw6doSs4icz2qw7FvUw", c:"c-sky", col:"#0EA0C0",   fam:"G", fo:9, nv:1, ptype:"suncare", tag:"Hygiène & soins quotidiens", desc:"SHINE Santé propose une gamme complète de produits du quotidien : lunettes d'observation solaire ÉCLIPSE (EPI Cat. II), brumisateurs nomades rechargeables, solutions salines nasales, vaseline et masques de protection."},
     {b:"POP",          d:"2026",       o:202601, mb:"4 Mo",   id:"1d3tOhapA4pG8PKhinJ6UnmIaenU9eUZ4", c:"c-sand", col:"#E0457B",  fam:"C", fo:10, ptype:"parfum", tag:"Parfum petit prix",     desc:"Des eaux de parfum à petit prix : une façon accessible de se faire plaisir, un bon volume de vente à proposer en officine."},
     {b:"Maison Matine",d:"2026",       o:202601, mb:"1 Mo",   id:"11fiXngofscfHY1lfKplsIQYtW7VIF-V5", c:"c-blue", col:"#E07A5F",  fam:"C", fo:9, ptype:"parfum", tag:"Parfums de niche",      desc:"Maison de parfums parisienne à l'esprit clean et joyeux : des eaux de parfum expressives et accessibles, une jolie touche sensorielle en parapharmacie."},
     {b:"Beauty Miracle", d:"Avril 2026", o:202604, mb:"3 Mo", id:"1FJneNnU3E7Am56gFHWHe46aDpqPxw-jy", c:"c-sand", col:"#E48AA6", fam:"C", fo:11, ptype:"serum", tag:"Gammes coréennes (K-Beauty)", desc:"Sélection de gammes de cosmétiques coréens (K-Beauty) : soins du visage à la routine multi-étapes, textures innovantes et actifs phares de la beauté coréenne pour une peau éclatante et hydratée."},
+    {b:"DERMALINE",    d:"Juin 2026",  o:202606, mb:"44 Mo",  id:"1FP6ttp22uLvqkxv6AvUuwHoxbwcWyKHB", c:"c-sky", col:"#B8967A",   fam:"C", fo:13, nv:1, ptype:"serum", tag:"Cosmétique PDRN · Corée", desc:"Gamme PDRN premium fabriquée en Corée — extrait d'ADN de saumon purifié à 10 000 ppm pour une action régénérante et anti-âge clinique. Toner, sérum ampoule, émulsion, crème visage, contour des yeux, patchs hydrogel et masque EXO PDRN."},
     {b:"DLA Sunchic",  d:"Juin 2026",  o:202606, mb:"45 Mo",  id:"1-jjzGIRHK4X6V1mfaZ7zOIeeduujOxvd", c:"c-brick", col:"#C98A3F", fam:"C", fo:12, ptype:"serum", tag:"Crème Bonne Mine", desc:"Crème Bonne Mine — soin teinté unifiant qui illumine le teint d'un éclat naturel et hâlé, pour une bonne mine immédiate au quotidien."},
     {b:"Cible Skin",   d:"Sept. 2025", o:202509, mb:"37 Mo",  id:"11lycITj704h-yhNFCRHMqkf__4rjGWkY", c:"c-sky", col:"#1C4E6B",   fam:"C", fo:2, ptype:"serum", tag:"Anti-âge premium",      desc:"Dermocosmétique premium française, formulée par un Docteur en Pharmacie et des dermatologues. Soins anti-âge ultra-actifs à technologie brevetée, 100% clean, à l'efficacité cliniquement prouvée."},
   ];
