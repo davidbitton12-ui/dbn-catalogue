@@ -239,7 +239,7 @@
   }
 
   /* HERO */
-  .hero{position:relative;padding:16px 0 18px;background:
+  .hero{position:relative;padding:12px 0 10px;background:
      radial-gradient(120% 86% at 88% -12%, #F7E2C6 0%, rgba(247,226,198,0) 56%),
      radial-gradient(95% 72% at 4% 6%, #DCE7F4 0%, rgba(220,231,244,0) 54%);
      overflow:hidden}
@@ -522,6 +522,16 @@
     .brume-pres img{height:96px}
     .bdeal .price{font-size:24px}
   }
+
+  /* Barre CTA 80/20 */
+  .cta-bar{display:grid;grid-template-columns:4fr 1fr;gap:10px;padding:14px 0 6px}
+  @keyframes btn-pulse{0%,100%{box-shadow:0 20px 40px -18px rgba(18,6,166,.55),0 0 0 0 rgba(18,6,166,.5)}65%{box-shadow:0 20px 40px -18px rgba(18,6,166,.55),0 0 0 10px rgba(18,6,166,0)}}
+  .cta-bar .btn-main{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;border-radius:16px;padding:18px 28px;font-size:17px;font-weight:700;text-decoration:none;animation:btn-pulse 2s ease-in-out infinite;transition:background .18s,transform .18s}
+  .cta-bar .btn-main:hover{background:#0c0488;transform:translateY(-2px)}
+  .cta-bar .btn-main .arr{transition:transform .22s}.cta-bar .btn-main:hover .arr{transform:translateX(4px)}
+  .cta-bar .btn-sec{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--blue);border:2px solid var(--line);border-radius:16px;padding:18px 16px;font-size:15px;font-weight:700;text-decoration:none;transition:border-color .18s,background .18s}
+  .cta-bar .btn-sec:hover{border-color:var(--blue);background:var(--blue-mist)}
+  @media(max-width:600px){.cta-bar{grid-template-columns:1fr}}
 
   /* ─── BANDEAUX MISES EN AVANT ─── */
   .band-wrap{padding:14px 0 0}
@@ -847,10 +857,6 @@
     </div>
     <div class="hero-body">
       <p class="lead">David Bitton représente une sélection de laboratoires de confiance et accompagne les pharmacies dans le choix des produits qui comptent.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="DBN - Espace Catalogues.html">Consulter les catalogues <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#contact">Nous contacter</a>
-      </div>
       <div class="hero-meta">
         <div><div class="k">19</div><div class="l">Laboratoires représentés</div></div>
         <div><div class="k">+400</div><div class="l">Officines partenaires</div></div>
@@ -859,6 +865,12 @@
     </div>
   </div>
 </section>
+
+<!-- BARRE CTA 80/20 -->
+<div class="wrap cta-bar">
+  <a class="btn-main" href="DBN - Espace Catalogues.html">Consulter les catalogues ici <span class="arr">→</span></a>
+  <a class="btn-sec" href="#contact">Nous contacter</a>
+</div>
 
 <!-- MISES EN AVANT — 4 bandeaux -->
 <div class="wrap band-wrap">
