@@ -523,8 +523,105 @@
     .bdeal .price{font-size:24px}
   }
 
-  /* SECTION */
-  section.block{padding:104px 0}
+  /* ─── BANDEAUX MISES EN AVANT ─── */
+  .band-wrap{padding:14px 0 0}
+  .bandeaux{display:flex;flex-direction:column;gap:10px;padding:0 0 0}
+  .band{border-radius:20px;overflow:hidden;display:grid;align-items:stretch;box-shadow:0 18px 44px -22px rgba(0,0,0,.32)}
+  .b-img{display:flex;align-items:center;justify-content:center;padding:12px 16px;overflow:hidden}
+  .b-copy{padding:18px 22px;display:flex;flex-direction:column;justify-content:center}
+  .b-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:18px 22px}
+  .b-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:5px 11px;margin-bottom:9px;width:fit-content}
+  .b-badge .dot{width:7px;height:7px;border-radius:50%;animation:offer-pulse 1.8s infinite;flex:none}
+  .b-copy h3{font-family:var(--serif);font-size:clamp(17px,1.8vw,24px);line-height:1.1;margin:0 0 5px}
+  .b-copy .bsub{font-size:12.5px;color:inherit;line-height:1.4;opacity:.75;max-width:46ch}
+  .b-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+  .b-chip{font-size:11.5px;font-weight:600;border-radius:999px;padding:4px 10px;background:rgba(0,0,0,.08)}
+  .b-price{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1;text-align:center}
+  .b-price small{display:block;font-size:12px;font-weight:600;margin-top:2px;opacity:.7}
+  .b-btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:13px;font-weight:700;text-decoration:none;border-radius:10px;padding:10px 18px;cursor:pointer;border:none;white-space:nowrap;width:100%;justify-content:center}
+  .b-btn .arr{transition:transform .18s}.b-btn:hover .arr{transform:translateX(3px)}
+
+  /* ÉCLIPSE */
+  .band-eclipse{grid-template-columns:200px 1fr 200px;background:#0F0A00}
+  .band-eclipse .b-img{background:radial-gradient(circle at 50%,#1a1200,#0a0800);gap:8px;position:relative}
+  .band-eclipse .b-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(255,190,0,.25) 0%,transparent 55%)}
+  .band-eclipse .b-img img{height:99px;width:auto;object-fit:contain;position:relative;filter:drop-shadow(0 6px 14px rgba(255,180,0,.45))}
+  .band-eclipse .b-copy{background:linear-gradient(135deg,#0F0A00,#1C1400);color:#fff}
+  .band-eclipse .b-badge{background:rgba(245,200,0,.15);color:#F5C800;border:1px solid rgba(245,200,0,.35)}
+  .band-eclipse .b-badge .dot{background:#F5C800}
+  .band-eclipse h3{color:#fff}.band-eclipse h3 em{font-style:italic;color:#F5C800}
+  .band-eclipse .bsub{color:rgba(255,255,255,.65)!important;opacity:1!important}
+  .band-eclipse .b-chip{background:rgba(245,200,0,.15);color:#F5C800}
+  .band-eclipse .b-cta{background:#0F0A00;border-left:1px solid rgba(245,200,0,.2)}
+  .band-eclipse .b-price{color:#F5C800}
+  .band-eclipse .b-btn{background:#F5C800;color:#0F0A00;font-weight:800}
+  /* Compte à rebours Eclipse */
+  .eb-cd{display:flex;gap:6px;margin-bottom:8px}
+  .eb-bl{background:rgba(245,200,0,.15);border:1px solid rgba(245,200,0,.25);border-radius:7px;padding:5px 10px;text-align:center}
+  .eb-bl .v{font-family:var(--serif);font-size:20px;font-weight:700;color:#F5C800;line-height:1}
+  .eb-bl .k{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1px}
+
+  /* CATAPOUX */
+  .band-cata{grid-template-columns:280px 1fr 210px;background:#FFF7CC;min-height:180px}
+  .band-cata .b-img{background:linear-gradient(160deg,#FFE800,#F5C000);align-items:stretch;padding:0;overflow:hidden;position:relative}
+  .band-cata .b-img img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:none}
+  /* Animation clignotante sur la bordure */
+  @keyframes cata-pulse{0%,100%{box-shadow:0 18px 44px -22px rgba(0,0,0,.32),0 0 0 0 rgba(245,200,0,.7)}60%{box-shadow:0 18px 44px -22px rgba(0,0,0,.32),0 0 0 8px rgba(245,200,0,0)}}
+  .band-cata{animation:cata-pulse 2s ease-in-out infinite;border:2px solid #F5C800}
+  .band-cata .b-copy{background:linear-gradient(135deg,#FFFBEB,#FFF7CC);color:var(--ink)}
+  .band-cata .b-badge{background:rgba(47,168,79,.12);color:#2FA84F;border:1.5px solid rgba(47,168,79,.3)}
+  .band-cata .b-badge .dot{background:#2FA84F}
+  .band-cata h3{color:var(--blue-ink)}.band-cata h3 em{font-style:italic;color:#B87A00}
+  .cata-avantages{margin-top:12px}
+  .cata-av-main{display:flex;align-items:center;gap:10px;background:rgba(245,200,0,.25);border:2px solid #F5C800;border-radius:12px;padding:10px 14px;margin-bottom:10px}
+  .cata-av-main .av-ic{font-size:22px;flex:none}
+  .cata-av-main .av-txt{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:700;color:var(--blue-ink);line-height:1.1}
+  .cata-av-main .av-txt small{display:block;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--slate);margin-top:2px}
+  .cata-av-sub{display:flex;gap:8px;flex-wrap:wrap}
+  .cata-av-sub .cata-av{background:rgba(0,0,0,.06);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--blue-ink);display:flex;align-items:center;gap:5px}
+  .band-cata .b-chip{background:rgba(0,0,0,.07);color:var(--ink)}
+  .b-btn2{background:rgba(255,255,255,.7);color:var(--blue-ink);border:1.5px solid #F5C800;margin-top:2px;white-space:normal;text-align:center;line-height:1.3}
+  .b-btn2:hover{background:#fff}
+  .band-cata .b-price{color:var(--blue-ink)}
+  .band-cata .b-btn{background:var(--blue);color:#fff}
+
+  /* SISTERS TINA */
+  .band-tina{grid-template-columns:180px 1fr 200px}
+  .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:16px}
+  .band-tina .b-img img{height:108px;width:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(80,30,22,.4)}
+  .band-tina .b-copy{background:linear-gradient(135deg,#FBF5EB,#F7EBDD);color:var(--ink)}
+  .band-tina .b-badge{background:#E0524A;color:#fff;border:none;box-shadow:0 4px 12px -4px rgba(224,82,74,.6)}
+  .band-tina .b-badge .dot{background:#fff}
+  .band-tina h3{color:var(--ink)}.band-tina h3 em{font-style:italic;color:#E0524A}
+  .band-tina .bsub{opacity:1!important;color:var(--slate)!important}
+  .band-tina .b-chip{background:rgba(224,82,74,.1);color:#7A2A22}
+  .band-tina .b-cta{background:#2B0E0A;border-left:1px solid rgba(224,82,74,.3)}
+  .band-tina .b-price{color:#FCA5A0}
+  .band-tina .b-btn{background:#E0524A;color:#fff}
+
+  /* BRUMISATEURS SOLD OUT */
+  .band-brume{grid-template-columns:180px 1fr 200px;background:#EFF4FB}
+  .band-brume .b-img{background:linear-gradient(135deg,#EFF4FB,#DAE8F5);position:relative}
+  .band-brume .b-img img{height:99px;width:auto;object-fit:contain;filter:grayscale(.6) opacity(.5)}
+  .sold-lbl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);background:var(--red);color:#fff;font-weight:800;font-size:11px;padding:5px 10px;border-radius:7px;white-space:nowrap;letter-spacing:.02em}
+  .band-brume .b-copy{background:linear-gradient(135deg,#EFF4FB,#E1ECF8);color:var(--ink)}
+  .band-brume .b-badge{background:#FCE3DC;color:#C93F38;border:1.5px solid #F6C6BA}
+  .band-brume .b-badge .dot{background:#E8442A}
+  .band-brume h3{color:var(--blue-ink)}.band-brume h3 em{font-style:italic;color:#0EA0C0}
+  .band-brume .bsub{opacity:1!important;color:var(--slate)!important}
+  .band-brume .b-chip{background:rgba(14,160,192,.1);color:#0A6878}
+  .band-brume .b-cta{background:#1C2C3A;border-left:1px solid rgba(14,160,192,.3)}
+  .band-brume .b-price{color:#7DD3E8;font-size:20px;line-height:1.3}
+  .band-brume .b-btn{background:var(--red);color:#fff}
+
+  @media(max-width:860px){
+    .band{grid-template-columns:1fr!important}
+    .b-img{min-height:150px}
+    .b-cta{flex-direction:row;justify-content:space-between;border-left:none!important;border-top:1px solid rgba(255,255,255,.12)}
+    .b-btn{width:auto}
+    .eb-cd{justify-content:center}
+  }
+
   .sec-head{max-width:680px}
   .sec-head h2{font-size:clamp(32px,3.6vw,46px);margin-top:16px}
   .sec-head p{font-size:18px;color:var(--slate);margin-top:18px}
@@ -763,114 +860,137 @@
   </div>
 </section>
 
-<!-- ECLIPSE — bandeau pleine largeur -->
-<div class="eclipse-band">
-  <div class="wrap">
-    <div class="eclipse-band-in">
-      <div class="eb-sun" aria-hidden="true"><span class="halo"></span><span class="halo2"></span><span class="disc"></span></div>
-      <!-- présentoir -->
-      <div class="eb-img">
-        <img src="assets/eclipse_presentoir.png" alt="Présentoir ÉCLIPSE" />
+<!-- MISES EN AVANT — 4 bandeaux -->
+<div class="wrap band-wrap">
+  <div class="bandeaux">
+
+    <!-- 2. CATAPOUX (EN PREMIER) -->
+    <div class="band band-cata" id="catapoux">
+      <div class="b-img">
+        <img src="assets/cata_bottle2.png" alt="CataPoux — solution anti-poux" />
       </div>
-      <!-- texte centré -->
-      <div class="eb-copy">
-        <span class="eb-badge"><span class="dot"></span> Éclipse solaire · 12 août 2026</span>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Ça arrive bientôt · Rentrée 2026 · Biosynex</span>
+        <h3><em>CataPoux</em> — le réflexe anti-poux des parents.</h3>
+        <p class="bsub">La 1ʳᵉ solution anti-poux brevetée INPI, validée Faculté de Pharmacie de Tours. Parents géolocalisés vers votre officine.</p>
+        <div class="cata-avantages">
+          <div class="cata-av-main">
+            <span class="av-ic">⏱</span>
+            <div class="av-txt">5 min · 1 application<small>Sans peignage · Pédiculicide &amp; Ovicide</small></div>
+          </div>
+          <div class="cata-av-sub">
+            <span class="cata-av"><span>🌿</span> 100 % naturel · Made in France</span>
+            <span class="cata-av"><span>🔬</span> Brevet INPI · Labo validé Tours</span>
+            <span class="cata-av"><span>📍</span> Drive-to-Pharma actif</span>
+          </div>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">19,90 €<small>TTC · PPC conseillé</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/1Lqu5zUsJPc1U7aW6VNALaWk4y8wrj3-M/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-btn b-btn2" id="cataInformBtn" href="#contact">Alertez-moi au lancement <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- 1. ÉCLIPSE -->
+    <div class="band band-eclipse">
+      <div class="b-img">
+        <img src="assets/eclipse_presentoir.png" alt="Présentoir ÉCLIPSE" />
+        <img src="assets/eclipse_lunettes.png" alt="Lunettes ÉCLIPSE" />
+      </div>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Éclipse solaire · 12 août 2026</span>
         <div class="eb-cd" id="eclipseCD">
           <div class="eb-bl"><div class="v" id="ecdJ">--</div><div class="k">Jours</div></div>
           <div class="eb-bl"><div class="v" id="ecdH">--</div><div class="k">H</div></div>
           <div class="eb-bl"><div class="v" id="ecdM">--</div><div class="k">Min</div></div>
         </div>
-        <h3>Lunettes ÉCLIPSE solaire<br>Anticipez le 12 août !</h3>
-        <p>EPI Cat. II certifié · EN ISO 12312-2 · Filtre photo inclus · Franco 100 €</p>
+        <h3>Lunettes <em>Éclipse</em> solaire — Anticipez le 12 août&nbsp;!</h3>
+        <p class="bsub">EPI Cat. II certifié · EN ISO 12312-2 · Franco 100 € · par SHINE Santé</p>
+        <div class="b-chips">
+          <span class="b-chip">Made in Europe</span>
+          <span class="b-chip">Franco 100 €</span>
+          <span class="b-chip">Livraison 72 h</span>
+        </div>
       </div>
-      <!-- lunettes + prix + CTA -->
-      <div class="eb-right">
-        <img class="lun" src="assets/eclipse_lunettes.png" alt="Lunettes ÉCLIPSE" />
-        <div class="eb-prix">
-          <div class="qt">À partir de</div>
-          <div class="p">0,89 €<small> HT/u</small></div>
-          <div class="qt">PVTTC 5,90€–6,90€</div>
-        </div>
-        <div class="eb-cta">
-          <a href="https://drive.google.com/file/d/10trBbtP5NHk8ifw6doSs4icz2qw7FvUw/view" target="_blank" rel="noopener">Commander →</a>
-        </div>
+      <div class="b-cta">
+        <div class="b-price">0,89 €<small>HT / u</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/10trBbtP5NHk8ifw6doSs4icz2qw7FvUw/view" target="_blank" rel="noopener">Commander <span class="arr">→</span></a>
       </div>
     </div>
+
+    <!-- 2. CATAPOUX — déjà affiché en premier ci-dessus -->
+
+    <!-- 3. SISTERS REPUBLIC TINA -->
+    <div class="band band-tina" id="offre">
+      <div class="b-img">
+        <img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic" />
+      </div>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Remboursée dès sept. 2026 · Exclusivité officine</span>
+        <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
+        <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
+        <div class="b-chips">
+          <span class="b-chip">À partir de 11,66 € HT</span>
+          <span class="b-chip">RFA 10 %</span>
+          <span class="b-chip">PPC 19,00 € TTC</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">11,66 €<small>HT / u dès 120 u</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- 4. BRUMISATEURS SOLD OUT -->
+    <div class="band band-brume" id="brume">
+      <div class="b-img">
+        <img src="assets/brume_trio.png" alt="Brumisateurs ma petite brume" />
+        <span class="sold-lbl">TOUT VENDU</span>
+      </div>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Rupture de stock · Réassort à venir</span>
+        <h3><em>Ma petite brume</em> — brumisateurs nomades</h3>
+        <p class="bsub">Partis en un éclair ! Le réassort arrive très bientôt — revenez régulièrement pour être parmi les premiers servis.</p>
+        <div class="b-chips">
+          <span class="b-chip">160 ml rechargeable</span>
+          <span class="b-chip">Made in Europe</span>
+          <span class="b-chip">SHINE Santé</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">Bientôt<br/><small style="font-size:12px;opacity:.7">de retour</small></div>
+        <a class="b-btn" id="reassortBtn" href="#contact">Prévenez-moi <span class="arr">→</span></a>
+      </div>
+    </div>
+
   </div>
 </div>
+
 <script>
 (function(){
+  // Compte à rebours Éclipse
   var target=new Date('2026-08-12T10:00:00');
   function tick(){
     var now=new Date(),diff=target-now;
-    if(diff<=0){document.getElementById('eclipseCD').innerHTML='<div class="eb-bl"><div class="v" style="font-size:14px">Aujourd\'hui !</div></div>';return;}
+    if(diff<=0){var el=document.getElementById('eclipseCD');if(el)el.innerHTML='<div class="eb-bl"><div class="v" style="font-size:13px">C\'est aujourd\'hui !</div></div>';return;}
     var j=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4);
-    document.getElementById('ecdJ').textContent=String(j).padStart(2,'0');
-    document.getElementById('ecdH').textContent=String(h).padStart(2,'0');
-    document.getElementById('ecdM').textContent=String(m).padStart(2,'0');
+    var ej=document.getElementById('ecdJ'),eh=document.getElementById('ecdH'),em=document.getElementById('ecdM');
+    if(ej)ej.textContent=String(j).padStart(2,'0');
+    if(eh)eh.textContent=String(h).padStart(2,'0');
+    if(em)em.textContent=String(m).padStart(2,'0');
   }
   tick();setInterval(tick,60000);
-})();
-</script>
-
-<!-- MISES EN AVANT — duo côte à côte -->
-<section class="duo">
-  <div class="wrap">
-    <div class="duo-grid">
-
-      <!-- Sisters Republic · Tina -->
-      <div class="promo tina-promo" id="offre">
-        <span class="promo-eyebrow"><span class="dot"></span> Remboursée dès sept. 2026</span>
-        <div class="tina-wm2"><b>sisters</b><span>republic</span></div>
-        <h3>La culotte <em>Tina</em>, bientôt remboursée par la Sécu.</h3>
-        <div class="promo-mid">
-          <div class="promo-photo"><img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic" /></div>
-          <ul class="promo-pts">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Exclusivité officine</b> jusqu'en 2028</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Coton bio</b> · 8 tailles · la plus fine &lt;3 mm</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Précommandez</b> pour être livré en priorité</span></li>
-          </ul>
-        </div>
-        <div class="promo-foot">
-          <div class="promo-price"><span class="big">11,66 €</span><small>HT / u · RFA jusqu'à 10 %</small><span class="ttc">19,00 € TTC conseillé</span></div>
-          <a class="btn btn-primary" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme Sisters Republic <span class="arr">→</span></a>
-        </div>
-      </div>
-
-      <!-- ma petite brume (sold out) -->
-      <div class="promo brume-promo" id="brume">
-        <div class="brume-sun" aria-hidden="true"><span class="disc"></span></div>
-        <div class="brume-tip">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="tx"><b>Nouvelles offres</b><span class="t">Revenez me voir régulièrement pour les découvrir avant tout le monde&nbsp;!</span></span>
-        </div>
-        <span class="promo-eyebrow"><span class="dot"></span> Rupture de stock</span>
-        <div class="promo-brand">
-          <img src="assets/brume_logo.png" alt="ma petite brume" />
-          <span class="by">SHINE Santé</span>
-        </div>
-        <h3>Les brumisateurs <em>nomades</em></h3>
-        <div class="promo-photo">
-          <img src="assets/brume_trio.png" alt="Brumisateurs ma petite brume" />
-          <div class="sold-stamp2"><span class="big">Tout a été vendu</span></div>
-        </div>
-        <p class="promo-p">Partis en un éclair ! <strong>Ça revient très bientôt.</strong> Revenez me voir pour être informé — et faire partie des <strong>premiers servis</strong>.</p>
-        <div class="promo-foot">
-          <div class="promo-metaline">Réservé aux pharmacies partenaires · réassort imminent</div>
-          <a class="btn btn-primary" id="reassortBtn" href="#contact">Prévenez-moi du réassort <span class="arr">→</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
+  // Mailto CataPoux — être informé du lancement
+  var cb=document.getElementById('cataInformBtn'); if(cb){
+    var ref='';try{var q=new URLSearchParams(location.search);ref=q.get('ref')||q.get('utm_campaign')||'';}catch(e){}
+    var subj='Je souhaite être informé du lancement CataPoux';
+    var body='Bonjour David,\n\nJe souhaite être prévenu(e) dès que CataPoux sera disponible en commande.\n\nPharmacie : '+(ref||'___')+'\nCode postal : \nNom du pharmacien : \nTéléphone : \n\nMerci !';
+    cb.setAttribute('href','mailto:dbitton@dbn-pharma.fr?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body));
+  }
   var b=document.getElementById('reassortBtn'); if(!b) return;
-  var ref='';
-  try{ var q=new URLSearchParams(location.search); ref=q.get('ref')||q.get('utm_campaign')||''; }catch(e){}
-  var subject = ref ? ('Réassort brumisateurs — ' + ref) : 'Réassort brumisateurs — me prévenir';
+  var ref='';try{ var q=new URLSearchParams(location.search); ref=q.get('ref')||q.get('utm_campaign')||''; }catch(e){}
+  var subject=ref?('Réassort brumisateurs — '+ref):'Réassort brumisateurs — me prévenir';
   var body='Bonjour David,\n\nJe souhaite être prévenu(e) dès le retour en stock des brumisateurs « ma petite brume ».\n\nPharmacie : '+ref+'\nCode postal : \nE-mail : \nTéléphone : \n\nMerci !';
   b.setAttribute('href','mailto:dbitton@dbn-pharma.fr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body));
 })();
