@@ -571,7 +571,12 @@
   .eb-bl .v{font-family:var(--serif);font-size:20px;font-weight:700;color:#F5C800;line-height:1}
   .eb-bl .k{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1px}
 
-  /* CATAPOUX */
+  .bandeaux{display:flex;flex-direction:column}
+  .band-hydratis{order:-1;background:radial-gradient(120% 130% at 80% -10%,#FFF0F3,#FBE8ED 40%,#F8E4EA 100%);border:2px solid #C9637A}
+  .band-hydratis .b-copy{background:linear-gradient(135deg,#FFF5F7,#FCE8EC);color:var(--ink)}
+  .band-hydratis .b-cta{background:#FBE8ED;border-left:1px solid #E8A0B0}
+  .band-hydratis .b-btn{background:#8B0E2E;color:#fff}
+  .band-hydratis .b-btn:hover{background:#6b0a22}
   .band-cata{grid-template-columns:300px 1fr 210px;background:#FFF7CC;min-height:180px}
   .band-cata .b-img{align-items:stretch;padding:0;overflow:hidden;position:relative;display:flex;flex-direction:row;background:none}
   .b-img-half{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;position:relative;overflow:hidden}
@@ -972,24 +977,26 @@
       </div>
     </div>
 
-    <div class="band band-brume" id="brume">
+    <!-- 0. HYDRATIS CHERRY — EN PREMIER -->
+    <div class="band band-hydratis" id="hydratis">
       <div class="b-img">
-        <img src="assets/brume_trio.png" alt="Brumisateurs ma petite brume" />
-        <span class="sold-lbl">TOUT VENDU</span>
+        <img src="assets/hydratis_cherry.png" alt="Hydratis Cherry Edition Limitée" style="object-position:right center" />
       </div>
       <div class="b-copy">
-        <span class="b-badge"><span class="dot"></span> Rupture de stock · Réassort à venir</span>
-        <h3><em>Ma petite brume</em> — brumisateurs nomades</h3>
-        <p class="bsub">Partis en un éclair ! Le réassort arrive très bientôt — revenez régulièrement pour être parmi les premiers servis.</p>
+        <span class="b-badge" style="background:#8B0E2E;color:#fff;border-color:#8B0E2E">🍒 Édition limitée · Cherry</span>
+        <h3 style="color:#8B0E2E"><em>Hydratis</em> Cherry — Édition Limitée</h3>
+        <p class="bsub" style="font-style:italic;color:#8B0E2E;font-size:16px">Cherry on top... de votre hydratation</p>
         <div class="b-chips">
-          <span class="b-chip">160 ml rechargeable</span>
-          <span class="b-chip">Made in Europe</span>
-          <span class="b-chip">SHINE Santé</span>
+          <span class="b-chip" style="background:#8B0E2E;color:#fff;border-color:#8B0E2E">📦 Précommande dès le 06/07</span>
+          <span class="b-chip" style="background:#8B0E2E;color:#fff;border-color:#8B0E2E">🚚 Livraison dès le 28 sept.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:12px;background:#FFF0F3;border:2px solid #8B0E2E;border-radius:14px;padding:12px 16px;color:#8B0E2E;font-size:13.5px;font-weight:700">
+          🎁 Pour toute précommande — <span style="font-family:var(--serif);font-size:20px;font-weight:700">PLV offerte !</span>
         </div>
       </div>
       <div class="b-cta">
-        <div class="b-price">Bientôt<br/><small style="font-size:12px;opacity:.7">de retour</small></div>
-        <a class="b-btn" id="reassortBtn" href="#contact">Prévenez-moi <span class="arr">→</span></a>
+        <div class="b-price">Précommander<br/><small style="font-size:12px;opacity:.7">dès le 06/07</small></div>
+        <a class="b-btn" style="background:#8B0E2E" href="#contact">Je précommande <span class="arr">→</span></a>
       </div>
     </div>
 
