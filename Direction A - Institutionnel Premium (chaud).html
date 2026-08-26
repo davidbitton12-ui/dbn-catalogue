@@ -6,9 +6,9 @@
 <script src="analytics.js"></script>
 <meta name="google" content="notranslate" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>David Bitton — Partenaire Pharmaceutique</title>
-<meta name="description" content="Consultez et téléchargez les catalogues des laboratoires représentés par David Bitton, partenaire commercial pharmaceutique B2B." />
-<meta property="og:title" content="David Bitton — Catalogues" />
+<title>David BITTON — Partenaire Pharmaceutique</title>
+<meta name="description" content="Consultez et téléchargez les catalogues des laboratoires représentés par David BITTON, partenaire commercial pharmaceutique B2B." />
+<meta property="og:title" content="David BITTON — Catalogues" />
 <meta property="og:description" content="DBN Développement" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://davidbitton12-ui.github.io/dbn-catalogue/" />
@@ -572,7 +572,28 @@
   .eb-bl .k{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1px}
 
   .bandeaux{display:flex;flex-direction:column}
-  .band-hydratis{order:-1;background:radial-gradient(120% 130% at 80% -10%,#FFF0F3,#FBE8ED 40%,#F8E4EA 100%);border:2px solid #C9637A}
+  .band-sampar{order:-2;grid-template-columns:300px 1fr 210px;min-height:180px;background:linear-gradient(135deg,#111 0%,#1C1611 55%,#241D14 100%);border:2px solid #C9A227}
+  .band-sampar .b-img{background:radial-gradient(120% 130% at 30% 10%,#2A2318,#111 70%);flex-direction:column;gap:6px;position:relative}
+  .band-sampar .sp-wm{font-family:var(--serif);font-size:38px;font-weight:700;letter-spacing:.14em;color:#F4E7D2;line-height:1}
+  .band-sampar .sp-sub{font-size:10.5px;letter-spacing:.42em;color:#C9A227;text-transform:uppercase}
+  .band-sampar .sp-rule{width:52px;height:1px;background:#C9A227;margin:8px 0}
+  .band-sampar .sp-since{font-size:11px;letter-spacing:.16em;color:#9C8F7A;text-transform:uppercase}
+  .band-sampar .b-copy{background:transparent;color:#F4E7D2;text-align:center;align-items:center}
+  .band-sampar .b-chips{justify-content:center}
+  .band-sampar h3{color:#F4E7D2}
+  .band-sampar h3 em{color:#C9A227}
+  .band-sampar .bsub{color:#C4B69F}
+  .band-sampar .sp-badge{font-size:11.5px;padding:7px 13px;margin-bottom:10px;white-space:nowrap}
+  .band-sampar .b-badge{background:#C9A227;color:#1C1611;border-color:#C9A227;font-weight:800;font-size:14px;letter-spacing:.1em;padding:9px 18px;animation:sp-flash 1.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(201,162,39,.6)}
+  @keyframes sp-flash{0%,100%{background:#C9A227;color:#1C1611;box-shadow:0 0 0 0 rgba(201,162,39,.55)}50%{background:#FFD84D;color:#1C1611;box-shadow:0 0 0 9px rgba(201,162,39,0)}}
+  @media(prefers-reduced-motion:reduce){.band-sampar .b-badge{animation:none}}
+  .band-sampar .b-chip{background:rgba(201,162,39,.14);color:#E8D9B8;border-color:rgba(201,162,39,.45)}
+  .band-sampar .b-cta{background:rgba(0,0,0,.32);border-left:1px solid rgba(201,162,39,.4)}
+  .band-sampar .b-price{color:#C9A227}
+  .band-sampar .b-btn{background:#C9A227;color:#1C1611}
+  .band-sampar .b-btn:hover{background:#b08d1c}
+  .band-hydratis{order:-1;grid-template-columns:300px 1fr 210px;min-height:180px;background:radial-gradient(120% 130% at 80% -10%,#FFF0F3,#FBE8ED 40%,#F8E4EA 100%);border:2px solid #C9637A}
+  .band-hydratis .b-img img{max-height:150px;width:auto;object-fit:contain}
   .band-hydratis .b-copy{background:linear-gradient(135deg,#FFF5F7,#FCE8EC);color:var(--ink)}
   .band-hydratis .b-cta{background:#FBE8ED;border-left:1px solid #E8A0B0}
   .band-hydratis .b-btn{background:#8B0E2E;color:#fff}
@@ -633,10 +654,28 @@
   .band-brume .b-price{color:#7DD3E8;font-size:20px;line-height:1.3}
   .band-brume .b-btn{background:var(--red);color:#fff}
 
+  /* TABLETTE — bandeaux resserrés */
+  @media(max-width:1100px) and (min-width:861px){
+    .band-sampar,.band-hydratis,.band-cata,.band-tina{grid-template-columns:230px 1fr 175px}
+    .band-sampar .sp-wm{font-size:30px}
+    .band-sampar .sp-badge{font-size:10px;padding:6px 10px;white-space:normal;text-align:center}
+    .b-copy{padding:14px 16px}
+    .b-copy h3{font-size:19px}
+    .bsub{font-size:13px}
+    .b-chip{font-size:11.5px}
+    .b-price{font-size:20px!important}
+    .b-btn{font-size:13px;padding:11px 14px}
+  }
+  @media(max-width:860px){
+    .band-sampar .b-img{padding:18px 16px}
+    .band-sampar .sp-badge{font-size:12px;white-space:normal;text-align:center}
+    .band-sampar .sp-wm{font-size:34px}
+    .band-sampar .b-copy{text-align:center}
+  }
+
   @media(max-width:860px){
     .band{grid-template-columns:1fr!important}
     .b-img{min-height:150px}
-    .b-cta{flex-direction:row;justify-content:space-between;border-left:none!important;border-top:1px solid rgba(255,255,255,.12)}
     .b-btn{width:auto}
     .eb-cd{justify-content:center}
   }
@@ -859,15 +898,15 @@
     <div class="hero-head">
       <a class="hero-brand" href="#top">
         <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
-        <b>David Bitton</b>
+        <b>David BITTON</b>
       </a>
       <span class="eyebrow">Partenaire commercial pharmaceutique</span>
       <h1>Le trait d'union entre les <em>laboratoires</em> et votre officine.</h1>
     </div>
     <div class="hero-body">
-      <p class="lead">David Bitton représente une sélection de laboratoires de confiance et accompagne les pharmacies dans le choix des produits qui comptent.</p>
+      <p class="lead">David BITTON représente une sélection de laboratoires de confiance et accompagne les pharmacies dans le choix des produits qui comptent.</p>
       <div class="hero-meta">
-        <div><div class="k">18</div><div class="l">Laboratoires représentés</div></div>
+        <div><div class="k">19</div><div class="l">Laboratoires représentés</div></div>
         <div><div class="k">+400</div><div class="l">Officines partenaires</div></div>
         <div><div class="k">1</div><div class="l">Interlocuteur dédié</div></div>
       </div>
@@ -884,6 +923,30 @@
 <!-- MISES EN AVANT — 4 bandeaux -->
 <div class="wrap band-wrap">
   <div class="bandeaux">
+
+    <!-- 0. SAMPAR — NOUVEAU LABO -->
+    <div class="band band-sampar" id="sampar">
+      <div class="b-img">
+        <span class="b-badge sp-badge"><span class="dot"></span> ⭐ NOUVEAU LABORATOIRE</span>
+        <span class="sp-wm">SAMPAR</span>
+        <span class="sp-sub">Paris</span>
+        <span class="sp-rule"></span>
+        <span class="sp-since">Depuis 1984</span>
+      </div>
+      <div class="b-copy">
+        <h3><em>SAMPAR</em> — la cosmétique urbaine parisienne.</h3>
+        <p class="bsub">La promesse <b>double action</b> : résultat visible dès la 1ʳᵉ application <em>et</em> efficacité cliniquement prouvée. Formules françaises au complexe exclusif <b>Urban Advance</b>, bouclier anti-pollution.</p>
+        <div class="b-chips">
+          <span class="b-chip">✨ Masque Hydrafuse Collagène 4H · 4,6/5</span>
+          <span class="b-chip">🌞 Mine d'Or · culte depuis 2015</span>
+          <span class="b-chip">🇫🇷 Cosmetic Valley</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price" style="font-size:20px">Offre rentrée<br/><small style="font-size:12px;opacity:.75">présentoirs comptoir</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/1EgJ1SIfSUz_Ut1ki4z0_dCKhlvVpktLI/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+      </div>
+    </div>
 
     <!-- 2. CATAPOUX (EN PREMIER) -->
     <div class="band band-cata" id="catapoux">
@@ -962,13 +1025,11 @@
         <div class="b-chips">
           <span class="b-chip" style="background:#8B0E2E;color:#fff;border-color:#8B0E2E">📦 Précommande dès le 06/07</span>
           <span class="b-chip" style="background:#8B0E2E;color:#fff;border-color:#8B0E2E">🚚 Livraison dès le 28 sept.</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;margin-top:12px;background:#FFF0F3;border:2px solid #8B0E2E;border-radius:14px;padding:12px 16px;color:#8B0E2E;font-size:13.5px;font-weight:700">
-          🎁 Pour toute précommande — <span style="font-family:var(--serif);font-size:20px;font-weight:700">PLV offerte !</span>
+          <span class="b-chip" style="background:#FFF0F3;color:#8B0E2E;border-color:#8B0E2E;font-weight:700">🎁 PLV offerte</span>
         </div>
       </div>
       <div class="b-cta">
-        <div class="b-price">Précommander<br/><small style="font-size:12px;opacity:.7">dès le 06/07</small></div>
+        <div class="b-price" style="font-size:22px">Précommander<br/><small style="font-size:12px;opacity:.7">dès le 06/07</small></div>
         <a class="b-btn" style="background:#8B0E2E" href="#contact">Je précommande <span class="arr">→</span></a>
       </div>
     </div>
@@ -1057,7 +1118,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 David Bitton. Tous droits réservés.</span>
+      <span>© 2026 David BITTON. Tous droits réservés.</span>
       <span>Mentions légales · Confidentialité</span>
     </div>
   </div>
@@ -1128,9 +1189,9 @@
 .wa-float svg{width:24px;height:24px;flex:none}
 @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:14px;border-radius:50%}}
 </style>
-<a class="wa-float" id="waFloat" href="https://wa.me/33678007832" target="_blank" rel="noopener" aria-label="Contacter David Bitton sur WhatsApp">
+<a class="wa-float" id="waFloat" href="https://wa.me/33678007832" target="_blank" rel="noopener" aria-label="Contacter David BITTON sur WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.523 5.827L.057 23.57a.75.75 0 0 0 .93.899l5.698-1.483A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.75 9.75 0 0 1-4.98-1.365l-.356-.212-3.683.958.986-3.58-.232-.369A9.75 9.75 0 1 1 12 21.75z"/></svg>
-  <span>Contacter David Bitton</span>
+  <span>Contacter David BITTON</span>
 </a>
 <script>
 (function(){
