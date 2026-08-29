@@ -526,12 +526,13 @@
   /* Barre CTA 80/20 */
   .cta-bar{display:grid;grid-template-columns:4fr 1fr;gap:10px;padding:14px 0 6px}
   @keyframes btn-pulse{0%,100%{box-shadow:0 20px 40px -18px rgba(18,6,166,.55),0 0 0 0 rgba(18,6,166,.5)}65%{box-shadow:0 20px 40px -18px rgba(18,6,166,.55),0 0 0 10px rgba(18,6,166,0)}}
-  .cta-bar .btn-main{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;border-radius:16px;padding:18px 28px;font-size:17px;font-weight:700;text-decoration:none;animation:btn-pulse 2s ease-in-out infinite;transition:background .18s,transform .18s}
+  .cta-bar .btn-main{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;border-radius:16px;padding:12px 28px;font-size:34px;font-weight:700;line-height:1.05;text-decoration:none;animation:btn-pulse 2s ease-in-out infinite;transition:background .18s,transform .18s}
   .cta-bar .btn-main:hover{background:#0c0488;transform:translateY(-2px)}
   .cta-bar .btn-main .arr{transition:transform .22s}.cta-bar .btn-main:hover .arr{transform:translateX(4px)}
   .cta-bar .btn-sec{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--blue);border:2px solid var(--line);border-radius:16px;padding:18px 16px;font-size:15px;font-weight:700;text-decoration:none;transition:border-color .18s,background .18s}
   .cta-bar .btn-sec:hover{border-color:var(--blue);background:var(--blue-mist)}
-  @media(max-width:600px){.cta-bar{grid-template-columns:1fr}}
+  @media(max-width:1100px){.cta-bar .btn-main{font-size:26px;padding:12px 18px}}
+  @media(max-width:600px){.cta-bar{grid-template-columns:1fr}.cta-bar .btn-main{font-size:20px;padding:14px 12px}}
 
   /* ─── BANDEAUX MISES EN AVANT ─── */
   .band-wrap{padding:14px 0 0}
@@ -572,6 +573,43 @@
   .eb-bl .k{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1px}
 
   .bandeaux{display:flex;flex-direction:column}
+  .band-univ{order:-4;grid-template-columns:300px 1fr 230px;min-height:180px;background:radial-gradient(120% 130% at 78% -10%,#FFF3E4,#FBE6D2 45%,#F7DCC4 100%);border:2px solid #B03A2E;border-bottom:none;border-radius:18px 18px 0 0}
+  .band-univ .b-price{font-size:40px!important;line-height:1;white-space:nowrap}
+  .band-univ .b-price small{font-size:12px!important;display:block;margin-top:5px;opacity:.8}
+  .band-univ .b-img{background:radial-gradient(120% 130% at 40% 15%,#FFF8EF,#F6E2CC 75%);gap:4px}
+  .band-univ .univ-duo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;padding:8px 12px}
+  .band-univ .univ-duo img{max-height:145px;max-width:46%;width:auto;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(80,40,20,.22))}
+  .band-univ .b-img img{max-height:152px;width:auto;object-fit:contain}
+  .band-univ .b-copy{background:transparent;color:var(--ink)}
+  .band-univ h3{color:#8C2A20}
+  .band-univ h3 em{color:#B03A2E}
+  .band-univ .bsub{color:#6E5647}
+  .band-univ .b-badge{background:#B03A2E;color:#fff;border-color:#B03A2E;font-weight:800;letter-spacing:.08em}
+  .band-univ .b-chip{background:#fff;color:#8C2A20;border-color:#E0B79E}
+  .band-univ .b-chip.hot{background:#B03A2E;color:#fff;border-color:#B03A2E;font-weight:700}
+  .band-univ .b-cta{background:#FBE6D2;border-left:1px solid #E0B79E}
+  .band-univ .b-price{color:#B03A2E}
+  .band-univ .b-btn{background:#B03A2E;color:#fff}
+  .band-univ .b-btn:hover{background:#8C2A20}
+  .band-eau{order:-3;grid-template-columns:370px 1fr 230px;min-height:180px;background:radial-gradient(120% 130% at 22% -10%,#FFF6EE,#F3E9E0 48%,#EDE0D4 100%);border:2px solid #9C4A3C;border-top:1px dashed rgba(156,74,60,.45);border-radius:0 0 18px 18px;margin-top:-10px}
+  .band-eau .b-price{font-size:44px!important;line-height:1;white-space:nowrap}
+  .band-eau .b-price small{font-size:12px!important;display:block;margin-top:5px;opacity:.8}
+  .band-eau .b-img{background:radial-gradient(120% 130% at 45% 20%,#FFFCF8,#F2E5D9 78%);padding:12px 14px}
+  .band-eau .eau-trio{display:flex;flex-direction:row;align-items:flex-end;justify-content:center;gap:14px}
+  .band-eau .eau-trio figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .band-eau .eau-trio img{max-height:126px;width:auto;object-fit:contain;filter:drop-shadow(0 8px 12px rgba(80,40,20,.2))}
+  .band-eau .eau-trio figcaption{font-size:10.5px;letter-spacing:.04em;color:#7E3A2E;font-weight:600;text-align:center;white-space:nowrap}
+  .band-eau .b-copy{background:transparent;color:var(--ink)}
+  .band-eau h3{color:#7E3A2E}
+  .band-eau h3 em{color:#9C4A3C}
+  .band-eau .bsub{color:#6E5647}
+  .band-eau .b-badge{background:#9C4A3C;color:#fff;border-color:#9C4A3C;font-weight:800;letter-spacing:.08em}
+  .band-eau .b-chip{background:#fff;color:#7E3A2E;border-color:#DCC3B4}
+  .band-eau .b-chip.hot{background:#9C4A3C;color:#fff;border-color:#9C4A3C;font-weight:700}
+  .band-eau .b-cta{background:#F3E9E0;border-left:1px solid #DCC3B4}
+  .band-eau .b-price{color:#9C4A3C}
+  .band-eau .b-btn{background:#9C4A3C;color:#fff}
+  .band-eau .b-btn:hover{background:#7E3A2E}
   .band-sampar{order:-2;grid-template-columns:300px 1fr 210px;min-height:180px;background:linear-gradient(135deg,#111 0%,#1C1611 55%,#241D14 100%);border:2px solid #C9A227}
   .band-sampar .b-img{background:radial-gradient(120% 130% at 30% 10%,#2A2318,#111 70%);flex-direction:column;gap:6px;position:relative}
   .band-sampar .sp-wm{font-family:var(--serif);font-size:38px;font-weight:700;letter-spacing:.14em;color:#F4E7D2;line-height:1}
@@ -656,7 +694,10 @@
 
   /* TABLETTE — bandeaux resserrés */
   @media(max-width:1100px) and (min-width:861px){
-    .band-sampar,.band-hydratis,.band-cata,.band-tina{grid-template-columns:230px 1fr 175px}
+    .band-eau{grid-template-columns:300px 1fr 175px}
+    .band-eau .eau-trio img{max-height:104px}
+    .band-eau .eau-trio{gap:9px}
+    .band-univ,.band-sampar,.band-hydratis,.band-cata,.band-tina{grid-template-columns:230px 1fr 175px}
     .band-sampar .sp-wm{font-size:30px}
     .band-sampar .sp-badge{font-size:10px;padding:6px 10px;white-space:normal;text-align:center}
     .b-copy{padding:14px 16px}
@@ -924,6 +965,52 @@
 <div class="wrap band-wrap">
   <div class="bandeaux">
 
+    <!-- BOUILLOTTES UNIVERSAL (Biosynex) -->
+    <div class="band band-univ" id="universal">
+      <div class="b-img univ-duo">
+        <img src="assets/univ_krokmou.png" alt="Bouillotte peluche Krokmou" />
+        <img src="assets/univ_furie.png" alt="Bouillotte peluche Furie Éclair" />
+      </div>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Précommande · Livraison début octobre 2026</span>
+        <h3>Bouillottes <em>Universal</em> — préparez l'hiver dès maintenant.</h3>
+        <p class="bsub">10 personnages DreamWorks déhoussables &amp; micro-ondables, sachet de billes d'argile, <b>convient dès la naissance</b>. Nouveauté 2026 : <b>Furie Éclair</b>. Livrées en boîte unitaire.</p>
+        <div class="b-chips">
+          <span class="b-chip hot">🎁 10+1 offerte · 13,64 € HT</span>
+          <span class="b-chip hot">🎁 20+3 offertes · 13,04 € HT</span>
+          <span class="b-chip">PLV offerte dès 20 peluches</span>
+          <span class="b-chip">Franco 180 € HT</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">13,04 €<small>HT / u · tarif 25 €</small></div>        <a class="b-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Bon de commande <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- BOUILLOTTES À EAU 2 L (Biosynex × Universal) -->
+    <div class="band band-eau" id="bouillottes-eau">
+      <div class="b-img eau-trio">
+        <figure><img src="assets/eau_nu.png" alt="Bouillotte à eau 2 L sans housse, beige &amp; rouge" /><figcaption>Sans housse</figcaption></figure>
+        <figure><img src="assets/eau_blancrouge.png" alt="Bouillotte à eau 2 L housse blanche &amp; rouge" /><figcaption>Blanche &amp; rouge</figcaption></figure>
+        <figure><img src="assets/eau_grisetaupe.png" alt="Bouillotte à eau 2 L housse grise &amp; taupe" /><figcaption>Grise &amp; taupe</figcaption></figure>
+      </div>
+      <div class="b-copy">
+        <span class="b-badge"><span class="dot"></span> Aussi au bon de commande · Livraison début octobre 2026</span>
+        <h3>Bouillottes <em>à eau 2 L</em> — le classique de l'hiver.</h3>
+        <p class="bsub">Caoutchouc naturel <b>conforme à la norme BS1970:2012</b>, housses <b>Oeko-Tex® lavables</b>. Vendues par lot de 2 : sans housse beige &amp; rouge, housse blanche &amp; rouge, ou housse grise &amp; taupe.</p>
+        <div class="b-chips">
+          <span class="b-chip hot">Sans housse · 3,50 € HT / u</span>
+          <span class="b-chip hot">Avec housse · 5,90 € HT / u</span>
+          <span class="b-chip">Lot de 2</span>
+          <span class="b-chip">Franco 180 € HT</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">3,50 €<small>HT / u · sans housse</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Bon de commande <span class="arr">→</span></a>
+      </div>
+    </div>
+
     <!-- 0. SAMPAR — NOUVEAU LABO -->
     <div class="band band-sampar" id="sampar">
       <div class="b-img">
@@ -995,7 +1082,7 @@
         <img src="assets/tina_produit.png" alt="Culotte Tina — Sisters Republic" />
       </div>
       <div class="b-copy">
-        <span class="b-badge"><span class="dot"></span> Remboursée dès sept. 2026 · Exclusivité officine</span>
+        <span class="b-badge"><span class="dot"></span> Remboursée dès oct. 2026 · Exclusivité officine</span>
         <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
