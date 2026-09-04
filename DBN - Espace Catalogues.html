@@ -321,12 +321,12 @@
 
 <script>
   // Catalogues réels — dossier Drive « DBN CATALOGUES »
-  const DRIVE = id => "https://drive.google.com/file/d/"+id+"/view";
+  const DRIVE = id => "https://drive.google.com/file/d/"+id+"/view?t="+Date.now();
   const DL = id => "https://drive.google.com/uc?export=download&id="+id;
   // fam = famille (G = Généralistes, C = Cosmétiques) · fo = ordre dans la famille
   const cats = [
     {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink", col:"#E0524A",   fam:"C", fo:7, fr:"200€", ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
-    {b:"Owari",        d:"2026",       o:202606, mb:"5 Mo",   id:"1SR20pXi7nNKxq76K8BPFnnCRlH2BOOP-", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, fr:"200€", ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
+    {b:"Owari",        d:"Sept. 2026", o:202609, mb:"158 Mo", id:"11Rzuo_XjOplws8rihdQ7_cgvj0YaDIiG", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, fr:"200€", nv:1, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
     {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky", col:"#34302B",   fam:"C", fo:5, fr:"130€", ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
     {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand", col:"#D96E8C",  fam:"C", fo:4, fr:"130€", ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
     {b:"Hydratis",     d:"Juin 2026",  o:202606, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky", col:"#1FA8BE",   fam:"G", fo:3, fr:"200€", ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
