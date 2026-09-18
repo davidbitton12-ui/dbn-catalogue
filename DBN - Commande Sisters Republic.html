@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Sisters Republic — David BITTON</title>
+<script src="analytics.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--blue-ink:#140A6B;--red:#E8442A;--coral:#E0524A;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+/* HEADER */
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in img{height:64px;width:auto}
+.top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .back{margin-left:auto;font-size:14px;font-weight:600}
+/* HERO */
+.head{padding:30px 0 22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--coral);padding:7px 14px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
+.head h1 em{font-style:italic;color:var(--coral)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:62ch;line-height:1.55;text-wrap:pretty}
+/* STEPS */
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--coral);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+/* LAYOUT */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
+.card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+/* PRODUCT TABLE */
+.prod{display:grid;grid-template-columns:1fr 132px;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.prod:last-of-type{border-bottom:none}
+.prod .pn{font-size:14.5px;font-weight:600}
+.prod .pm{font-size:12px;color:var(--slate);margin-top:2px}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--ivory)}
+.qty button{width:40px;height:44px;border:none;background:transparent;font-size:19px;font-weight:700;color:var(--coral);cursor:pointer;line-height:1}
+.qty button:hover{background:#FBEAE8}
+.qty input{width:52px;height:44px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+/* TIERS */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-top:18px}
+.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center;transition:all .2s}
+.tier.on{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 10px 22px -12px rgba(224,82,74,.75)}
+.tier .tq{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.tier .tp{font-family:var(--serif);font-size:18px;font-weight:700;margin-top:3px}
+.tier .tr{font-size:11px;margin-top:2px;opacity:.75}
+/* FIELDS */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-top:13px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--coral);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+/* SUMMARY */
+.sum{position:sticky;top:20px}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sum .line span:first-child{color:var(--slate)}
+.sum .line b{font-weight:700;white-space:nowrap}
+.sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--coral);line-height:1}
+.sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
+.sum .meta{font-size:12.5px;color:var(--slate);margin-top:12px;line-height:1.5;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.sum .meta b{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--coral);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:#c93f38}
+.btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
+.legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
+/* DONE */
+.done{display:none;background:#fff;border:2px solid var(--coral);border-radius:18px;padding:30px 28px;text-align:center}
+.done.on{display:block}
+.done .ic{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+.done h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:0 0 8px}
+.done p{font-size:14.5px;color:var(--slate);margin:0;line-height:1.55}
+@media(max-width:880px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sum{position:static}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .top-in img{height:52px}
+  .two{grid-template-columns:1fr}
+  .prod{grid-template-columns:1fr;gap:8px}
+  .qty{width:max-content}
+  .card{padding:18px 16px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+    <span class="wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    <a class="back" href="DBN - Espace Catalogues.html">← Retour aux catalogues</a>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Sisters Republic</span>
+  <h1>Culotte menstruelle <em>Tina</em> — gamme remboursée</h1>
+  <p>Sélectionnez vos quantités par taille : le tarif dégressif et la remise se calculent automatiquement. Votre commande m'est envoyée directement par e-mail, je vous confirme la disponibilité et la date de livraison.</p>
+  <div class="steps">
+    <div class="step"><b>1</b> Choisissez vos tailles</div>
+    <div class="step"><b>2</b> Vérifiez le récapitulatif</div>
+    <div class="step"><b>3</b> Envoyez la commande</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <h2>Culotte Tina — 8 tailles</h2>
+        <p class="hint">Coton bio GOTS · absorption Super (&gt; 20 ml) · Oeko-Tex Standard 100 · lavable + de 52 cycles. Prix public conseillé 19,00 € TTC.</p>
+        <div id="prodList"></div>
+
+        <div class="tiers" id="tiers">
+          <div class="tier" data-min="12"><div class="tq">Dès 12 u</div><div class="tp">12,96 €</div><div class="tr">tarif net</div></div>
+          <div class="tier" data-min="72"><div class="tq">Dès 72 u</div><div class="tp">12,31 €</div><div class="tr">RFA 5 %</div></div>
+          <div class="tier" data-min="96"><div class="tq">Dès 96 u</div><div class="tp">12,05 €</div><div class="tr">RFA 7 %</div></div>
+          <div class="tier" data-min="120"><div class="tq">Dès 120 u</div><div class="tp">11,66 €</div><div class="tr">RFA 10 %</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="two">
+          <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <h2>Récapitulatif</h2>
+        <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 5,5 %</div>
+        <div class="meta" id="metaBox">Minimum de commande : <b>12 unités</b>. Franco de port <b>200 € HT</b>.</div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+        <p class="legal">Commande transmise à David BITTON · aucun paiement en ligne. Tarifs indicatifs confirmés à la validation.</p>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Sisters Republic — Culotte Tina" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="ic">✓</div>
+    <h2>Commande envoyée, merci !</h2>
+    <p>Je reviens vers vous très rapidement pour confirmer la disponibilité et la date de livraison.<br />À bientôt — David BITTON · 06 78 00 78 32</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SIZES=['10/11 ans','12/13 ans','XS (34)','S (36)','M (38)','L (40)','XL (42)','2XL (44)'];
+  var TIERS=[{min:120,price:11.66,rfa:'RFA 10 %'},{min:96,price:12.05,rfa:'RFA 7 %'},{min:72,price:12.31,rfa:'RFA 5 %'},{min:12,price:12.96,rfa:'tarif net'}];
+  var MIN=12, TVA=1.055;
+  var list=document.getElementById('prodList');
+  var qtys=SIZES.map(function(){return 0;});
+
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+
+  SIZES.forEach(function(s,i){
+    var row=document.createElement('div');
+    row.className='prod';
+    row.innerHTML='<div><div class="pn">Culotte Tina — '+s+'</div><div class="pm">Absorption Super · noir</div></div>'+
+      '<div class="qty"><button type="button" aria-label="Retirer">−</button>'+
+      '<input type="number" min="0" step="1" value="0" aria-label="Quantité '+s+'" />'+
+      '<button type="button" aria-label="Ajouter">+</button></div>';
+    var btns=row.querySelectorAll('button'), inp=row.querySelector('input');
+    btns[0].addEventListener('click',function(){inp.value=Math.max(0,(parseInt(inp.value,10)||0)-1);sync(i,inp);});
+    btns[1].addEventListener('click',function(){inp.value=(parseInt(inp.value,10)||0)+1;sync(i,inp);});
+    inp.addEventListener('input',function(){sync(i,inp);});
+    list.appendChild(row);
+  });
+
+  function sync(i,inp){
+    var v=parseInt(inp.value,10); if(isNaN(v)||v<0){v=0;}
+    inp.value=v; qtys[i]=v; render();
+  }
+
+  function tierFor(total){
+    for(var i=0;i<TIERS.length;i++){ if(total>=TIERS[i].min) return TIERS[i]; }
+    return null;
+  }
+
+  function render(){
+    var total=qtys.reduce(function(a,b){return a+b;},0);
+    var t=tierFor(total);
+    var unit=t?t.price:TIERS[TIERS.length-1].price;
+    var ht=total*unit;
+
+    document.querySelectorAll('#tiers .tier').forEach(function(el){
+      el.classList.toggle('on', t && parseInt(el.dataset.min,10)===t.min);
+    });
+
+    var box=document.getElementById('sumLines'), html='', recap='';
+    if(total===0){
+      box.innerHTML='<p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p>';
+    }else{
+      SIZES.forEach(function(s,i){
+        if(qtys[i]>0){
+          html+='<div class="line"><span>Tina '+s+'</span><b>'+qtys[i]+' u</b></div>';
+          recap+='- Culotte Tina '+s+' : '+qtys[i]+' u\n';
+        }
+      });
+      html+='<div class="line"><span>Total unités</span><b>'+total+' u</b></div>';
+      html+='<div class="line"><span>Prix unitaire ('+(t?t.rfa:'—')+')</span><b>'+eur(unit)+' HT</b></div>';
+      box.innerHTML=html;
+      recap+='\nTotal : '+total+' unités\nPrix unitaire : '+eur(unit)+' HT ('+(t?t.rfa:'')+')\nTotal HT : '+eur(ht);
+    }
+
+    document.getElementById('totHT').textContent=eur(ht);
+    document.getElementById('totTTC').textContent='soit '+eur(ht*TVA)+' TTC · TVA 5,5 %';
+
+    var meta=document.getElementById('metaBox'), btn=document.getElementById('sendBtn');
+    if(total===0){
+      meta.innerHTML='Minimum de commande : <b>12 unités</b>. Franco de port <b>200 € HT</b>.';
+      btn.disabled=true;
+    }else if(total<MIN){
+      meta.innerHTML='Encore <b>'+(MIN-total)+' unité(s)</b> pour atteindre le minimum de commande de 12 unités.';
+      btn.disabled=true;
+    }else{
+      var nextT=null;
+      for(var i=TIERS.length-1;i>=0;i--){ if(TIERS[i].min>total){ nextT=TIERS[i]; break; } }
+      meta.innerHTML=nextT
+        ? 'Ajoutez <b>'+(nextT.min-total)+' u</b> pour passer à <b>'+eur(nextT.price)+' HT/u</b> ('+nextT.rfa+').'
+        : 'Meilleur tarif atteint : <b>'+eur(unit)+' HT/u</b> avec RFA 10 %.';
+      if(ht<200){ meta.innerHTML+='<br />Franco de port à 200 € HT — il manque <b>'+eur(200-ht)+'</b>.'; }
+      btn.disabled=false;
+    }
+
+    document.getElementById('recapField').value=recap;
+    document.getElementById('totalField').value=eur(ht);
+  }
+
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, btn=document.getElementById('sendBtn');
+    btn.disabled=true; btn.textContent='Envoi en cours…';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+      .then(function(r){
+        if(!r.ok) throw new Error('fail');
+        f.style.display='none';
+        document.getElementById('doneBox').classList.add('on');
+        if(window.gtag) gtag('event','commande_envoyee',{labo:'Sisters Republic'});
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='Envoyer ma commande →';
+        alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");
+      });
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>

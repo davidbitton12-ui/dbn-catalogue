@@ -655,6 +655,49 @@
   .bxevent:hover,.bxevent:focus{color:inherit}
   @media(prefers-reduced-motion:reduce){.bxevent,.bxe-tag{animation:none}.bxe-flare{display:none}}
   @media(max-width:600px){.bxe-in{padding:22px 16px;gap:10px}.bxe-cta{font-size:15px;padding:12px 20px}}
+  /* OOPS OPTICS — nouveau labo */
+  .band-oops{order:-6;grid-template-columns:470px 1fr 236px;min-height:186px;background:radial-gradient(120% 130% at 76% -12%,#EAF6F6,#DCEEEE 46%,#CFE6E5 100%);border:2px solid #2B7A78}
+  .band-oops .b-img{background:#fff;padding:0;overflow:hidden}
+  .band-oops .b-img img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block}
+  .band-oops .b-copy{background:transparent;color:var(--ink);padding:14px 20px}
+  .band-oops .bsub{color:#4A5A59;max-width:none}
+  .band-oops .oops-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .band-oops .oops-head h3{margin:0}
+  .band-oops .b-copy{background:transparent;color:var(--ink)}
+  .band-oops h3{color:#1F5957}
+  .band-oops h3 em{color:#2B7A78}
+  .band-oops .b-badge{background:#E8442A;color:#fff;border-color:#E8442A;font-weight:800;letter-spacing:.1em;animation:oops-pulse 1.7s ease-in-out infinite}
+  @keyframes oops-pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,68,42,.55)}50%{box-shadow:0 0 0 9px rgba(232,68,42,0)}}
+  @media(prefers-reduced-motion:reduce){.band-oops .b-badge{animation:none}}
+  .band-oops .b-chip{background:#fff;color:#1F5957;border-color:#9CC9C8}
+  .band-oops .b-chip.hot{background:#2B7A78;color:#fff;border-color:#2B7A78;font-weight:700}
+  .band-oops .b-cta{background:linear-gradient(160deg,#FFF3F0,#FFE4DD);border-left:2px dashed #E8442A;padding:16px 18px;gap:7px}
+  .band-oops .b-price{color:#1F5957;font-size:30px!important;line-height:1;white-space:nowrap}
+  .band-oops .b-price small{font-size:11px!important;display:block;margin-top:3px;opacity:.85}
+  .band-oops .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
+  @keyframes cmd-blink{0%,49%{background:#1F5957;color:#fff}50%,100%{background:#E8442A;color:#fff}}
+  @media(prefers-reduced-motion:reduce){.band-oops .cmd-new{animation:none}}
+  .band-oops .cmd-new::before{content:"✨"}
+  .band-oops .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:#2B7A78;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:10px;margin-bottom:2px}
+  .band-oops .b-cat:hover{background:#1F5957;color:#fff}
+  .band-oops .b-cat .arr{transition:transform .18s}
+  .band-oops .b-cat:hover .arr{transform:translateX(3px)}
+  .band-oops .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
+  .band-oops .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
+  .band-oops .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
+  @keyframes cmd-beat{0%,100%{transform:scale(1)}50%{transform:scale(1.075)}}
+  @keyframes cmd-glow{0%,100%{box-shadow:0 12px 26px -10px rgba(232,68,42,.85),0 0 0 0 rgba(232,68,42,.6)}55%{box-shadow:0 12px 30px -8px rgba(232,68,42,1),0 0 0 14px rgba(232,68,42,0)}}
+  @keyframes cmd-shine{0%{left:-60%}55%,100%{left:125%}}
+  @media(prefers-reduced-motion:reduce){.band-oops .b-btn{animation:none}.band-oops .b-btn::after{display:none}}
+  .band-oops .b-alt{display:block;margin-top:9px;font-size:11.5px;font-weight:600;color:#1F5957;text-align:center;opacity:.72;text-decoration:none}
+  .band-oops .b-alt:hover{color:#2B7A78;opacity:1}
+  @media(max-width:1100px) and (min-width:861px){.band-oops{grid-template-columns:330px 1fr 210px}}
+  @media(max-width:860px){
+    .band-oops{padding:0}
+    .band-oops .b-img{min-height:150px}
+    .band-oops .b-cta{border-left:none;border-top:2px dashed #E8442A}
+    .band-oops .b-price{font-size:28px!important}
+  }
   .band-bxnew{order:-5;display:block;padding:18px 26px 14px;position:relative;min-height:0;background:radial-gradient(120% 130% at 80% -10%,#EFFBF2,#DFF4E6 45%,#D3EFDC 100%);border:2px solid #2FA84F}
   .band-bxnew .b-cta{position:absolute;top:16px;right:22px;background:transparent;border-left:none;padding:0;margin:0;display:flex;justify-content:flex-end}
   .band-bxnew .sw-duo{padding:4px 0 0;align-items:end}
@@ -1071,6 +1114,30 @@
 <!-- MISES EN AVANT — 4 bandeaux -->
 <div class="wrap band-wrap">
   <div class="bandeaux">
+
+    <!-- OOPS OPTICS — NOUVEAU LABO -->
+    <div class="band band-oops" id="oops">
+      <div class="b-img">
+        <img src="assets/oops_hero.jpg" alt="Lunettes de lecture OOPS Optics" />
+      </div>
+      <div class="b-copy">
+        <div class="oops-head">
+          <span class="b-badge"><span class="dot"></span> Nouveau laboratoire</span>
+          <h3><em>OOPS Optics</em></h3>
+        </div>
+        <p class="bsub">Les lunettes de lecture qui font vendre. <b>10 modèles, 40 références</b> — Femme, Homme &amp; Mixte, corrections de +1,00 à +3,50. Pochette et chiffonnette incluses. Commande <b>à l'unité, au choix</b>.</p>        <div class="b-chips">
+          <span class="b-chip">40 références</span>
+          <span class="b-chip">Franco 150 € HT</span>
+          <span class="b-chip">Pochette + chiffonnette</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">2,95 €<small>HT / u · prix unique</small></div>
+        <a class="b-cat" href="https://drive.google.com/file/d/1XNftMrGd7sHcTaE4yPf8Fc4ywLS-PTes/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <span class="cmd-new">Nouveau</span>
+        <a class="b-btn" href="DBN - Commande OOPS Optics.html">Commander ici <span class="arr">→</span></a>
+      </div>
+    </div>
 
     <!-- BOUILLOTTES UNIVERSAL (Biosynex) -->
     <div class="band band-univ" id="universal">

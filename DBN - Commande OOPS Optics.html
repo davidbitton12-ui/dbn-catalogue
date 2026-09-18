@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande OOPS Optics — David BITTON</title>
+<script src="analytics.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--teal:#2B7A78;--teal-dk:#1F5957;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in img{height:64px;width:auto}
+.top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .back{margin-left:auto;font-size:14px;font-weight:600}
+.head{padding:30px 0 22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
+.head h1 em{font-style:italic;color:var(--teal)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:64ch;line-height:1.55;text-wrap:pretty}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
+.card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+/* correction picker */
+.corrs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.corr{background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--slate);cursor:pointer;transition:all .18s}
+.corr:hover{border-color:var(--teal);color:var(--teal)}
+.corr.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(43,122,120,.8)}
+.corr-note{font-size:12.5px;color:var(--slate);margin:10px 0 0;line-height:1.45;background:var(--ivory);border-radius:10px;padding:10px 12px}
+.corr-note b{color:var(--ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-top:12px}
+.term{background:#EAF5F4;border:1px solid #BEDBD9;border-radius:12px;padding:10px 13px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.75}
+.term .tv{display:block;font-size:14.5px;font-weight:700;color:var(--teal-d);margin-top:3px}
+/* models */
+.model{border-bottom:1px solid var(--line);padding:16px 0}
+.model:last-of-type{border-bottom:none;padding-bottom:4px}
+.mh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.mh .mn{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.02em}
+.mh .mc{font-size:12px;color:var(--slate)}
+.mh .mt{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--teal)}
+.mh .gtag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;line-height:1;box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:10px;align-items:start}
+.cItem{background:var(--ivory);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.cItem.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ciHead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:7px 11px 7px 8px;cursor:pointer;font-family:var(--sans);text-align:left}
+.ciHead:hover{background:rgba(43,122,120,.07)}
+.ciHead .cn{font-size:14px;font-weight:600;color:var(--ink)}
+.ciHead .cSum{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--teal-d);opacity:0}
+.ciHead .cSum.on{opacity:1}
+.ciHead .chev{font-size:12px;color:var(--slate);transition:transform .2s}
+.cItem.open .ciHead .chev{transform:rotate(180deg)}
+.corrPanel{display:none;padding:4px 11px 11px;border-top:1px dashed var(--line);background:#fff}
+.cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
+.crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
+.crRow.has{background:#EAF6F1;border-color:var(--teal)}
+.crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
+.crRow .crL i{display:block;font-style:normal;font-size:9px;font-weight:600;color:var(--slate);letter-spacing:0;margin-top:1px;white-space:nowrap}
+.crRow .qty{border-radius:9px;flex:none}
+.crRow .qty button{width:26px;height:32px;font-size:15px}
+.crRow .qty input{width:32px;height:32px;font-size:13.5px}
+.cItem.has > .ciHead{background:#EAF5F4}
+.cItem .thumb{position:relative;width:90px;height:48px;flex:none;border-radius:7px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cItem .thumb .zi{position:absolute;right:3px;bottom:2px;font-style:normal;font-size:11px;line-height:1;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 4px;pointer-events:none}
+.cItem .thumb.none .zi{display:none}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:14px;max-width:min(1100px,96vw)}
+.zbox img{display:block;width:100%;height:auto;max-height:82vh;object-fit:contain;border-radius:12px}
+.zbox .zl{text-align:center;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin-top:12px}
+.zbox .zx{position:absolute;top:-13px;right:-13px;width:34px;height:34px;border:none;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.zbox .zx:hover{background:var(--teal-d)}
+.cItem .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cItem .thumb.none{background:var(--sand);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--slate);text-align:center;line-height:1.2;padding:2px}
+.cItem .cn{font-size:13.5px;font-weight:600;min-width:0}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:34px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;line-height:1}
+.qty button:hover{background:#DCEDEC}
+.qty input{width:44px;height:38px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-top:13px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+.sum{position:sticky;top:20px}
+.grid > aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sum .line span:first-child{color:var(--slate);min-width:0}
+.eanL{display:block;font-style:normal;font-size:11px;color:var(--slate);letter-spacing:.03em;margin-top:2px}
+.sum .line b{font-weight:700;white-space:nowrap}
+.sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--teal);line-height:1}
+.sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
+.fbar{margin-top:13px;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .ft b{color:var(--ink)}
+.fbar .track{height:7px;border-radius:999px;background:#E4DACB;margin-top:8px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .fill{background:#2E9E7A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-dk)}
+.btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
+.legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
+.done{display:none;margin-bottom:60px}
+.done.on{display:block}
+/* bon de commande client */
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(31,89,87,.5)}
+.bc-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-brand{display:flex;align-items:center;gap:12px}
+.bc-brand img{height:52px;width:auto}
+.bc-brand b{display:block;font-size:16px;font-weight:700;color:var(--blue);line-height:1.15}
+.bc-brand span{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.bc-ok{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.bc-tick{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px}
+.bc-hero{padding:32px 26px 28px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#EAF6F6,#DCEEEE 55%,#CFE6E5 100%)}
+.bc-eye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.72);border-radius:999px;padding:6px 14px}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--teal-d);margin:14px 0 0;line-height:1.1}
+.bc-hero h2 em{font-style:italic;color:var(--teal)}
+.bc-hero p{font-size:15px;color:#3F4F4E;margin:12px auto 0;max-width:56ch;line-height:1.6}
+.bc-body{padding:26px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-bottom:20px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:11px 14px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);background:#fff}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .tag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 10px;flex:none}
+.bc-row .mn{font-size:14.5px;font-weight:700;white-space:nowrap}
+.bc-row .cn{font-size:13px;color:var(--slate);white-space:nowrap}
+.bc-row .cr{font-size:12.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bc-row .ce{font-size:11.5px;color:var(--slate);letter-spacing:.03em;white-space:nowrap}
+.bc-row > span:nth-child(2){display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:18px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:27px}
+.bc-note{margin-top:16px;font-size:13.5px;line-height:1.55;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:13px;padding:13px 15px;color:#8C2A20}
+.bc-note b{color:#6b1f18}
+.bc-note.ok{background:#EAF6F1;border-color:#B7DFCE;color:#1F5957}
+.bc-note.ok b{color:#14453F}
+.bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
+.bc-contact{font-size:13.5px;color:var(--slate)}
+.bc-contact b{color:var(--ink)}
+.bc-acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:11px 18px;cursor:pointer}
+.bc-print:hover{background:var(--teal-d)}
+.bc-home{font-size:13px;font-weight:600;color:var(--teal-d)}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.head,#orderForm{display:none!important}
+  .bc{box-shadow:none;border-radius:0;border:none}
+  .bc-acts{display:none}
+}
+@media(max-width:600px){
+  .bc-top,.bc-foot{padding:14px 16px}
+  .bc-hero{padding:24px 16px 22px}
+  .bc-body{padding:18px 16px}
+  .bc-ok{margin-left:0}
+  .bc-acts{margin-left:0;width:100%}
+  .bc-print{flex:1}
+}
+@media(max-width:880px){.grid{grid-template-columns:minmax(0,1fr);gap:20px}.sum{position:static}}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .top-in img{height:52px}
+  .two{grid-template-columns:1fr}
+  .card{padding:18px 16px}
+  .colors{grid-template-columns:1fr}
+  .corr{padding:9px 13px;font-size:13.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+    <span class="wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    <a class="back" href="DBN - Espace Catalogues.html">← Retour aux catalogues</a>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · OOPS Optics</span>
+  <h1>Lunettes de <em>lecture</em> — collection 2026</h1>
+  <p>10 modèles, 4 coloris chacun, à l'unité et au choix. Prix unique <b>2,95 € HT</b>, pochette et chiffonnette incluses. Cliquez sur un coloris pour choisir vos corrections et quantités : le total et le franco se calculent automatiquement.</p>
+  <div class="steps">
+    <div class="step"><b>1</b> Choisissez vos modèles</div>
+    <div class="step"><b>2</b> Corrections &amp; quantités</div>
+    <div class="step"><b>3</b> Envoyez la commande</div>
+    <div class="step"><b>4</b> Confirmation après vérification</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <h2>Comment commander</h2>
+        <p class="hint">Cliquez sur un coloris pour ouvrir ses <b>corrections</b> (+1,00 à +3,50) et saisir les quantités souhaitées, correction par correction. Prix unique <b>2,95 € HT</b> quelle que soit la référence. 🔍 <b>Cliquez sur une photo pour l'agrandir.</b></p>
+        <p class="corr-note">Les <b>codes-barres EAN 13 sont identiques</b> pour tous les modèles et coloris — un code par correction.</p>
+        <div class="terms">
+          <div class="term"><span class="tk">Règlement</span><span class="tv">LCR à 30 jours</span></div>
+          <div class="term"><span class="tk">Livraison</span><span class="tv">3 à 4 jours ouvrés</span></div>
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">150 € HT</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Modèles &amp; coloris</h2>
+        <p class="hint">Verres traités anti-reflet · monture légère · 2,95 € HT l'unité, quelle que soit la quantité. Chaque modèle porte son <b>identification de gamme</b> : <span class="gtag" style="background:#C2557E">Femme</span> <span class="gtag" style="background:#7A6FB0">Mixte</span> <span class="gtag" style="background:#2B6E9E">Homme</span></p>
+        <div id="modelList"></div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, autres corrections, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <h2>Récapitulatif</h2>
+        <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos modèles pour voir le total.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 20 %</div>
+        <div class="fbar" id="fbar">
+          <div class="ft" id="fTxt">Franco de port à <b>150 € HT</b>.</div>
+          <div class="track"><div class="fill" id="fFill"></div></div>
+        </div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+        <p class="legal">Commande transmise à David BITTON · aucun paiement en ligne. Tarifs indicatifs confirmés à la validation.</p>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande OOPS Optics — Lunettes de lecture" />
+    <input type="hidden" name="correction" id="corrField" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+    <input type="hidden" name="bon_de_commande" id="bonField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-top">
+        <div class="bc-brand">
+          <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+          <div><b>David BITTON</b><span>DBN Développement</span></div>
+        </div>
+        <div class="bc-ok"><span class="bc-tick">✓</span> Commande enregistrée</div>
+      </div>
+      <div class="bc-hero">
+        <span class="bc-eye">OOPS Optics · Lunettes de lecture</span>
+        <h2>Merci <em id="bcName">!</em></h2>
+        <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Livraison prévue sous <b>3 à 4 jours ouvrés</b>. Merci de votre confiance !</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Prix unitaire</span><b>2,95 € HT</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 20 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-terms">
+          <span><b>Règlement</b> LCR à 30 jours</span>
+          <span><b>Livraison</b> 3 à 4 jours ouvrés</span>
+          <span><b>Franco</b> 150 € HT</span>
+        </div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-contact">Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></div>
+        <div class="bc-acts">
+          <button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button>
+          <a class="bc-home" href="DBN - Espace Catalogues.html">Retour aux catalogues</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PRICE=2.95, FRANCO=150, TVA=1.20;
+  var CORRS=['+1,00','+1,50','+2,00','+2,50','+3,00','+3,50'];
+  var MODELS=[
+    {n:'JADE',   s:'jade',   g:'F', c:['Turquoise','Noire','Rose','Terracota']},
+    {n:'RUBIS',  s:'rubis',  g:'F', c:['Lagoon','Néon','Léopard','Tropical']},
+    {n:'ONYX',   s:'onyx',   g:'F', c:['Prune','Bleu','Verte','Noire']},
+    {n:'SAPHIR', s:'saphir', g:'F', c:['Sable','Rose','Noire','Turquoise']},
+    {n:'AMBRE',  s:'ambre',  g:'F', c:['Bordeaux','Turquoise','Rose','Violette']},
+    {n:'QUARTZ', s:'quartz', g:'M', c:['Bleu','Arlequin','Noire et Demi','Nébuleuse']},
+    {n:'AGATE',  s:'agate',  g:'M', c:['Olive','Noire','Tortoise','Bordeaux']},
+    {n:'TOPAZE', s:'topaze', g:'H', c:['Brume','Noire brillant','Noire mat','Crystal']},
+    {n:'LAPIS',  s:'lapis',  g:'H', c:['Noire','Tortoise','Crystal','Grise']},
+    {n:'JASPE',  s:'jaspe',  g:'H', c:['Noire','Verte','Bleue','Marron']}
+  ];
+  var GENDER={F:{l:'Femme',c:'#B0234F'},M:{l:'Mixte',c:'#1F5957'},H:{l:'Homme',c:'#14489C'}};
+  function slug(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var EANS={'+1,00':'3770042179787','+1,50':'3770042179008','+2,00':'3770042179022','+2,50':'3770042179039','+3,00':'3770042179046','+3,50':'3770042179053'};
+  function ean(cr){return EANS[cr]||'';}
+  var corr=null, qty={};
+
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+
+  var cbox=null;
+
+  var mbox=document.getElementById('modelList');
+  MODELS.forEach(function(m,mi){
+    var d=document.createElement('div');
+    d.className='model';
+    var g=GENDER[m.g];
+    var html='<div class="mh"><span class="mn">'+m.n+'</span>'+
+      '<span class="gtag" style="background:'+g.c+'">'+g.l+'</span>'+
+      '<span class="mc">4 coloris · 2,95 € HT</span><span class="mt" id="mt'+mi+'"></span></div><div class="colors">';
+    m.c.forEach(function(col,ci){
+      var src='assets/oops_'+m.s+'_'+slug(col)+'.jpg';
+      var cid=mi+'_'+ci;
+      html+='<div class="cItem" id="ci'+cid+'">'+
+        '<button type="button" class="ciHead" data-cid="'+cid+'">'+
+        '<span class="thumb" data-zoom="'+src+'" data-lbl="'+m.n+' · '+col+'" title="Cliquez pour agrandir"><img src="'+src+'" alt="'+m.n+' '+col+'" loading="lazy" '+
+        'onerror="this.parentNode.classList.add(&quot;none&quot;);this.parentNode.textContent=&quot;PHOTO&quot;;" /><i class="zi">⌕</i></span>'+
+        '<span class="cn">'+col+'</span>'+
+        '<span class="cSum" id="cs'+cid+'"></span>'+
+        '<span class="chev">▾</span></button>'+
+        '<div class="corrPanel" id="cp'+cid+'">'+
+        CORRS.map(function(cr){
+          return '<div class="crRow"><span class="crL">'+cr+'</span>'+
+            '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
+            '<input type="number" min="0" step="1" value="0" aria-label="'+m.n+' '+col+' '+cr+'" />'+
+            '<button type="button" data-a="+" aria-label="Ajouter">+</button></div></div>';
+        }).join('')+
+        '</div></div>';
+    });
+    html+='</div>';
+    d.innerHTML=html;
+    m.c.forEach(function(col,ci){
+      var cid=mi+'_'+ci;
+      var item=d.querySelector('#ci'+cid);
+      var panel=item.querySelector('#cp'+cid);
+      item.querySelector('.ciHead').addEventListener('click',function(e){
+        var th=e.target.closest('.thumb');
+        if(th && th.dataset.zoom){e.stopPropagation();openZoom(th.dataset.zoom,th.dataset.lbl);return;}
+        item.classList.toggle('open');
+      });
+      panel.querySelectorAll('.crRow').forEach(function(row,ri){
+        var cr=CORRS[ri];
+        var inp=row.querySelector('input');
+        var key=m.n+'|'+col+'|'+cr;
+        row.querySelectorAll('button').forEach(function(b){
+          b.addEventListener('click',function(){
+            var v=parseInt(inp.value,10)||0;
+            inp.value = b.dataset.a==='+' ? v+1 : Math.max(0,v-1);
+            set(key,inp,item,mi,cid);
+          });
+        });
+        inp.addEventListener('input',function(){set(key,inp,item,mi,cid);});
+      });
+    });
+    mbox.appendChild(d);
+  });
+
+  function set(key,inp,item,mi,cid){
+    var v=parseInt(inp.value,10); if(isNaN(v)||v<0){v=0;}
+    inp.value=v; qty[key]=v;
+    inp.closest('.crRow').classList.toggle('has',v>0);
+    render();
+  }
+
+  function render(){
+    var total=0, html='', recap='';
+    MODELS.forEach(function(m,mi){
+      var sub=0;
+      m.c.forEach(function(col,ci){
+        var csum=0;
+        CORRS.forEach(function(cr){
+          var v=qty[m.n+'|'+col+'|'+cr]||0;
+          if(v>0){
+            csum+=v;
+            html+='<div class="line"><span>'+m.n+' '+col+' <em style="font-style:normal;color:var(--teal-d);font-weight:700">'+cr+'</em>'+(ean(cr)?'<em class="eanL">EAN '+ean(cr)+'</em>':'')+'</span><b>'+v+' u</b></div>';
+            recap+='- '+m.n+' ('+GENDER[m.g].l+') '+col+' · '+cr+(ean(cr)?' · EAN '+ean(cr):'')+' : '+v+' u\n';
+          }
+        });
+        sub+=csum;
+        var cs=document.getElementById('cs'+mi+'_'+ci);
+        if(cs){cs.textContent=csum>0?csum+' u':''; cs.classList.toggle('on',csum>0);}
+        var it=document.getElementById('ci'+mi+'_'+ci);
+        if(it) it.classList.toggle('has',csum>0);
+      });
+      total+=sub;
+      var mt=document.getElementById('mt'+mi);
+      if(mt) mt.textContent = sub>0 ? sub+' u' : '';
+    });
+
+    var ht=total*PRICE;
+    var box=document.getElementById('sumLines');
+    if(total===0){
+      box.innerHTML='<p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos modèles pour voir le total.</p>';
+    }else{
+      var head='';
+      box.innerHTML=head+html+'<div class="line"><span>Total unités</span><b>'+total+' u</b></div>'+
+        '<div class="line"><span>Prix unitaire</span><b>'+eur(PRICE)+' HT</b></div>';
+    }
+
+    document.getElementById('totHT').textContent=eur(ht);
+    document.getElementById('totTTC').textContent='soit '+eur(ht*TVA)+' TTC · TVA 20 %';
+
+    var fb=document.getElementById('fbar'), ft=document.getElementById('fTxt'), fill=document.getElementById('fFill');
+    var pct=Math.min(100,(ht/FRANCO)*100);
+    fill.style.width=pct+'%';
+    if(ht>=FRANCO){
+      fb.classList.add('ok');
+      ft.innerHTML='✓ <b>Franco de port atteint</b> (150 € HT).';
+    }else{
+      fb.classList.remove('ok');
+      ft.innerHTML= total===0
+        ? 'Franco de port à <b>150 € HT</b> — soit 51 unités.'
+        : 'Il manque <b>'+eur(FRANCO-ht)+'</b> pour le franco de port (150 € HT).';
+    }
+
+    var btn=document.getElementById('sendBtn');
+    btn.disabled = !(total>0);
+    btn.textContent = 'Envoyer ma commande →';
+
+    document.getElementById('corrField').value='voir détail par référence';
+    document.getElementById('recapField').value=recap+'\nTotal : '+total+' unités\nTotal HT : '+eur(ht);
+    document.getElementById('totalField').value=eur(ht);
+
+    var em=document.querySelector('[name="email"]');
+    document.getElementById('bonField').value=buildBon(corr,recap,total,ht);
+  }
+
+  function buildBon(corr,recap,total,ht){
+    function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+    var d=new Date();
+    var date=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();
+    var L=[];
+    L.push('BON DE COMMANDE — OOPS OPTICS');
+    L.push('Lunettes de lecture · collection 2026');
+    L.push('Date : '+date);
+    L.push('');
+    L.push('--- OFFICINE ---');
+    L.push('Officine : '+v('officine'));
+    L.push('Adresse : '+v('adresse'));
+    L.push('Ville : '+v('code_postal')+' '+v('ville'));
+    L.push('Contact : '+v('contact'));
+    L.push('Téléphone : '+v('telephone'));
+    L.push('E-mail : '+v('email'));
+    L.push('');
+    L.push('--- COMMANDE ---');
+    L.push('');
+    L.push(recap.trim()||'(aucun modèle)');
+    L.push('');
+    L.push('Total : '+total+' unités');
+    L.push('Prix unitaire : 2,95 € HT (prix unique)');
+    L.push('TOTAL HT : '+eur(ht));
+    L.push('TVA 20 % : '+eur(ht*0.2));
+    L.push('TOTAL TTC : '+eur(ht*1.2));
+    L.push('Franco de port : '+(ht>=FRANCO?'ATTEINT (150 € HT)':'non atteint — il manque '+eur(FRANCO-ht)));
+    L.push('');
+    L.push('--- CONDITIONS ---');
+    L.push('Règlement : LCR à 30 jours');
+    L.push('Livraison : 3 à 4 jours ouvrés');
+    var msg=v('message');
+    if(msg){L.push('');L.push('--- MESSAGE ---');L.push(msg);}
+    L.push('');
+    L.push('Pochette et chiffonnette incluses · commande à l\'unité, au choix.');
+    L.push('Commande transmise à David BITTON — DBN Développement');
+    L.push('06 78 00 78 32 · dbitton@dbn-pharma.fr');
+    return L.join('\n');
+  }
+
+  function buildPayload(total,ht){
+    function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+    var lignes=[];
+    MODELS.forEach(function(m){
+      m.c.forEach(function(col){
+        CORRS.forEach(function(cr){
+          var q=qty[m.n+'|'+col+'|'+cr]||0;
+          if(q>0) lignes.push({modele:m.n,coloris:col,correction:cr,ean:ean(cr),qte:q});
+        });
+      });
+    });
+    return {
+      labo:'OOPS Optics', officine:v('officine'), adresse:v('adresse'),
+      cp:v('code_postal'), ville:v('ville'), contact:v('contact'),
+      tel:v('telephone'), email:v('email'), message:v('message'),
+      lignes:lignes, total:total, totalHT:eur(ht), tva:eur(ht*0.2),
+      totalTTC:eur(ht*TVA),
+      franco:(ht>=FRANCO?'atteint (150 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))
+    };
+  }
+
+  function gwSend(data,done,fail){
+    if(!GATEWAY_BREVO){ fail(); return; }
+    var cb='dbnCb'+Date.now();
+    var s=document.createElement('script');
+    var to=setTimeout(function(){cleanup();fail();},15000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, btn=document.getElementById('sendBtn');
+    render();
+    btn.disabled=true; btn.textContent='Envoi en cours…';
+
+    var total=0, ht=0;
+    MODELS.forEach(function(m){m.c.forEach(function(col){CORRS.forEach(function(cr){total+=qty[m.n+'|'+col+'|'+cr]||0;});});});
+    ht=total*PRICE;
+    var data=buildPayload(total,ht);
+
+    function success(){
+      fillBon();
+      f.style.display='none';
+      document.getElementById('doneBox').classList.add('on');
+      window.scrollTo(0,0);
+      if(window.gtag) gtag('event','commande_envoyee',{labo:'OOPS Optics'});
+    }
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){ if(!r.ok) throw new Error('fail'); success(); })
+        .catch(function(){
+          btn.disabled=false; btn.textContent='Envoyer ma commande →';
+          alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");
+        });
+    }
+    gwSend(data, success, viaFormspree);
+  });
+
+  function openZoom(src,lbl){
+    var ov=document.getElementById('zoomOv');
+    ov.querySelector('img').src=src;
+    ov.querySelector('.zl').textContent=lbl||'';
+    ov.classList.add('on');
+  }
+  (function(){
+    var ov=document.createElement('div');
+    ov.id='zoomOv'; ov.className='zoomOv';
+    ov.innerHTML='<div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div></div>';
+    document.body.appendChild(ov);
+    function close(){ov.classList.remove('on');}
+    ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  })();
+
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  window.__fillBon=function(){fillBon();};
+
+  function fillBon(){
+    function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+    var d=new Date();
+    var date=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent=first?(first+' !'):'!';
+
+    document.getElementById('bcMeta').innerHTML=
+      mi('Officine',v('officine'))+
+      mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+
+      mi('Contact',v('contact')+'<br />'+v('telephone'))+
+      mi('Date',date);
+
+    var rows='', total=0;
+    MODELS.forEach(function(m){
+      m.c.forEach(function(col){
+        CORRS.forEach(function(cr){
+          var q=qty[m.n+'|'+col+'|'+cr]||0;
+          if(q>0){
+            total+=q;
+            var g=GENDER[m.g];
+            rows+='<div class="bc-row"><span class="tag" style="background:'+g.c+'">'+g.l+'</span>'+
+                  '<span><span class="mn">'+m.n+'</span> <span class="cn">· '+col+'</span> <span class="cr">'+cr+'</span>'+(ean(cr)?'<span class="ce">EAN '+ean(cr)+'</span>':'')+'</span>'+
+                  '<span class="qn">'+q+' u</span></div>';
+          }
+        });
+      });
+    });
+    document.getElementById('bcItems').innerHTML=rows;
+
+    var ht=total*PRICE;
+    document.getElementById('bcQty').textContent=total+' u';
+    document.getElementById('bcHT').textContent=eur(ht);
+    document.getElementById('bcTTC').textContent=eur(ht*TVA);
+
+    var fr=document.getElementById('bcFranco');
+    if(ht>=FRANCO){
+      fr.className='bc-note ok';
+      fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';
+    }else{
+      fr.className='bc-note';
+      fr.innerHTML='Franco de port à <b>150 € HT</b> — il manque <b>'+eur(FRANCO-ht)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';
+    }
+
+    var msg=v('message');
+    if(msg){
+      fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+msg.replace(/[<>]/g,'')+'</div>');
+    }
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>
