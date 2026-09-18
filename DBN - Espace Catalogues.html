@@ -162,6 +162,18 @@
   .a-dl{background:var(--sky-soft);color:var(--blue);font-size:12.5px;padding:10px 14px}
   .a-dl:hover{background:#d6e3f3}
   .a-dl-solo{background:var(--blue)!important;color:#fff!important;font-size:14.5px!important;padding:13px 18px!important;flex:1;justify-content:center}
+  /* bouton Commandez en ligne */
+  .a-cmd{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;margin:0 20px 20px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#2B7A78,#1F5957);color:#fff;font-size:14.5px;font-weight:700;overflow:hidden;box-shadow:0 12px 26px -14px rgba(31,89,87,.9);animation:cmdPulse 2.4s ease-in-out infinite}
+  .a-cmd:hover{background:linear-gradient(135deg,#1F5957,#14453F);color:#fff;animation:none}
+  .a-cmd svg{width:19px;height:19px;flex:none}
+  .a-cmd .cmdNew{background:#E8442A;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;flex:none}
+  .a-cmd .cmdArr{font-size:17px;line-height:1}
+  @keyframes cmdPulse{0%,100%{box-shadow:0 12px 26px -14px rgba(31,89,87,.9)}50%{box-shadow:0 12px 34px -10px rgba(43,122,120,.95)}}
+  @media(prefers-reduced-motion:reduce){.a-cmd{animation:none}}
+  .catrow .ract a.a-cmd-row{margin:0;padding:9px 13px;font-size:12.5px;flex:none;gap:6px;animation:none;box-shadow:0 8px 18px -12px rgba(31,89,87,.9)}
+  .catrow .ract a.a-cmd-row svg{width:16px;height:16px}
+  .catrow .ract a.a-cmd-row .cmdArr{font-size:14px}
+  .catrow .rinfo{min-width:240px}
   .a-dl-solo:hover{background:#0c0488!important}
   .catrow .ract a.a-dl-solo{font-size:14px!important;padding:11px 18px!important;flex:none}
   .cat .actions svg{width:16px;height:16px;flex:none}
@@ -189,6 +201,15 @@
   .lab-body .grid{gap:16px}
   @media(max-width:880px){.lab-head{padding:16px 18px}.lab-name{font-size:21px}.lab-body{padding:12px}}
 
+  @media(max-width:880px){
+    .catrow .rinfo{min-width:0}
+    .catrow .ract{flex-wrap:wrap}
+    .catrow .ract a.a-cmd-row{flex:1 1 100%;justify-content:center}
+  }
+  @media(max-width:600px){
+    .a-cmd{margin:0 16px 16px;padding:15px 14px;font-size:14px;flex-wrap:wrap;gap:7px}
+    .a-cmd .cmdNew{font-size:9.5px;padding:3px 8px}
+  }
   /* CONTACT STRIP */
   .strip{background:var(--blue);color:#fff;border-radius:24px;padding:46px 50px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:10px}
   .strip h2{color:#fff;font-size:30px}
@@ -223,7 +244,7 @@
     .viewtog{margin-left:0}
     .catrow{flex-direction:column}
     .catrow .rc{width:100%;min-height:64px;border-radius:12px 12px 0 0;flex-direction:row;justify-content:flex-start;padding:14px 16px}
-    .catrow .rinfo{padding:12px 16px 8px}
+    .catrow .rinfo{padding:12px 16px 8px;min-width:0}
     .catrow .rfmt{border-left:none;border-top:1px solid var(--line);padding:8px 16px;width:100%}
     .catrow .ract{padding:0 16px 14px;width:100%}
     .catrow .ract a{flex:1;justify-content:center}
@@ -347,7 +368,7 @@
     {b:"Veegreen",     d:"2026",       o:202601, mb:"16 Mo",  id:"1ka42CegAVNw7mgtxcPLAnBfVHxqXvyEb", c:"c-ink", col:"#5B8C3E",   fam:"G", fo:7, fr:"200€", ptype:"herb", tag:"Bien-être naturel",     desc:"Marque française d'Auvergne spécialisée dans le bien-être naturel : yerba maté bio, sauge blanche et palo santo. Des rituels sensoriels éco-responsables, sélectionnés avec exigence."},
     {b:"Pulse",        d:"Juin 2026",  o:202606, mb:"6 Mo",   id:"1kL1ff6D-JGfd1H2VgVB85yUtq0jH7oRD", c:"c-ink", col:"#2E9E7A",   fam:"G", fo:8, fr:"200€", nv:1, ptype:"drink", tag:"Protéines végétales", desc:"Marque de nutrition protéinée 100 % végétale, locale et gourmande, certifiée B-Corp. Poudres multisources, eaux pétillantes, barres et granola — sans sucre ajouté, pensés pour la clientèle wellness des officines."},
     {b:"SHINE Santé",   d:"Mai 2026",   o:202605, mb:"5 Mo",   id:"10trBbtP5NHk8ifw6doSs4icz2qw7FvUw", c:"c-sky", col:"#0EA0C0",   fam:"G", fo:9, fr:"200€", nv:1, ptype:"suncare", tag:"Hygiène & soins quotidiens", desc:"SHINE Santé propose une gamme complète de produits du quotidien : lunettes d'observation solaire ÉCLIPSE (EPI Cat. II), brumisateurs nomades rechargeables, solutions salines nasales, vaseline et masques de protection."},
-    {b:"OOPS Optics",  d:"Sept. 2026", o:202609, mb:"3,5 Mo", id:"1XNftMrGd7sHcTaE4yPf8Fc4ywLS-PTes", c:"c-ink", col:"#2B7A78",  fam:"G", fo:10, fr:"150€", nv:1, ptype:"test", tag:"Lunettes de lecture", desc:"Collection 2026 de lunettes de lecture : 10 modèles (Jade, Rubis, Onyx, Saphir, Ambre, Quartz, Agate, Topaze, Lapis, Jaspe) en 4 coloris chacun, corrections de +1,00 à +3,50. Prix unique 2,95 € HT, pochette et chiffonnette incluses. Commande à l'unité au choix, franco 150 € HT."},
+    {b:"OOPS Optics",  d:"Sept. 2026", o:202609, mb:"3,5 Mo", id:"1XNftMrGd7sHcTaE4yPf8Fc4ywLS-PTes", c:"c-ink", col:"#2B7A78",  fam:"G", fo:10, fr:"150€", nv:1, cmd:"DBN - Commande OOPS Optics.html", ptype:"test", tag:"Lunettes de lecture", desc:"Collection 2026 de lunettes de lecture : 10 modèles (Jade, Rubis, Onyx, Saphir, Ambre, Quartz, Agate, Topaze, Lapis, Jaspe) en 4 coloris chacun, corrections de +1,00 à +3,50. Prix unique 2,95 € HT, pochette et chiffonnette incluses. Commande à l'unité au choix, franco 150 € HT."},
     {b:"POP",          d:"2026",       o:202601, mb:"4 Mo",   id:"1d3tOhapA4pG8PKhinJ6UnmIaenU9eUZ4", c:"c-sand", col:"#E0457B",  fam:"C", fo:10, fr:"200€", ptype:"parfum", tag:"Parfum petit prix",     desc:"Des eaux de parfum à petit prix : une façon accessible de se faire plaisir, un bon volume de vente à proposer en officine."},
     {b:"Maison Matine",d:"2026",       o:202601, mb:"1 Mo",   id:"11fiXngofscfHY1lfKplsIQYtW7VIF-V5", c:"c-blue", col:"#E07A5F",  fam:"C", fo:9, fr:"130€", ptype:"parfum", tag:"Parfums de niche",      desc:"Maison de parfums parisienne à l'esprit clean et joyeux : des eaux de parfum expressives et accessibles, une jolie touche sensorielle en parapharmacie."},
     {b:"Beauty Miracle", d:"Avril 2026", o:202604, mb:"3 Mo", id:"1FJneNnU3E7Am56gFHWHe46aDpqPxw-jy", c:"c-sand", col:"#E48AA6", fam:"C", fo:11, fr:"300€", ptype:"serum", tag:"Gammes coréennes (K-Beauty)", desc:"Sélection de gammes de cosmétiques coréens (K-Beauty) : soins du visage à la routine multi-étapes, textures innovantes et actifs phares de la beauté coréenne pour une peau éclatante et hydratée."},
@@ -381,11 +402,12 @@
   const rFrancoHtml = c => c.fr ? ' &middot; <span class="rfranco">'+(c.lab?'Franco groupe : ':'Franco : ')+c.fr+'</span>' : '';
   const ICON_VIEW='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
   const ICON_DL='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>';
+  const ICON_CART='<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12h11L21 7H6"/></svg>';
   function card(c){return `
       <article class="cat">
         <div class="cover ${c.c}"${c.col?` style="background:linear-gradient(150deg, ${c.col}, color-mix(in srgb, ${c.col} 82%, #000));color:${c.dark?'#1C1611':'#fff'}"`:''}>
           <div class="fold"></div>
-          <div class="kase">Catalogue</div>
+          <div class="kase">${c.nv?'&nbsp;':'Catalogue'}</div>
           <div>
             <div class="bn">${c.b}</div>
             ${c.by?`<div class="bn-by">By ${c.by}</div>`:''}
@@ -407,6 +429,7 @@
           ${c.big?`<a class="a-dl a-dl-solo" href="${DL(c.id)}" target="_blank" rel="noopener" title="PDF volumineux — aperçu Drive indisponible" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_DL} Télécharger le catalogue</a>`:`<a class="a-view" href="${DRIVE(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','consulter_catalogue',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_VIEW} Consulter</a>
           <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_DL} Télécharger</a>`}
         </div>
+        ${c.cmd?`<a class="a-cmd" href="${c.cmd}" onclick="try{gtag('event','ouvre_commande',{labo:'${c.b}',vue:'grille'})}catch(e){}"><span class="cmdNew">Nouveau</span>${ICON_CART} Commandez en ligne<span class="cmdArr">→</span></a>`:''}
       </article>`;}
   function row(c){return `
       <article class="catrow">
@@ -422,6 +445,7 @@
         <div class="ract">
           ${c.big?`<a class="a-dl a-dl-solo" href="${DL(c.id)}" target="_blank" rel="noopener" title="PDF volumineux — aperçu Drive indisponible" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_DL} Télécharger</a>`:`<a class="a-view" href="${DRIVE(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','consulter_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_VIEW} Consulter</a>
           <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_DL} Télécharger</a>`}
+          ${c.cmd?`<a class="a-cmd a-cmd-row" href="${c.cmd}" onclick="try{gtag('event','ouvre_commande',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_CART} Commander<span class="cmdArr">→</span></a>`:''}
         </div>
       </article>`;}
   const LAB_FRANCO={Biosynex:"180€ HT"};
