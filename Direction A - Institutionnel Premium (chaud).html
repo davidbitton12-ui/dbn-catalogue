@@ -658,6 +658,10 @@
   /* OOPS OPTICS — nouveau labo */
   .band-oops{order:-6;grid-template-columns:470px 1fr 236px;min-height:186px;background:radial-gradient(120% 130% at 76% -12%,#EAF6F6,#DCEEEE 46%,#CFE6E5 100%);border:2px solid #2B7A78}
   .band-oops .b-img{background:#fff;padding:0;overflow:hidden}
+  .oops-slider{position:relative}
+  .oops-slider img{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+  .oops-slider img.on{opacity:1}
+  @media(prefers-reduced-motion:reduce){.oops-slider img{transition:none}}
   .band-oops .b-img img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block}
   .band-oops .b-copy{background:transparent;color:var(--ink);padding:14px 20px}
   .band-oops .bsub{color:#4A5A59;max-width:none}
@@ -1117,9 +1121,26 @@
 
     <!-- OOPS OPTICS — NOUVEAU LABO -->
     <div class="band band-oops" id="oops">
-      <div class="b-img">
-        <img src="assets/oops_hero.jpg" alt="Lunettes de lecture OOPS Optics" />
+      <div class="b-img oops-slider" id="oopsSlider">
+        <img class="on" src="assets/oops_hd1.jpg" alt="Lunettes de lecture OOPS Optics" />
+        <img src="assets/oops_hd2.jpg" alt="Monture OOPS Optics" />
+        <img src="assets/oops_hd3.jpg" alt="Monture OOPS Optics" />
+        <img src="assets/oops_hd4.jpg" alt="Monture OOPS Optics" />
+        <img src="assets/oops_hd5.jpg" alt="Monture OOPS Optics" />
+        <img src="assets/oops_hd6.jpg" alt="Monture OOPS Optics" />
       </div>
+      <script>
+      (function(){
+        var s=document.getElementById('oopsSlider');
+        if(!s) return;
+        var imgs=s.querySelectorAll('img'), i=0;
+        setInterval(function(){
+          imgs[i].classList.remove('on');
+          i=(i+1)%imgs.length;
+          imgs[i].classList.add('on');
+        },2000);
+      })();
+      </script>
       <div class="b-copy">
         <div class="oops-head">
           <span class="b-badge"><span class="dot"></span> Nouveau laboratoire</span>

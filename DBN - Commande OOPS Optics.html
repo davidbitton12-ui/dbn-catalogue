@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-:root{--blue:#1206A6;--teal:#2B7A78;--teal-dk:#1F5957;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+:root{--blue:#1206A6;--teal:#2B7A78;--teal-dk:#1F5957;--teal-d:#1F5957;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
 a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
@@ -297,7 +297,6 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
           <div class="track"><div class="fill" id="fFill"></div></div>
         </div>
         <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
-        <p class="legal">Commande transmise à David BITTON · aucun paiement en ligne. Tarifs indicatifs confirmés à la validation.</p>
       </div>
     </aside>
 
@@ -398,7 +397,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         '<span class="chev">▾</span></button>'+
         '<div class="corrPanel" id="cp'+cid+'">'+
         CORRS.map(function(cr){
-          return '<div class="crRow"><span class="crL">'+cr+'</span>'+
+          return '<div class="crRow"><span class="crL">'+cr+(ean(cr)?'<i>'+ean(cr)+'</i>':'')+'</span>'+
             '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
             '<input type="number" min="0" step="1" value="0" aria-label="'+m.n+' '+col+' '+cr+'" />'+
             '<button type="button" data-a="+" aria-label="Ajouter">+</button></div></div>';
