@@ -14,12 +14,25 @@
 (function () {
   var GA_ID = 'G-NN5YVFMTNW';   // <-- REMPLACE par ton ID de mesure GA4
 
-  /* --- Récupère la pharmacie depuis le lien tracké (?ref= ou utm_campaign) --- */
+  /* --- Lecture des paramètres du lien tracké --- */
   var p = new URLSearchParams(location.search);
-  var ref = (p.get('ref') || p.get('utm_campaign') || '').toLowerCase().trim();
+  /* 'undefined' / 'null' arrivent quand un générateur de lien laisse une variable vide : on les ignore */
+  function val(k){
+    var v = (p.get(k) || '').trim();
+    if (!v || v === 'undefined' || v === 'null') return '';
+    return v;
+  }
+  var ref    = (val('ref') || val('utm_campaign')).toLowerCase();
+  var source = val('utm_source');
+  var medium = val('utm_medium');
   try {
     if (ref) sessionStorage.setItem('dbn_ref', ref);      // mémorise pour les pages suivantes
     else ref = sessionStorage.getItem('dbn_ref') || '';   // reprend si déjà connue dans la session
+    /* le canal d'origine survit à la navigation interne */
+    if (source) sessionStorage.setItem('dbn_src', source);
+    else source = sessionStorage.getItem('dbn_src') || '';
+    if (medium) sessionStorage.setItem('dbn_med', medium);
+    else medium = sessionStorage.getItem('dbn_med') || '';
   } catch (e) {}
 
   /* --- Tant que l'ID n'est pas renseigné : on ne charge rien --- */
@@ -40,8 +53,13 @@
   if (ref) {
     gtag('set', 'user_properties', { pharmacie: ref });
   }
-  gtag('config', GA_ID);
+  /* si la query string a été abîmée en route, on réinjecte le canal mémorisé */
+  var cfg = {};
+  if (source) cfg.campaign_source = source;
+  if (medium) cfg.campaign_medium = medium;
+  if (ref)    cfg.campaign_name   = ref;
+  gtag('config', GA_ID, cfg);
   if (ref) {
-    gtag('event', 'visite_pharmacie', { pharmacie: ref });
+    gtag('event', 'visite_pharmacie', { pharmacie: ref, canal: medium || source || '(direct)' });
   }
 })();
