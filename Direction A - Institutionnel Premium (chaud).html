@@ -678,17 +678,17 @@
   .band-oops .b-cta{background:linear-gradient(160deg,#FFF3F0,#FFE4DD);border-left:2px dashed #E8442A;padding:16px 18px;gap:7px}
   .band-oops .b-price{color:#1F5957;font-size:30px!important;line-height:1;white-space:nowrap}
   .band-oops .b-price small{font-size:11px!important;display:block;margin-top:3px;opacity:.85}
-  .band-oops .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
+  .band-oops .cmd-new,.band-tina .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
   @keyframes cmd-blink{0%,49%{background:#1F5957;color:#fff}50%,100%{background:#E8442A;color:#fff}}
-  @media(prefers-reduced-motion:reduce){.band-oops .cmd-new{animation:none}}
-  .band-oops .cmd-new::before{content:"✨"}
-  .band-oops .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:#2B7A78;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:10px;margin-bottom:2px}
-  .band-oops .b-cat:hover{background:#1F5957;color:#fff}
-  .band-oops .b-cat .arr{transition:transform .18s}
-  .band-oops .b-cat:hover .arr{transform:translateX(3px)}
-  .band-oops .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
-  .band-oops .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
-  .band-oops .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
+  @media(prefers-reduced-motion:reduce){.band-oops .cmd-new,.band-tina .cmd-new{animation:none}}
+  .band-oops .cmd-new::before,.band-tina .cmd-new::before{content:"✨"}
+  .band-oops .b-cat,.band-tina .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:#2B7A78;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:10px;margin-bottom:2px}
+  .band-oops .b-cat:hover,.band-tina .b-cat:hover{background:#1F5957;color:#fff}
+  .band-oops .b-cat .arr,.band-tina .b-cat .arr{transition:transform .18s}
+  .band-oops .b-cat:hover .arr,.band-tina .b-cat:hover .arr{transform:translateX(3px)}
+  .band-oops .b-btn,.band-tina .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
+  .band-oops .b-btn::after,.band-tina .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
+  .band-oops .b-btn:hover,.band-tina .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
   @keyframes cmd-beat{0%,100%{transform:scale(1)}50%{transform:scale(1.075)}}
   @keyframes cmd-glow{0%,100%{box-shadow:0 12px 26px -10px rgba(232,68,42,.85),0 0 0 0 rgba(232,68,42,.6)}55%{box-shadow:0 12px 30px -8px rgba(232,68,42,1),0 0 0 14px rgba(232,68,42,0)}}
   @keyframes cmd-shine{0%{left:-60%}55%,100%{left:125%}}
@@ -790,9 +790,9 @@
   .band-cata .b-btn{background:var(--blue);color:#fff}
 
   /* SISTERS TINA */
-  .band-tina{grid-template-columns:180px 1fr 200px}
-  .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:16px}
-  .band-tina .b-img img{height:108px;width:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(80,30,22,.4)}
+  .band-tina{order:-7;grid-template-columns:230px 1fr 236px}
+  .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:12px}
+  .band-tina .b-img img{height:164px;width:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(80,30,22,.4)}
   .band-tina .b-copy{background:linear-gradient(135deg,#FBF5EB,#F7EBDD);color:var(--ink)}
   .band-tina .b-badge{background:#E0524A;color:#fff;border:none;box-shadow:0 4px 12px -4px rgba(224,82,74,.6)}
   .band-tina .b-badge .dot{background:#fff}
@@ -801,7 +801,9 @@
   .band-tina .b-chip{background:rgba(224,82,74,.1);color:#7A2A22}
   .band-tina .b-cta{background:#2B0E0A;border-left:1px solid rgba(224,82,74,.3)}
   .band-tina .b-price{color:#FCA5A0}
-  .band-tina .b-btn{background:#E0524A;color:#fff}
+  .band-tina .b-cta{gap:7px;padding:16px 18px}
+  .band-tina .b-cat{background:#fff;color:#2B0E0A}
+  .band-tina .b-cat:hover{background:#FBEAE8;color:#2B0E0A}
 
   /* BRUMISATEURS SOLD OUT */
   .band-brume{grid-template-columns:180px 1fr 200px;background:#EFF4FB}
@@ -823,7 +825,10 @@
     .band-eau{grid-template-columns:300px 1fr 175px}
     .band-eau .eau-trio img{max-height:104px}
     .band-eau .eau-trio{gap:9px}
-    .band-univ,.band-sampar,.band-hydratis,.band-tina,.band-bxnew{grid-template-columns:230px 1fr 175px}
+    .band-univ,.band-sampar,.band-hydratis,.band-bxnew{grid-template-columns:230px 1fr 175px}
+    .band-tina{grid-template-columns:200px 1fr 224px}
+    .band-tina .b-img img{height:140px}
+    .band-tina .b-cta{padding:14px 14px}
     .band-cata{grid-template-columns:230px 1fr 235px}
     .band-sampar .sp-wm{font-size:30px}
     .band-sampar .sp-badge{font-size:10px;padding:6px 10px;white-space:normal;text-align:center}
@@ -1284,16 +1289,18 @@
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
           <span class="b-chip">À partir de 11,66 € HT</span>
-          <span class="b-chip">RFA 10 %</span>
+          <span class="b-chip">Packs 12 · 24 · 48 u</span>
           <span class="b-chip">PPC 19,00 € TTC</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;margin-top:12px;background:#FBEFE9;border:2px solid #E0524A;border-radius:14px;padding:12px 16px;color:var(--ink);font-size:13.5px;font-weight:600">
-          🎁 <span>Votre pack d'implantation</span><span style="font-family:var(--serif);font-size:26px;font-weight:700;color:#E0524A;margin-left:6px">dès 345 €</span>
+          🎁 <span>Votre pack d'implantation</span><span style="font-family:var(--serif);font-size:26px;font-weight:700;color:#E0524A;margin-left:6px">dès 172,80 €</span>
         </div>
       </div>
       <div class="b-cta">
-        <div class="b-price">11,66 €<small>HT / u dès 120 u</small></div>
-        <a class="b-btn" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir la gamme <span class="arr">→</span></a>
+        <div class="b-price">11,66 €<small>HT / u dès 48 u</small></div>
+        <a class="b-cat" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <span class="cmd-new">Nouveau</span>
+        <a class="b-btn" href="DBN - Commande Sisters Republic.html">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
 
@@ -1418,59 +1425,6 @@
     </div>
   </div>
 </footer>
-
-<!-- POP-UP ALERTE REMBOURSEMENT -->
-<style>
-  .rb-pop{position:fixed;left:24px;bottom:24px;z-index:1200;width:min(360px,calc(100vw - 32px));
-    background:#fff;border:1px solid #F2D7CC;border-radius:18px;padding:18px 18px 16px;
-    box-shadow:0 30px 70px -24px rgba(80,30,22,.45);
-    transform:translateY(140%);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s;
-    font-family:var(--sans)}
-  .rb-pop.show{transform:translateY(0);opacity:1}
-  .rb-pop::before{content:"";position:absolute;inset:0;border-radius:18px;border:2px solid #E0524A;opacity:0;animation:rb-flash 1.5s ease-in-out infinite;pointer-events:none}
-  @keyframes rb-flash{0%,100%{opacity:0}50%{opacity:.85}}
-  @media(prefers-reduced-motion:reduce){.rb-pop::before{animation:none;opacity:.5}}
-  .rb-pop .rb-x{position:absolute;top:11px;right:12px;width:24px;height:24px;border:none;background:#F6ECE6;border-radius:8px;color:#7A3A2E;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .rb-pop .rb-x:hover{background:#EFD9CE}
-  .rb-head{display:flex;align-items:center;gap:9px}
-  .rb-bell{width:30px;height:30px;flex:none;border-radius:9px;background:#FBEAE3;display:flex;align-items:center;justify-content:center}
-  .rb-bell svg{width:17px;height:17px;color:#E0524A;animation:rb-ring 1.5s ease-in-out infinite;transform-origin:50% 12%}
-  @keyframes rb-ring{0%,72%,100%{transform:rotate(0)}78%{transform:rotate(13deg)}86%{transform:rotate(-11deg)}94%{transform:rotate(5deg)}}
-  @media(prefers-reduced-motion:reduce){.rb-bell svg{animation:none}}
-  .rb-kick{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E0524A}
-  .rb-lab{display:inline-block;margin-top:11px;font-size:11px;font-weight:700;letter-spacing:.03em;color:#fff;background:#E0524A;border-radius:999px;padding:4px 11px}
-  .rb-pop h4{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin:8px 0 0;line-height:1.25}
-  .rb-pop p{font-size:13px;color:var(--slate);margin:6px 0 0;line-height:1.45}
-  .rb-pack{margin-top:9px;background:#FBEFE9;border:1.5px solid #F2D7CC;border-radius:10px;padding:8px 12px;font-size:13px;color:#7A3A2E;font-weight:600}
-  .rb-pack b{color:#E0524A;font-size:15px}
-  .rb-cta{display:inline-flex;align-items:center;gap:7px;margin-top:13px;background:#E0524A;color:#fff;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:11px;cursor:pointer}
-  .rb-cta:hover{background:#c93f38}
-  @media(max-width:600px){.rb-pop{left:12px;right:12px;bottom:12px;width:auto}}
-</style>
-<div class="rb-pop" id="rbPop" role="alert" aria-live="polite">
-  <button class="rb-x" id="rbClose" aria-label="Fermer">✕</button>
-  <div class="rb-head">
-    <span class="rb-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
-    <span class="rb-kick">Alerte remboursement Sécu</span>
-  </div>
-  <span class="rb-lab">Sisters Republic</span>
-  <h4>Pensez à précommander vos culottes menstruelles</h4>
-  <p>La gamme <b>Tina</b> de <b>Sisters Republic</b>, remboursée dès octobre 2026. Précommandez pour être livré en priorité.</p>
-  <div class="rb-pack">🎁 Votre pack d'implantation <b>dès 345 €</b></div>
-  <a class="rb-cta" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener" id="rbGo">Découvrir le catalogue →</a>
-</div>
-<script>
-  (function(){
-    var pop=document.getElementById('rbPop');
-    if(!pop) return;
-    if(sessionStorage.getItem('rbPopClosedHome')==='1') return;
-    setTimeout(function(){pop.classList.add('show');},1500);
-    function close(){pop.classList.remove('show');try{sessionStorage.setItem('rbPopClosedHome','1');}catch(e){}}
-    document.getElementById('rbClose').addEventListener('click',close);
-    document.getElementById('rbGo').addEventListener('click',close);
-  })();
-</script>
-
 
 <!-- BOUTON WHATSAPP FLOTTANT -->
 <style>

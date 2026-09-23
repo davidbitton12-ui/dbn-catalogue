@@ -21,7 +21,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
 .top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
 .top-in .back{margin-left:auto;font-size:14px;font-weight:600}
-.head{padding:30px 0 22px}
+.head{padding-top:30px;padding-bottom:22px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
 .head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
 .head h1 em{font-style:italic;color:var(--teal)}
@@ -66,8 +66,17 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
 .crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
 .crRow.has{background:#EAF6F1;border-color:var(--teal)}
+.crRow.soon{background:#EFEDEA;border-style:dashed;border-color:#CFC8BE}
+.crRow.soon .crL{color:#8A8277}
+.crRow.soon .qty{opacity:.7}
+.crRow.soon.has{background:#F1EFEA;border-color:#A89F93;border-style:solid}
+.soonT{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#B0234F;margin-top:1px}
+.soonL{display:block;font-style:normal;font-size:11px;font-weight:700;color:#B0234F;margin-top:2px}
+.soonB{font-size:11px;font-weight:800;color:#B0234F;background:#FBEAEE;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.soon-note{font-size:12.5px;color:#7A2440;margin:12px 0 0;line-height:1.5;background:#FBEAEE;border:1px solid #F0C7D2;border-radius:10px;padding:10px 12px}
+.soon-note b{color:#5E1A31}
 .crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
-.crRow .crL i{display:block;font-style:normal;font-size:9px;font-weight:600;color:var(--slate);letter-spacing:0;margin-top:1px;white-space:nowrap}
+.crRow .crE{grid-column:1/-1;display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em;line-height:1.2;white-space:nowrap;padding:0 1px}
 .crRow .qty{border-radius:9px;flex:none}
 .crRow .qty button{width:26px;height:32px;font-size:15px}
 .crRow .qty input{width:32px;height:32px;font-size:13.5px}
@@ -253,7 +262,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     <div>
       <div class="card">
         <h2>Comment commander</h2>
-        <p class="hint">Cliquez sur un coloris pour ouvrir ses <b>corrections</b> (+1,00 à +3,50) et saisir les quantités souhaitées, correction par correction. Prix unique <b>2,95 € HT</b> quelle que soit la référence. 🔍 <b>Cliquez sur une photo pour l'agrandir.</b></p>
+        <p class="hint">Cliquez sur un coloris pour ouvrir ses <b>corrections</b> (+1,50 à +3,50) et saisir les quantités souhaitées, correction par correction. Prix unique <b>2,95 € HT</b> quelle que soit la référence. 🔍 <b>Cliquez sur une photo pour l'agrandir.</b></p>
         <p class="corr-note">Les <b>codes-barres EAN 13 sont identiques</b> pour tous les modèles et coloris — un code par correction.</p>
         <div class="terms">
           <div class="term"><span class="tk">Règlement</span><span class="tv">LCR à 30 jours</span></div>
@@ -353,17 +362,17 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <script>
 (function(){
   var PRICE=2.95, FRANCO=150, TVA=1.20;
-  var CORRS=['+1,00','+1,50','+2,00','+2,50','+3,00','+3,50'];
+  var CORRS=['+1,50','+2,00','+2,50','+3,00','+3,50'];
   var MODELS=[
     {n:'JADE',   s:'jade',   g:'F', c:['Turquoise','Noire','Rose','Terracota']},
-    {n:'RUBIS',  s:'rubis',  g:'F', c:['Lagoon','Néon','Léopard','Tropical']},
+    {n:'RUBIS',  s:'rubis',  g:'F', no1:1, c:['Lagoon','Néon','Léopard','Tropical']},
     {n:'ONYX',   s:'onyx',   g:'F', c:['Prune','Bleu','Verte','Noire']},
     {n:'SAPHIR', s:'saphir', g:'F', c:['Sable','Rose','Noire','Turquoise']},
     {n:'AMBRE',  s:'ambre',  g:'F', c:['Bordeaux','Turquoise','Rose','Violette']},
-    {n:'QUARTZ', s:'quartz', g:'M', c:['Bleu','Arlequin','Noire et Demi','Nébuleuse']},
-    {n:'AGATE',  s:'agate',  g:'M', c:['Olive','Noire','Tortoise','Bordeaux']},
-    {n:'TOPAZE', s:'topaze', g:'H', c:['Brume','Noire brillant','Noire mat','Crystal']},
-    {n:'LAPIS',  s:'lapis',  g:'H', c:['Noire','Tortoise','Crystal','Grise']},
+    {n:'QUARTZ', s:'quartz', g:'M', c:['Bleu','Arlequin','Noire et Ecaille','Nébuleuse']},
+    {n:'AGATE',  s:'agate',  g:'M', c:['Vert olive','Noire','Ecaille','Bordeaux']},
+    {n:'TOPAZE', s:'topaze', g:'H', c:['Brume grise','Noire brillant','Noire mat','Marron']},
+    {n:'LAPIS',  s:'lapis',  g:'H', c:['Noire','Ecaille','Crystal','Grise']},
     {n:'JASPE',  s:'jaspe',  g:'H', c:['Noire','Verte','Bleue','Marron']}
   ];
   var GENDER={F:{l:'Femme',c:'#B0234F'},M:{l:'Mixte',c:'#1F5957'},H:{l:'Homme',c:'#14489C'}};
@@ -371,6 +380,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
   var EANS={'+1,00':'3770042179787','+1,50':'3770042179008','+2,00':'3770042179022','+2,50':'3770042179039','+3,00':'3770042179046','+3,50':'3770042179053'};
   function ean(cr){return EANS[cr]||'';}
+  var SOON='+1,00', SOON_TXT='Disponible à partir du 15/10';
   var corr=null, qty={};
 
   function eur(n){return n.toFixed(2).replace('.',',')+' €';}
@@ -396,11 +406,12 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         '<span class="cSum" id="cs'+cid+'"></span>'+
         '<span class="chev">▾</span></button>'+
         '<div class="corrPanel" id="cp'+cid+'">'+
-        CORRS.map(function(cr){
-          return '<div class="crRow"><span class="crL">'+cr+(ean(cr)?'<i>'+ean(cr)+'</i>':'')+'</span>'+
+        CORRS.filter(function(cr){return !(m.no1&&cr==='+1,00');}).map(function(cr){
+          return '<div class="crRow'+(cr===SOON?' soon':'')+'"><span class="crL">'+cr+(cr===SOON?'<b class="soonT">dès le 15/10</b>':'')+'</span>'+
             '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
             '<input type="number" min="0" step="1" value="0" aria-label="'+m.n+' '+col+' '+cr+'" />'+
-            '<button type="button" data-a="+" aria-label="Ajouter">+</button></div></div>';
+            '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>'+
+            (ean(cr)?'<i class="crE">EAN '+ean(cr)+'</i>':'')+'</div>';
         }).join('')+
         '</div></div>';
     });
@@ -449,8 +460,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
           var v=qty[m.n+'|'+col+'|'+cr]||0;
           if(v>0){
             csum+=v;
-            html+='<div class="line"><span>'+m.n+' '+col+' <em style="font-style:normal;color:var(--teal-d);font-weight:700">'+cr+'</em>'+(ean(cr)?'<em class="eanL">EAN '+ean(cr)+'</em>':'')+'</span><b>'+v+' u</b></div>';
-            recap+='- '+m.n+' ('+GENDER[m.g].l+') '+col+' · '+cr+(ean(cr)?' · EAN '+ean(cr):'')+' : '+v+' u\n';
+            html+='<div class="line"><span>'+m.n+' '+col+' <em style="font-style:normal;color:var(--teal-d);font-weight:700">'+cr+'</em>'+(cr===SOON?'<em class="soonL">'+SOON_TXT+'</em>':'')+(ean(cr)?'<em class="eanL">EAN '+ean(cr)+'</em>':'')+'</span><b>'+v+' u</b></div>';
+            recap+='- '+m.n+' ('+GENDER[m.g].l+') '+col+' · '+cr+(ean(cr)?' · EAN '+ean(cr):'')+' : '+v+' u'+(cr===SOON?' ('+SOON_TXT+')':'')+'\n';
           }
         });
         sub+=csum;
@@ -567,7 +578,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     if(!GATEWAY_BREVO){ fail(); return; }
     var cb='dbnCb'+Date.now();
     var s=document.createElement('script');
-    var to=setTimeout(function(){cleanup();fail();},15000);
+    /* la passerelle Apps Script peut mettre 20-40 s au démarrage : on attend 60 s avant de basculer sur Formspree (évite les doublons) */
+    var to=setTimeout(function(){cleanup();fail();},60000);
     function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
     window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
     s.onerror=function(){cleanup();fail();};
@@ -579,7 +591,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     e.preventDefault();
     var f=e.target, btn=document.getElementById('sendBtn');
     render();
-    btn.disabled=true; btn.textContent='Envoi en cours…';
+    btn.disabled=true; btn.textContent='Envoi en cours… merci de patienter';
 
     var total=0, ht=0;
     MODELS.forEach(function(m){m.c.forEach(function(col){CORRS.forEach(function(cr){total+=qty[m.n+'|'+col+'|'+cr]||0;});});});
@@ -645,7 +657,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
             total+=q;
             var g=GENDER[m.g];
             rows+='<div class="bc-row"><span class="tag" style="background:'+g.c+'">'+g.l+'</span>'+
-                  '<span><span class="mn">'+m.n+'</span> <span class="cn">· '+col+'</span> <span class="cr">'+cr+'</span>'+(ean(cr)?'<span class="ce">EAN '+ean(cr)+'</span>':'')+'</span>'+
+                  '<span><span class="mn">'+m.n+'</span> <span class="cn">· '+col+'</span> <span class="cr">'+cr+'</span>'+(cr===SOON?'<span class="soonB">'+SOON_TXT+'</span>':'')+(ean(cr)?'<span class="ce">EAN '+ean(cr)+'</span>':'')+'</span>'+
                   '<span class="qn">'+q+' u</span></div>';
           }
         });

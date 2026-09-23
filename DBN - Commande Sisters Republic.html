@@ -10,91 +10,274 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-:root{--blue:#1206A6;--blue-ink:#140A6B;--red:#E8442A;--coral:#E0524A;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+:root{--blue:#1206A6;--teal:#D8473F;--teal-dk:#A9372F;--teal-d:#A9372F;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
 a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-/* HEADER */
 .top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
 .top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .top-in img{height:64px;width:auto}
 .top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
 .top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
 .top-in .back{margin-left:auto;font-size:14px;font-weight:600}
-/* HERO */
-.head{padding:30px 0 22px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--coral);padding:7px 14px;border-radius:999px}
+.head{padding-top:30px;padding-bottom:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
 .head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
-.head h1 em{font-style:italic;color:var(--coral)}
-.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:62ch;line-height:1.55;text-wrap:pretty}
-/* STEPS */
+.head h1 em{font-style:italic;color:var(--teal)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:64ch;line-height:1.55;text-wrap:pretty}
 .steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
-.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--coral);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
-/* LAYOUT */
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
 .card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
 .card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
-/* PRODUCT TABLE */
-.prod{display:grid;grid-template-columns:1fr 132px;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
-.prod:last-of-type{border-bottom:none}
-.prod .pn{font-size:14.5px;font-weight:600}
-.prod .pm{font-size:12px;color:var(--slate);margin-top:2px}
-.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--ivory)}
-.qty button{width:40px;height:44px;border:none;background:transparent;font-size:19px;font-weight:700;color:var(--coral);cursor:pointer;line-height:1}
-.qty button:hover{background:#FBEAE8}
-.qty input{width:52px;height:44px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+/* correction picker */
+.corrs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.corr{background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--slate);cursor:pointer;transition:all .18s}
+.corr:hover{border-color:var(--teal);color:var(--teal)}
+.corr.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(216,71,63,.75)}
+.corr-note{font-size:12.5px;color:var(--slate);margin:10px 0 0;line-height:1.45;background:var(--ivory);border-radius:10px;padding:10px 12px}
+.corr-note b{color:var(--ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-top:12px}
+.term{background:#FCEDEA;border:1px solid #F2C9C2;border-radius:12px;padding:10px 13px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.75}
+.term .tv{display:block;font-size:14.5px;font-weight:700;color:var(--teal-d);margin-top:3px}
+/* models */
+.model{border-bottom:1px solid var(--line);padding:16px 0}
+.model:last-of-type{border-bottom:none;padding-bottom:4px}
+.mh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.mh .mn{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.02em}
+.mh .mc{font-size:12px;color:var(--slate)}
+.mh .mt{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--teal)}
+.mh .gtag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;line-height:1;box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:10px;align-items:start}
+.cItem{background:var(--ivory);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.cItem.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ciHead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:7px 11px 7px 8px;cursor:pointer;font-family:var(--sans);text-align:left}
+.ciHead:hover{background:rgba(216,71,63,.07)}
+.ciHead .cn{font-size:14px;font-weight:600;color:var(--ink)}
+.ciHead .cSum{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--teal-d);opacity:0}
+.ciHead .cSum.on{opacity:1}
+.ciHead .chev{font-size:12px;color:var(--slate);transition:transform .2s}
+.cItem.open .ciHead .chev{transform:rotate(180deg)}
+.corrPanel{display:none;padding:4px 11px 11px;border-top:1px dashed var(--line);background:#fff}
+.cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
+.crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
+.crRow.has{background:#FCECE8;border-color:var(--teal)}
+.crRow.soon{background:#EFEDEA;border-style:dashed;border-color:#CFC8BE}
+.crRow.soon .crL{color:#8A8277}
+.crRow.soon .qty{opacity:.7}
+.crRow.soon.has{background:#F1EFEA;border-color:#A89F93;border-style:solid}
+.soonT{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#B0234F;margin-top:1px}
+.soonL{display:block;font-style:normal;font-size:11px;font-weight:700;color:#B0234F;margin-top:2px}
+.soonB{font-size:11px;font-weight:800;color:#B0234F;background:#FBEAEE;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.soon-note{font-size:12.5px;color:#7A2440;margin:12px 0 0;line-height:1.5;background:#FBEAEE;border:1px solid #F0C7D2;border-radius:10px;padding:10px 12px}
+.soon-note b{color:#5E1A31}
+.crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
+.crRow .crE{grid-column:1/-1;display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em;line-height:1.2;white-space:nowrap;padding:0 1px}
+.crRow .qty{border-radius:9px;flex:none}
+.crRow .qty button{width:26px;height:32px;font-size:15px}
+.crRow .qty input{width:32px;height:32px;font-size:13.5px}
+.cItem.has > .ciHead{background:#FCEDEA}
+.cItem .thumb{position:relative;width:90px;height:48px;flex:none;border-radius:7px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cItem .thumb .zi{position:absolute;right:3px;bottom:2px;font-style:normal;font-size:11px;line-height:1;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 4px;pointer-events:none}
+.cItem .thumb.none .zi{display:none}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:14px;max-width:min(1100px,96vw)}
+.zbox img{display:block;width:100%;height:auto;max-height:82vh;object-fit:contain;border-radius:12px}
+.zbox .zl{text-align:center;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin-top:12px}
+.zbox .zx{position:absolute;top:-13px;right:-13px;width:34px;height:34px;border:none;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.zbox .zx:hover{background:var(--teal-d)}
+.cItem .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cItem .thumb.none{background:var(--sand);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--slate);text-align:center;line-height:1.2;padding:2px}
+.cItem .cn{font-size:13.5px;font-weight:600;min-width:0}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:34px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;line-height:1}
+.qty button:hover{background:#FADBD5}
+.qty input{width:44px;height:38px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
 .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-/* TIERS */
-.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-top:18px}
-.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center;transition:all .2s}
-.tier.on{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 10px 22px -12px rgba(224,82,74,.75)}
-.tier .tq{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
-.tier .tp{font-family:var(--serif);font-size:18px;font-weight:700;margin-top:3px}
-.tier .tr{font-size:11px;margin-top:2px;opacity:.75}
-/* FIELDS */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .field{margin-top:13px}
 .field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
 .field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--coral);background:#fff}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
 .field textarea{min-height:76px;resize:vertical}
-/* SUMMARY */
 .sum{position:sticky;top:20px}
+.grid > aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}
 .sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
-.sum .line span:first-child{color:var(--slate)}
+.sum .line span:first-child{color:var(--slate);min-width:0}
+.eanL{display:block;font-style:normal;font-size:11px;color:var(--slate);letter-spacing:.03em;margin-top:2px}
 .sum .line b{font-weight:700;white-space:nowrap}
 .sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
 .sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
 .sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
-.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--coral);line-height:1}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--teal);line-height:1}
 .sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
-.sum .meta{font-size:12.5px;color:var(--slate);margin-top:12px;line-height:1.5;background:var(--ivory);border-radius:11px;padding:11px 13px}
-.sum .meta b{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--coral);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
-.btn:hover{background:#c93f38}
+.fbar{margin-top:13px;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .ft b{color:var(--ink)}
+.fbar .track{height:7px;border-radius:999px;background:#E4DACB;margin-top:8px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .fill{background:#2E9E7A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-dk)}
 .btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
 .legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
-/* DONE */
-.done{display:none;background:#fff;border:2px solid var(--coral);border-radius:18px;padding:30px 28px;text-align:center}
+.done{display:none;margin-bottom:60px}
 .done.on{display:block}
-.done .ic{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
-.done h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:0 0 8px}
-.done p{font-size:14.5px;color:var(--slate);margin:0;line-height:1.55}
+/* bon de commande client */
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(169,55,47,.45)}
+.bc-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-brand{display:flex;align-items:center;gap:12px}
+.bc-brand img{height:52px;width:auto}
+.bc-brand b{display:block;font-size:16px;font-weight:700;color:var(--blue);line-height:1.15}
+.bc-brand span{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.bc-ok{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.bc-tick{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px}
+.bc-hero{padding:32px 26px 28px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#FDF1EE,#FBE3DD 55%,#F7D4CC 100%)}
+.bc-eye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.72);border-radius:999px;padding:6px 14px}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--teal-d);margin:14px 0 0;line-height:1.1}
+.bc-hero h2 em{font-style:italic;color:var(--teal)}
+.bc-hero p{font-size:15px;color:#5A3B35;margin:12px auto 0;max-width:56ch;line-height:1.6}
+.bc-body{padding:26px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-bottom:20px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:11px 14px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);background:#fff}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .tag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 10px;flex:none}
+.bc-row .mn{font-size:14.5px;font-weight:700;white-space:nowrap}
+.bc-row .cn{font-size:13px;color:var(--slate);white-space:nowrap}
+.bc-row .cr{font-size:12.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bc-row .ce{font-size:11.5px;color:var(--slate);letter-spacing:.03em;white-space:nowrap}
+.bc-row > span:nth-child(2){display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:18px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:27px}
+.bc-note{margin-top:16px;font-size:13.5px;line-height:1.55;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:13px;padding:13px 15px;color:#8C2A20}
+.bc-note b{color:#6b1f18}
+.bc-note.ok{background:#FCECE8;border-color:#B7DFCE;color:#1F5957}
+.bc-note.ok b{color:#14453F}
+.bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
+.bc-contact{font-size:13.5px;color:var(--slate)}
+.bc-contact b{color:var(--ink)}
+.bc-acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:11px 18px;cursor:pointer}
+.bc-print:hover{background:var(--teal-d)}
+.bc-home{font-size:13px;font-weight:600;color:var(--teal-d)}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.head,#orderForm{display:none!important}
+  .bc{box-shadow:none;border-radius:0;border:none}
+  .bc-acts{display:none}
+}
+@media(max-width:600px){
+  .bc-top,.bc-foot{padding:14px 16px}
+  .bc-hero{padding:24px 16px 22px}
+  .bc-body{padding:18px 16px}
+  .bc-ok{margin-left:0}
+  .bc-acts{margin-left:0;width:100%}
+  .bc-print{flex:1}
+}
 @media(max-width:880px){
   .grid{grid-template-columns:minmax(0,1fr);gap:20px}
   .sum{position:static}
+  .grid > aside{position:static;max-height:none;overflow:visible}
 }
 @media(max-width:600px){
   .wrap{padding:0 18px}
   .top-in img{height:52px}
+  .top-in .back{margin-left:0;width:100%}
   .two{grid-template-columns:1fr}
-  .prod{grid-template-columns:1fr;gap:8px}
-  .qty{width:max-content}
   .card{padding:18px 16px}
+  .colors{grid-template-columns:1fr}
+  .corr{padding:9px 13px;font-size:13.5px}
+  .head h1{font-size:25px}
+  .steps{gap:7px}
+  .step{font-size:12px;padding:8px 11px}
+  .terms{grid-template-columns:1fr;gap:7px}
+  .cItem.open .corrPanel{grid-template-columns:1fr 1fr;gap:6px}
+  .crRow{padding:6px 7px}
+  .crRow .qty button{width:34px;height:40px;font-size:17px}
+  .crRow .qty input{width:38px;height:40px;font-size:15px}
+  .cItem .thumb{width:74px;height:42px}
+  .ciHead{padding:8px 10px 8px 7px}
+  .mhead{flex-wrap:wrap;gap:7px}
+  .mhead .mn{font-size:16px}
+  .sum .tot .v{font-size:26px}
+  .btn{font-size:16px;padding:16px 18px}
+  .zbox{padding:10px;border-radius:14px}
+  .zbox img{max-height:66vh}
+  .zbox .zl{font-size:16px;margin-top:9px}
+  .zbox .zx{top:-11px;right:-11px;width:32px;height:32px}
+  .bc-meta{grid-template-columns:1fr;gap:8px}
+  .bc-tot{grid-template-columns:1fr 1fr;gap:8px}
+  .bc-row{flex-wrap:wrap;gap:7px;padding:10px 13px}
+  .bc-row .qn{margin-left:auto}
+  .bc-hero h2{font-size:26px}
 }
+@media(max-width:400px){
+  .cItem.open .corrPanel{grid-template-columns:1fr}
+  .bc-tot{grid-template-columns:1fr}
+}
+
+.pHead{display:flex;gap:18px;align-items:center;margin-bottom:16px}
+.pImg{width:118px;height:118px;border-radius:50%;overflow:hidden;flex:none;background:#F3E6CF;border:1px solid var(--line);cursor:zoom-in;position:relative}
+.pImg img{width:100%;height:100%;object-fit:cover;display:block}
+.pImg .zi{position:absolute;right:14px;bottom:10px;font-style:normal;font-size:12px;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 5px}
+.pTxt b{display:block;font-family:var(--serif);font-size:19px;font-weight:700}
+.pTxt span{display:block;font-size:13px;color:var(--slate);margin-top:4px;line-height:1.5}
+.pTxt .rb{display:inline-block;margin-top:9px;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--teal);border-radius:999px;padding:5px 11px}
+.sizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:9px}
+.sz{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 12px;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;transition:border-color .2s}
+.sz.has{background:#FCECE8;border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.sz .szL{font-size:14.5px;font-weight:700;color:var(--ink)}
+.sz .szE{grid-column:1/-1;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-top:16px}
+.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center;transition:all .2s}
+.tier.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(216,71,63,.75)}
+.tier .tq{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.tier .tp{font-family:var(--serif);font-size:18px;font-weight:700;margin-top:3px}
+.tier .tr{font-size:11px;margin-top:2px;opacity:.8}
+.packs{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:8px}
+.pack{position:relative;display:flex;align-items:center;gap:16px;width:100%;text-align:left;font-family:var(--sans);background:linear-gradient(135deg,#FDF1EE,#FBE3DD);border:2px solid var(--teal);border-radius:16px;padding:16px 18px;margin:0;cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 14px 30px -18px rgba(216,71,63,.7)}
+.pack:hover{transform:translateY(-2px);box-shadow:0 20px 36px -18px rgba(216,71,63,.8)}
+.pack.on{background:var(--teal);color:#fff}
+.pack.on .pk-t,.pack.on .pk-s{color:rgba(255,255,255,.88)}
+.pack.on .pk-u{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap;margin-top:-4px}
+.pk-flag{position:absolute;top:-11px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#1C1611;border-radius:999px;padding:5px 11px;animation:pkPulse 1.6s ease-in-out infinite}
+@keyframes pkPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.pk-flag{animation:none}}
+.pk-c{background:#fff;color:var(--teal-d)}
+.pk-l{flex:1;min-width:0}
+.pk-t{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
+.pk-l b{display:block;font-family:var(--serif);font-size:19px;font-weight:700;margin-top:3px}
+.pk-s{display:block;font-size:12px;color:var(--slate);margin-top:5px;line-height:1.45}
+.pk-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+.pk-p{font-family:var(--serif);font-size:24px;font-weight:700;white-space:nowrap}
+.pk-u{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap;margin-top:-4px}
+.pk-flag{position:absolute;top:-11px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#1C1611;border-radius:999px;padding:5px 11px;animation:pkPulse 1.6s ease-in-out infinite}
+@keyframes pkPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.pk-flag{animation:none}}
+.pk-c{font-size:13px;font-weight:700;color:#fff;background:var(--teal);border-radius:10px;padding:8px 13px;white-space:nowrap}
+.pk-or{font-size:12.5px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+@media(max-width:600px){.pack{flex-direction:column;align-items:stretch}.pk-r{flex-direction:row;align-items:center;justify-content:space-between}}
+.minNote{margin-top:10px;font-size:12.5px;color:#8C2A20;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:10px;padding:9px 12px;line-height:1.45}
+.minNote.ok{color:var(--teal-d);background:#FCECE8;border-color:#F2C9C2}
+@media(max-width:600px){.pHead{gap:13px}.pImg{width:88px;height:88px}.sizes{grid-template-columns:1fr}.tiers{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -110,11 +293,12 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <div class="wrap head">
   <span class="eyebrow">Prise de commande · Sisters Republic</span>
   <h1>Culotte menstruelle <em>Tina</em> — gamme remboursée</h1>
-  <p>Sélectionnez vos quantités par taille : le tarif dégressif et la remise se calculent automatiquement. Votre commande m'est envoyée directement par e-mail, je vous confirme la disponibilité et la date de livraison.</p>
+  <p>Remboursée par la Sécurité sociale dès <b>octobre 2026</b>, avec délivrance exclusive en pharmacie. Choisissez vos quantités par taille : la remise et le franco se calculent automatiquement.</p>
   <div class="steps">
     <div class="step"><b>1</b> Choisissez vos tailles</div>
     <div class="step"><b>2</b> Vérifiez le récapitulatif</div>
     <div class="step"><b>3</b> Envoyez la commande</div>
+    <div class="step"><b>4</b> Confirmation après vérification</div>
   </div>
 </div>
 
@@ -122,24 +306,48 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
     <div>
       <div class="card">
-        <h2>Culotte Tina — 8 tailles</h2>
-        <p class="hint">Coton bio GOTS · absorption Super (&gt; 20 ml) · Oeko-Tex Standard 100 · lavable + de 52 cycles. Prix public conseillé 19,00 € TTC.</p>
-        <div id="prodList"></div>
-
-        <div class="tiers" id="tiers">
-          <div class="tier" data-min="12"><div class="tq">Dès 12 u</div><div class="tp">12,96 €</div><div class="tr">tarif net</div></div>
-          <div class="tier" data-min="72"><div class="tq">Dès 72 u</div><div class="tp">12,31 €</div><div class="tr">RFA 5 %</div></div>
-          <div class="tier" data-min="96"><div class="tq">Dès 96 u</div><div class="tp">12,05 €</div><div class="tr">RFA 7 %</div></div>
-          <div class="tier" data-min="120"><div class="tq">Dès 120 u</div><div class="tp">11,66 €</div><div class="tr">RFA 10 %</div></div>
+        <div class="pHead">
+          <span class="pImg" id="pImg" title="Cliquez pour agrandir"><img src="assets/tina_produit.png" alt="Culotte Tina Sisters Republic" /><i class="zi">⌕</i></span>
+          <div class="pTxt">
+            <b>Culotte Tina · Noir · absorption Super</b>
+            <span>Coton bio GOTS · absorption &gt; 20 ml · Oeko-Tex Standard 100 · lavable + de 52 cycles. Prix public conseillé <b style="display:inline;font-family:inherit;font-size:inherit">19,00 € TTC</b>.</span>
+            <span class="rb">Remboursée dès octobre 2026</span>
+          </div>
+        </div>
+        <div class="packs">
+          <button type="button" class="pack" data-pack="2">
+            <span class="pk-l"><span class="pk-t">Pack découverte</span><b>12 unités · 8 tailles</b><span class="pk-s"></span></span>
+            <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
+          </button>
+          <button type="button" class="pack" data-pack="0">
+            <span class="pk-l"><span class="pk-t">Pack d'implantation</span><b>24 unités · 8 tailles</b><span class="pk-s"></span></span>
+            <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
+          </button>
+          <button type="button" class="pack pk-best" data-pack="1">
+            <span class="pk-flag">−10 % supplémentaires</span>
+            <span class="pk-l"><span class="pk-t">Pack 48 unités</span><b>48 unités · 8 tailles</b><span class="pk-s"></span></span>
+            <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
+          </button>
+        </div>
+        <p class="pk-or">L'assortiment s'ajoute directement à votre récapitulatif. Vous pouvez ensuite l'ajuster taille par taille ci-dessous.</p>
+        <h2>Quantités par taille</h2>
+        <p class="hint">8 tailles, du 10/11 ans au XXL. Commande à partir de <b>12 unités</b>, toutes tailles confondues.</p>
+        <div class="sizes" id="sizeList"></div>
+        <div class="terms">
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">200 € HT</span></div>
+          <div class="term"><span class="tk">Remboursement</span><span class="tv">Dès octobre 2026</span></div>
+          <div class="term"><span class="tk">Délivrance</span><span class="tv">Exclusive officine</span></div>
         </div>
       </div>
 
       <div class="card" style="margin-top:20px">
         <h2>Vos coordonnées</h2>
         <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
         <div class="two">
-          <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
           <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
         </div>
         <div class="two">
           <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
@@ -156,124 +364,275 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p></div>
         <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
         <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 5,5 %</div>
-        <div class="meta" id="metaBox">Minimum de commande : <b>12 unités</b>. Franco de port <b>200 € HT</b>.</div>
+        <div class="minNote" id="minNote">Minimum de commande : <b>12 unités</b>.</div>
+        <div class="fbar" id="fbar">
+          <div class="ft" id="fTxt">Franco de port à <b>200 € HT</b>.</div>
+          <div class="track"><div class="fill" id="fFill"></div></div>
+        </div>
         <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
-        <p class="legal">Commande transmise à David BITTON · aucun paiement en ligne. Tarifs indicatifs confirmés à la validation.</p>
       </div>
     </aside>
 
     <input type="hidden" name="_subject" value="Commande Sisters Republic — Culotte Tina" />
     <input type="hidden" name="recapitulatif" id="recapField" />
     <input type="hidden" name="total_ht" id="totalField" />
+    <input type="hidden" name="bon_de_commande" id="bonField" />
   </form>
 
   <div class="done" id="doneBox">
-    <div class="ic">✓</div>
-    <h2>Commande envoyée, merci !</h2>
-    <p>Je reviens vers vous très rapidement pour confirmer la disponibilité et la date de livraison.<br />À bientôt — David BITTON · 06 78 00 78 32</p>
+    <div class="bc">
+      <div class="bc-top">
+        <div class="bc-brand">
+          <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+          <div><b>David BITTON</b><span>DBN Développement</span></div>
+        </div>
+        <div class="bc-ok"><span class="bc-tick">✓</span> Commande enregistrée</div>
+      </div>
+      <div class="bc-hero">
+        <span class="bc-eye">Sisters Republic · Culotte Tina</span>
+        <h2>Merci <em id="bcName">!</em></h2>
+        <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Merci de votre confiance !</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Prix unitaire net</span><b id="bcPU">—</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 5,5 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-terms">
+          <span><b>Franco</b> 200 € HT</span>
+          <span><b>Remboursement</b> dès octobre 2026</span>
+          <span><b>Délivrance</b> exclusive officine</span>
+        </div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-contact">Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></div>
+        <div class="bc-acts">
+          <button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button>
+          <a class="bc-home" href="DBN - Espace Catalogues.html">Retour aux catalogues</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
 (function(){
-  var SIZES=['10/11 ans','12/13 ans','XS (34)','S (36)','M (38)','L (40)','XL (42)','2XL (44)'];
-  var TIERS=[{min:120,price:11.66,rfa:'RFA 10 %'},{min:96,price:12.05,rfa:'RFA 7 %'},{min:72,price:12.31,rfa:'RFA 5 %'},{min:12,price:12.96,rfa:'tarif net'}];
-  var MIN=12, TVA=1.055;
-  var list=document.getElementById('prodList');
-  var qtys=SIZES.map(function(){return 0;});
-
+  var FRANCO=200, TVA=1.055, MIN=12, BASE=14.40;
+  var SIZES=['10/11 ans','12/14 ans','XS (34)','S (36)','M (38)','L (40)','XL (42)','XXL (44)'];
+  /* EAN 13 par taille */
+  var EANS={'10/11 ans':'3701469317124','12/14 ans':'3701469317117','XS (34)':'3701469317100','S (36)':'3701469317094','M (38)':'3701469317087','L (40)':'3701469317070','XL (42)':'3701469317063','XXL (44)':'3701469317056'};
+  /* au détail : 12,96 € HT/u · dès 48 u, remise de 10 % supplémentaire → 11,66 € HT/u */
+  /* 12-23 u : 14,40 € · 24-47 u : 12,96 € (−10 %) · 48 u et + : 11,66 € (−10 % + 10 %) */
+  var P_BASE=14.40;
+  var TIERS=[{min:48,p:11.66,l:'remise 10 % + 10 % incluse'},{min:24,p:12.96,l:'remise 10 % incluse'},{min:12,p:14.40,l:''}];
+  function remise(t,pu){return (pu<P_BASE)?t*(P_BASE-pu):0;}
+  function remLbl(pu){return pu<12.96?'Remise 10 % + 10 %':'Remise 10 %';}
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var qty={};
+  /* assortiment du pack 24 u — à confirmer avec le catalogue */
+  /* pack 12 = assortiment fourni par le labo · packs 24 et 48 = multiples */
+  var PACK12={'10/11 ans':1,'12/14 ans':1,'XS (34)':2,'S (36)':3,'M (38)':2,'L (40)':1,'XL (42)':1,'XXL (44)':1};
+  var PACK={}, PACK48={}; Object.keys(PACK12).forEach(function(k){PACK[k]=PACK12[k]*2;PACK48[k]=PACK12[k]*4;});
+  /* pack 24 = tarif net 12,96 € · pack 48 = 10 % supplémentaires → 11,66 € */
+  var PACKS=[{q:PACK,p:12.96,l:'pack 24 u · remise 10 %'},{q:PACK48,p:11.66,l:'pack 48 u · remise 10 % + 10 % supplémentaires'},{q:PACK12,p:14.40,l:'pack 12 u · sans remise'}];
+  function matchPack(){for(var i=0;i<PACKS.length;i++){var P=PACKS[i];if(SIZES.every(function(s){return (qty[s]||0)===(P.q[s]||0);}))return i;}return -1;}
+  function priceInfo(t){var m=matchPack();if(m>=0)return {p:PACKS[m].p,l:PACKS[m].l,pack:m};var tr=tierFor(t);return {p:tr?tr.p:TIERS[TIERS.length-1].p,l:tr?tr.l:'',pack:-1,tr:tr};}
+  function ean(s){return EANS[s]||'';}
   function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function tierFor(t){for(var i=0;i<TIERS.length;i++){if(t>=TIERS[i].min)return TIERS[i];}return null;}
+  function totalQty(){var t=0;SIZES.forEach(function(s){t+=qty[s]||0;});return t;}
+  function unitFor(t){var tr=tierFor(t);return tr?tr.p:TIERS[TIERS.length-1].p;}
 
+  var box=document.getElementById('sizeList');
   SIZES.forEach(function(s,i){
-    var row=document.createElement('div');
-    row.className='prod';
-    row.innerHTML='<div><div class="pn">Culotte Tina — '+s+'</div><div class="pm">Absorption Super · noir</div></div>'+
-      '<div class="qty"><button type="button" aria-label="Retirer">−</button>'+
-      '<input type="number" min="0" step="1" value="0" aria-label="Quantité '+s+'" />'+
-      '<button type="button" aria-label="Ajouter">+</button></div>';
-    var btns=row.querySelectorAll('button'), inp=row.querySelector('input');
-    btns[0].addEventListener('click',function(){inp.value=Math.max(0,(parseInt(inp.value,10)||0)-1);sync(i,inp);});
-    btns[1].addEventListener('click',function(){inp.value=(parseInt(inp.value,10)||0)+1;sync(i,inp);});
-    inp.addEventListener('input',function(){sync(i,inp);});
-    list.appendChild(row);
+    var d=document.createElement('div');
+    d.className='sz'; d.id='sz'+i;
+    d.innerHTML='<span class="szL">'+s+'</span>'+
+      '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
+      '<input type="number" min="0" step="1" value="0" aria-label="Tina '+s+'" />'+
+      '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>'+
+      (ean(s)?'<span class="szE">EAN '+ean(s)+'</span>':'');
+    var inp=d.querySelector('input');
+    d.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){
+        var v=parseInt(inp.value,10)||0;
+        inp.value=b.dataset.a==='+'?v+1:Math.max(0,v-1);
+        set(s,inp,d);
+      });
+    });
+    inp.addEventListener('input',function(){set(s,inp,d);});
+    box.appendChild(d);
   });
 
-  function sync(i,inp){
+  document.querySelectorAll('.pack').forEach(function(btn){
+    var P=PACKS[parseInt(btn.dataset.pack,10)], n=0;
+    SIZES.forEach(function(s){n+=P.q[s]||0;});
+    btn.querySelector('.pk-s').textContent=SIZES.filter(function(s){return P.q[s];}).map(function(s){return s.replace(/ \(.*\)/,'')+' ×'+P.q[s];}).join(' · ');
+    btn.querySelector('.pk-p').textContent=eur(n*P.p)+' HT';
+    btn.querySelector('.pk-u').textContent='soit '+eur(P.p)+' HT / u';
+    btn.addEventListener('click',function(){
+    SIZES.forEach(function(s,i){
+      var d=document.getElementById('sz'+i), inp=d.querySelector('input');
+      inp.value=P.q[s]||0; qty[s]=P.q[s]||0; d.classList.toggle('has',qty[s]>0);
+    });
+    render();
+    if(window.innerWidth<=880){var a=document.querySelector('aside');window.scrollTo({top:a.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'});}
+    });
+  });
+
+  function set(s,inp,d){
     var v=parseInt(inp.value,10); if(isNaN(v)||v<0){v=0;}
-    inp.value=v; qtys[i]=v; render();
+    inp.value=v; qty[s]=v; d.classList.toggle('has',v>0); render();
   }
 
-  function tierFor(total){
-    for(var i=0;i<TIERS.length;i++){ if(total>=TIERS[i].min) return TIERS[i]; }
-    return null;
+  function recapText(pu){
+    var r='';
+    SIZES.forEach(function(s){var q=qty[s]||0;if(q>0)r+='- Culotte Tina '+s+(ean(s)?' · EAN '+ean(s):'')+' : '+q+' u\n';});
+    return r;
   }
 
   function render(){
-    var total=qtys.reduce(function(a,b){return a+b;},0);
-    var t=tierFor(total);
-    var unit=t?t.price:TIERS[TIERS.length-1].price;
-    var ht=total*unit;
-
-    document.querySelectorAll('#tiers .tier').forEach(function(el){
-      el.classList.toggle('on', t && parseInt(el.dataset.min,10)===t.min);
+    var total=totalQty(), pi=priceInfo(total), tr=pi.pack>=0?null:pi.tr, pu=pi.p, ht=total*pu, html='';
+    SIZES.forEach(function(s){
+      var q=qty[s]||0;
+      if(q>0) html+='<div class="line"><span>Tina '+s+(ean(s)?'<em class="eanL">EAN '+ean(s)+'</em>':'')+'</span><b>'+q+' u</b></div>';
     });
-
-    var box=document.getElementById('sumLines'), html='', recap='';
+    document.querySelectorAll('#tiers .tier').forEach(function(el){el.classList.toggle('on',!!tr&&parseInt(el.dataset.min,10)===tr.min);});
+    var sl=document.getElementById('sumLines');
     if(total===0){
-      box.innerHTML='<p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p>';
+      sl.innerHTML='<p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p>';
     }else{
-      SIZES.forEach(function(s,i){
-        if(qtys[i]>0){
-          html+='<div class="line"><span>Tina '+s+'</span><b>'+qtys[i]+' u</b></div>';
-          recap+='- Culotte Tina '+s+' : '+qtys[i]+' u\n';
-        }
-      });
-      html+='<div class="line"><span>Total unités</span><b>'+total+' u</b></div>';
-      html+='<div class="line"><span>Prix unitaire ('+(t?t.rfa:'—')+')</span><b>'+eur(unit)+' HT</b></div>';
-      box.innerHTML=html;
-      recap+='\nTotal : '+total+' unités\nPrix unitaire : '+eur(unit)+' HT ('+(t?t.rfa:'')+')\nTotal HT : '+eur(ht);
+      sl.innerHTML=html+'<div class="line"><span>Total unités</span><b>'+total+' u</b></div>'+
+        (remise(total,pu)>0?'<div class="line"><span>Sous-total avant remise</span><b>'+eur(total*P_BASE)+' HT</b></div><div class="line" style="color:var(--teal-d)"><span style="color:var(--teal-d);font-weight:700">'+remLbl(pu)+'</span><b>− '+eur(remise(total,pu))+'</b></div>':'')+
+        '<div class="line"><span>Prix net unitaire'+(pi.l?'<em class="eanL">'+pi.l+'</em>':'')+'</span><b>'+eur(pu)+' HT</b></div>';
     }
-
     document.getElementById('totHT').textContent=eur(ht);
     document.getElementById('totTTC').textContent='soit '+eur(ht*TVA)+' TTC · TVA 5,5 %';
 
-    var meta=document.getElementById('metaBox'), btn=document.getElementById('sendBtn');
-    if(total===0){
-      meta.innerHTML='Minimum de commande : <b>12 unités</b>. Franco de port <b>200 € HT</b>.';
-      btn.disabled=true;
-    }else if(total<MIN){
-      meta.innerHTML='Encore <b>'+(MIN-total)+' unité(s)</b> pour atteindre le minimum de commande de 12 unités.';
-      btn.disabled=true;
-    }else{
-      var nextT=null;
-      for(var i=TIERS.length-1;i>=0;i--){ if(TIERS[i].min>total){ nextT=TIERS[i]; break; } }
-      meta.innerHTML=nextT
-        ? 'Ajoutez <b>'+(nextT.min-total)+' u</b> pour passer à <b>'+eur(nextT.price)+' HT/u</b> ('+nextT.rfa+').'
-        : 'Meilleur tarif atteint : <b>'+eur(unit)+' HT/u</b> avec RFA 10 %.';
-      if(ht<200){ meta.innerHTML+='<br />Franco de port à 200 € HT — il manque <b>'+eur(200-ht)+'</b>.'; }
-      btn.disabled=false;
-    }
+    var mn=document.getElementById('minNote');
+    if(total===0){mn.className='minNote';mn.innerHTML='Minimum de commande : <b>12 unités</b>.';}
+    else if(total<MIN){mn.className='minNote';mn.innerHTML='Encore <b>'+(MIN-total)+' unité(s)</b> pour atteindre le minimum de 12 unités.';}
+    else{mn.className='minNote';mn.style.display='none';}
+    if(total<MIN) mn.style.display='';
 
-    document.getElementById('recapField').value=recap;
+    var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt'),fill=document.getElementById('fFill');
+    fill.style.width=Math.min(100,ht/FRANCO*100)+'%';
+    if(ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (200 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=total===0?'Franco de port à <b>200 € HT</b>.':'Il manque <b>'+eur(FRANCO-ht)+'</b> pour le franco de port (200 € HT).';}
+
+    document.getElementById('sendBtn').disabled=total<MIN;
+    document.querySelectorAll('.pack').forEach(function(b){b.classList.toggle('on',parseInt(b.dataset.pack,10)===pi.pack);});
+    var rc=recapText(pu);
+    document.getElementById('recapField').value=rc+'\nTotal : '+total+' unités\nPrix net unitaire : '+eur(pu)+' HT\nTotal HT : '+eur(ht);
     document.getElementById('totalField').value=eur(ht);
+    document.getElementById('bonField').value=buildBon(rc,total,pu,ht,pi);
+  }
+
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+
+  function buildBon(rc,total,pu,ht,tr){
+    var L=['BON DE COMMANDE — SISTERS REPUBLIC','Culotte menstruelle Tina · gamme remboursée','Date : '+today(),'',
+      '--- OFFICINE ---','Officine : '+v('officine'),'Adresse : '+v('adresse'),'Ville : '+v('code_postal')+' '+v('ville'),
+      'Contact : '+v('contact'),'Téléphone : '+v('telephone'),'E-mail : '+v('email'),'',
+      '--- COMMANDE ---','',rc.trim()||'(aucune taille)','',
+      'Total : '+total+' unités','Prix net unitaire : '+eur(pu)+' HT'+(tr&&tr.l?' ('+tr.l+')':''),
+      (remise(total,pu)>0?'Sous-total avant remise : '+eur(total*P_BASE)+' HT\n'+remLbl(pu)+' : − '+eur(remise(total,pu)):'Pas de remise (remise 10 % dès 24 u)'),
+      'TOTAL HT : '+eur(ht),'TVA 5,5 % : '+eur(ht*0.055),'TOTAL TTC : '+eur(ht*TVA),
+      'Franco de port : '+(ht>=FRANCO?'ATTEINT (200 € HT)':'non atteint — il manque '+eur(FRANCO-ht))];
+    var m=v('message'); if(m){L.push('','--- MESSAGE ---',m);}
+    L.push('','Prix public conseillé 19,00 € TTC · remboursement dès octobre 2026.','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
+    return L.join('\n');
+  }
+
+  function buildPayload(total,pu,ht){
+    var lignes=[];
+    SIZES.forEach(function(s){var q=qty[s]||0;if(q>0)lignes.push({modele:'Tina',coloris:'Noir',correction:s,taille:s,ean:ean(s),qte:q});});
+    return {labo:'Sisters Republic',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
+      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
+      lignes:lignes,total:total,formule:(priceInfo(total).l||''),remise:(remise(total,pu)>0?'− '+eur(remise(total,pu)):''),prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.055),totalTTC:eur(ht*TVA),
+      franco:(ht>=FRANCO?'atteint (200 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))};
+  }
+
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(), s=document.createElement('script');
+    /* la passerelle Apps Script peut mettre 20-40 s au démarrage : on attend 60 s avant de basculer sur Formspree (évite les doublons) */
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
   }
 
   document.getElementById('orderForm').addEventListener('submit',function(e){
     e.preventDefault();
     var f=e.target, btn=document.getElementById('sendBtn');
-    btn.disabled=true; btn.textContent='Envoi en cours…';
-    fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
-      .then(function(r){
-        if(!r.ok) throw new Error('fail');
-        f.style.display='none';
-        document.getElementById('doneBox').classList.add('on');
-        if(window.gtag) gtag('event','commande_envoyee',{labo:'Sisters Republic'});
-      })
-      .catch(function(){
-        btn.disabled=false; btn.textContent='Envoyer ma commande →';
-        alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");
-      });
+    render();
+    var total=totalQty(), pu=priceInfo(total).p, ht=total*pu;
+    if(total<MIN) return;
+    btn.disabled=true; btn.textContent='Envoi en cours… merci de patienter';
+    function success(){
+      fillBon(total,pu,ht);
+      f.style.display='none';
+      document.getElementById('doneBox').classList.add('on');
+      window.scrollTo(0,0);
+      if(window.gtag) gtag('event','commande_envoyee',{labo:'Sisters Republic'});
+    }
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){if(!r.ok)throw new Error('fail');success();})
+        .catch(function(){btn.disabled=false;btn.textContent='Envoyer ma commande →';
+          alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});
+    }
+    gwSend(buildPayload(total,pu,ht),success,viaFormspree);
   });
+
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(total,pu,ht){
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent=first?(first+' !'):'!';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+
+      mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+
+      mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    var rows='';
+    SIZES.forEach(function(s){var q=qty[s]||0;if(q>0){
+      rows+='<div class="bc-row"><span class="tag" style="background:#D8473F">Tina</span>'+
+        '<span><span class="mn">Culotte Tina</span> <span class="cn">· Noir</span> <span class="cr">'+s+'</span>'+(ean(s)?'<span class="ce">EAN '+ean(s)+'</span>':'')+'</span>'+
+        '<span class="qn">'+q+' u</span></div>';}});
+    document.getElementById('bcItems').innerHTML=rows;
+    document.getElementById('bcQty').textContent=total+' u';
+    document.getElementById('bcPU').textContent=eur(pu)+' HT';
+    document.getElementById('bcHT').textContent=eur(ht);
+    document.getElementById('bcTTC').textContent=eur(ht*TVA);
+    var fr=document.getElementById('bcFranco');
+    var rm=remise(total,pu);
+    if(rm>0) fr.insertAdjacentHTML('beforebegin','<div class="bc-note ok" style="margin-bottom:10px">✓ <b>'+remLbl(pu)+' appliquée</b> — vous économisez <b>'+eur(rm)+' HT</b> sur cette commande.</div>');
+    if(ht>=FRANCO){fr.className='bc-note ok';fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';}
+    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>200 € HT</b> — il manque <b>'+eur(FRANCO-ht)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
+    var m=v('message'); if(m) fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+m.replace(/[<>]/g,'')+'</div>');
+  }
+
+  (function(){
+    var ov=document.createElement('div'); ov.id='zoomOv'; ov.className='zoomOv';
+    ov.innerHTML='<div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div></div>';
+    document.body.appendChild(ov);
+    function close(){ov.classList.remove('on');}
+    ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.getElementById('pImg').addEventListener('click',function(){
+      ov.querySelector('img').src='assets/tina_produit.png';
+      ov.querySelector('.zl').textContent='Culotte Tina · Sisters Republic';
+      ov.classList.add('on');
+    });
+  })();
 
   render();
 })();
