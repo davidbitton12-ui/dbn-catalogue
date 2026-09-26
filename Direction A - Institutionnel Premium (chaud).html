@@ -855,7 +855,14 @@
   }
 
   @media(max-width:860px){
-    .band{grid-template-columns:1fr!important}
+    .band{grid-template-columns:minmax(0,1fr)!important}
+    .band > *{min-width:0}
+    .band-tina .b-copy{padding:14px 20px}
+    .band-tina .b-img{padding:10px}
+    .band-tina .b-img img{height:130px}
+    .band-tina .b-copy *{white-space:normal!important}
+    .band-tina .b-copy > div[style]{flex-wrap:wrap}
+    .band-tina .b-price{font-size:28px!important}
     .b-img{min-height:150px}
     .b-btn{width:auto}
     .eb-cd{justify-content:center}
