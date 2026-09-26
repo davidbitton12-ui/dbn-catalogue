@@ -316,15 +316,17 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         </div>
         <div class="packs">
           <button type="button" class="pack" data-pack="2">
+            <span class="pk-flag">−10 % de remise</span>
             <span class="pk-l"><span class="pk-t">Pack découverte</span><b>12 unités · 8 tailles</b><span class="pk-s"></span></span>
             <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
           </button>
           <button type="button" class="pack" data-pack="0">
+            <span class="pk-flag">−10 % de remise</span>
             <span class="pk-l"><span class="pk-t">Pack d'implantation</span><b>24 unités · 8 tailles</b><span class="pk-s"></span></span>
             <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
           </button>
           <button type="button" class="pack pk-best" data-pack="1">
-            <span class="pk-flag">−10 % supplémentaires</span>
+            <span class="pk-flag">−10 % de remise</span>
             <span class="pk-l"><span class="pk-t">Pack 48 unités</span><b>48 unités · 8 tailles</b><span class="pk-s"></span></span>
             <span class="pk-r"><span class="pk-p">—</span><span class="pk-u"></span><span class="pk-c">Choisir ce pack →</span></span>
           </button>
@@ -428,20 +430,19 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   var SIZES=['10/11 ans','12/14 ans','XS (34)','S (36)','M (38)','L (40)','XL (42)','XXL (44)'];
   /* EAN 13 par taille */
   var EANS={'10/11 ans':'3701469317124','12/14 ans':'3701469317117','XS (34)':'3701469317100','S (36)':'3701469317094','M (38)':'3701469317087','L (40)':'3701469317070','XL (42)':'3701469317063','XXL (44)':'3701469317056'};
-  /* au détail : 12,96 € HT/u · dès 48 u, remise de 10 % supplémentaire → 11,66 € HT/u */
-  /* 12-23 u : 14,40 € · 24-47 u : 12,96 € (−10 %) · 48 u et + : 11,66 € (−10 % + 10 %) */
+  /* détail : 12-23 u 14,40 € · 24 u et + 12,96 € (−10 %) · packs 12/24/48 : 12,96 € (−10 %) */
   var P_BASE=14.40;
-  var TIERS=[{min:48,p:11.66,l:'remise 10 % + 10 % incluse'},{min:24,p:12.96,l:'remise 10 % incluse'},{min:12,p:14.40,l:''}];
+  var TIERS=[{min:24,p:12.96,l:'remise 10 % incluse'},{min:12,p:14.40,l:''}];
   function remise(t,pu){return (pu<P_BASE)?t*(P_BASE-pu):0;}
-  function remLbl(pu){return pu<12.96?'Remise 10 % + 10 %':'Remise 10 %';}
+  function remLbl(pu){return 'Remise 10 %';}
   var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
   var qty={};
   /* assortiment du pack 24 u — à confirmer avec le catalogue */
   /* pack 12 = assortiment fourni par le labo · packs 24 et 48 = multiples */
   var PACK12={'10/11 ans':1,'12/14 ans':1,'XS (34)':2,'S (36)':3,'M (38)':2,'L (40)':1,'XL (42)':1,'XXL (44)':1};
   var PACK={}, PACK48={}; Object.keys(PACK12).forEach(function(k){PACK[k]=PACK12[k]*2;PACK48[k]=PACK12[k]*4;});
-  /* pack 24 = tarif net 12,96 € · pack 48 = 10 % supplémentaires → 11,66 € */
-  var PACKS=[{q:PACK,p:12.96,l:'pack 24 u · remise 10 %'},{q:PACK48,p:11.66,l:'pack 48 u · remise 10 % + 10 % supplémentaires'},{q:PACK12,p:14.40,l:'pack 12 u · sans remise'}];
+  /* les 3 packs = remise 10 % → 12,96 € HT/u */
+  var PACKS=[{q:PACK,p:12.96,l:'pack 24 u · remise 10 %'},{q:PACK48,p:12.96,l:'pack 48 u · remise 10 %'},{q:PACK12,p:12.96,l:'pack 12 u · remise 10 %'}];
   function matchPack(){for(var i=0;i<PACKS.length;i++){var P=PACKS[i];if(SIZES.every(function(s){return (qty[s]||0)===(P.q[s]||0);}))return i;}return -1;}
   function priceInfo(t){var m=matchPack();if(m>=0)return {p:PACKS[m].p,l:PACKS[m].l,pack:m};var tr=tierFor(t);return {p:tr?tr.p:TIERS[TIERS.length-1].p,l:tr?tr.l:'',pack:-1,tr:tr};}
   function ean(s){return EANS[s]||'';}
