@@ -279,6 +279,17 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .minNote{margin-top:10px;font-size:12.5px;color:#8C2A20;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:10px;padding:9px 12px;line-height:1.45}
 .minNote.ok{color:var(--teal-d);background:#FCECE8;border-color:#F2C9C2}
 @media(max-width:600px){.pHead{gap:13px}.pImg{width:88px;height:88px}.sizes{grid-template-columns:1fr}.tiers{grid-template-columns:1fr 1fr}}
+
+.sumHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.sumHead h2{margin:0}
+.resetBtn{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--slate);background:var(--ivory);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.resetBtn:hover{color:#B03A2E;border-color:#E0B79E;background:#FFF3F0}
+.resetBtn[hidden]{display:none}
+</style>
+<style id="dbn-petits-ecrans">
+/* PC à petit écran (souris, 861–1440 px) : tout réduit — téléphone et tablette tactile non concernés */
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1440px){html{zoom:.85}}
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1280px){html{zoom:.8}}
 </style>
 </head>
 <body>
@@ -337,7 +348,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         <p class="hint">8 tailles, du 10/11 ans au XXL. Commande à partir de <b>12 unités</b>, toutes tailles confondues.</p>
         <div class="sizes" id="sizeList"></div>
         <div class="terms">
-          <div class="term"><span class="tk">Franco de port</span><span class="tv">200 € HT</span></div>
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">150 € HT</span></div>
           <div class="term"><span class="tk">Remboursement</span><span class="tv">Dès octobre 2026</span></div>
           <div class="term"><span class="tk">Délivrance</span><span class="tv">Exclusive officine</span></div>
         </div>
@@ -363,13 +374,13 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 
     <aside>
       <div class="card sum">
-        <h2>Récapitulatif</h2>
+        <div class="sumHead"><h2>Récapitulatif</h2><button type="button" class="resetBtn" id="resetBtn">↺ Tout effacer</button></div>
         <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos tailles pour voir le total.</p></div>
         <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
         <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 5,5 %</div>
         <div class="minNote" id="minNote">Minimum de commande : <b>12 unités</b>.</div>
         <div class="fbar" id="fbar">
-          <div class="ft" id="fTxt">Franco de port à <b>200 € HT</b>.</div>
+          <div class="ft" id="fTxt">Franco de port à <b>150 € HT</b>.</div>
           <div class="track"><div class="fill" id="fFill"></div></div>
         </div>
         <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
@@ -409,7 +420,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       </div>
       <div class="bc-foot">
         <div class="bc-terms">
-          <span><b>Franco</b> 200 € HT</span>
+          <span><b>Franco</b> 150 € HT</span>
           <span><b>Remboursement</b> dès octobre 2026</span>
           <span><b>Délivrance</b> exclusive officine</span>
         </div>
@@ -427,7 +438,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 
 <script>
 (function(){
-  var FRANCO=200, TVA=1.055, MIN=12, BASE=14.40;
+  var FRANCO=150, TVA=1.055, MIN=12, BASE=14.40;
   var SIZES=['10/11 ans','12/14 ans','XS (34)','S (36)','M (38)','L (40)','XL (42)','XXL (44)'];
   /* EAN 13 par taille */
   var EANS={'10/11 ans':'3701469317124','12/14 ans':'3701469317117','XS (34)':'3701469317100','S (36)':'3701469317094','M (38)':'3701469317087','L (40)':'3701469317070','XL (42)':'3701469317063','XXL (44)':'3701469317056'};
@@ -526,8 +537,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 
     var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt'),fill=document.getElementById('fFill');
     fill.style.width=Math.min(100,ht/FRANCO*100)+'%';
-    if(ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (200 € HT).';}
-    else{fb.classList.remove('ok');ft.innerHTML=total===0?'Franco de port à <b>200 € HT</b>.':'Il manque <b>'+eur(FRANCO-ht)+'</b> pour le franco de port (200 € HT).';}
+    if(ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (150 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=total===0?'Franco de port à <b>150 € HT</b>.':'Il manque <b>'+eur(FRANCO-ht)+'</b> pour le franco de port (150 € HT).';}
 
     document.getElementById('sendBtn').disabled=total<MIN;
     document.querySelectorAll('.pack').forEach(function(b){b.classList.toggle('on',parseInt(b.dataset.pack,10)===pi.pack);});
@@ -548,7 +559,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       'Total : '+total+' unités','Prix net unitaire : '+eur(pu)+' HT'+(tr&&tr.l?' ('+tr.l+')':''),
       (remise(total,pu)>0?'Sous-total avant remise : '+eur(total*P_BASE)+' HT\n'+remLbl(pu)+' : − '+eur(remise(total,pu)):'Pas de remise (remise 10 % dès 24 u)'),
       'TOTAL HT : '+eur(ht),'TVA 5,5 % : '+eur(ht*0.055),'TOTAL TTC : '+eur(ht*TVA),
-      'Franco de port : '+(ht>=FRANCO?'ATTEINT (200 € HT)':'non atteint — il manque '+eur(FRANCO-ht))];
+      'Franco de port : '+(ht>=FRANCO?'ATTEINT (150 € HT)':'non atteint — il manque '+eur(FRANCO-ht))];
     var m=v('message'); if(m){L.push('','--- MESSAGE ---',m);}
     L.push('','Prix public conseillé 19,00 € TTC · remboursement dès octobre 2026.','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
     return L.join('\n');
@@ -560,7 +571,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     return {labo:'Sisters Republic',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
       contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
       lignes:lignes,total:total,formule:(priceInfo(total).l||''),remise:(remise(total,pu)>0?'− '+eur(remise(total,pu)):''),prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.055),totalTTC:eur(ht*TVA),
-      franco:(ht>=FRANCO?'atteint (200 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))};
+      franco:(ht>=FRANCO?'atteint (150 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))};
   }
 
   function gwSend(data,done,fail){
@@ -618,7 +629,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     var rm=remise(total,pu);
     if(rm>0) fr.insertAdjacentHTML('beforebegin','<div class="bc-note ok" style="margin-bottom:10px">✓ <b>'+remLbl(pu)+' appliquée</b> — vous économisez <b>'+eur(rm)+' HT</b> sur cette commande.</div>');
     if(ht>=FRANCO){fr.className='bc-note ok';fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';}
-    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>200 € HT</b> — il manque <b>'+eur(FRANCO-ht)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
+    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>150 € HT</b> — il manque <b>'+eur(FRANCO-ht)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
     var m=v('message'); if(m) fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+m.replace(/[<>]/g,'')+'</div>');
   }
 
@@ -634,6 +645,22 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       ov.querySelector('.zl').textContent='Culotte Tina · Sisters Republic';
       ov.classList.add('on');
     });
+  })();
+
+  (function(){
+    var rb=document.getElementById('resetBtn');
+    if(!rb) return;
+    rb.addEventListener('click',function(){
+      if(!confirm('Effacer toutes les quantités saisies et repartir à zéro ?')) return;
+      Object.keys(qty).forEach(function(k){qty[k]=0;});
+      document.querySelectorAll('#orderForm .qty input').forEach(function(i){i.value=0;});
+      document.querySelectorAll('#orderForm .has').forEach(function(e){e.classList.remove('has');});
+      document.querySelectorAll('#orderForm .pack.on').forEach(function(e){e.classList.remove('on');});
+      render();
+    });
+    var obs=new MutationObserver(function(){rb.hidden=!Object.keys(qty).some(function(k){return qty[k]>0;});});
+    obs.observe(document.getElementById('sumLines'),{childList:true,subtree:true});
+    rb.hidden=true;
   })();
 
   render();
