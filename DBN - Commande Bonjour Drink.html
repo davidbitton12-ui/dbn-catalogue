@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Bonjour Drink — David BITTON</title>
+<script src="analytics.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--teal:#D9A300;--teal-dk:#8A6400;--teal-d:#8A6400;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in img{height:64px;width:auto}
+.top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .back{margin-left:auto;font-size:14px;font-weight:600}
+.head{padding-top:30px;padding-bottom:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
+.head h1 em{font-style:italic;color:var(--teal)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:64ch;line-height:1.55;text-wrap:pretty}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
+.card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+/* correction picker */
+.corrs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.corr{background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--slate);cursor:pointer;transition:all .18s}
+.corr:hover{border-color:var(--teal);color:var(--teal)}
+.corr.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(138,106,16,.75)}
+.corr-note{font-size:12.5px;color:var(--slate);margin:10px 0 0;line-height:1.45;background:var(--ivory);border-radius:10px;padding:10px 12px}
+.corr-note b{color:var(--ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-top:12px}
+.term{background:#FBF4DF;border:1px solid #E8D59A;border-radius:12px;padding:10px 13px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.75}
+.term .tv{display:block;font-size:14.5px;font-weight:700;color:var(--teal-d);margin-top:3px}
+/* models */
+.model{border-bottom:1px solid var(--line);padding:16px 0}
+.model:last-of-type{border-bottom:none;padding-bottom:4px}
+.mh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.mh .mn{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.02em}
+.mh .mc{font-size:12px;color:var(--slate)}
+.mh .mt{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--teal)}
+.mh .gtag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;line-height:1;box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:10px;align-items:start}
+.cItem{background:var(--ivory);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.cItem.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ciHead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:7px 11px 7px 8px;cursor:default;font-family:var(--sans);text-align:left}
+
+.ciHead .cn{font-size:14px;font-weight:600;color:var(--ink)}
+.ciHead .cSum{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--teal-d);opacity:0}
+.ciHead .cSum.on{opacity:1}
+.ciHead .chev{display:none}
+.cItem.open .ciHead .chev{transform:rotate(180deg)}
+.corrPanel{display:none;padding:4px 11px 11px;border-top:1px dashed var(--line);background:#fff}
+.cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
+.crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
+.crRow.has{background:#FAF1D6;border-color:var(--teal)}
+.crRow.soon{background:#EFEDEA;border-style:dashed;border-color:#CFC8BE}
+.crRow.soon .crL{color:#8A8277}
+.crRow.soon .qty{opacity:.7}
+.crRow.soon.has{background:#F1EFEA;border-color:#A89F93;border-style:solid}
+.soonT{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#B0234F;margin-top:1px}
+.soonL{display:block;font-style:normal;font-size:11px;font-weight:700;color:#B0234F;margin-top:2px}
+.soonB{font-size:11px;font-weight:800;color:#B0234F;background:#FBEAEE;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.soon-note{font-size:12.5px;color:#7A2440;margin:12px 0 0;line-height:1.5;background:#FBEAEE;border:1px solid #F0C7D2;border-radius:10px;padding:10px 12px}
+.soon-note b{color:#5E1A31}
+.crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
+.crRow .crE{grid-column:1/-1;display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em;line-height:1.2;white-space:nowrap;padding:0 1px}
+.crRow .qty{border-radius:9px;flex:none}
+.crRow .qty button{width:26px;height:32px;font-size:15px}
+.crRow .qty input{width:32px;height:32px;font-size:13.5px}
+.cItem.has > .ciHead{background:#FBF4DF}
+.cItem .thumb{position:relative;width:99px;height:53px;flex:none;border-radius:7px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cItem .thumb .zi{position:absolute;right:3px;bottom:2px;font-style:normal;font-size:11px;line-height:1;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 4px;pointer-events:none}
+.cItem .thumb.none .zi{display:none}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:14px;width:min(900px,94vw,calc((82vh - 40px) * 1.35))}
+.zbox img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:contain;border-radius:12px;background:#fff}
+.zbox .zl{text-align:center;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin-top:12px}
+.zbox .zx{position:absolute;top:-13px;right:-13px;width:34px;height:34px;border:none;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.zbox .zx:hover{background:var(--teal-d)}
+.cItem .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cItem .thumb.none{background:var(--sand);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--slate);text-align:center;line-height:1.2;padding:2px}
+.cItem .cn{font-size:13.5px;font-weight:600;min-width:0}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:34px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;line-height:1}
+.qty button:hover{background:#F3E6B8}
+.qty input{width:44px;height:38px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-top:13px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+.sum{position:sticky;top:20px}
+.grid > aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sum .line span:first-child{color:var(--slate);min-width:0}
+.eanL{display:block;font-style:normal;font-size:11px;color:var(--slate);letter-spacing:.03em;margin-top:2px}
+.sum .line b{font-weight:700;white-space:nowrap}
+.sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--teal);line-height:1}
+.sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
+.fbar{margin-top:13px;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .ft b{color:var(--ink)}
+.fbar .track{height:7px;border-radius:999px;background:#E4DACB;margin-top:8px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .fill{background:#2E9E7A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-dk)}
+.btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
+.legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
+.done{display:none;margin-bottom:60px}
+.done.on{display:block}
+/* bon de commande client */
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(94,72,10,.45)}
+.bc-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-brand{display:flex;align-items:center;gap:12px}
+.bc-brand img{height:52px;width:auto}
+.bc-brand b{display:block;font-size:16px;font-weight:700;color:var(--blue);line-height:1.15}
+.bc-brand span{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.bc-ok{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.bc-tick{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px}
+.bc-hero{padding:32px 26px 28px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#FDF8EA,#F8EDCC 55%,#F2E2B0 100%)}
+.bc-eye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.72);border-radius:999px;padding:6px 14px}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--teal-d);margin:14px 0 0;line-height:1.1}
+.bc-hero h2 em{font-style:italic;color:var(--teal)}
+.bc-hero p{font-size:15px;color:#4F4326;margin:12px auto 0;max-width:56ch;line-height:1.6}
+.bc-body{padding:26px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-bottom:20px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:11px 14px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);background:#fff}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .tag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 10px;flex:none}
+.bc-row .mn{font-size:14.5px;font-weight:700;white-space:nowrap}
+.bc-row .cn{font-size:13px;color:var(--slate);white-space:nowrap}
+.bc-row .cr{font-size:12.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bc-row .ce{font-size:11.5px;color:var(--slate);letter-spacing:.03em;white-space:nowrap}
+.bc-row > span:nth-child(2){display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:18px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:27px}
+.bc-note{margin-top:16px;font-size:13.5px;line-height:1.55;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:13px;padding:13px 15px;color:#8C2A20}
+.bc-note b{color:#6b1f18}
+.bc-note.ok{background:#FAF1D6;border-color:#B7DFCE;color:#1F5957}
+.bc-note.ok b{color:#14453F}
+.bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
+.bc-contact{font-size:13.5px;color:var(--slate)}
+.bc-contact b{color:var(--ink)}
+.bc-acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:11px 18px;cursor:pointer}
+.bc-print:hover{background:var(--teal-d)}
+.bc-home{font-size:13px;font-weight:600;color:var(--teal-d)}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.head,#orderForm{display:none!important}
+  .bc{box-shadow:none;border-radius:0;border:none}
+  .bc-acts{display:none}
+}
+@media(max-width:600px){
+  .bc-top,.bc-foot{padding:14px 16px}
+  .bc-hero{padding:24px 16px 22px}
+  .bc-body{padding:18px 16px}
+  .bc-ok{margin-left:0}
+  .bc-acts{margin-left:0;width:100%}
+  .bc-print{flex:1}
+}
+@media(max-width:880px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sum{position:static}
+  .grid > aside{position:static;max-height:none;overflow:visible}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .top-in img{height:52px}
+  .top-in .back{margin-left:0;width:100%}
+  .two{grid-template-columns:1fr}
+  .card{padding:18px 16px}
+  .colors{grid-template-columns:1fr}
+  .corr{padding:9px 13px;font-size:13.5px}
+  .head h1{font-size:25px}
+  .steps{gap:7px}
+  .step{font-size:12px;padding:8px 11px}
+  .terms{grid-template-columns:1fr;gap:7px}
+  .cItem.open .corrPanel{grid-template-columns:1fr 1fr;gap:6px}
+  .crRow{padding:6px 7px}
+  .crRow .qty button{width:34px;height:40px;font-size:17px}
+  .crRow .qty input{width:38px;height:40px;font-size:15px}
+  .cItem .thumb{width:81px;height:46px}
+  .ciHead{padding:8px 10px 8px 7px}
+  .mhead{flex-wrap:wrap;gap:7px}
+  .mhead .mn{font-size:16px}
+  .sum .tot .v{font-size:26px}
+  .btn{font-size:16px;padding:16px 18px}
+  .zbox{padding:10px;border-radius:14px}
+  .zbox{width:94vw}
+  .zbox img{aspect-ratio:1/1}
+  .zbox .zl{font-size:16px;margin-top:9px}
+  .zbox .zx{top:-11px;right:-11px;width:32px;height:32px}
+  .bc-meta{grid-template-columns:1fr;gap:8px}
+  .bc-tot{grid-template-columns:1fr 1fr;gap:8px}
+  .bc-row{flex-wrap:wrap;gap:7px;padding:10px 13px}
+  .bc-row .qn{margin-left:auto}
+  .bc-hero h2{font-size:26px}
+}
+@media(max-width:400px){
+  .cItem.open .corrPanel{grid-template-columns:1fr}
+  .bc-tot{grid-template-columns:1fr}
+}
+@media(max-width:600px){.field input,.field textarea,.qty input{font-size:16px!important}}
+.howto{display:flex;flex-wrap:wrap;gap:4px 18px;margin:6px 0 8px;padding:0;list-style:none;counter-reset:hw;font-size:13px;color:var(--ink)}
+.howto li{display:flex;align-items:center;gap:6px;counter-increment:hw}
+.howto li::before{content:counter(hw);width:18px;height:18px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.card .howto + .hint{margin-bottom:0}
+
+.sumHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.sumHead h2{margin:0}
+.resetBtn{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--slate);background:var(--ivory);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.resetBtn:hover{color:#B03A2E;border-color:#E0B79E;background:#FFF3F0}
+.resetBtn[hidden]{display:none}
+
+.prods{display:grid;gap:14px}
+.sp{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;background:var(--ivory);border:1px solid var(--line);border-radius:16px;padding:14px;transition:border-color .2s}
+.sp.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal);background:#FFFCF3}
+.spImg{position:relative;width:150px;height:150px;border-radius:12px;background:#F4E7D2;border:1px solid var(--line);cursor:zoom-in;overflow:hidden}
+.spImg img.pres{width:100%;height:100%;object-fit:contain;padding:8px}
+.spImg img.prod{position:absolute;right:4px;bottom:4px;height:62px;width:auto;filter:drop-shadow(0 4px 6px rgba(0,0,0,.2))}
+.spImg .zi{position:absolute;left:6px;top:6px;font-style:normal;font-size:12px;color:#fff;background:rgba(28,22,17,.55);border-radius:4px;padding:1px 5px}
+.spTop{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.spTop b{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.15}
+.av{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.av.ok{background:#E6F4EA;color:#1E7D39}
+.av.soon{background:#FFF1D6;color:#9A5B00}
+.spSub{font-size:13px;color:var(--slate);margin-top:3px;line-height:1.4}
+.cpBtn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--teal-d);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.cpBtn:hover{border-color:var(--teal)}
+.cpBtn span{transition:transform .2s}
+.sp.cpOpen .cpBtn span{transform:rotate(180deg)}
+.cpBox{display:none;margin:8px 0 0;padding:10px 14px;list-style:none;background:#fff;border:1px dashed var(--line);border-radius:12px;font-size:13px;color:var(--ink);line-height:1.6}
+.sp.cpOpen .cpBox{display:block}
+.cpBox li::before{content:"• ";color:var(--teal)}
+.cpL{list-style:none;margin:5px 0 2px;padding:6px 0 0 10px;border-left:2px solid var(--line);font-size:11.5px;color:var(--slate);line-height:1.5}
+.cpL .cpH{font-weight:700;color:var(--ink);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.bcCp{flex-basis:100%;font-size:12px;color:var(--slate);line-height:1.5;margin-top:2px}
+.bcCp b{color:var(--ink)}
+.spMeta{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--slate);margin-top:6px}
+.spMeta b{color:var(--ink);font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:11px}
+.opt{position:relative;font-family:var(--sans);text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;transition:all .15s}
+.opt:hover{border-color:var(--teal)}
+.opt.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(138,106,16,.8)}
+.opt .ox{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.opt .ot{display:block;font-family:var(--serif);font-size:19px;font-weight:700;margin-top:2px}
+.opt .ou{display:block;font-size:11.5px;opacity:.85;margin-top:1px}
+.opt .or{position:absolute;top:-8px;right:8px;font-size:10.5px;font-weight:800;color:#fff;background:#E8442A;border-radius:999px;padding:2px 8px}
+.opt .ot small{font-size:11px;font-weight:600;opacity:.75}
+.bjQ{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.bjP{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--teal-d)}
+.bjP small{font-family:var(--sans);font-size:11.5px;font-weight:600;color:var(--slate)}
+.bjT{font-size:13.5px;font-weight:700;color:var(--teal-d)}
+.bjAge{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;align-self:center}
+.bjAge.ad{background:#8C5E2C}
+.bjAge.kid{background:#E0874F;box-shadow:0 0 0 3px #FBE3D2}
+.sp:has(.bjAge.kid){border-color:#E0874F;background:#FFF7F1}
+#solBar{margin-top:8px}
+.bjGrp{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 2px;padding-bottom:8px;border-bottom:2px solid var(--teal)}
+.bjGrp:first-child{margin-top:0}
+.bjGrp b{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--teal-d)}
+.bjGrp span{font-size:12.5px;color:var(--slate)}
+.bjPic{background:#fff!important;display:flex;align-items:center;justify-content:center}
+.bjPic img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:6px}
+.bj-plv{background:linear-gradient(135deg,#9DB8D6,#5F7AA0)}
+.sp.locked{opacity:.72}
+.sp.locked .bjT{color:var(--slate);font-weight:600}
+.bjQ button:disabled{opacity:.35;cursor:not-allowed}
+.bjC{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--teal);border-radius:999px;padding:3px 9px}
+.optHint{font-size:11.5px;color:var(--slate);margin-top:6px}
+.bjTile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:10px;cursor:default;color:#fff;border:none}
+.bjTile b{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.1}
+.bjTile i{font-style:normal;font-size:13.5px;font-weight:700;opacity:.95}
+.bjTile small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.bj-jour{background:linear-gradient(135deg,#C0894C,#8C5E2C)}
+.bj-nuit{background:linear-gradient(135deg,#6B6FA8,#3F4378)}
+.bj-enfant{background:linear-gradient(135deg,#E0874F,#B4592A)}
+.bj-pack{background:linear-gradient(135deg,#1206A6,#140A6B)}
+@media(max-width:600px){.sp{grid-template-columns:1fr;gap:12px}.spImg{width:100%;height:190px}.opts{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+    <span class="wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    <a class="back" href="DBN - Espace Catalogues.html">← Retour aux catalogues</a>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Bonjour Drink</span>
+  <h1>Les boissons fonctionnelles <em>Bonjour Drink</em></h1>
+  <p>Champignons adaptogènes bio, zéro sucre, fabriqué en France. Choisissez la quantité par référence : le total et le franco se calculent automatiquement.</p>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <h2>Comment commander</h2>
+        <ol class="howto"><li>Ajoutez par <b>conditionnement</b> avec + / −</li><li>Vérifiez le récapitulatif</li><li><b>Envoyez</b> la commande</li><li>Confirmation après vérification</li></ol>
+        <div class="terms">
+          <div class="term"><span class="tk">Garantie</span><span class="tv">90 jours satisfait ou remboursé</span></div>
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">245 € HT</span></div>
+          <div class="term"><span class="tk">Offert</span><span class="tv">Présentoir sol dès 600 € HT</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>La gamme Bonjour Drink</h2>
+        <div class="prods" id="prodList"></div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <div class="sumHead"><h2>Récapitulatif</h2><button type="button" class="resetBtn" id="resetBtn">↺ Tout effacer</button></div>
+        <div id="sumLines"><p class="empty">Aucune référence sélectionnée.<br />Choisissez une quantité.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 5,5 %</div>
+        <div class="fbar" id="fbar">
+          <div class="ft" id="fTxt">Franco de port à <b>245 € HT</b>.</div>
+          <div class="track"><div class="fill" id="fFill"></div></div>
+        </div>
+        <div class="fbar" id="solBar"><div class="ft" id="solTxt">Présentoir sol offert dès <b>600 € HT</b>.</div><div class="track"><div class="fill" id="solFill"></div></div></div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Bonjour Drink" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+    <input type="hidden" name="bon_de_commande" id="bonField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-top">
+        <div class="bc-brand">
+          <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+          <div><b>David BITTON</b><span>DBN Développement</span></div>
+        </div>
+        <div class="bc-ok"><span class="bc-tick">✓</span> Commande enregistrée</div>
+      </div>
+      <div class="bc-hero">
+        <span class="bc-eye">Bonjour Drink · Boissons fonctionnelles</span>
+        <h2>Merci <em id="bcName">!</em></h2>
+        <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Merci de votre confiance !</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Franco 245 € HT</span><b id="bcPort">—</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 5,5 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-terms">
+          <span><b>Garantie</b> 90 jours satisfait ou remboursé</span>
+          <span><b>Franco</b> 245 € HT</span>
+          <span><b>Présentoir sol</b> offert dès 600 € HT</span>
+        </div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-contact">Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></div>
+        <div class="bc-acts">
+          <button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button>
+          <a class="bc-home" href="DBN - Espace Catalogues.html">Retour aux catalogues</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FRANCO=245, PORT=0, TVA=1.055;
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var PRODS=[
+    {k:'jour_cafe_15',g:'d15',n:"Formule Jour · Café · 15 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 8',ppc:'19 € TTC',ean:'3770033452943',av:'Disponible',ok:1,o:[{x:1,u:8,p:10.25,t:82.00,r:''},{x:2,u:16,p:10.25,t:164.00,r:''},{x:3,u:24,p:10.25,t:246.00,r:''}]},
+    {k:'jour_mocha_15',g:'d15',n:"Formule Jour · Mocha · 15 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 8',ppc:'19 € TTC',ean:'3770033452936',av:'Disponible',ok:1,o:[{x:1,u:8,p:10.25,t:82.00,r:''},{x:2,u:16,p:10.25,t:164.00,r:''},{x:3,u:24,p:10.25,t:246.00,r:''}]},
+    {k:'jour_cacao_15',g:'d15',n:"Formule Jour · Cacao · 15 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 8',ppc:'19 € TTC',ean:'3770033452950',av:'Disponible',ok:1,o:[{x:1,u:8,p:10.25,t:82.00,r:''},{x:2,u:16,p:10.25,t:164.00,r:''},{x:3,u:24,p:10.25,t:246.00,r:''}]},
+    {k:'jour_choco_15',g:'d15',tg:'adulte',n:"Formule Jour · Choco Noisette · 15 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 8',ppc:'19 € TTC',ean:'3770033452967',av:'Disponible',ok:1,o:[{x:1,u:8,p:10.25,t:82.00,r:''},{x:2,u:16,p:10.25,t:164.00,r:''},{x:3,u:24,p:10.25,t:246.00,r:''}]},
+    {k:'enfant_15',g:'d15',tg:'enfant',n:"Formule Enfant · Choco Noisette · 15 doses",s:"Dès 3 ans · vitamines C, D3, K2, calcium, zinc · immunité, croissance",c:'par 8',ppc:'16 € TTC',ean:'3770033452998',av:'Disponible',ok:1,o:[{x:1,u:8,p:8.89,t:71.12,r:''},{x:2,u:16,p:8.89,t:142.24,r:''},{x:3,u:24,p:8.89,t:213.36,r:''}]},
+    {k:'nuit_15',g:'d15',n:"Formule Nuit · Camomille · 15 doses",s:"Reishi, camomille, passiflore · sommeil, calme, digestion",c:'par 2',ppc:'19 € TTC',ean:'3770033452134',av:'Disponible',ok:1,o:[{x:1,u:2,p:10.25,t:20.50,r:''},{x:2,u:4,p:10.25,t:41.00,r:''},{x:3,u:6,p:10.25,t:61.50,r:''}]},
+    {k:'jour_cafe_45',g:'d45',n:"Formule Jour · Café · 45 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 4',ppc:'48 € TTC',ean:'3770033452325',av:'Disponible',ok:1,o:[{x:1,u:4,p:26.66,t:106.64,r:''},{x:2,u:8,p:26.66,t:213.28,r:''},{x:3,u:12,p:26.66,t:319.92,r:''}]},
+    {k:'jour_mocha_45',g:'d45',n:"Formule Jour · Mocha · 45 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 4',ppc:'48 € TTC',ean:'3770033452318',av:'Disponible',ok:1,o:[{x:1,u:4,p:26.66,t:106.64,r:''},{x:2,u:8,p:26.66,t:213.28,r:''},{x:3,u:12,p:26.66,t:319.92,r:''}]},
+    {k:'jour_cacao_45',g:'d45',n:"Formule Jour · Cacao · 45 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 4',ppc:'48 € TTC',ean:'3770033452332',av:'Disponible',ok:1,o:[{x:1,u:4,p:26.66,t:106.64,r:''},{x:2,u:8,p:26.66,t:213.28,r:''},{x:3,u:12,p:26.66,t:319.92,r:''}]},
+    {k:'jour_choco_45',g:'d45',tg:'adulte',n:"Formule Jour · Choco Noisette · 45 doses",s:"Cordyceps, Lion’s Mane, Chaga · énergie, concentration, digestion",c:'par 4',ppc:'48 € TTC',ean:'',av:'Disponible',ok:1,o:[{x:1,u:4,p:26.66,t:106.64,r:''},{x:2,u:8,p:26.66,t:213.28,r:''},{x:3,u:12,p:26.66,t:319.92,r:''}]},
+    {k:'enfant_45',g:'d45',tg:'enfant',n:"Formule Enfant · Choco Noisette · 45 doses",s:"Dès 3 ans · vitamines C, D3, K2, calcium, zinc · immunité, croissance",c:'par 4',ppc:'41 € TTC',ean:'',av:'Disponible',ok:1,o:[{x:1,u:4,p:23.12,t:92.48,r:''},{x:2,u:8,p:23.12,t:184.96,r:''},{x:3,u:12,p:23.12,t:277.44,r:''}]},
+    {k:'kit_kids',g:'kit',n:"Pack Kids 1 · assortiment 29 unités",s:"16 Enfant Choco Noisette 15 doses · 8 Jour Choco Noisette 15 doses · 3 Jour Café 45 doses · 1 Cacao 45 doses · 1 Mocha 45 doses",c:'le pack de 29 u',un:'pack',pu:29,cp:[[16,'Formule Enfant · Choco Noisette · 15 doses'],[8,'Formule Jour · Choco Noisette · 15 doses'],[3,'Formule Jour · Café · 45 doses'],[1,'Formule Jour · Cacao · 45 doses'],[1,'Formule Jour · Mocha · 45 doses']],ppc:'',ean:'3760451770002',av:'Disponible',ok:1,o:[{x:1,u:1,p:357.54,t:357.54,r:''},{x:2,u:2,p:357.54,t:715.08,r:''},{x:3,u:3,p:357.54,t:1072.62,r:''}]},
+    {k:'kit_kids2',g:'kit',n:"Pack Kids 2 · assortiment 44 unités",s:"24 Enfant Choco Noisette 15 doses · 12 Jour Choco Noisette 15 doses · 4 Jour Café 45 doses · 2 Cacao 45 doses · 2 Mocha 45 doses",c:'le pack de 44 u',un:'pack',pu:44,cp:[[24,'Formule Enfant · Choco Noisette · 15 doses'],[12,'Formule Jour · Choco Noisette · 15 doses'],[4,'Formule Jour · Café · 45 doses'],[2,'Formule Jour · Cacao · 45 doses'],[2,'Formule Jour · Mocha · 45 doses']],ppc:'',ean:'3760451770019',av:'Disponible',ok:1,o:[{x:1,u:1,p:549.64,t:549.64,r:''},{x:2,u:2,p:549.64,t:1099.28,r:''},{x:3,u:3,p:549.64,t:1648.92,r:''}]},
+    {k:'pack_essentiel',g:'pack',per:1,cp:[[1,'Formule Jour'],[1,'Mousseur offert'],[1,'Cuillère doseuse offerte']],n:"Coffret Essentiel · mi-novembre",s:"Coffret Formule Jour + mousseur et cuillère offerts",c:'colis de 12',ppc:'33 € TTC',ean:'3760451770859',av:'Livraison mi-novembre',ok:0,o:[{x:1,u:12,p:20.5,t:246.00,r:''},{x:2,u:24,p:20.5,t:492.00,r:''},{x:3,u:36,p:20.5,t:738.00,r:''}]},
+    {k:'pack_decouverte',g:'pack',per:1,cp:[[3,'Formules Jour'],[1,'Formule Nuit · Camomille offerte'],[1,'Mousseur offert'],[1,'Cuillère doseuse offerte']],n:"Coffret Découverte · mi-novembre",s:"Coffret 3 Formules Jour + Formule Nuit Camomille offerte · mousseur et cuillère offerts",c:'colis de 12',ppc:'49 € TTC',ean:'3760451770866',av:'Livraison mi-novembre',ok:0,o:[{x:1,u:12,p:30.75,t:369.00,r:''},{x:2,u:24,p:30.75,t:738.00,r:''},{x:3,u:36,p:30.75,t:1107.00,r:''}]},
+    {k:'pack_famille',g:'pack',per:1,cp:[[1,'Formule Enfant'],[1,'Formule Jour 30 doses'],[1,'Gourde offerte'],[1,'Mousseur offert']],n:"Coffret Famille · mi-novembre",s:"Formule Enfant + Formule Jour 30 doses · gourde et mousseur offerts",c:'colis de 12',ppc:'69 € TTC',ean:'3760451770873',av:'Livraison mi-novembre',ok:0,o:[{x:1,u:12,p:40.58,t:486.96,r:''},{x:2,u:24,p:40.58,t:973.92,r:''},{x:3,u:36,p:40.58,t:1460.88,r:''}]},
+    {k:'plv_sol',g:'plv',n:"PLV · Présentoir sol",s:"Offert dès 600 € HT de commande",c:'à l’unité',ppc:'Offert',ean:'',av:'Offert dès 600 € HT',ok:1,o:[{x:1,u:1,p:0,t:0,r:''}]},
+  ];
+  var sel={};
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function cpItems(p,q){if(!p.cp)return [];return p.cp.map(function(c){return (p.per?c[0]:c[0]*(q||1))+' × '+c[1];});}
+  function cpHead(p){return p.per?'Chaque coffret contient':'Contenu';}
+
+  function bjImg(p){var k=p.k;if(k==='kit_kids'||k==='kit_kids2')return 'assets/bjr_kids.png';if(k.indexOf('jour_')===0)return 'assets/bjr_jour.png';if(k.indexOf('nuit')===0)return 'assets/bjr_nuit.png';if(k.indexOf('enfant')===0)return 'assets/bjr_enfant.png';return {pack_essentiel:'assets/bjr_essentiel.png',pack_decouverte:'assets/bjr_decouverte.png',pack_famille:'assets/bjr_famille.png',plv_comptoir:'assets/bjr_comptoir.png',plv_sol:'assets/bjr_sol.png',plv_stop:'assets/bjr_stop.png'}[k]||'';}
+  var box=document.getElementById('prodList');
+  var GRP={kit:'<b>Packs Kids</b><span>Assortiment prêt à poser · un seul bon, un seul colis</span>',d15:'<b>15 doses</b><span>Formules Jour, Enfant &amp; Nuit</span>',d45:'<b>45 doses</b><span>Formules Jour &amp; Enfant</span>',pack:'<b>Coffrets · livraison mi-novembre</b><span>Précommande · colis de 12</span>',plv:'<b>PLV</b><span>Présentoir sol offert dès 600 € HT · 1 par commande</span>'}, lastG='';
+  PRODS.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='sp'; d.id='sp'+i;
+    var im=bjImg(p);
+    d.innerHTML=(im?'<span class="spImg bjPic" data-i="'+i+'" title="Cliquez pour agrandir"><img src="'+im+'" alt="'+p.n+'" /><i class="zi">⌕</i></span>':'<span class="spImg bjTile bj-'+p.k.split('_')[0]+'"><b>'+p.n.split(' · ')[0]+'</b><i>'+(p.n.split(' · ')[1]||'')+'</i><small>'+(p.n.split(' · ')[2]||'')+'</small></span>')+
+      '<div><div class="spTop"><b>'+p.n+'</b>'+(p.tg==='adulte'?'<span class="bjAge ad">Version adulte</span>':p.tg==='enfant'?'<span class="bjAge kid">Version enfant · dès 3 ans</span>':'')+'<span class="av '+(p.ok?'ok':'soon')+'">'+p.av+'</span></div>'+
+      '<div class="spSub">'+p.s+'</div>'+
+      (p.cp?'<button type="button" class="cpBtn" aria-expanded="false">Voir le détail des produits <span>▾</span></button><ul class="cpBox">'+cpItems(p,1).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>':'')+
+      '<div class="spMeta">'+(p.g==='plv'?'<span><b>Offert</b> · à l’unité</span>':'<span>Colisage <b>'+p.c+'</b></span>'+(p.ppc?'<span>PPC <b>'+p.ppc+'</b></span>':'')+'')+(p.ean?'<span>EAN <b>'+p.ean+'</b></span>':'')+'</div>'+
+      '<div class="bjQ"><span class="bjP">'+(p.o[0].p>0?eur(p.o[0].p)+' <small>HT / '+(p.un||'u.')+'</small>':'Offert')+'</span>'+
+        '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
+        '<input type="number" min="0" step="'+p.o[0].u+'" value="0" aria-label="Quantité '+p.n+'" />'+
+        '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>'+
+        (p.o[0].u>1?'<span class="bjC">par '+p.o[0].u+'</span>':'')+'<span class="bjT" id="bt'+i+'"></span></div></div>';
+    var inp=d.querySelector('.bjQ input');
+    var cb=d.querySelector('.cpBtn'); if(cb) cb.addEventListener('click',function(){var o=d.classList.toggle('cpOpen');cb.setAttribute('aria-expanded',o);});
+    var COL=p.o[0].u;
+    var MINS={plv_comptoir:245,plv_sol:600}; var MIN=MINS[p.k]||0;
+    function setQ(v,snap){v=parseInt(v,10);if(isNaN(v)||v<0)v=0;if(MIN&&paidSub()<MIN){v=0;}if(p.g==='plv'&&v>1)v=1;if(snap)v=Math.ceil(v/COL)*COL;inp.value=v;sel[p.k]=v||undefined;render();}
+    d.querySelectorAll('.bjQ button').forEach(function(b){
+      b.addEventListener('click',function(){var v=parseInt(inp.value,10)||0;setQ(b.dataset.a==='+'?v+COL:v-COL,true);});
+    });
+    inp.addEventListener('change',function(){setQ(inp.value,true);});
+    if(p.g!==lastG){lastG=p.g;var gh=document.createElement('div');gh.className='bjGrp';gh.innerHTML=GRP[p.g];box.appendChild(gh);}
+    box.appendChild(d);
+  });
+
+  function paidSub(){var s=0;PRODS.forEach(function(p){var q=sel[p.k]||0;s+=q*p.o[0].p;});return s;}
+  function lines(){
+    var L=[];
+    PRODS.forEach(function(p){var q=sel[p.k]||0;if(q>0){var pu=p.o[0].p;L.push({p:p,o:{x:1,u:q,p:pu,t:Math.round(q*pu*100)/100}});}});
+    return L;
+  }
+
+  function qL(l){return l.p.un?(l.o.u+' '+l.p.un+(l.o.u>1?'s':'')+' ('+(l.o.u*l.p.pu)+' u.)'):(l.o.u+' u.');}
+  function calc(){
+    var L=lines(), sub=0, units=0;
+    L.forEach(function(l){sub+=l.o.t;if(l.o.p>0)units+=l.o.u*(l.p.pu||1);});
+    var port=(sub>0&&sub<FRANCO)?PORT:0;
+    return {L:L,sub:sub,units:units,port:port,ht:sub+port};
+  }
+
+  function render(){
+    var c=calc(), html='', recap='';
+    PRODS.forEach(function(p,i){
+      var MN={plv_comptoir:245,plv_sol:600}[p.k]||0;
+      if(MN&&c.sub<MN&&sel[p.k]){sel[p.k]=undefined;var ii=document.querySelector('#sp'+i+' .bjQ input');if(ii)ii.value=0;}
+      var q=sel[p.k]||0, d=document.getElementById('sp'+i);
+      if(MN){var pl=d.querySelector('.bjQ button[data-a="+"]');if(pl)pl.disabled=c.sub<MN;d.classList.toggle('locked',c.sub<MN);
+      }
+      d.classList.toggle('has',q>0);
+      var bt=document.getElementById('bt'+i); if(bt) bt.textContent=q>0?(p.o[0].p>0?'= '+eur(q*p.o[0].p)+' HT':'✓ ajouté'):'';
+      if(MN&&bt&&c.sub<MN) bt.textContent='Débloqué dès '+MN+' € HT (encore '+eur(MN-c.sub)+')';
+    });
+    c.L.forEach(function(l){
+      html+='<div class="line"><span>'+l.p.n+' · '+qL(l)+'<em class="eanL">'+(l.p.ean?'EAN '+l.p.ean+' · ':'')+(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert')+(l.p.g==='pack'?' · livraison mi-novembre':'')+'</em>'+(l.p.cp?'<ul class="cpL"><li class="cpH">'+cpHead(l.p)+'</li>'+cpItems(l.p,l.o.u).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>':'')+'</span><b>'+(l.o.p?eur(l.o.t):'Offert')+'</b></div>';
+      recap+='- '+l.p.n+' · '+qL(l)+(l.p.ean?' · EAN '+l.p.ean:'')+' · '+(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+' = '+eur(l.o.t)+' HT':'Offert')+(l.p.g==='pack'?' · LIVRAISON MI-NOVEMBRE':'')+'\n'+(l.p.cp?'    '+cpHead(l.p)+' :\n'+cpItems(l.p,l.o.u).map(function(t){return '      · '+t;}).join('\n')+'\n':'');
+    });
+    var sl=document.getElementById('sumLines');
+    if(!c.L.length){sl.innerHTML='<p class="empty">Aucune référence sélectionnée.<br />Choisissez une quantité.</p>';}
+    else{sl.innerHTML=html+'<div class="line"><span>Total unités</span><b>'+c.units+' u.</b></div>'+
+      '<div class="line"><span>Franco 245 € HT</span><b>'+(c.sub>=FRANCO?'atteint':'non atteint')+'</b></div>';}
+    document.getElementById('totHT').textContent=eur(c.ht);
+    document.getElementById('totTTC').textContent='soit '+eur(c.ht*TVA)+' TTC · TVA 5,5 %';
+    var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt'),fill=document.getElementById('fFill');
+    fill.style.width=Math.min(100,c.sub/FRANCO*100)+'%';
+    if(c.sub>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (245 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=c.sub===0?'Franco de port à <b>245 € HT</b>.':'Il manque <b>'+eur(FRANCO-c.sub)+'</b> pour le franco de port (245 € HT).';}
+    var sb=document.getElementById('solBar'),st=document.getElementById('solTxt');
+    document.getElementById('solFill').style.width=Math.min(100,c.sub/600*100)+'%';
+    if(c.sub>=600){sb.classList.add('ok');st.innerHTML='✓ <b>Présentoir sol offert</b> (dès 600 € HT).';}
+    else{sb.classList.remove('ok');st.innerHTML=c.sub===0?'Présentoir sol offert dès <b>600 € HT</b>.':'Encore <b>'+eur(600-c.sub)+'</b> pour le <b>présentoir sol offert</b>.';}
+    document.getElementById('sendBtn').disabled=!c.L.length;
+    document.getElementById('resetBtn').hidden=!c.L.length;
+    document.getElementById('recapField').value=recap+'\nTotal : '+c.units+' unités\nFranco : '+(c.sub>=FRANCO?'atteint':'non atteint')+'\nTotal HT : '+eur(c.ht);
+    document.getElementById('totalField').value=eur(c.ht);
+    document.getElementById('bonField').value=buildBon(c,recap);
+  }
+
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+
+  function buildBon(c,recap){
+    var L=['BON DE COMMANDE — BONJOUR DRINK','Boissons fonctionnelles','Date : '+today(),'',
+      '--- OFFICINE ---','Officine : '+v('officine'),'Adresse : '+v('adresse'),'Ville : '+v('code_postal')+' '+v('ville'),
+      'Contact : '+v('contact'),'Téléphone : '+v('telephone'),'E-mail : '+v('email'),'',
+      '--- COMMANDE ---','',recap.trim()||'(aucune référence)','',
+      'Total : '+c.units+' unités','Franco de port : '+(c.sub>=FRANCO?'atteint':'non atteint (245 € HT)'),'Présentoir sol : '+(c.sub>=600?'OFFERT (commande ≥ 600 € HT)':'non atteint (600 € HT)'),
+      'TOTAL HT : '+eur(c.ht),'TVA 5,5 % : '+eur(c.ht*0.055),'TOTAL TTC : '+eur(c.ht*TVA),'',
+      '--- CONDITIONS ---','Franco de port : 245 € HT','Présentoir sol offert dès 600 € HT (1 par commande)','90 jours satisfait ou remboursé'];
+    var m=v('message'); if(m){L.push('','--- MESSAGE ---',m);}
+    L.push('','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
+    return L.join('\n');
+  }
+
+  function buildPayload(c){
+    var lignes=c.L.map(function(l){return {modele:l.p.n+(l.p.cp?' — '+cpHead(l.p).toLowerCase()+' : '+cpItems(l.p,l.o.u).join(', '):''),coloris:qL(l)+(l.o.p?' à '+eur(l.o.p)+' HT':' · offert')+(l.p.g==='pack'?' · livraison mi-novembre':''),correction:(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert'),ean:l.p.ean,qte:l.o.u};});
+    return {labo:'Bonjour Drink',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
+      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
+      lignes:lignes,total:c.units,prixUnitaire:'selon référence',totalHT:eur(c.ht),tva:eur(c.ht*0.055),totalTTC:eur(c.ht*TVA),
+      franco:(c.sub>=FRANCO?'atteint (245 \u20ac HT)':'non atteint (245 \u20ac HT)')};
+  }
+
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(), s=document.createElement('script');
+    /* la passerelle Apps Script peut mettre 20-40 s au démarrage : on attend 60 s avant de basculer sur Formspree (évite les doublons) */
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, btn=document.getElementById('sendBtn');
+    render();
+    var c=calc();
+    if(!c.L.length) return;
+    btn.disabled=true; btn.textContent='Envoi en cours… merci de patienter';
+    function success(){
+      fillBon(c);
+      f.style.display='none';
+      document.getElementById('doneBox').classList.add('on');
+      window.scrollTo(0,0);
+      if(window.gtag) gtag('event','commande_envoyee',{labo:'Bonjour Drink'});
+    }
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){if(!r.ok)throw new Error('fail');success();})
+        .catch(function(){btn.disabled=false;btn.textContent='Envoyer ma commande →';
+          alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});
+    }
+    gwSend(buildPayload(c),success,viaFormspree);
+  });
+
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(c){
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent=first?(first+' !'):'!';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+
+      mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+
+      mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    var rows='';
+    c.L.forEach(function(l){
+      rows+='<div class="bc-row"><span class="tag" style="background:#A8733A">'+(l.p.un?l.o.u+' '+l.p.un+(l.o.u>1?'s':''):l.o.u+' u.')+'</span>'+
+        '<span><span class="mn">'+l.p.n+'</span> <span class="cn">· '+qL(l)+' · '+(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert')+(l.p.g==='pack'?' · livraison mi-novembre':'')+'</span>'+(l.p.ean?'<span class="ce">EAN '+l.p.ean+'</span>':'')+(l.p.cp?'<span class="bcCp"><b>'+cpHead(l.p)+' :</b> '+cpItems(l.p,l.o.u).join(' · ')+'</span>':'')+'</span>'+
+        '<span class="qn">'+(l.o.p?eur(l.o.t):'Offert')+'</span></div>';
+    });
+    document.getElementById('bcItems').innerHTML=rows;
+    document.getElementById('bcQty').textContent=c.units+' u.';
+    document.getElementById('bcPort').textContent=c.sub>=FRANCO?'Atteint':'Non atteint';
+    document.getElementById('bcHT').textContent=eur(c.ht);
+    document.getElementById('bcTTC').textContent=eur(c.ht*TVA);
+    var fr=document.getElementById('bcFranco');
+    if(c.sub>=FRANCO){fr.className='bc-note ok';fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';}
+    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>245 € HT</b> — il manque <b>'+eur(FRANCO-c.sub)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
+    if(c.sub>=600) fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px">✓ <b>Présentoir sol offert</b> avec cette commande (dès 600 € HT).</div>');
+    var m=v('message'); if(m) fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+m.replace(/[<>]/g,'')+'</div>');
+  }
+
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Effacer toutes les quantités et repartir à zéro ?')) return;
+    sel={}; document.querySelectorAll('.bjQ input').forEach(function(i){i.value=0;}); render();
+  });
+
+  (function(){
+    var ov=document.createElement('div'); ov.id='zoomOv'; ov.className='zoomOv';
+    ov.innerHTML='<div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div></div>';
+    document.body.appendChild(ov);
+    function close(){ov.classList.remove('on');}
+    ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.querySelectorAll('.spImg:not(.bjTile)').forEach(function(t){
+      t.addEventListener('click',function(){
+        var p=PRODS[parseInt(t.dataset.i,10)];
+        ov.querySelector('img').src=bjImg(p);
+        ov.querySelector('.zl').textContent=p.n+' · '+p.c;
+        ov.classList.add('on');
+      });
+    });
+  })();
+
+  render();
+})();
+</script>
+
+</body>
+</html>
