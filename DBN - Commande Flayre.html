@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Flayre — David BITTON</title>
+<script src="analytics.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--teal:#3E968E;--teal-d:#2A6F69;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--red:#E8442A;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:12px 0}
+.top-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top-in img{height:56px;width:auto}
+.top-in .wm b{display:block;font-size:18px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .cat-pdf{margin-left:auto;font-size:14px;font-weight:700;color:#fff;background:var(--teal);border-radius:11px;padding:10px 16px;white-space:nowrap}
+.top-in .cat-pdf:hover{color:#fff;filter:brightness(.92)}
+.top-in .back{margin-left:14px;font-size:14px;font-weight:600}
+.head{padding:22px 0 14px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:6px 13px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.1;margin:12px 0 0}
+.head h1 em{font-style:italic;color:var(--teal-d)}
+.head p{font-size:14.5px;color:var(--slate);margin:8px 0 0;max-width:70ch;line-height:1.5}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start;padding-bottom:50px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card + .card{margin-top:18px}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0}
+.card .hint{font-size:13px;color:var(--slate);margin:4px 0 12px;line-height:1.45}
+.welcome{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,#EAF5F3,#D6ECE8);border:2px solid var(--teal);border-radius:16px;padding:14px 16px;margin-bottom:16px}
+.welcome .wt{flex:1;min-width:220px}
+.welcome .wt b{display:block;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d)}
+.welcome .wt span{font-size:12.5px;color:#3F5551;line-height:1.45;display:block;margin-top:3px}
+.welcome .wp{text-align:right}
+.welcome .wp s{font-size:12.5px;color:var(--slate)}
+.welcome .wp b{display:block;font-family:var(--serif);font-size:24px;font-weight:700;color:var(--teal-d);line-height:1}
+.welcome .wp i{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:2px 8px}
+.welcome button{font-family:var(--sans);font-size:14px;font-weight:800;color:#fff;background:var(--teal);border:none;border-radius:12px;padding:12px 18px;cursor:pointer}
+.welcome button:hover{background:var(--teal-d)}
+.welcome.on{box-shadow:0 0 0 3px rgba(62,150,142,.25)}
+.grp{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d);margin:16px 0 8px;display:flex;align-items:center;gap:10px}
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px}
+.row{display:flex;align-items:center;gap:11px;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:9px 11px;transition:border-color .2s}
+.row.has{background:#EAF5F3;border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.th{width:46px;height:46px;flex:none;border-radius:10px;object-fit:cover;border:1px solid var(--line);background:#EBDCC8}
+.sw{width:30px;height:30px;flex:none;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.row .rn{flex:1;min-width:0}
+.row .rn b{display:block;font-size:14px;font-weight:700;line-height:1.2}
+.row .rn span{display:block;font-size:10.5px;color:var(--slate);margin-top:2px}
+.row .rn em{font-style:normal;font-size:10px;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:1px 6px;margin-left:5px;vertical-align:1px}
+.row .rp{font-size:12px;font-weight:700;color:var(--teal-d);white-space:nowrap;text-align:right;min-width:52px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:32px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal-d);cursor:pointer}
+.qty button:hover{background:#EAF5F3}
+.qty input{width:40px;height:38px;border:none;text-align:center;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink);background:transparent;-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:9px 10px;text-align:center}
+.tier .tq{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+.tier .tp{font-family:var(--serif);font-size:16px;font-weight:700;margin-top:2px}
+.tier .tr{font-size:11px;color:var(--teal-d);font-weight:700}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:12px}
+.term{background:#EAF5F3;border:1px solid #BFDDD8;border-radius:12px;padding:9px 12px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.8}
+.term .tv{display:block;font-size:14px;font-weight:700;color:var(--teal-d);margin-top:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-top:12px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.field textarea{min-height:70px;resize:vertical}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow-y:auto}
+.sum h2{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.reset{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--slate);background:none;border:1px solid var(--line);border-radius:9px;padding:6px 10px;cursor:pointer}
+.reset:hover{color:var(--red);border-color:var(--red)}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.sum .line span{color:var(--slate);min-width:0}
+.sum .line span i{display:block;font-style:normal;font-size:11px;color:var(--teal-d);font-weight:600}
+.sum .line b{white-space:nowrap}
+.sum .empty{font-size:13px;color:var(--slate);text-align:center;padding:16px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--teal-d)}
+.sum .ttc{font-size:12px;color:var(--slate);text-align:right;margin-top:4px}
+.sum .save{font-size:12.5px;font-weight:700;color:var(--teal-d);text-align:right;margin-top:3px}
+.fbar{margin-top:12px;background:var(--ivory);border-radius:11px;padding:10px 12px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .track{height:7px;border-radius:999px;background:#E9DECB;margin-top:7px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .ft{color:var(--teal-d);font-weight:700}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:12px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:800;border:none;border-radius:13px;padding:15px 18px;cursor:pointer}
+.btn:hover{background:var(--teal-d)}
+.btn:disabled{background:#D9CFC2;cursor:not-allowed}
+.done{display:none;padding-bottom:50px}
+.done.on{display:block}
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(42,111,105,.5)}
+.bc-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 24px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-top img{height:50px}
+.bc-top b{font-size:16px;font-weight:700;color:var(--blue)}
+.bc-ok{margin-left:auto;background:var(--teal);color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:8px 15px;border-radius:999px}
+.bc-hero{padding:26px 24px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#EEF8F6,#DCEFEB 60%,#CBE6E1)}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--teal-d);margin:0}
+.bc-hero p{font-size:14.5px;color:#3F5551;margin:10px auto 0;max-width:56ch;line-height:1.55}
+.bc-body{padding:22px 24px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px;margin-bottom:16px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 13px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:13.5px;font-weight:600;margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .ce{font-size:11px;color:var(--slate)}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:17px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-top:14px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center}
+.bc-tl span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:20px;font-weight:700;margin-top:3px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:25px}
+.bc-note{margin-top:12px;font-size:13px;line-height:1.5;border-radius:12px;padding:11px 14px;background:#EAF5F3;border:1px solid #BFDDD8;color:var(--teal-d)}
+.bc-note.warn{background:#FFF3F0;border-color:#F7D3C9;color:#8C2A20}
+.bc-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 24px;background:var(--sand);border-top:1px solid var(--line);font-size:13px;color:var(--slate)}
+.bc-foot .acts{margin-left:auto;display:flex;gap:10px;align-items:center}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:10px 16px;cursor:pointer}
+@media print{.top,.head,#orderForm{display:none!important}.bc{box-shadow:none;border:none}.bc-foot .acts{display:none}}
+@media(max-width:880px){.grid{grid-template-columns:minmax(0,1fr)}aside{position:static;max-height:none}}
+@media(max-width:600px){
+  .wrap{padding:0 14px}
+  .top-in img{height:44px}
+  .top-in .cat-pdf{margin-left:0;width:100%;text-align:center;order:3}
+  .top-in .back{margin-left:auto}
+  .two{grid-template-columns:1fr}
+  .rows{grid-template-columns:1fr}
+  .tiers{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .tier .tp{font-size:14px}
+  .welcome .wp{text-align:left}
+  .welcome button{width:100%}
+  .card{padding:15px 13px}
+  .field input,.field textarea,.qty input{font-size:16px}
+}
+@media(hover:hover) and (pointer:fine) and (min-width:881px) and (max-width:1440px){html{zoom:.85}}
+@media(hover:hover) and (pointer:fine) and (min-width:881px) and (max-width:1280px){html{zoom:.8}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+    <span class="wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    <a class="cat-pdf" href="https://drive.google.com/file/d/15jTp00luUpCfUyAAt4WkpYDA-ehrZWly/view" target="_blank" rel="noopener">📖 Voir le catalogue Flayre</a>
+    <a class="back" href="DBN - Espace Catalogues.html">← Retour aux catalogues</a>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Flayre</span>
+  <h1>Brume Intense mains <em>rechargeable</em> — 38 ml</h1>
+  <p>Désinfecte, hydrate, parfume : 9 fragrances à actifs naturels, plus de 500 sprays, et ses étuis en silicone. Vendu <b>par 6 unités</b>, toutes références panachables, avec <b>−20 % sur toute la commande</b>.</p>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <div class="welcome" id="welcome">
+          <div class="wt"><b>Pack Essentiel · les 9 brumes</b><span>6 unités de chacune des 9 Brumes Intenses, soit 54 unités, remise de 20 % incluse.</span></div>
+          <div class="wp"><s id="wOld">232,74 € HT</s> <i>−20 %</i><b id="wNew">186,30 € HT</b></div>
+          <button type="button" id="welcomeBtn">Choisir ce pack</button>
+        </div>
+
+        <div class="grp">Brumes Intenses 38 ml · PPC 6,90 € TTC</div>
+        <div class="rows" id="brumes"></div>
+        <div class="grp">Étuis silicone rechargeables · PPC 4,00 € TTC</div>
+        <div class="rows" id="etuis"></div>
+
+        <div class="tiers">
+          <div class="tier" style="grid-column:1/-1;background:#EAF5F3;border-color:var(--teal)"><div class="tq">Votre prix · par 6 u</div><div class="tp">Brume 3,45 € · Étui 2,00 €</div><div class="tr">−20 % sur toute la commande</div></div>
+        </div>
+        <div class="terms">
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">130 € HT</span></div>
+          <div class="term"><span class="tk">En dessous</span><span class="tv">10 € HT de frais logistiques</span></div>
+          <div class="term"><span class="tk">TVA</span><span class="tv">20 %</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <h2>Récapitulatif <button type="button" class="reset" id="resetBtn">Tout effacer</button></h2>
+        <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 20 %</div>
+        <div class="save" id="saveTxt"></div>
+        <div class="fbar" id="fbar"><div class="ft" id="fTxt">Franco de port à <b>130 € HT</b>.</div><div class="track"><div class="fill" id="fFill"></div></div></div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Flayre" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-top"><img src="assets/dbn-logo-tight.png" alt="DBN Développement" /><b>David BITTON · DBN Développement</b><span class="bc-ok">✓ Commande enregistrée</span></div>
+      <div class="bc-hero"><h2 id="bcName">Merci !</h2><p>Votre commande Flayre est <b>enregistrée</b> et part en préparation. Nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture ou précision à apporter). Merci de votre confiance !</p></div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 20 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot"><span>Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></span><span class="acts"><button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button><a href="DBN - Espace Catalogues.html">Retour aux catalogues</a></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FRANCO=130, FRAIS=10, TVA=1.2;
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var PB={base:4.31,p6:3.66,p12:3.45}, PE={base:2.50,p6:2.13,p12:2.00};
+  var REFS=[
+    {k:'agrume',n:'Brume Agrume vitaminée',e:'3770041225003',c:'#F2A33A',t:'b'},
+    {k:'aloe',n:'Brume Aloé neutre',e:'3770041225010',c:'#9CC98A',t:'b'},
+    {k:'lavande',n:'Brume Lavande ensoleillée',e:'3770041225027',c:'#A58BC9',t:'b'},
+    {k:'vanille',n:'Brume Vanille ambrée',e:'3770041225034',c:'#E9C98E',t:'b',best:1},
+    {k:'caramel',n:'Brume Caramel beurre salé',e:'3770041225041',c:'#C98A4B',t:'b'},
+    {k:'fraise',n:'Brume Fraise acidulée',e:'3770041225058',c:'#E5566B',t:'b'},
+    {k:'coco',n:'Brume Coco nacré',e:'3770041225065',c:'#F3EEE4',t:'b'},
+    {k:'menthe',n:'Brume Menthe givrée',e:'3770041225072',c:'#6CC8B8',t:'b'},
+    {k:'melon',n:'Brume Melon sorbet',e:'3770041225089',c:'#F4A07A',t:'b'},
+    {k:'blanc',n:'Étui silicone Blanc',e:'3770041225119',c:'#FFFFFF',t:'e'},
+    {k:'noir',n:'Étui silicone Noir',e:'3770041225096',c:'#1C1611',t:'e'},
+    {k:'rose',n:'Étui silicone Rose',e:'3770041225126',c:'#F2B7C2',t:'e'},
+    {k:'vert',n:'Étui silicone Vert',e:'3770041225133',c:'#8DBF9E',t:'e'},
+    {k:'beige',n:'Étui silicone Beige',e:'3770041225102',c:'#E3D2B4',t:'e'}
+  ];
+  var IMG={agrume:1,coco:1,fraise:1,melon:1,blanc:1,noir:1,rose:1,vert:1,beige:1};
+  var qty={};
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function tab(r){return r.t==='b'?PB:PE;}
+  function isWelcome(){return REFS.every(function(r){var q=qty[r.k]||0;return r.t==='b'?q===6:q===0;});}
+  function unit(r,q,w){return tab(r).p12;}
+  function lbl(r,q,w){return w?'pack Essentiel −20 %':'−20 %';}
+
+  REFS.forEach(function(r){
+    var d=document.createElement('div');d.className='row';d.id='r_'+r.k;
+    d.innerHTML=(IMG[r.k]?'<img class="th" src="assets/flayre_'+r.k+'.png" alt="'+r.n+'" />':'<span class="sw" style="background:'+r.c+'"></span>')+
+      '<span class="rn"><b>'+r.n.replace('Brume ','').replace('Étui silicone ','Étui ')+(r.best?'<em>Best</em>':'')+'</b><span>EAN '+r.e+'</span></span>'+
+      '<span class="rp" id="p_'+r.k+'">'+eur(tab(r).base)+'</span>'+
+      '<span class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button><input type="number" min="0" step="6" value="0" aria-label="'+r.n+'" /><button type="button" data-a="+" aria-label="Ajouter">+</button></span>';
+    var inp=d.querySelector('input');
+    d.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){var v=parseInt(inp.value,10)||0;inp.value=b.dataset.a==='+'?v+6:Math.max(0,v-6);set(r.k,inp);});});
+    inp.addEventListener('input',function(){set(r.k,inp);});
+    document.getElementById(r.t==='b'?'brumes':'etuis').appendChild(d);
+  });
+  function set(k,inp){var v=parseInt(inp.value,10);if(isNaN(v)||v<0)v=0;v=Math.ceil(v/6)*6;inp.value=v;qty[k]=v;render();}
+  function setAll(n){REFS.forEach(function(r){qty[r.k]=n;document.querySelector('#r_'+r.k+' input').value=n;});render();}
+  document.getElementById('welcomeBtn').addEventListener('click',function(){REFS.forEach(function(r){var n=r.t==='b'?6:0;qty[r.k]=n;document.querySelector('#r_'+r.k+' input').value=n;});render();});
+  document.getElementById('resetBtn').addEventListener('click',function(){setAll(0);});
+
+  function calc(){
+    var w=isWelcome(),total=0,ht=0,full=0,lines=[];
+    REFS.forEach(function(r){var q=qty[r.k]||0;if(!q)return;var u=unit(r,q,w);total+=q;ht+=q*u;full+=q*tab(r).base;lines.push({r:r,q:q,u:u,l:lbl(r,q,w)});});
+    return {w:w,total:total,ht:ht,full:full,lines:lines};
+  }
+  function render(){
+    var c=calc(),html='',rc='';
+    REFS.forEach(function(r){var q=qty[r.k]||0;var el=document.getElementById('r_'+r.k);el.classList.toggle('has',q>0);document.getElementById('p_'+r.k).textContent=eur(unit(r,q,c.w));});
+    c.lines.forEach(function(x){
+      html+='<div class="line"><span>'+x.r.n+'<i>'+eur(x.u)+' HT · '+x.l+'</i></span><b>'+x.q+' u</b></div>';
+      rc+='- '+x.r.n+' · EAN '+x.r.e+' : '+x.q+' u × '+eur(x.u)+' HT ('+x.l+')\n';
+    });
+    document.getElementById('sumLines').innerHTML=c.total?html+'<div class="line"><span>Total unités</span><b>'+c.total+' u</b></div>':'<p class="empty">Aucune quantité sélectionnée.</p>';
+    document.getElementById('welcome').classList.toggle('on',c.w);
+    var frais=(c.total&&c.ht<FRANCO)?FRAIS:0, tot=c.ht+frais;
+    document.getElementById('totHT').textContent=eur(tot);
+    document.getElementById('totTTC').textContent='soit '+eur(tot*TVA)+' TTC · TVA 20 %'+(frais?' · dont 10 € HT de frais logistiques':'');
+    document.getElementById('saveTxt').textContent=(c.full-c.ht>0.005)?'Vous économisez '+eur(c.full-c.ht)+' HT':'';
+    var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt');
+    document.getElementById('fFill').style.width=Math.min(100,c.ht/FRANCO*100)+'%';
+    if(c.ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ Franco de port atteint (130 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=c.total?'Il manque <b>'+eur(FRANCO-c.ht)+'</b> pour le franco (130 € HT). En dessous : 10 € HT de frais logistiques.':'Franco de port à <b>130 € HT</b>.';}
+    document.getElementById('sendBtn').disabled=!c.total;
+    document.getElementById('recapField').value=(c.w?'PACK ESSENTIEL (9 brumes × 6) −20 %\n\n':'')+rc+'\nTotal : '+c.total+' unités'+(frais?'\nFrais logistiques : 10,00 € HT':'')+'\nTotal HT : '+eur(tot);
+    document.getElementById('totalField').value=eur(tot);
+    return {c:c,frais:frais,tot:tot};
+  }
+
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+  function payload(s){
+    return {labo:'Flayre',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),
+      message:(s.c.w?'Pack Essentiel −20 %. ':'')+(s.frais?'Frais logistiques 10 € HT. ':'')+v('message'),
+      lignes:s.c.lines.map(function(x){return {modele:x.r.n,coloris:x.l,correction:eur(x.u)+' HT',ean:x.r.e,qte:x.q};}),
+      total:s.c.total,prixUnitaire:'selon référence',totalHT:eur(s.tot),tva:eur(s.tot*0.2),totalTTC:eur(s.tot*TVA),
+      franco:(s.c.ht>=FRANCO?'atteint (130 \u20ac HT)':'non atteint \u2014 10 \u20ac HT de frais logistiques')};
+  }
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(),s=document.createElement('script');
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(s){
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent='Merci'+(first?' '+first:'')+' !';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    document.getElementById('bcItems').innerHTML=s.c.lines.map(function(x){return '<div class="bc-row">'+(IMG[x.r.k]?'<img class="th" style="width:30px;height:30px" src="assets/flayre_'+x.r.k+'.png" alt="" />':'<span class="sw" style="background:'+x.r.c+';width:20px;height:20px"></span>')+'<span><b>'+x.r.n+'</b> <span class="ce">EAN '+x.r.e+' · '+eur(x.u)+' HT · '+x.l+'</span></span><span class="qn">'+x.q+' u</span></div>';}).join('');
+    document.getElementById('bcQty').textContent=s.c.total+' u';
+    document.getElementById('bcHT').textContent=eur(s.tot);
+    document.getElementById('bcTTC').textContent=eur(s.tot*TVA);
+    var fr=document.getElementById('bcFranco');
+    if(s.c.ht>=FRANCO){fr.className='bc-note';fr.innerHTML='✓ <b>Franco de port atteint</b>'+(s.c.w?' · Pack Essentiel −20 %':'')+'.';}
+    else{fr.className='bc-note warn';fr.innerHTML='Franco à 130 € HT non atteint : <b>10 € HT de frais logistiques</b> inclus dans le total.';}
+  }
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target,btn=document.getElementById('sendBtn'),s=render();
+    if(!s.c.total)return;
+    btn.disabled=true;btn.textContent='Envoi en cours… merci de patienter';
+    function success(){fillBon(s);f.style.display='none';document.getElementById('doneBox').classList.add('on');window.scrollTo(0,0);if(window.gtag)gtag('event','commande_envoyee',{labo:'Flayre'});}
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){if(!r.ok)throw new Error('fail');success();})
+        .catch(function(){btn.disabled=false;btn.textContent='Envoyer ma commande →';alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});
+    }
+    gwSend(payload(s),success,viaFormspree);
+  });
+  render();
+})();
+</script>
+</body>
+</html>
