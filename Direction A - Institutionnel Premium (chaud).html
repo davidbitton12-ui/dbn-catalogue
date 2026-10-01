@@ -791,6 +791,30 @@
   .cata-press b{font-weight:800;color:var(--blue-ink)}
   .band-cata .b-btn{background:var(--blue);color:#fff}
 
+  /* ARGANICARE — nouveau labo */
+  .band-argan{order:-8;grid-template-columns:400px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FBF1DC,#F4E3C2 46%,#EAD3A8 100%);border:2px solid #B5874B}
+  .band-argan .argan-duo{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;overflow:hidden;position:relative;background:#E9D6B2}
+  .band-argan .argan-duo img{width:100%;height:100%;min-height:190px;object-fit:cover;display:block}
+  .band-argan .argan-duo{align-items:stretch}
+  .band-argan .argan-fig{position:relative;margin:0;overflow:hidden;display:flex;flex-direction:column;height:100%}
+  .band-argan .argan-fig img{flex:1;min-height:0!important;height:auto;object-fit:cover}
+  .band-argan .argan-fig figcaption{flex:none;background:#5C3D14;color:#fff;padding:6px 8px 7px;text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.15}
+  .band-argan .argan-fig + .argan-fig figcaption{border-left:1px solid rgba(255,255,255,.18)}
+  .band-argan .argan-fig figcaption span{display:block;font-size:10px;font-weight:600;text-transform:none;letter-spacing:0;opacity:.85;margin-top:2px}
+  .band-argan .argan-fig figcaption b{display:block;font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:0;text-transform:none;color:#FBE7BE}
+  .band-argan .argan-badge{position:absolute;top:10px;left:10px;z-index:2;background:#7A5320;color:#fff;border-color:#7A5320;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .band-argan .b-copy{background:transparent;color:var(--ink)}
+  .band-argan h3{color:#5C3D14}
+  .band-argan h3 em{color:#9A6A2C}
+  .band-argan .bsub{color:#5E4A33}
+  .band-argan .b-chip{background:#fff;color:#7A5320;border-color:#E2C99B}
+  .band-argan .b-cta{background:#F1DFBB;border-left:1px solid #E2C99B}
+  .band-argan .b-price{color:#7A5320}
+  .band-argan .b-btn{background:#9A6A2C;color:#fff}
+  .band-argan .b-btn:hover{background:#7A5320}
+  @media(max-width:1100px) and (min-width:861px){.band-argan{grid-template-columns:300px 1fr 200px}}
+  @media(max-width:860px){.band-argan .argan-duo img{min-height:0;height:200px}}
+
   /* SISTERS TINA */
   .band-tina{order:-7;grid-template-columns:230px 1fr 236px}
   .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:12px}
@@ -1103,6 +1127,10 @@
     .foot-brand p{max-width:100%}
     .foot-cols{grid-template-columns:1fr 1fr}
   }
+  .argan-marge{display:flex;flex-direction:column;align-items:center;background:#8A5A1E;color:#fff;border-radius:14px;padding:8px 16px 9px;margin-bottom:10px;box-shadow:0 10px 20px -12px rgba(110,70,20,.8);line-height:1}
+  .argan-marge span{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+  .argan-marge b{font-family:var(--serif);font-size:30px;font-weight:700;margin-top:3px}
+  @media(max-width:860px){.argan-marge{flex-direction:row;gap:8px;align-items:baseline;padding:7px 14px}.argan-marge b{font-size:22px;margin-top:0}}
 </style>
 <style id="dbn-petits-ecrans">
 /* PC à petit écran (souris, 861–1440 px) : tout réduit — téléphone et tablette tactile non concernés */
@@ -1123,7 +1151,7 @@
         <b>David BITTON</b>
       </a>
       <div class="hero-meta">
-        <div><div class="k">19</div><div class="l">Laboratoires représentés</div></div>
+        <div><div class="k">20</div><div class="l">Laboratoires représentés</div></div>
         <div><div class="k">465</div><div class="l">Officines partenaires</div></div>
         <div><div class="k">1</div><div class="l">Interlocuteur dédié</div></div>
       </div>
@@ -1144,6 +1172,29 @@
 <!-- MISES EN AVANT — 4 bandeaux -->
 <div class="wrap band-wrap">
   <div class="bandeaux">
+
+    <!-- ARGANICARE — NOUVEAU LABO -->
+    <div class="band band-argan" id="arganicare">
+      <div class="b-img argan-duo">
+        <span class="b-badge argan-badge"><span class="dot"></span> Nouveau labo</span>
+        <figure class="argan-fig"><img src="assets/argan_ricin.png" alt="Shampoing et masque au ricin Arganicare" /><figcaption>Shampooing 400 ml<span>à partir de</span><b>4,46 € HT</b></figcaption></figure>
+        <figure class="argan-fig"><img src="assets/argan_brosses.png" alt="Brosses et masseur cuir chevelu Arganicare" /><figcaption>Accessoires<span>à partir de</span><b>2,62 € HT</b></figcaption></figure>
+      </div>
+      <div class="b-copy">
+        <h3><em>Arganicare</em> — les soins capillaires à l'huile d'argan bio.</h3>
+        <p class="bsub">Shampoings, masques et sérums aux huiles naturelles certifiées bio — <b>ricin</b>, argan, coco… — pour tous types de cheveux. Et la nouvelle gamme d'<b>accessoires</b> : brosses et masseur cuir chevelu.</p>
+        <div class="b-chips">
+          <span class="b-chip">🌿 Huile d'argan bio</span>
+          <span class="b-chip">💧 Gamme Ricin · pousse</span>
+          <span class="b-chip">🪮 Brosses &amp; accessoires</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="argan-marge"><span>Marge minimum</span><b>× 2,5</b></div>
+        <div class="b-price" style="font-size:20px">Nouveau<br/><small style="font-size:12px;opacity:.75">catalogue sept. 2026</small></div>
+        <a class="b-btn" href="https://drive.google.com/file/d/1XHhqOnl87Z4XvaDrCQknpWGLLsSZzenC/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+      </div>
+    </div>
 
     <!-- OOPS OPTICS — NOUVEAU LABO -->
     <div class="band band-oops" id="oops">
@@ -1252,7 +1303,9 @@
       </div>
       <div class="b-cta">
         <div class="b-price" style="font-size:20px">Offre rentrée<br/><small style="font-size:12px;opacity:.75">présentoirs comptoir</small></div>
-        <a class="b-btn" href="https://drive.google.com/file/d/1EgJ1SIfSUz_Ut1ki4z0_dCKhlvVpktLI/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-cat" href="https://drive.google.com/file/d/1EgJ1SIfSUz_Ut1ki4z0_dCKhlvVpktLI/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <span class="cmd-new">Nouveau</span>
+        <a class="b-btn" href="DBN - Commande SAMPAR.html">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
 
@@ -1448,30 +1501,6 @@
   </div>
 </footer>
 
-<!-- BOUTON WHATSAPP FLOTTANT -->
-<style>
-.wa-float{position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;
-  background:#25D366;color:#fff;border-radius:999px;padding:13px 18px 13px 14px;
-  box-shadow:0 8px 28px -6px rgba(37,211,102,.7);
-  font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:700;font-size:14.5px;
-  animation:wa-pop .4s cubic-bezier(.34,1.56,.64,1) both;transition:transform .18s,box-shadow .18s}
-.wa-float:hover{transform:translateY(-3px);box-shadow:0 14px 36px -8px rgba(37,211,102,.8)}
-@keyframes wa-pop{from{transform:scale(.4) translateY(60px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.wa-float svg{width:24px;height:24px;flex:none}
-@media(max-width:600px){.wa-float span{display:none}.wa-float{padding:14px;border-radius:50%}}
-</style>
-<a class="wa-float" id="waFloat" href="https://wa.me/33678007832" target="_blank" rel="noopener" aria-label="Contacter David BITTON sur WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.523 5.827L.057 23.57a.75.75 0 0 0 .93.899l5.698-1.483A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.75 9.75 0 0 1-4.98-1.365l-.356-.212-3.683.958.986-3.58-.232-.369A9.75 9.75 0 1 1 12 21.75z"/></svg>
-  <span>Contacter David BITTON</span>
-</a>
-<script>
-(function(){
-  var b=document.getElementById('waFloat'); if(!b) return;
-  var ref='';try{var q=new URLSearchParams(location.search);ref=q.get('ref')||q.get('utm_campaign')||'';}catch(e){}
-  var msg='Bonjour David 👋\n\nJe consulte votre vitrine'+(ref?' ('+ref+')':'')+' et je souhaite en savoir plus sur vos laboratoires.\n\nCordialement';
-  b.setAttribute('href','https://wa.me/33678007832?text='+encodeURIComponent(msg));
-  b.addEventListener('click',function(){try{if(typeof gtag!=='undefined')gtag('event','click_whatsapp_float',{page_title:document.title,ref:ref});}catch(e){}});
-})();
-</script>
+
 </body>
 </html>
