@@ -332,6 +332,12 @@
   .grid:has(> .pcat){grid-template-columns:repeat(3,250px)}
   .lab-body .grid:has(.pcat){grid-template-columns:repeat(3,250px)}
   .cat.pcat{width:250px;height:390px}
+  /* alignement : les tuiles du bloc Biosynex tombent dans les mêmes colonnes que les autres (bandeau vertical dans la marge) */
+  @media(min-width:1101px){
+    .grid-sec .wrap{padding-left:113px}
+    .grid:has(.pcat) > .lab-block{margin-left:-73px;width:884px!important;max-width:none}
+    .lab-body .grid:has(.pcat){gap:22px}
+  }
   @media(max-width:1100px) and (min-width:701px){.grid:has(.pcat),.lab-body .grid:has(.pcat),.grid:has(> .pcat){grid-template-columns:repeat(2,250px)}}
   @media(max-width:700px){
     .grid:has(.pcat),.lab-body .grid:has(.pcat),.grid:has(> .pcat){grid-template-columns:repeat(2,minmax(0,1fr))!important}
