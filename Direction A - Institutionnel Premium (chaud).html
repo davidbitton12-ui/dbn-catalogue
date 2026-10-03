@@ -821,6 +821,11 @@
   .band-tina .b-img img{height:164px;width:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(80,30,22,.4)}
   .band-tina .b-copy{background:linear-gradient(135deg,#FBF5EB,#F7EBDD);color:var(--ink);position:relative}
   .tina-rb{position:absolute;top:14px;right:108px;width:112px;height:112px;border-radius:50%;background:#E0524A;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-10deg);box-shadow:0 0 0 4px #FBF5EB,0 0 0 6px #E0524A,0 12px 24px -10px rgba(224,82,74,.7);animation:tinaRb 2.4s ease-in-out infinite}
+  .tina-liv{display:inline-flex;align-items:center;gap:8px;margin:8px 0 2px;background:#E0524A;color:#fff;border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;box-shadow:0 8px 18px -10px rgba(224,82,74,.85);animation:tinaLiv 2.2s ease-in-out infinite}
+  .tina-liv b{font-weight:900;letter-spacing:.02em}
+  @keyframes tinaLiv{0%,100%{box-shadow:0 8px 18px -10px rgba(224,82,74,.85)}50%{box-shadow:0 0 0 4px rgba(224,82,74,.22),0 8px 18px -10px rgba(224,82,74,.85)}}
+  @media(prefers-reduced-motion:reduce){.tina-liv{animation:none}}
+  @media(max-width:600px){.tina-liv{font-size:12.5px;padding:7px 11px}}
   .tina-rb b{font-family:var(--sans);font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.1}
   .tina-rb i{font-style:normal;font-size:9.5px;font-weight:600;margin-top:4px;opacity:.9;letter-spacing:.02em}
   @keyframes tinaRb{0%,100%{transform:rotate(-10deg) scale(1)}50%{transform:rotate(-10deg) scale(1.06)}}
@@ -1402,6 +1407,7 @@
         <span class="tina-rb" aria-label="Produit remboursé"><b>Produit</b><b>remboursé</b><i>Sécu &amp; mutuelle</i></span>
         <span class="b-badge"><span class="dot"></span> Remboursée dès oct. 2026 · Exclusivité officine</span>
         <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
+        <div class="tina-liv">🚚 Livraison de vos commandes : <b>FIN OCTOBRE 2026</b></div>
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
           <span class="b-chip">Remise 10 % sur les packs</span>
