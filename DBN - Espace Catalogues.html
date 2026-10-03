@@ -175,8 +175,8 @@
   .a-dl:hover{background:#d6e3f3}
   .a-dl-solo{background:var(--blue)!important;color:#fff!important;font-size:14.5px!important;padding:13px 18px!important;flex:1;justify-content:center}
   /* bouton Commander en ligne */
-  .a-cmd{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;margin:0 20px 20px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#2B7A78,#1F5957);color:#fff;font-size:14.5px;font-weight:700;overflow:hidden;box-shadow:0 12px 26px -14px rgba(31,89,87,.9);animation:cmdPulse 2.4s ease-in-out infinite}
-  .a-cmd:hover{background:linear-gradient(135deg,#1F5957,#14453F);color:#fff;animation:none}
+  .a-cmd{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;margin:0 20px 20px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#2A1EC8,#1206A6);color:#fff;font-size:14.5px;font-weight:700;overflow:hidden;border:2px solid #fff;box-shadow:0 12px 26px -14px rgba(18,6,166,.9);animation:cmdPulse 2.4s ease-in-out infinite}
+  .a-cmd:hover{background:linear-gradient(135deg,#1A10B0,#0c0488);animation:none}
   .a-cmd svg{width:19px;height:19px;flex:none}
   .a-cmd .cmdNew{background:#E8442A;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;flex:none}
   .a-cmd .cmdArr{font-size:17px;line-height:1}
@@ -185,7 +185,7 @@
   .pcat .a-cmd + .actions{margin-top:7px}
   .pcat .a-cmd{white-space:nowrap;flex-wrap:nowrap!important;gap:6px!important;font-size:12.5px!important;padding-left:10px!important;padding-right:10px!important;justify-content:center}
   .pcat .a-cmd svg{width:16px;height:16px}
-  @keyframes cmdPulse{0%,100%{transform:scale(1);box-shadow:0 12px 26px -14px rgba(31,89,87,.9)}50%{transform:scale(1.04);box-shadow:0 0 0 5px rgba(43,122,120,.22),0 14px 34px -10px rgba(43,122,120,.95)}}
+  @keyframes cmdPulse{0%,100%{transform:scale(1);box-shadow:0 12px 26px -14px rgba(18,6,166,.9)}50%{transform:scale(1.04);box-shadow:0 0 0 5px rgba(42,30,200,.28),0 14px 34px -10px rgba(18,6,166,.95)}}
   .a-cmd::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmdShine 2.6s ease-in-out infinite;pointer-events:none}
   @keyframes cmdShine{0%,55%{left:-70%}100%{left:130%}}
   .a-cmd .cmdArr{display:inline-block;animation:cmdNudge 1.3s ease-in-out infinite}
@@ -193,7 +193,7 @@
   .a-cmd .cmdNew{animation:cmdBlink 1.2s steps(1) infinite}
   @keyframes cmdBlink{0%,49%{background:#E8442A}50%,100%{background:#1C1611}}
   @media(prefers-reduced-motion:reduce){.a-cmd,.a-cmd::after,.a-cmd .cmdArr,.a-cmd .cmdNew{animation:none}}
-  .catrow .ract a.a-cmd-row{margin:0;padding:9px 13px;font-size:12.5px;flex:none;gap:6px;position:relative;overflow:hidden;box-shadow:0 8px 18px -12px rgba(31,89,87,.9)}
+  .catrow .ract a.a-cmd-row{margin:0;padding:9px 13px;font-size:12.5px;flex:none;gap:6px;position:relative;overflow:hidden;box-shadow:0 8px 18px -12px rgba(18,6,166,.9)}
   .catrow .ract a.a-cmd-row svg{width:16px;height:16px}
   .catrow .ract a.a-cmd-row .cmdArr{font-size:14px}
   .catrow .rinfo{min-width:240px}
@@ -350,7 +350,9 @@
   .pcat[data-lab="Bonjour Drink"] .pimg,.pcat[data-lab="Hydratis"] .pimg{min-height:0}
   .pcat[data-lab="Bonjour Drink"] .pimg img,.pcat[data-lab="Hydratis"] .pimg img{max-height:100%}
   .pcat .ptop,.pcat .pfoot,.pcat .actions,.pcat .a-cmd{flex:none}
-  .pcat[data-lab="Sefia"] .pimg img,.pcat[data-lab="Cible Skin"] .pimg img,.pcat[data-lab="Owari"] .pimg img{border-radius:14px;filter:none;box-shadow:0 10px 22px -8px rgba(0,0,0,.45);border:3px solid rgba(255,255,255,.9);max-width:78%}
+  .pcat[data-lab="Owari"] .pimg img{border-radius:14px;filter:none;box-shadow:0 10px 22px -8px rgba(0,0,0,.45);border:3px solid rgba(255,255,255,.9);max-width:78%}
+  .pcat[data-lab="OOPS Optics"] .pimg img,.pcat[data-lab="Flayre"] .pimg img,.pcat[data-lab="SHINE Santé"] .pimg img{max-width:100%}
+
   .pcat .ptag{white-space:normal;line-height:1.25;border-radius:8px!important;padding:4px 9px!important;max-width:100%;text-wrap:balance}
   @media(max-width:600px){.grid:has(.pcat){grid-template-columns:repeat(2,minmax(0,1fr))}.cat.pcat{width:auto;height:300px}}
   .lab-body .pcat{--curlbg:color-mix(in srgb,var(--lab) 70%,#000)}
@@ -459,7 +461,7 @@
   // fam = famille (G = Généralistes, C = Cosmétiques) · fo = ordre dans la famille
   const cats = [
     {b:"Sisters Republic",d:"Juin 2026",o:202606, mb:"6 Mo",  id:"19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ", c:"c-ink", col:"#E0524A",   fam:"C", fo:7, fr:"150€", cmd:"DBN - Commande Sisters Republic.html", ptype:"pad", tag:"Culottes menstruelles", desc:"Marque française de culottes menstruelles nouvelle génération. Confortables et jolies comme un sous-vêtement, en coton bio certifié Oeko-Tex, efficaces jusqu'à 12h, sans fuite ni odeur."},
-    {b:"Owari",        d:"Sept. 2026", o:202609, mb:"158 Mo", id:"11Rzuo_XjOplws8rihdQ7_cgvj0YaDIiG", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, fr:"200€", nv:1, big:1, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
+    {b:"Owari",        d:"Sept. 2026", o:202609, mb:"7 Mo", id:"11Rzuo_XjOplws8rihdQ7_cgvj0YaDIiG", c:"c-brick", col:"#7C8B4E", fam:"C", fo:8, fr:"200€", nv:1, ptype:"herb", tag:"Bien-être & compléments", desc:"Marque française de bien-être naturel fondée en 2018 : infusions, compléments alimentaires et routines (détox, digestion, gestion du poids, confort des règles). Formules 100% naturelles, sans conservateurs, fabriquées en France."},
     {b:"Cut by Fred",  d:"Juin 2026",  o:202606, mb:"4 Mo",   id:"1r9SdDJqW8D9ZXZk2m41i1jC3bTIwHqma", c:"c-sky", col:"#34302B",   fam:"C", fo:5, fr:"130€", ptype:"hair", tag:"Soin capillaire clean", desc:"Marque française de soins capillaires clean & vegan, créée par le coiffeur expert Frédéric Birault et fabriquée en France. Des formules sans sulfate ni silicone, pour tous types de cheveux, du lisse au bouclé."},
     {b:"Martine Skin", d:"Juin 2026",  o:202606, mb:"3 Mo",   id:"1_joB0MEWAKkte44G5CExVWngQos8y625", c:"c-sand", col:"#D96E8C",  fam:"C", fo:4, fr:"130€", ptype:"serum", tag:"Skincare",             desc:"Martine Skin, la ligne de soins visage de Martine Cosmetics, marque française. Des soins skincare pensés pour sublimer et prendre soin de la peau au quotidien."},
     {b:"Hydratis",     d:"Sept. 2026", o:202609, mb:"14 Mo",  id:"1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m", c:"c-sky", col:"#1FA8BE",   fam:"G", fo:3, fr:"200€", ptype:"tube", tag:"Leader de l'hydratation", desc:"N°1 des solutions à base d'électrolytes en pharmacie. Des pastilles inspirées du soluté de réhydratation (OMS) pour optimiser l'hydratation au quotidien, au sport et par fortes chaleurs."},
@@ -509,9 +511,9 @@
   const ICON_VIEW='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
   const ICON_DL='<svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>';
   const ICON_CART='<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12h11L21 7H6"/></svg>';
-  const IMG={"Sisters Republic":"tina_produit.png","Hydratis":"hydratis_tube2.png","Biosynex":"bx_logo2.png","Innoxa":"innoxa_flacon.png","Offres de rentrée Biosynex":"bx_bodyflash.png","Nouveautés Biosynex":"sw_menthe.png","CataPoux":"pt_catapoux.png","Bouillottes Universal":"univ_krokmou.png","Bonjour Drink":"bjr_jour.png","Flayre":"pt_flayre2.png","SHINE Santé":"brume_trio.png","OOPS Optics":"pt_oops2.png","Arganicare":"pt_argan.png","SAMPAR":"pt_sampar.png","Du Monde à la Provence":"pt_dmp6.png","Cut by Fred":"pt_cutbyfred.png","Maison Matine":"pt_matine2.png","POP":"pt_pop2.png","Martine Skin":"pt_martine.png","Owari":"pt_owari3.png","Sefia":"pt_sefia3.png","Cible Skin":"pt_cible3.png","Beauty Miracle":"pt_beauty.png","DERMALINE":"pt_dermaline.png"};
+  const IMG={"Sisters Republic":"tina_produit.png","Hydratis":"hydratis_tube3.png","Biosynex":"bx_logo2.png","Innoxa":"innoxa_flacon2.png","Offres de rentrée Biosynex":"bx_bodyflash4.png","Nouveautés Biosynex":"sw_menthe.png","CataPoux":"pt_catapoux6.png","Bouillottes Universal":"univ_krokmou.png","Bonjour Drink":"pt_bonjour4.png","Flayre":"pt_flayre5.png","SHINE Santé":"pt_shine.png","OOPS Optics":"pt_oops3.png","Arganicare":"pt_argan.png","SAMPAR":"pt_sampar2.png","Du Monde à la Provence":"pt_dmp.png","Cut by Fred":"pt_cutbyfred.png","Maison Matine":"pt_matine3.png","POP":"pt_pop3.png","Martine Skin":"pt_martine.png","Owari":"pt_owari3.png","Sefia":"pt_sefia4.png","Cible Skin":"pt_cible4.png","Beauty Miracle":"pt_beauty.png","DERMALINE":"pt_dermaline2.png"};
   function card(c){const im=IMG[c.b];const bg=c.col?` style="background:linear-gradient(155deg, ${c.col}, color-mix(in srgb, ${c.col} 72%, #000));color:${c.dark?'#1C1611':'#fff'}"`:'';return `
-      <article class="cat pcat${c.dark?' pdark':''}" data-go="${c.big?DL(c.id):DRIVE(c.id)}" data-lab="${c.b}" title="Consulter le catalogue ${c.b}">
+      <article class="cat pcat${c.dark?' pdark':''}" data-go="${DRIVE(c.id)}" data-lab="${c.b}" title="Consulter le catalogue ${c.b}">
         <div class="book">
           ${c.nv?'<span class="newbadge">Nouveau</span>':''}
           <div class="pg ${c.c}"${bg}>
@@ -520,14 +522,11 @@
             <div class="pimg${im&&/logo/.test(im)?' logo':''}">${im?`<img src="assets/${im}" alt="" loading="lazy" />`:((c.ptype&&PROD_ICONS[c.ptype])?`<div class="prod-icon">${PROD_ICONS[c.ptype]}</div>`:'')}</div>
             <div class="pfoot"><span>${c.d}</span>${(!c.lab&&c.fr)?`<span class="pfr">Franco ${c.fr} HT</span>`:''}</div>
             ${c.cmd?`<a class="a-cmd" href="${c.cmd}" onclick="try{gtag('event','ouvre_commande',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_CART} Commander en ligne<span class="cmdArr">→</span></a>`:''}
-            <div class="actions">
-              ${c.big?`<a class="a-dl a-dl-solo" href="${DL(c.id)}" target="_blank" rel="noopener" title="PDF volumineux — aperçu Drive indisponible" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_DL} Télécharger</a>`:`<a class="a-dl a-dl-wide" href="${DL(c.id)}" target="_blank" rel="noopener" title="Télécharger le PDF" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'grille'})}catch(e){}">${ICON_DL} Télécharger</a>`}
-            </div>
           </div>
         </div>
       </article>`;}
   function row(c){return `
-      <article class="catrow" data-go="${c.big?DL(c.id):DRIVE(c.id)}" data-lab="${c.b}" title="Consulter le catalogue ${c.b}">
+      <article class="catrow" data-go="${DRIVE(c.id)}" data-lab="${c.b}" title="Consulter le catalogue ${c.b}">
         <div class="rc ${c.c}"${c.col?` style="background:linear-gradient(150deg, ${c.col}, color-mix(in srgb, ${c.col} 82%, #000));color:${c.dark?'#1C1611':'#fff'}"`:''}>
           <div><span class="rbn">${c.b}</span>${c.by?`<span class="rby">By ${c.by}</span>`:''}</div>
           ${c.nv?`<span class="newbadge newbadge-row">Nouveau</span>`:''}
@@ -538,8 +537,6 @@
         </div>
         <div class="rfmt"><span class="pdf">PDF</span> · ${c.mb} · ${c.d}${(!c.lab && c.fr)?' · <span class="rfranco">Franco '+c.fr+'</span>':''}</div>
         <div class="ract">
-          ${c.big?`<a class="a-dl a-dl-solo" href="${DL(c.id)}" target="_blank" rel="noopener" title="PDF volumineux — aperçu Drive indisponible" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_DL} Télécharger</a>`:`<a class="a-view" href="${DRIVE(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','consulter_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_VIEW} Consulter</a>
-          <a class="a-dl" href="${DL(c.id)}" target="_blank" rel="noopener" onclick="try{gtag('event','telecharger_catalogue',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_DL} Télécharger</a>`}
           ${c.cmd?`<a class="a-cmd a-cmd-row" href="${c.cmd}" onclick="try{gtag('event','ouvre_commande',{labo:'${c.b}',vue:'liste'})}catch(e){}">${ICON_CART} Commander<span class="cmdArr">→</span></a>`:''}
         </div>
       </article>`;}
