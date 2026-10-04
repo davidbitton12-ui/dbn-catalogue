@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Biosynex · Chambres d'inhalation — David BITTON</title>
+<script src="analytics.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--teal:#6A5AB4;--teal-dk:#4B3F8C;--teal-d:#4B3F8C;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in img{height:64px;width:auto}
+.top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .back{margin-left:auto;font-size:14px;font-weight:600}
+.head{padding-top:30px;padding-bottom:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
+.head h1 em{font-style:italic;color:var(--teal)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:64ch;line-height:1.55;text-wrap:pretty}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
+.card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+/* correction picker */
+.corrs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.corr{background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--slate);cursor:pointer;transition:all .18s}
+.corr:hover{border-color:var(--teal);color:var(--teal)}
+.corr.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(106,90,180,.75)}
+.corr-note{font-size:12.5px;color:var(--slate);margin:10px 0 0;line-height:1.45;background:var(--ivory);border-radius:10px;padding:10px 12px}
+.corr-note b{color:var(--ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-top:12px}
+.term{background:#EFECF9;border:1px solid #D3CCEE;border-radius:12px;padding:10px 13px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.75}
+.term .tv{display:block;font-size:14.5px;font-weight:700;color:var(--teal-d);margin-top:3px}
+/* models */
+.model{border-bottom:1px solid var(--line);padding:16px 0}
+.model:last-of-type{border-bottom:none;padding-bottom:4px}
+.mh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.mh .mn{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.02em}
+.mh .mc{font-size:12px;color:var(--slate)}
+.mh .mt{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--teal)}
+.mh .gtag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;line-height:1;box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:10px;align-items:start}
+.cItem{background:var(--ivory);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.cItem.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ciHead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:7px 11px 7px 8px;cursor:pointer;font-family:var(--sans);text-align:left}
+.ciHead:hover{background:rgba(106,90,180,.07)}
+.ciHead .cn{font-size:14px;font-weight:600;color:var(--ink)}
+.ciHead .cSum{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--teal-d);opacity:0}
+.ciHead .cSum.on{opacity:1}
+.ciHead .chev{font-size:12px;color:var(--slate);transition:transform .2s}
+.cItem.open .ciHead .chev{transform:rotate(180deg)}
+.corrPanel{display:none;padding:4px 11px 11px;border-top:1px dashed var(--line);background:#fff}
+.cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
+.crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
+.crRow.has{background:#EEEAF9;border-color:var(--teal)}
+.crRow.soon{background:#EFEDEA;border-style:dashed;border-color:#CFC8BE}
+.crRow.soon .crL{color:#8A8277}
+.crRow.soon .qty{opacity:.7}
+.crRow.soon.has{background:#F1EFEA;border-color:#A89F93;border-style:solid}
+.soonT{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#B0234F;margin-top:1px}
+.soonL{display:block;font-style:normal;font-size:11px;font-weight:700;color:#B0234F;margin-top:2px}
+.soonB{font-size:11px;font-weight:800;color:#B0234F;background:#FBEAEE;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.soon-note{font-size:12.5px;color:#7A2440;margin:12px 0 0;line-height:1.5;background:#FBEAEE;border:1px solid #F0C7D2;border-radius:10px;padding:10px 12px}
+.soon-note b{color:#5E1A31}
+.crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
+.crRow .crE{grid-column:1/-1;display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em;line-height:1.2;white-space:nowrap;padding:0 1px}
+.crRow .qty{border-radius:9px;flex:none}
+.crRow .qty button{width:26px;height:32px;font-size:15px}
+.crRow .qty input{width:32px;height:32px;font-size:13.5px}
+.cItem.has > .ciHead{background:#EFECF9}
+.cItem .thumb{position:relative;width:90px;height:48px;flex:none;border-radius:7px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cItem .thumb .zi{position:absolute;right:3px;bottom:2px;font-style:normal;font-size:11px;line-height:1;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 4px;pointer-events:none}
+.cItem .thumb.none .zi{display:none}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:14px;max-width:min(1100px,96vw)}
+.zbox img{display:block;width:100%;height:auto;max-height:82vh;object-fit:contain;border-radius:12px}
+.zbox .zl{text-align:center;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin-top:12px}
+.zbox .zx{position:absolute;top:-13px;right:-13px;width:34px;height:34px;border:none;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.zbox .zx:hover{background:var(--teal-d)}
+.cItem .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cItem .thumb.none{background:var(--sand);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--slate);text-align:center;line-height:1.2;padding:2px}
+.cItem .cn{font-size:13.5px;font-weight:600;min-width:0}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:34px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;line-height:1}
+.qty button:hover{background:#E2DCF4}
+.qty input{width:44px;height:38px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-top:13px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+.sum{position:sticky;top:20px}
+.grid > aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sum .line span:first-child{color:var(--slate);min-width:0}
+.eanL{display:block;font-style:normal;font-size:11px;color:var(--slate);letter-spacing:.03em;margin-top:2px}
+.sum .line b{font-weight:700;white-space:nowrap}
+.sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--teal);line-height:1}
+.sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
+.fbar{margin-top:13px;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .ft b{color:var(--ink)}
+.fbar .track{height:7px;border-radius:999px;background:#E4DACB;margin-top:8px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .fill{background:#2E9E7A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-dk)}
+.btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
+.legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
+.done{display:none;margin-bottom:60px}
+.done.on{display:block}
+/* bon de commande client */
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(75,63,140,.45)}
+.bc-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-brand{display:flex;align-items:center;gap:12px}
+.bc-brand img{height:52px;width:auto}
+.bc-brand b{display:block;font-size:16px;font-weight:700;color:var(--blue);line-height:1.15}
+.bc-brand span{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.bc-ok{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.bc-tick{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px}
+.bc-hero{padding:32px 26px 28px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#F4F2FC,#E8E3F7 55%,#DDD6F2 100%)}
+.bc-eye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.72);border-radius:999px;padding:6px 14px}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--teal-d);margin:14px 0 0;line-height:1.1}
+.bc-hero h2 em{font-style:italic;color:var(--teal)}
+.bc-hero p{font-size:15px;color:#3F3A5C;margin:12px auto 0;max-width:56ch;line-height:1.6}
+.bc-liv{display:inline-block;margin:16px auto 0;background:#E0524A;color:#fff;font-size:17px;font-weight:700;border-radius:12px;padding:12px 20px;box-shadow:0 10px 22px -10px rgba(224,82,74,.8)}
+.bc-liv b{font-weight:900;text-transform:uppercase;letter-spacing:.03em}
+.liv-hl{display:flex;align-items:center;gap:12px;margin-top:14px;background:#E0524A;color:#fff;border-radius:14px;padding:13px 16px;font-size:15px;font-weight:600;box-shadow:0 10px 22px -12px rgba(224,82,74,.8)}
+.liv-hl b{font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+.liv-hl .ic{font-size:24px;flex:none}
+.bc-body{padding:26px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-bottom:20px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:11px 14px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);background:#fff}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .tag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 10px;flex:none}
+.bc-row .mn{font-size:14.5px;font-weight:700;white-space:nowrap}
+.bc-row .cn{font-size:13px;color:var(--slate);white-space:nowrap}
+.bc-row .cr{font-size:12.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bc-row .ce{font-size:11.5px;color:var(--slate);letter-spacing:.03em;white-space:nowrap}
+.bc-row > span:nth-child(2){display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:18px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:27px}
+.bc-note{margin-top:16px;font-size:13.5px;line-height:1.55;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:13px;padding:13px 15px;color:#8C2A20}
+.bc-note b{color:#6b1f18}
+.bc-note.ok{background:#EEEAF9;border-color:#B7DFCE;color:#1F5957}
+.bc-note.ok b{color:#14453F}
+.bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
+.bc-contact{font-size:13.5px;color:var(--slate)}
+.bc-contact b{color:var(--ink)}
+.bc-acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:11px 18px;cursor:pointer}
+.bc-print:hover{background:var(--teal-d)}
+.bc-home{font-size:13px;font-weight:600;color:var(--teal-d)}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.head,#orderForm{display:none!important}
+  .bc{box-shadow:none;border-radius:0;border:none}
+  .bc-acts{display:none}
+}
+@media(max-width:600px){
+  .bc-top,.bc-foot{padding:14px 16px}
+  .bc-hero{padding:24px 16px 22px}
+  .bc-body{padding:18px 16px}
+  .bc-ok{margin-left:0}
+  .bc-acts{margin-left:0;width:100%}
+  .bc-print{flex:1}
+}
+@media(max-width:880px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sum{position:static}
+  .grid > aside{position:static;max-height:none;overflow:visible}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .top-in img{height:52px}
+  .top-in .back{margin-left:0;width:100%}
+  .two{grid-template-columns:1fr}
+  .card{padding:18px 16px}
+  .colors{grid-template-columns:1fr}
+  .corr{padding:9px 13px;font-size:13.5px}
+  .head h1{font-size:25px}
+  .steps{gap:7px}
+  .step{font-size:12px;padding:8px 11px}
+  .terms{grid-template-columns:1fr;gap:7px}
+  .cItem.open .corrPanel{grid-template-columns:1fr 1fr;gap:6px}
+  .crRow{padding:6px 7px}
+  .crRow .qty button{width:34px;height:40px;font-size:17px}
+  .crRow .qty input{width:38px;height:40px;font-size:15px}
+  .cItem .thumb{width:74px;height:42px}
+  .ciHead{padding:8px 10px 8px 7px}
+  .mhead{flex-wrap:wrap;gap:7px}
+  .mhead .mn{font-size:16px}
+  .sum .tot .v{font-size:26px}
+  .btn{font-size:16px;padding:16px 18px}
+  .zbox{padding:10px;border-radius:14px}
+  .zbox img{max-height:66vh}
+  .zbox .zl{font-size:16px;margin-top:9px}
+  .zbox .zx{top:-11px;right:-11px;width:32px;height:32px}
+  .bc-meta{grid-template-columns:1fr;gap:8px}
+  .bc-tot{grid-template-columns:1fr 1fr;gap:8px}
+  .bc-row{flex-wrap:wrap;gap:7px;padding:10px 13px}
+  .bc-row .qn{margin-left:auto}
+  .bc-hero h2{font-size:26px}
+}
+@media(max-width:400px){
+  .cItem.open .corrPanel{grid-template-columns:1fr}
+  .bc-tot{grid-template-columns:1fr}
+}
+
+.pHead{display:flex;gap:18px;align-items:center;margin-bottom:16px}
+.pImg{width:118px;height:118px;border-radius:50%;overflow:hidden;flex:none;background:#F3E6CF;border:1px solid var(--line);cursor:zoom-in;position:relative}
+.pImg img{width:100%;height:100%;object-fit:cover;display:block}
+.pImg .zi{position:absolute;right:14px;bottom:10px;font-style:normal;font-size:12px;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 5px}
+.pTxt b{display:block;font-family:var(--serif);font-size:19px;font-weight:700}
+.pTxt span{display:block;font-size:13px;color:var(--slate);margin-top:4px;line-height:1.5}
+.pTxt .rb{display:inline-block;margin-top:9px;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--teal);border-radius:999px;padding:5px 11px}
+.sizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:9px}
+.sz{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 12px;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;transition:border-color .2s}
+.sz.has{background:#EEEAF9;border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.sz .szL{font-size:14.5px;font-weight:700;color:var(--ink)}
+.sz .szE{grid-column:1/-1;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-top:16px}
+.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center;transition:all .2s}
+.tier.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(106,90,180,.75)}
+.tier .tq{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.tier .tp{font-family:var(--serif);font-size:18px;font-weight:700;margin-top:3px}
+.tier .tr{font-size:11px;margin-top:2px;opacity:.8}
+.packs{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-bottom:8px}
+.pack{position:relative;display:flex;align-items:center;gap:16px;width:100%;text-align:left;font-family:var(--sans);background:linear-gradient(135deg,#FDF1EE,#FBE3DD);border:2px solid var(--teal);border-radius:16px;padding:16px 18px;margin:0;cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 14px 30px -18px rgba(216,71,63,.7)}
+.pack:hover{transform:translateY(-2px);box-shadow:0 20px 36px -18px rgba(216,71,63,.8)}
+.pack.on{background:var(--teal);color:#fff}
+.pack.on .pk-t,.pack.on .pk-s{color:rgba(255,255,255,.88)}
+.pack.on .pk-u{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap;margin-top:-4px}
+.pk-flag{position:absolute;top:-11px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#1C1611;border-radius:999px;padding:5px 11px;animation:pkPulse 1.6s ease-in-out infinite}
+@keyframes pkPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.pk-flag{animation:none}}
+.pk-c{background:#fff;color:var(--teal-d)}
+.pk-l{flex:1;min-width:0}
+.pk-t{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
+.pk-l b{display:block;font-family:var(--serif);font-size:19px;font-weight:700;margin-top:3px}
+.pk-s{display:block;font-size:12px;color:var(--slate);margin-top:5px;line-height:1.45}
+.pk-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+.pk-p{font-family:var(--serif);font-size:24px;font-weight:700;white-space:nowrap}
+.pk-u{font-size:11.5px;font-weight:600;opacity:.8;white-space:nowrap;margin-top:-4px}
+.pk-flag{position:absolute;top:-11px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#1C1611;border-radius:999px;padding:5px 11px;animation:pkPulse 1.6s ease-in-out infinite}
+@keyframes pkPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.pk-flag{animation:none}}
+.pk-c{font-size:13px;font-weight:700;color:#fff;background:var(--teal);border-radius:10px;padding:8px 13px;white-space:nowrap}
+.pk-or{font-size:12.5px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+@media(max-width:600px){.pack{flex-direction:column;align-items:stretch;min-width:0;gap:10px;padding-top:18px}.pk-l,.pk-t,.pk-s{white-space:normal;min-width:0;overflow-wrap:anywhere}.pk-r{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}.pk-flag{right:12px;font-size:9.5px;padding:4px 9px}}
+@media(max-width:600px){.field input,.field textarea,.qty input{font-size:16px!important}}
+.minNote{margin-top:10px;font-size:12.5px;color:#8C2A20;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:10px;padding:9px 12px;line-height:1.45}
+.minNote.ok{color:var(--teal-d);background:#EEEAF9;border-color:#D3CCEE}
+@media(max-width:600px){.pHead{gap:13px}.pImg{width:88px;height:88px}.sizes{grid-template-columns:1fr}.tiers{grid-template-columns:1fr 1fr}}
+
+.sumHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.sumHead h2{margin:0}
+.resetBtn{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--slate);background:var(--ivory);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.resetBtn:hover{color:#B03A2E;border-color:#E0B79E;background:#FFF3F0}
+.resetBtn[hidden]{display:none}
+.top-in .cat-pdf{margin-left:auto;font-size:14px;font-weight:700;color:#fff;background:var(--teal);border-radius:11px;padding:10px 16px;white-space:nowrap}
+.top-in .cat-pdf:hover{color:#fff;filter:brightness(.92)}
+.top-in .cat-pdf + .back{margin-left:14px}
+@media(max-width:600px){.top-in .cat-pdf{margin-left:0;width:100%;text-align:center;order:3}.top-in .cat-pdf + .back{margin-left:auto}}
+
+.chHero{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;margin-bottom:6px}
+.chHero img{width:100%;height:auto;max-height:230px;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(75,63,140,.25))}
+.chHero ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.chHero li{display:inline-block;height:auto;line-height:1.3;white-space:nowrap;font-size:12px;font-weight:700;color:var(--teal-d);background:#EEEAF9;border:1px solid #D3CCEE;border-radius:999px;padding:5px 10px}
+.n1{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(90deg,#F07A2B,#E8442A);border-radius:8px;padding:6px 11px}
+.chList{display:grid;gap:10px;margin-top:14px}
+.ch{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--ivory);border:1px solid var(--line);border-radius:14px;padding:10px 14px;transition:border-color .2s}
+.ch.has{background:#EEEAF9;border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ch img{width:96px;height:72px;object-fit:contain;cursor:zoom-in}
+.ch b{display:block;font-size:15px;font-weight:700;color:var(--ink)}
+.ch .age{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:2px 8px;margin-top:4px}
+.ch .ref{display:block;font-size:11px;color:var(--slate);margin-top:4px;letter-spacing:.02em}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}
+.tier{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:center;transition:all .2s}
+.tier.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(106,90,180,.75)}
+.tier .tq{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.tier .tp{font-family:var(--serif);font-size:20px;font-weight:700;margin-top:3px}
+.tier .tr{font-size:11px;margin-top:2px;opacity:.8}
+@media(max-width:600px){.chHero{grid-template-columns:96px minmax(0,1fr);gap:12px}.ch{grid-template-columns:64px minmax(0,1fr);row-gap:8px}.ch img{width:64px;height:52px}.ch .qty{grid-column:1/-1;justify-self:end}.tiers{grid-template-columns:1fr}}
+</style>
+<style id="dbn-petits-ecrans">
+/* PC à petit écran (souris, 861–1440 px) : tout réduit — téléphone et tablette tactile non concernés */
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1440px){html{zoom:.85}}
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1280px){html{zoom:.8}}
+</style>
+<style id="dbn-hdr-css">
+.dbn-hdr{position:sticky;top:0;z-index:60;background:rgba(251,245,235,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #EBE0CE;font-family:'Hanken Grotesk',system-ui,sans-serif}
+.dbn-hdr-in{max-width:1200px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.dbn-brand{display:flex;align-items:center;gap:16px;text-decoration:none;flex:none}
+.dbn-brand img{height:68px;width:auto;display:block}
+.dbn-wm{display:flex;flex-direction:column;line-height:1}
+.dbn-wm b{font-size:22px;color:#1206A6;font-weight:700}
+.dbn-wm span{font-size:10.5px;letter-spacing:.22em;color:#6E6557;font-weight:600;margin-top:5px;text-transform:uppercase}
+.dbn-links{display:flex;align-items:center;gap:40px}
+.dbn-links a{font-size:18px;font-weight:500;color:#6E6557;text-decoration:none;white-space:nowrap;transition:color .2s}
+.dbn-links a:hover,.dbn-links a.on{color:#1206A6}
+.dbn-links a.on{font-weight:600}
+.dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
+.dbn-btn:hover{background:#0c0488;color:#fff}
+.dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}
+.dbn-sub a{font-size:14px;font-weight:700;color:#fff;background:var(--teal,#1206A6);border-radius:11px;padding:10px 16px;white-space:nowrap;text-decoration:none}
+.dbn-sub a:hover{color:#fff;filter:brightness(.92)}
+@media(max-width:1000px){.dbn-links{gap:24px}.dbn-links a{font-size:16px}}
+@media(max-width:820px){
+ .dbn-hdr-in{height:auto;flex-wrap:wrap;padding:10px 18px;gap:8px 12px}
+ .dbn-brand img{height:52px}.dbn-wm b{font-size:17px}.dbn-wm span{font-size:9px;letter-spacing:.16em}
+ .dbn-btn{font-size:13px;padding:10px 16px}
+ .dbn-links{order:3;width:100%;justify-content:space-between;gap:10px;border-top:1px solid #EBE0CE;padding-top:8px}
+ .dbn-links a{font-size:15px}
+ .dbn-sub{padding:12px 18px 0}
+}
+@media(max-width:420px){.dbn-wm span{display:none}.dbn-brand img{height:44px}.dbn-links a{font-size:14px}}
+@media print{.dbn-hdr,.dbn-sub{display:none!important}}
+</style>
+</head>
+<body>
+
+<header class="dbn-hdr">
+  <div class="dbn-hdr-in">
+    <a class="dbn-brand" href="Direction A - Institutionnel Premium (chaud).html">
+      <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+      <span class="dbn-wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    </a>
+    <nav class="dbn-links">
+      <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
+      <a href="DBN - Espace Catalogues.html">Catalogues</a>
+      <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
+      <a href="Direction A - Institutionnel Premium (chaud).html#contact">Contact</a>
+    </nav>
+    <a class="dbn-btn" href="Direction A - Institutionnel Premium (chaud).html#contact">Nous contacter <span>→</span></a>
+  </div>
+</header>
+<div class="dbn-sub"><a href="https://drive.google.com/file/d/1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb/view" target="_blank" rel="noopener">📖 Voir le catalogue Biosynex</a></div>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Biosynex</span>
+  <h1>Chambres <em>d'inhalation</em> — 3 âges</h1>
+  <p>Nourrisson, enfant et adulte : saisissez vos quantités. Le tarif dégressif se calcule automatiquement sur l'ensemble des chambres, toutes références confondues.</p>
+  <div class="steps">
+    <div class="step"><b>1</b> Choisissez vos quantités</div>
+    <div class="step"><b>2</b> Vérifiez le récapitulatif</div>
+    <div class="step"><b>3</b> Envoyez la commande</div>
+    <div class="step"><b>4</b> Confirmation après vérification</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <div class="chHero">
+          <img src="assets/bx_chambre2.png" alt="Chambre d'inhalation Biosynex" />
+          <div>
+            <h2 style="margin:0">Chambre d'inhalation Biosynex</h2>
+            <ul><li>Fermeture à pression sécurisée</li><li>Système double voie</li><li>Valve expiratoire visible</li><li>Masque silicone sans latex ni BPA</li><li>Antistatique · démontable</li><li>Embout universel</li></ul>
+            <span class="n1">N°1 des ventes en pharmacie · PDM 43,6 %</span>
+          </div>
+        </div>
+        <div class="chList" id="chList"></div>
+        <div class="tiers" id="tiers">
+          <div class="tier" data-min="1"><div class="tq">1 à 12</div><div class="tp">6,00 €</div><div class="tr">HT / unité</div></div>
+          <div class="tier" data-min="13"><div class="tq">13 à 47</div><div class="tp">5,50 €</div><div class="tr">HT / unité</div></div>
+          <div class="tier" data-min="48"><div class="tq">Dès 48</div><div class="tp">5,00 €</div><div class="tr">HT / unité</div></div>
+        </div>
+        <p class="corr-note">Prix tarif <b>12,00 € HT</b> · offre volume calculée sur le total des 3 références · conditionnement à l'unité · LPPR remboursable.</p>
+        <div class="terms">
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">180 € HT</span></div>
+          <div class="term"><span class="tk">Conditionnement</span><span class="tv">À l'unité</span></div>
+          <div class="term"><span class="tk">Groupe</span><span class="tv">Biosynex</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <div class="sumHead"><h2>Récapitulatif</h2><button type="button" class="resetBtn" id="resetBtn">↺ Tout effacer</button></div>
+        <div id="sumLines"><p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos chambres pour voir le total.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 20 %</div>
+        <div class="minNote" id="minNote">Offre volume : <b>5,50 € HT</b> dès 13 chambres.</div>
+        <div class="fbar" id="fbar">
+          <div class="ft" id="fTxt">Franco de port à <b>180 € HT</b>.</div>
+          <div class="track"><div class="fill" id="fFill"></div></div>
+        </div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Biosynex — Chambres d'inhalation" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+    <input type="hidden" name="bon_de_commande" id="bonField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-top">
+        <div class="bc-brand">
+          <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+          <div><b>David BITTON</b><span>DBN Développement</span></div>
+        </div>
+        <div class="bc-ok"><span class="bc-tick">✓</span> Commande enregistrée</div>
+      </div>
+      <div class="bc-hero">
+        <span class="bc-eye">Biosynex · Chambres d'inhalation</span>
+        <h2>Merci <em id="bcName">!</em></h2>
+        <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Merci de votre confiance !</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Prix unitaire net</span><b id="bcPU">—</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 20 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-terms"><span><b>Franco</b> 180 € HT</span><span><b>Offre volume</b> 5,50 € dès 13 · 5,00 € dès 48</span></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-contact">Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></div>
+        <div class="bc-acts">
+          <button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button>
+          <a class="bc-home" href="DBN - Commander en ligne.html">Retour aux bons de commande</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FRANCO=180, TVA=1.20;
+  var PRODS=[
+    {k:'nour',n:'Chambre d\'inhalation Nourrisson',a:'0-9 mois',ref:'860 436',ean:'3532678604367',lppr:'6185584',img:'assets/bx_ch_nourrisson.png'},
+    {k:'enf',n:'Chambre d\'inhalation Enfant',a:'9 mois – 6 ans',ref:'860 437',ean:'3532678604374',lppr:'6185584',img:'assets/bx_ch_enfant.png'},
+    {k:'adu',n:'Chambre d\'inhalation Adulte',a:'6 ans et +',ref:'860 438',ean:'3532678604381',lppr:'6185609',img:'assets/bx_ch_adulte.png'}];
+  var TIERS=[{min:48,p:5.00,l:'dès 48 chambres'},{min:13,p:5.50,l:'13 à 47 chambres'},{min:1,p:6.00,l:'1 à 12 chambres'}];
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var qty={};
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function tierFor(t){for(var i=0;i<TIERS.length;i++){if(t>=TIERS[i].min)return TIERS[i];}return null;}
+  function total(){var t=0;PRODS.forEach(function(p){t+=qty[p.k]||0;});return t;}
+  function unit(t){var tr=tierFor(t);return tr?tr.p:6.00;}
+
+  var box=document.getElementById('chList');
+  PRODS.forEach(function(p){
+    var d=document.createElement('div');d.className='ch';d.id='ch_'+p.k;
+    d.innerHTML='<img src="'+p.img+'" alt="'+p.n+'" data-zoom="1" />'+
+      '<div><b>'+p.n.replace('Chambre d\'inhalation ','')+'</b><span class="age">'+p.a+'</span><span class="ref">Réf. '+p.ref+' · EAN '+p.ean+' · LPPR '+p.lppr+'</span></div>'+
+      '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button><input type="number" min="0" step="1" value="0" aria-label="Quantité '+p.a+'" /><button type="button" data-a="+" aria-label="Ajouter">+</button></div>';
+    var inp=d.querySelector('input');
+    d.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){var v=parseInt(inp.value,10)||0;inp.value=b.dataset.a==='+'?v+1:Math.max(0,v-1);set(p,inp,d);});});
+    inp.addEventListener('input',function(){set(p,inp,d);});
+    box.appendChild(d);
+  });
+  function set(p,inp,d){var v=parseInt(inp.value,10);if(isNaN(v)||v<0)v=0;inp.value=v;qty[p.k]=v;d.classList.toggle('has',v>0);render();}
+
+  function render(){
+    var t=total(),tr=tierFor(t),pu=unit(t),ht=t*pu,html='',rc='';
+    PRODS.forEach(function(p){var q=qty[p.k]||0;if(q>0){
+      html+='<div class="line"><span>'+p.n.replace('Chambre d\'inhalation','Chambre')+' · '+p.a+'<em class="eanL">EAN '+p.ean+'</em></span><b>'+q+' u</b></div>';
+      rc+='- '+p.n+' ('+p.a+') · Réf. '+p.ref+' · EAN '+p.ean+' : '+q+' u\n';}});
+    document.querySelectorAll('#tiers .tier').forEach(function(el){el.classList.toggle('on',!!tr&&parseInt(el.dataset.min,10)===tr.min);});
+    var sl=document.getElementById('sumLines');
+    sl.innerHTML=t===0?'<p class="empty">Aucune quantité sélectionnée.<br />Choisissez vos chambres pour voir le total.</p>':
+      html+'<div class="line"><span>Total chambres</span><b>'+t+' u</b></div><div class="line"><span>Prix net unitaire<em class="eanL">'+(tr?tr.l:'')+'</em></span><b>'+eur(pu)+' HT</b></div>';
+    document.getElementById('totHT').textContent=eur(ht);
+    document.getElementById('totTTC').textContent='soit '+eur(ht*TVA)+' TTC · TVA 20 %';
+    var mn=document.getElementById('minNote');
+    if(t===0){mn.className='minNote';mn.innerHTML='Offre volume : <b>5,50 € HT</b> dès 13 chambres.';}
+    else if(t<13){mn.className='minNote';mn.innerHTML='Ajoutez <b>'+(13-t)+' chambre(s)</b> pour passer à <b>5,50 € HT/u</b>.';}
+    else if(t<48){mn.className='minNote ok';mn.innerHTML='Ajoutez <b>'+(48-t)+' chambre(s)</b> pour passer à <b>5,00 € HT/u</b>.';}
+    else{mn.className='minNote ok';mn.innerHTML='Meilleur tarif atteint : <b>5,00 € HT/u</b>.';}
+    var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt'),fill=document.getElementById('fFill');
+    fill.style.width=Math.min(100,ht/FRANCO*100)+'%';
+    if(ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (180 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=t===0?'Franco de port à <b>180 € HT</b>.':'Il manque <b>'+eur(FRANCO-ht)+'</b> pour le franco de port (180 € HT).';}
+    document.getElementById('sendBtn').disabled=t<1;
+    var rb=document.getElementById('resetBtn');if(rb)rb.hidden=t===0;
+    document.getElementById('recapField').value=rc+'\nTotal : '+t+' chambres\nPrix net unitaire : '+eur(pu)+' HT\nTotal HT : '+eur(ht);
+    document.getElementById('totalField').value=eur(ht);
+    document.getElementById('bonField').value=buildBon(rc,t,pu,ht,tr);
+  }
+
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+  function buildBon(rc,t,pu,ht,tr){
+    var L=['BON DE COMMANDE — BIOSYNEX','Chambres d\'inhalation','Date : '+today(),'','--- OFFICINE ---','Officine : '+v('officine'),'Adresse : '+v('adresse'),'Ville : '+v('code_postal')+' '+v('ville'),'Contact : '+v('contact'),'Téléphone : '+v('telephone'),'E-mail : '+v('email'),'','--- COMMANDE ---','',rc.trim()||'(aucune chambre)','',
+      'Total : '+t+' chambres','Prix net unitaire : '+eur(pu)+' HT'+(tr?' ('+tr.l+')':''),'TOTAL HT : '+eur(ht),'TVA 20 % : '+eur(ht*0.20),'TOTAL TTC : '+eur(ht*TVA),
+      'Franco de port : '+(ht>=FRANCO?'ATTEINT (180 € HT)':'non atteint — il manque '+eur(FRANCO-ht))];
+    var m=v('message');if(m){L.push('','--- MESSAGE ---',m);}
+    L.push('','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
+    return L.join('\n');
+  }
+  function buildPayload(t,pu,ht){
+    var lignes=[];PRODS.forEach(function(p){var q=qty[p.k]||0;if(q>0)lignes.push({modele:'Chambre d\'inhalation',coloris:p.a,correction:p.a,taille:p.a,ean:p.ean,qte:q});});
+    return {labo:'Biosynex',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
+      lignes:lignes,total:t,prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.20),totalTTC:eur(ht*TVA),
+      franco:(ht>=FRANCO?'atteint (180 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))};
+  }
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(),s=document.createElement('script');
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();var f=e.target,btn=document.getElementById('sendBtn');render();
+    var t=total(),pu=unit(t),ht=t*pu;if(t<1)return;
+    btn.disabled=true;btn.textContent='Envoi en cours… merci de patienter';
+    function success(){fillBon(t,pu,ht);f.style.display='none';document.getElementById('doneBox').classList.add('on');window.scrollTo(0,0);if(window.gtag)gtag('event','commande_envoyee',{labo:'Biosynex chambres'});}
+    function viaFormspree(){fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw new Error('fail');success();}).catch(function(){btn.disabled=false;btn.textContent='Envoyer ma commande →';alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});}
+    gwSend(buildPayload(t,pu,ht),success,viaFormspree);
+  });
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(t,pu,ht){
+    var first=(v('contact')||'').split(' ')[0];document.getElementById('bcName').textContent=first?(first+' !'):'!';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    var rows='';PRODS.forEach(function(p){var q=qty[p.k]||0;if(q>0)rows+='<div class="bc-row"><span class="tag" style="background:#6A5AB4">Biosynex</span><span><span class="mn">'+p.n+'</span> <span class="cr">'+p.a+'</span><span class="ce">EAN '+p.ean+'</span></span><span class="qn">'+q+' u</span></div>';});
+    document.getElementById('bcItems').innerHTML=rows;
+    document.getElementById('bcQty').textContent=t+' u';document.getElementById('bcPU').textContent=eur(pu)+' HT';
+    document.getElementById('bcHT').textContent=eur(ht);document.getElementById('bcTTC').textContent=eur(ht*TVA);
+    var fr=document.getElementById('bcFranco');
+    if(ht>=FRANCO){fr.className='bc-note ok';fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';}
+    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>180 € HT</b> (groupe Biosynex) — il manque <b>'+eur(FRANCO-ht)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
+    var m=v('message');if(m)fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+m.replace(/[<>]/g,'')+'</div>');
+  }
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Effacer toutes les quantités saisies ?'))return;
+    PRODS.forEach(function(p){qty[p.k]=0;var d=document.getElementById('ch_'+p.k);d.querySelector('input').value=0;d.classList.remove('has');});render();
+  });
+  (function(){
+    var ov=document.createElement('div');ov.id='zoomOv';ov.className='zoomOv';
+    ov.innerHTML='<div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div></div>';
+    document.body.appendChild(ov);
+    function close(){ov.classList.remove('on');}
+    ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.addEventListener('click',function(e){var im=e.target.closest('[data-zoom]');if(!im)return;ov.querySelector('img').src=im.getAttribute('src');ov.querySelector('.zl').textContent=im.alt;ov.classList.add('on');});
+  })();
+  render();
+})();
+</script>
+</body>
+</html>

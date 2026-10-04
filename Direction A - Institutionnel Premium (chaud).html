@@ -680,17 +680,17 @@
   .band-oops .b-cta{background:linear-gradient(160deg,#FFF3F0,#FFE4DD);border-left:2px dashed #E8442A;padding:16px 18px;gap:7px}
   .band-oops .b-price{color:#1F5957;font-size:30px!important;line-height:1;white-space:nowrap}
   .band-oops .b-price small{font-size:11px!important;display:block;margin-top:3px;opacity:.85}
-  .band-oops .cmd-new,.band-tina .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
+  .band-oops .cmd-new,.band-tina .cmd-new,.band-chamb .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
   @keyframes cmd-blink{0%,49%{background:#1F5957;color:#fff}50%,100%{background:#E8442A;color:#fff}}
-  @media(prefers-reduced-motion:reduce){.band-oops .cmd-new,.band-tina .cmd-new{animation:none}}
-  .band-oops .cmd-new::before,.band-tina .cmd-new::before{content:"✨"}
-  .band-oops .b-cat,.band-tina .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:#2B7A78;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:10px;margin-bottom:2px}
-  .band-oops .b-cat:hover,.band-tina .b-cat:hover{background:#1F5957;color:#fff}
-  .band-oops .b-cat .arr,.band-tina .b-cat .arr{transition:transform .18s}
-  .band-oops .b-cat:hover .arr,.band-tina .b-cat:hover .arr{transform:translateX(3px)}
-  .band-oops .b-btn,.band-tina .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
-  .band-oops .b-btn::after,.band-tina .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
-  .band-oops .b-btn:hover,.band-tina .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
+  @media(prefers-reduced-motion:reduce){.band-oops .cmd-new,.band-tina .cmd-new,.band-chamb .cmd-new{animation:none}}
+  .band-oops .cmd-new::before,.band-tina .cmd-new,.band-chamb .cmd-new::before{content:"✨"}
+  .band-oops .b-cat,.band-tina .b-cat,.band-chamb .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:#2B7A78;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:10px;margin-bottom:2px}
+  .band-oops .b-cat:hover,.band-tina .b-cat,.band-chamb .b-cat:hover{background:#1F5957;color:#fff}
+  .band-oops .b-cat .arr,.band-tina .b-cat .arr,.band-chamb .b-cat .arr{transition:transform .18s}
+  .band-oops .b-cat:hover .arr,.band-tina .b-cat:hover .arr,.band-chamb .b-cat:hover .arr{transform:translateX(3px)}
+  .band-oops .b-btn,.band-tina .b-btn,.band-chamb .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
+  .band-oops .b-btn::after,.band-tina .b-btn::after,.band-chamb .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
+  .band-oops .b-btn:hover,.band-tina .b-btn:hover,.band-chamb .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
   @keyframes cmd-beat{0%,100%{transform:scale(1)}50%{transform:scale(1.075)}}
   @keyframes cmd-glow{0%,100%{box-shadow:0 12px 26px -10px rgba(232,68,42,.85),0 0 0 0 rgba(232,68,42,.6)}55%{box-shadow:0 12px 30px -8px rgba(232,68,42,1),0 0 0 14px rgba(232,68,42,0)}}
   @keyframes cmd-shine{0%{left:-60%}55%,100%{left:125%}}
@@ -791,6 +791,33 @@
   .cata-press b{font-weight:800;color:var(--blue-ink)}
   .band-cata .b-btn{background:var(--blue);color:#fff}
 
+  /* BIOSYNEX — CHAMBRES D'INHALATION */
+  .band-chamb{order:-9;grid-template-columns:380px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#F4F2FC,#E8E3F7 46%,#DDD6F2 100%);border:2px solid #6A5AB4}
+  .band-chamb .b-img{display:flex;align-items:center;justify-content:center;gap:4px;padding:12px 14px;background:radial-gradient(120% 120% at 50% 20%,#fff,#ECE8F8 75%)}
+  .band-chamb .b-img .main{height:212px;width:auto;filter:drop-shadow(0 12px 18px rgba(75,63,140,.3))}
+  .band-chamb .b-img .masks{display:flex;flex-direction:column;gap:2px}
+  .band-chamb .b-img .masks img{height:65px;width:auto}
+  .band-chamb .b-copy{background:transparent;color:var(--ink)}
+  .band-chamb h3{color:#4B3F8C}.band-chamb h3 em{color:#6A5AB4}
+  .band-chamb .b-badge{background:#6A5AB4;color:#fff;border-color:#6A5AB4}
+  .band-chamb .b-badge.chamb-n1{align-self:flex-start;font-size:24px;line-height:1.15;letter-spacing:.01em;text-transform:none;font-family:var(--serif);font-weight:700;padding:10px 22px;border-radius:14px;white-space:normal;box-shadow:0 12px 26px -12px rgba(75,63,140,.7)}
+  @media(max-width:1100px){.band-chamb .b-badge.chamb-n1{align-self:flex-start;font-size:19px}}
+  @media(max-width:600px){.band-chamb .b-badge.chamb-n1{align-self:flex-start;font-size:15px;padding:8px 14px}}
+  .band-chamb .b-chip{background:#fff;color:#4B3F8C;border-color:#D3CCEE}
+  .band-chamb .b-chip.hot{background:linear-gradient(90deg,#F07A2B,#E8442A);color:#fff;border-color:transparent;font-weight:800}
+  .band-chamb .b-cta{background:#E8E3F7;border-left:1px solid #D3CCEE}
+  .band-chamb .b-cat{background:#6A5AB4!important;color:#fff!important}
+  .band-chamb .b-cat:hover{background:#4B3F8C!important}
+  .band-chamb .b-price{color:#4B3F8C;font-size:60px!important;line-height:1;white-space:nowrap}
+  @media(max-width:1100px){.band-chamb .b-price{font-size:46px!important}}
+  @media(max-width:600px){.band-chamb .b-price{font-size:40px!important}}
+  .band-chamb .b-price small{font-size:11px!important;display:block;margin-top:3px;opacity:.85}
+  .band-chamb .b-strike{display:block;font-size:12px;color:var(--slate);text-decoration:line-through;margin-top:2px}
+  @media(max-width:1100px) and (min-width:861px){.band-chamb{grid-template-columns:290px 1fr 210px}.band-chamb .b-img .main{height:175px}.band-chamb .b-img .masks img{height:52px}}
+  @media(max-width:860px){.band-chamb .b-img .main{height:188px}}
+  .chamb-bx{align-self:flex-start;width:max-content;max-width:100%;display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;font-family:var(--sans);font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2FA84F;background:#fff;border:2px solid #2FA84F;border-radius:999px;padding:5px 14px}
+  .chamb-bx::before{content:"";width:8px;height:8px;border-radius:50%;background:#2FA84F}
+  @media(max-width:600px){.chamb-bx{font-size:12px;padding:4px 11px}}
   /* ARGANICARE — nouveau labo */
   .band-argan{order:-8;grid-template-columns:400px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FBF1DC,#F4E3C2 46%,#EAD3A8 100%);border:2px solid #B5874B}
   .band-argan .argan-duo{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;overflow:hidden;position:relative;background:#E9D6B2}
@@ -1218,6 +1245,35 @@
 <!-- MISES EN AVANT — 4 bandeaux -->
 <div class="wrap band-wrap">
   <div class="bandeaux">
+
+    <!-- BIOSYNEX — CHAMBRES D'INHALATION -->
+    <div class="band band-chamb" id="chambres">
+      <div class="b-img">
+        <img class="main" src="assets/bx_chambre2.png" alt="Chambre d'inhalation Biosynex" />
+        <div class="masks">
+          <img src="assets/bx_ch_nourrisson.png" alt="Chambre Nourrisson 0-9 mois" />
+          <img src="assets/bx_ch_enfant.png" alt="Chambre Enfant 9 mois - 6 ans" />
+          <img src="assets/bx_ch_adulte.png" alt="Chambre Adulte 6 ans et +" />
+        </div>
+      </div>
+      <div class="b-copy">
+        <span class="chamb-bx">Biosynex</span>
+        <span class="b-badge chamb-n1">N°1 des chambres d'inhalation en France</span>
+        <h3>Chambres <em>d'inhalation</em> — 3 âges</h3>
+        <p class="bsub">Nourrisson 0-9 mois · Enfant 9 mois-6 ans · Adulte 6 ans et +. Fermeture à pression sécurisée, système double voie, valve expiratoire visible, masque silicone sans latex ni BPA. <b>Remboursées LPPR.</b></p>
+        <div class="b-chips">
+          <span class="b-chip hot">N°1 des ventes en pharmacie</span>
+          <span class="b-chip">5,50 € dès 13 · 5,00 € dès 48</span>
+          <span class="b-chip">Franco 180 € HT</span>
+        </div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price"><small style="margin:0 0 2px;opacity:.85">à partir de</small>5,00 €<small>HT / u · dès 48 chambres</small><span class="b-strike">Prix tarif 12,00 € HT</span></div>
+        <a class="b-cat" href="https://drive.google.com/file/d/1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        
+        <a class="b-btn" href="DBN - Commande Biosynex Chambres.html">Commander ici <span class="arr">→</span></a>
+      </div>
+    </div>
 
     <!-- ARGANICARE — NOUVEAU LABO -->
     <div class="band band-argan" id="arganicare">
