@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commande Bonjour Drink — David BITTON</title>
 <script src="analytics.js"></script>
+<script src="prefill.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -605,7 +606,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   function buildPayload(c){
     var lignes=c.L.map(function(l){return {modele:l.p.n+(l.p.cp?' — '+cpHead(l.p).toLowerCase()+' : '+cpItems(l.p,l.o.u).join(', '):''),coloris:qL(l)+(l.o.p?' à '+eur(l.o.p)+' HT':' · offert')+(l.p.g==='pack'?' · livraison mi-novembre':''),correction:(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert'),ean:l.p.ean,qte:l.o.u};});
     return {labo:'Bonjour Drink',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
-      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
+      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),ref:(window.DBN_REF||''),
       lignes:lignes,total:c.units,prixUnitaire:'selon référence',totalHT:eur(c.ht),tva:eur(c.ht*0.055),totalTTC:eur(c.ht*TVA),
       franco:(c.sub>=FRANCO?'atteint (245 \u20ac HT)':'non atteint (245 \u20ac HT)')};
   }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bon de commande — David BITTON</title>
+<script src="../../analytics.js"></script>
+<script src="../../prefill.js"></script>
+<script>
+  /* Lien court direct vers le bon de commande. La query string est recopiée TELLE QUELLE. */
+  (function(){
+    var target='../../'+encodeURI("DBN - Commande OOPS Optics.html")+location.search+location.hash;
+    var m=document.createElement('meta');m.httpEquiv='refresh';m.content='0; url='+target;document.head.appendChild(m);
+    window.__dbnTarget=target;
+    location.replace(target);
+  })();
+</script>
+</head>
+<body style="font-family:system-ui,sans-serif;background:#FBF5EB;color:#1C1611;padding:40px;text-align:center">
+<p>Ouverture du bon de commande…</p>
+<p><a id="fallbackLink" href="../../DBN%20-%20Commande%20OOPS%20Optics.html" style="color:#1206A6">Cliquez ici si rien ne se passe</a></p>
+<script>if(window.__dbnTarget)document.getElementById('fallbackLink').href=window.__dbnTarget;</script>
+</body>
+</html>

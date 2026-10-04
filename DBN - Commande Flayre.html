@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commande Flayre — David BITTON</title>
 <script src="analytics.js"></script>
+<script src="prefill.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -361,7 +362,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
   function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
   function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
   function payload(s){
-    return {labo:'Flayre',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),
+    return {labo:'Flayre',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),ref:(window.DBN_REF||''),
       message:(s.c.w?'Pack Essentiel −20 %. ':'')+(s.frais?'Frais logistiques 10 € HT. ':'')+v('message'),
       lignes:s.c.lines.map(function(x){return {modele:x.r.n,coloris:x.l,correction:eur(x.u)+' HT',ean:x.r.e,qte:x.q};}),
       total:s.c.total,prixUnitaire:'selon référence',totalHT:eur(s.tot),tva:eur(s.tot*0.2),totalTTC:eur(s.tot*TVA),

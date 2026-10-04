@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commande SAMPAR — David BITTON</title>
 <script src="analytics.js"></script>
+<script src="prefill.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -535,7 +536,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   function buildPayload(c){
     var lignes=c.L.map(function(l){return {modele:l.p.n,coloris:'Présentoir X'+l.o.x+' ('+l.o.u+' u.)',correction:eur(l.o.p)+' HT/u',ean:l.p.ean,qte:l.o.u};});
     return {labo:'SAMPAR',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
-      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),
+      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),ref:(window.DBN_REF||''),
       lignes:lignes,total:c.units,prixUnitaire:'selon présentoir',totalHT:eur(c.ht),tva:eur(c.ht*0.2),totalTTC:eur(c.ht*TVA),
       franco:(c.port?'non atteint \u2014 frais de port 7 \u20ac HT inclus':'atteint (114 \u20ac HT)')};
   }
