@@ -8,10 +8,10 @@
 <script src="../analytics.js"></script>
 <script src="../prefill.js"></script>
 <script>
-  /* URL stable : /commande/  ·  option ?labo=oops|sisters|sampar|bonjour|flayre|chambres
+  /* URL stable : /commande/  ·  option ?labo=oops|sisters|sampar|bonjour|flayre|chambres|innoxa
      RÈGLE : la query string est recopiée TELLE QUELLE (UTM, ref…), jamais reconstruite. */
   (function(){
-    var PAGES={oops:'DBN - Commande OOPS Optics.html',sisters:'DBN - Commande Sisters Republic.html',sampar:'DBN - Commande SAMPAR.html',bonjour:'DBN - Commande Bonjour Drink.html',flayre:'DBN - Commande Flayre.html',chambres:'DBN - Commande Biosynex Chambres.html'};
+    var PAGES={oops:'DBN - Commande OOPS Optics.html',sisters:'DBN - Commande Sisters Republic.html',sampar:'DBN - Commande SAMPAR.html',bonjour:'DBN - Commande Bonjour Drink.html',flayre:'DBN - Commande Flayre.html',chambres:'DBN - Commande Biosynex.html',innoxa:'DBN - Commande Biosynex.html'};
     var labo=(new URLSearchParams(location.search).get('labo')||'').toLowerCase();
     var target='../'+encodeURI(PAGES[labo]||'DBN - Commander en ligne.html')+location.search+location.hash;
     var m=document.createElement('meta');m.httpEquiv='refresh';m.content='0; url='+target;document.head.appendChild(m);

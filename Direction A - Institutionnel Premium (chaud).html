@@ -822,9 +822,116 @@
   .band-chamb .b-strike{display:block;font-size:12px;color:var(--slate);text-decoration:line-through;margin-top:2px}
   @media(max-width:1100px) and (min-width:861px){.band-chamb{grid-template-columns:290px 1fr 210px}.band-chamb .b-img .main{height:175px}.band-chamb .b-img .masks img{height:52px}}
   @media(max-width:860px){.band-chamb .b-img .main{height:188px}}
+  /* INNOXA (réutilise la structure chambres, couleurs Innoxa) */
+  .band-chamb.band-innox{order:-10;grid-template-columns:400px 1fr 236px;background:radial-gradient(120% 130% at 78% -12%,#F1F7FD,#E1EDF9 46%,#D2E3F5 100%);border-color:#1D63B0}
+  .band-innox .b-img{gap:10px;align-items:flex-end;padding:14px 12px;background:radial-gradient(120% 120% at 50% 20%,#fff,#E3EEFA 75%);position:relative}
+  .band-innox .b-img img{width:auto;filter:drop-shadow(0 12px 16px rgba(21,74,133,.3))}
+  .band-innox .ix-box{height:196px}.band-innox .ix-fl{height:150px}.band-innox .ix-hv{height:172px}
+  .band-innox .ix-badge{position:absolute;top:10px;left:10px;height:74px!important;filter:none!important}
+  .band-innox h3{color:#154A85}.band-innox h3 em{color:#1D63B0}
+  .band-innox .chamb-bx{color:#2FA84F;border-color:#2FA84F}
+  .band-innox .b-badge.chamb-n1{background:#1D63B0;border-color:#1D63B0;box-shadow:0 12px 26px -12px rgba(21,74,133,.7)}
+  .band-innox .b-chip{color:#154A85;border-color:#BCD3EE}
+  .band-innox .b-cta{background:#E1EDF9;border-left-color:#BCD3EE}
+  .band-innox .b-cat{background:#1D63B0!important}
+  .band-innox .b-cat:hover{background:#154A85!important}
+  .band-innox .b-price{color:#154A85}
+  @media(max-width:1100px) and (min-width:861px){.band-chamb.band-innox{grid-template-columns:300px 1fr 210px}.band-innox .ix-box{height:160px}.band-innox .ix-fl{height:122px}.band-innox .ix-hv{height:140px}.band-innox .ix-badge{height:58px!important}}
+  @media(max-width:860px){.band-innox .ix-box{height:170px}.band-innox .ix-fl{height:130px}.band-innox .ix-hv{height:150px}}
   .chamb-bx{align-self:flex-start;width:max-content;max-width:100%;display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;font-family:var(--sans);font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2FA84F;background:#fff;border:2px solid #2FA84F;border-radius:999px;padding:5px 14px}
   .chamb-bx::before{content:"";width:8px;height:8px;border-radius:50%;background:#2FA84F}
   @media(max-width:600px){.chamb-bx{font-size:12px;padding:4px 11px}}
+
+  /* BIOSYNEX — bannière ouverture + duo Innoxa / Chambres */
+  .bx-open{order:-12;display:grid!important;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;padding:18px 26px;text-decoration:none;color:#fff;background:linear-gradient(120deg,#166B30 0%,#2FA84F 52%,#166B30 100%);border:2px solid #0F5525}
+  .bxo-logo{background:#fff;border-radius:14px;padding:10px 16px;display:flex;align-items:center;box-shadow:0 8px 20px -10px rgba(0,0,0,.45)}
+  .bxo-logo img{height:40px;width:auto;display:block}
+  .bxo-txt{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .bxo-kick{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#D7F5DF}
+  .bxo-kick .dot{width:8px;height:8px;border-radius:50%;background:#FFE14D;animation:offer-pulse 1.8s infinite}
+  .bxo-t{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.08;color:#fff;text-wrap:balance}
+  .bxo-t b{font-weight:700;color:#FFE14D}
+  .bxo-s{font-size:14px;color:rgba(255,255,255,.92);line-height:1.4}
+  .bxo-s b{color:#fff}
+  .bxo-btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:15.5px;padding:15px 24px;border-radius:12px;animation:cmd-beat 1.6s ease-in-out infinite,cmd-glow 1.6s ease-in-out infinite}
+  .bxo-btn .arr{transition:transform .18s}.bx-open:hover .bxo-btn .arr{transform:translateX(4px)}
+  .bx-open:hover .bxo-btn{background:#c8331c}
+  @media(prefers-reduced-motion:reduce){.bxo-btn{animation:none}}
+  .bx-duo{order:-11;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0}
+  .bx-duo > .band{min-width:0}
+  .bx-duo .b-copy,.bx-duo .b-cta{min-width:0}
+  .bx-duo .b-cta .b-btn,.bx-duo .b-cta .b-cat{flex:0 0 auto!important;width:auto!important;max-width:100%;align-self:center!important}
+  .bx-duo .band.band-chamb,.bx-duo .band.band-chamb.band-innox{grid-template-columns:150px minmax(0,1fr);grid-template-rows:1fr auto;min-height:0}
+  .bx-duo .b-img{grid-row:1/3;padding:10px 8px;flex-wrap:wrap;align-content:center}
+  .bx-duo .b-copy{padding:14px 16px 6px}
+  .bx-duo .b-cta{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px;padding:8px 16px 14px;border-left:none!important;background:transparent!important}
+  .bx-duo .chamb-bx{font-size:11px;padding:3px 10px;margin-bottom:6px}
+  .bx-duo .b-badge.chamb-n1{font-size:15px!important;padding:6px 12px;margin-bottom:6px}
+  .bx-duo h3{font-size:18px;line-height:1.15}
+  .bx-duo .bsub{font-size:12.5px;margin-top:4px}
+  .bx-duo .b-chips{margin-top:8px;gap:5px}
+  .bx-duo .b-chip{font-size:11px;padding:4px 9px}
+  .bx-duo .b-price{font-size:30px!important;text-align:left;margin-right:4px}
+  .bx-duo .b-price small{font-size:10px!important}
+  .bx-duo .cmd-new{display:none}
+  .bx-duo .b-cat,.bx-duo .b-btn{font-size:12.5px;padding:9px 13px}
+  .bx-duo .band-chamb .b-img .main{height:150px}
+  .bx-duo .band-chamb .b-img .masks{flex-direction:row}
+  .bx-duo .band-chamb .b-img .masks img{height:40px}
+  .bx-duo .band-innox .ix-box{height:120px}.bx-duo .band-innox .ix-fl{height:92px}.bx-duo .band-innox .ix-hv{height:104px}
+  .bx-duo .band-innox .ix-badge{height:44px!important;top:6px;left:6px}
+  @media(max-width:1100px){.bx-duo{grid-template-columns:minmax(0,1fr)}.bxo-t{font-size:25px}}
+  @media(max-width:860px){.bx-open{grid-template-columns:1fr;text-align:center;justify-items:center;gap:12px;padding:18px 16px}.bxo-kick{justify-content:center}.bxo-t{font-size:22px}.bx-duo .band.band-chamb,.bx-duo .band.band-chamb.band-innox{grid-template-columns:1fr;grid-template-rows:auto}.bx-duo .b-img{grid-row:auto}}
+  /* BIOSYNEX bannière — même code couleur que Innoxa (bleu) */
+  .band.bx-open{background:radial-gradient(120% 160% at 85% -20%,#F1F7FD,#E1EDF9 46%,#D2E3F5 100%)!important;border:2px solid #1D63B0!important;color:var(--ink)!important;padding:20px 26px!important;animation:bxoRing 2.4s ease-in-out infinite}
+  @keyframes bxoRing{0%,100%{box-shadow:0 0 0 0 rgba(29,99,176,.45),0 18px 40px -26px rgba(21,74,133,.55)}50%{box-shadow:0 0 0 7px rgba(29,99,176,0),0 18px 40px -26px rgba(21,74,133,.55)}}
+  .bx-open .bxo-logo{padding:12px 18px;border:2px solid #1D63B0;box-shadow:0 10px 24px -12px rgba(21,74,133,.55)}
+  .bx-open .bxo-logo img{height:50px}
+  .bx-open .bxo-kick{align-self:flex-start;color:#fff;background:#1D63B0;border-radius:999px;padding:6px 14px;font-size:12.5px;box-shadow:0 10px 22px -12px rgba(21,74,133,.8)}
+  .bx-open .bxo-kick .dot{background:#fff}
+  .bx-open .bxo-t{color:#154A85;font-size:34px}
+  .bx-open .bxo-t b{color:#1D63B0}
+  .bx-open .bxo-s{color:#2B3F57;font-size:14.5px}
+  .bx-open .bxo-s b{color:#154A85}
+  .bx-open .bxo-btn{position:relative;overflow:hidden;font-size:16px;padding:16px 26px;box-shadow:0 14px 28px -12px rgba(232,68,42,.75)}
+  .bx-open .bxo-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmdShine 2.6s ease-in-out infinite}
+  @keyframes cmdShine{0%,55%{left:-60%}100%{left:130%}}
+  @media(prefers-reduced-motion:reduce){.band.bx-open,.bx-open .bxo-btn::after{animation:none}}
+  @media(max-width:1100px){.bx-open .bxo-t{font-size:27px}}
+  @media(max-width:860px){.bx-open .bxo-t{font-size:23px}.bx-open .bxo-kick{align-self:center}.bx-open .bxo-logo img{height:42px}}
+  /* BIOSYNEX — bandeau unique */
+  .band.bx-one{order:-12;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:20px;padding:20px 24px!important;background:radial-gradient(120% 160% at 85% -20%,#F1F7FD,#E1EDF9 46%,#D2E3F5 100%)!important;border:2px solid #1D63B0!important;color:var(--ink);animation:bxoRing 2.4s ease-in-out infinite}
+  .bx-one .bx1-head{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .bx-one .bxo-logo{align-self:flex-start;padding:14px 22px;border:2px solid #1D63B0;box-shadow:0 10px 24px -12px rgba(21,74,133,.55)}
+  .bx-one .bxo-logo img{height:76px}
+  .bx-one .bxo-kick{align-self:flex-start;color:#fff;background:#1D63B0;border-radius:999px;padding:6px 14px;font-size:12.5px}
+  .bx-one .bxo-kick .dot{background:#fff}
+  .bx-one .bxo-t{color:#154A85;font-size:30px}
+  .bx-one .bxo-t b{color:#1D63B0;font-size:1.3em;letter-spacing:.01em}
+  .bx-one .bxo-s{color:#2B3F57;font-size:14px}
+  .bx-one .bxo-s b{color:#154A85}
+  .bx1-ex{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+  .bx1-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid #BCD3EE;border-radius:16px;padding:12px;text-decoration:none;color:var(--ink);transition:transform .18s,box-shadow .18s;min-width:0}
+  .bx1-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px -16px rgba(21,74,133,.6)}
+  .bx1-img{position:relative;height:120px;display:flex;align-items:flex-end;justify-content:center;gap:8px;border-radius:12px;background:radial-gradient(120% 120% at 50% 20%,#fff,#E3EEFA 75%)}
+  .bx1-img img{width:auto;filter:drop-shadow(0 10px 14px rgba(21,74,133,.28))}
+  .bx1-img.ix .ix-box{height:104px}.bx1-img.ix .ix-fl{height:84px}
+  .bx1-img.ix .ix-badge{position:absolute;top:6px;left:6px;height:40px;filter:none}
+  .bx1-img.ch{align-items:center}.bx1-img.ch .main{height:112px}
+  .bx1-c{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .bx1-tag{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#1D63B0;border-radius:999px;padding:3px 9px;max-width:100%}
+  .bx1-n{font-family:var(--serif);font-size:16px;font-weight:700;color:#154A85;line-height:1.15}
+  .bx1-p{font-size:13px;color:var(--slate)}.bx1-p b{color:#E8442A;font-size:15px}
+  .bx-one .bx1-btn{grid-column:1/-1;justify-self:stretch;justify-content:center;position:relative;overflow:hidden;font-size:17px;padding:17px 24px;box-shadow:0 14px 28px -12px rgba(232,68,42,.75);text-decoration:none}
+  .bx-one .bx1-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmdShine 2.6s ease-in-out infinite}
+  .bx-one .bx1-btn:hover{background:#c8331c}
+  @media(prefers-reduced-motion:reduce){.band.bx-one,.bx-one .bx1-btn::after{animation:none}}
+  .bx-one .bx1-btn{animation:none!important;background:#1D63B0!important;color:#fff!important;border:none;box-shadow:0 10px 22px -12px rgba(21,74,133,.7)!important;transform:none!important}
+  .bx-one .bx1-btn::after{display:none}
+  .bx-one .bx1-btn:hover{background:#154A85!important}
+  @media(max-width:1100px){.bx-one .bxo-t{font-size:26px}}
+  @media(max-width:760px){.band.bx-one{grid-template-columns:minmax(0,1fr);padding:18px 14px!important}.bx-one .bx1-head{align-items:center;text-align:center}.bx-one .bxo-logo,.bx-one .bxo-kick{align-self:center}.bx-one .bxo-t{font-size:22px}.bx1-img{height:100px}.bx1-img.ix .ix-box{height:86px}.bx1-img.ix .ix-fl{height:70px}.bx1-img.ch .main{height:94px}.bx-one .bx1-btn{white-space:normal;font-size:16px}}
+  @media(max-width:420px){.bx1-ex{grid-template-columns:minmax(0,1fr)}}
   /* ARGANICARE — nouveau labo */
   .band-argan{order:-8;grid-template-columns:400px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FBF1DC,#F4E3C2 46%,#EAD3A8 100%);border:2px solid #B5874B}
   .band-argan .argan-duo{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;overflow:hidden;position:relative;background:#E9D6B2}
@@ -1253,33 +1360,41 @@
 <div class="wrap band-wrap">
   <div class="bandeaux">
 
-    <!-- BIOSYNEX — CHAMBRES D'INHALATION -->
-    <div class="band band-chamb" id="chambres">
-      <div class="b-img">
-        <img class="main" src="assets/bx_chambre2.png" alt="Chambre d'inhalation Biosynex" />
-        <div class="masks">
-          <img src="assets/bx_ch_nourrisson.png" alt="Chambre Nourrisson 0-9 mois" />
-          <img src="assets/bx_ch_enfant.png" alt="Chambre Enfant 9 mois - 6 ans" />
-          <img src="assets/bx_ch_adulte.png" alt="Chambre Adulte 6 ans et +" />
-        </div>
+    <!-- BIOSYNEX — BANDEAU UNIQUE (catalogue + exemples Innoxa & Chambres) -->
+    <div class="band bx-one">
+      <div class="bx1-head">
+        <span class="bxo-logo"><img src="assets/bx_logo2.png" alt="Biosynex" /></span>
+        <span class="bxo-txt">
+          <span class="bxo-kick"><span class="dot"></span> C'est ouvert !</span>
+          <span class="bxo-t">Le catalogue <b>Biosynex</b> se commande en ligne</span>
+          <span class="bxo-s">Toutes les gammes sur un seul bon · remises calculées automatiquement · franco <b>180 € HT</b> commun</span>
+        </span>
       </div>
-      <div class="b-copy">
-        <span class="chamb-bx">Biosynex</span>
-        <span class="b-badge chamb-n1">N°1 des chambres d'inhalation en France</span>
-        <h3>Chambres <em>d'inhalation</em> — 3 âges</h3>
-        <p class="bsub">Nourrisson 0-9 mois · Enfant 9 mois-6 ans · Adulte 6 ans et +. Fermeture à pression sécurisée, système double voie, valve expiratoire visible, masque silicone sans latex ni BPA. <b>Remboursées LPPR.</b></p>
-        <div class="b-chips">
-          <span class="b-chip hot">N°1 des ventes en pharmacie</span>
-          <span class="b-chip">5,50 € dès 13 · 5,00 € dès 48</span>
-          <span class="b-chip">Franco 180 € HT</span>
-        </div>
+      <div class="bx1-ex">
+        <a class="bx1-card" href="DBN - Commande Biosynex.html">
+          <span class="bx1-img ix">
+            <img class="ix-badge" src="assets/ix_badge_fr.png" alt="Formule originale déposée" />
+            <img class="ix-box" src="assets/ix_boite_bleue.png" alt="Innoxa Gouttes Formule Bleue — boîte" />
+            <img class="ix-fl" src="assets/ix_flacon_bleu.png" alt="Innoxa Gouttes Formule Bleue — flacon" />
+          </span>
+          <span class="bx1-c">
+            <span class="bx1-tag">Innoxa · le soin des yeux</span>
+            <span class="bx1-n">Gouttes, sprays &amp; Hydravision</span>
+            <span class="bx1-p">Jusqu'à <b>−50 %</b> selon quantités</span>
+          </span>
+        </a>
+        <a class="bx1-card" href="DBN - Commande Biosynex.html">
+          <span class="bx1-img ch">
+            <img class="main" src="assets/bx_chambre2.png" alt="Chambre d'inhalation Biosynex" />
+          </span>
+          <span class="bx1-c">
+            <span class="bx1-tag">N°1 des chambres d'inhalation en France</span>
+            <span class="bx1-n">Chambres nourrisson, enfant, adulte</span>
+            <span class="bx1-p">À partir de <b>5 € HT</b> dès 48 u</span>
+          </span>
+        </a>
       </div>
-      <div class="b-cta">
-        <div class="b-price"><small style="margin:0 0 2px;opacity:.85">à partir de</small>5,00 €<small>HT / u · dès 48 chambres</small><span class="b-strike">Prix tarif 12,00 € HT</span></div>
-        <a class="b-cat" href="https://drive.google.com/file/d/1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
-        
-        <a class="b-btn" href="DBN - Commande Biosynex Chambres.html">Commander ici <span class="arr">→</span></a>
-      </div>
+      <a class="bxo-btn bx1-btn" href="DBN - Commande Biosynex.html">Commander le catalogue Biosynex <span class="arr">→</span></a>
     </div>
 
     <!-- ARGANICARE — NOUVEAU LABO -->
@@ -1360,7 +1475,7 @@
           <span class="b-chip hot">🎁 10+1 offerte · 13,64 € HT</span>
           <span class="b-chip hot">🎁 20+3 offertes · 13,04 € HT</span>
           <span class="b-chip">PLV offerte dès 20 peluches</span>
-          <span class="b-chip">Franco 180 € HT</span>
+          <span class="b-chip">Franco 180 € commun Biosynex</span>
         </div>
       </div>
       <div class="b-cta">
@@ -1383,7 +1498,7 @@
           <span class="b-chip hot">Sans housse · 3,50 € HT / u</span>
           <span class="b-chip hot">Avec housse · 5,90 € HT / u</span>
           <span class="b-chip">Lot de 2</span>
-          <span class="b-chip">Franco 180 € HT</span>
+          <span class="b-chip">Franco 180 € commun Biosynex</span>
         </div>
       </div>
       <div class="b-cta">
@@ -1418,49 +1533,6 @@
       </div>
     </div>
 
-    <!-- 2. CATAPOUX (EN PREMIER) -->
-    <div class="band band-cata" id="catapoux">
-      <div class="b-img">
-        <div class="b-img-half yellow">
-          <img src="assets/cata_bottle2.png" alt="CataPoux — Solution One Shot" />
-          <span class="b-img-label">Traitement<br>One Shot</span>
-        </div>
-        <div class="b-img-half purple">
-          <img src="assets/cata_repulsive.jpg" alt="CataPoux — Lotion Répulsive" />
-          <span class="b-img-label">Prévention<br>12h</span>
-        </div>
-      </div>
-      <div class="b-copy">
-        <div class="cata-topline">
-          <span class="b-badge"><span class="dot"></span> Biosynex</span>
-        </div>
-        <h3><em>CataPoux</em> — le réflexe anti-poux des parents.</h3>
-        <p class="bsub">La 1ʳᵉ solution anti-poux brevetée INPI, validée Faculté de Pharmacie de Tours. Parents géolocalisés vers votre officine.</p>
-        <div class="cata-avantages">
-          <div class="cata-av-main">
-            <span class="av-ic">⏱</span>
-            <div class="av-txt">5 min · 1 application<small>Sans peignage · Pédiculicide &amp; Ovicide</small></div>
-          </div>
-          <div class="cata-av-sub">
-            <span class="cata-av"><span>🌿</span> 100 % naturel · Made in France</span>
-            <span class="cata-av"><span>🔬</span> Brevet INPI · Labo validé Tours</span>
-            <span class="cata-av"><span>📍</span> Drive-to-Pharma actif</span>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:14px;margin-top:12px;background:rgba(47,168,79,.12);border:2px solid #2FA84F;border-radius:14px;padding:11px 16px">
-          <span style="font-size:22px">🎁</span>
-          <div><div style="font-size:11.5px;font-weight:700;color:#1a5c2e;text-transform:uppercase;letter-spacing:.06em">Offre de lancement</div><div style="font-family:var(--serif);font-size:26px;font-weight:700;color:#2FA84F;line-height:1">11 + 1 OFFERT</div></div>
-        </div>
-      </div>
-      <div class="b-cta">
-        <span class="cata-press">📰 Vu dans <b>Parents.fr</b><br /><b>n°1 sur 6</b> anti-poux</span>
-        <div class="b-price">19,90 €<small>TTC · PPC conseillé</small></div>
-        <a class="b-btn" href="https://drive.google.com/file/d/1Lqu5zUsJPc1U7aW6VNALaWk4y8wrj3-M/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
-      </div>
-    </div>
-
-    <!-- 2. CATAPOUX — déjà affiché en premier ci-dessus -->
-
     <!-- 3. SISTERS REPUBLIC TINA -->
     <div class="band band-tina" id="offre">
       <div class="b-img">
@@ -1470,7 +1542,7 @@
         <span class="tina-rb" aria-label="Produit remboursé"><b>Produit</b><b>remboursé</b><i>Sécu &amp; mutuelle</i></span>
         <span class="b-badge"><span class="dot"></span> Remboursée dès oct. 2026 · Exclusivité officine</span>
         <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
-        <div class="tina-liv">🚚 Livraison de vos commandes : <b>FIN OCTOBRE 2026</b></div>
+        <div class="tina-liv">🚚 Livraison de vos commandes : <b>DÉBUT NOVEMBRE 2026</b></div>
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
           <span class="b-chip">Remise 10 % sur les packs</span>
@@ -1486,38 +1558,6 @@
         <a class="b-cat" href="https://drive.google.com/file/d/19uKFoOO3Cl6GrOsX3kdCx0ezr7fucfUQ/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
         <span class="cmd-new">Nouveau</span>
         <a class="b-btn" href="DBN - Commande Sisters Republic.html">Commander ici <span class="arr">→</span></a>
-      </div>
-    </div>
-
-    <!-- OFFRES DE RENTRÉE BIOSYNEX — BANNIÈRE ÉVÉNEMENT -->
-    <a class="band bxevent" id="bxoff" href="https://drive.google.com/file/d/1Mu1mVQ3jfUSS4TlelYI_1sJpPh1Rapgn/view" target="_blank" rel="noopener">
-      <span class="bxe-flare" aria-hidden="true"></span>
-      <span class="bxe-in">
-        <span class="bxe-tag">Événement · 01/09 → 31/12/2026</span>
-        <span class="bxe-title">Découvrez les offres <span class="bxe-wm">Biosynex</span> de la rentrée</span>
-        <span class="bxe-cta">Voir toutes les offres <span class="arr">→</span></span>
-      </span>
-    </a>
-
-    <!-- 0. NOUVEAUTÉS BIOSYNEX — EN PREMIER -->
-    <div class="band band-bxnew" id="bxnew">
-      <div class="b-copy">
-        <span class="b-badge"><span class="dot"></span> Nouveautés · Rentrée 2026</span>
-        <h3>Les <em>nouveautés</em> Biosynex de la rentrée</h3>
-        <ul class="bsub bx-list">
-          <li><b>SuperWhite</b> — 2 saveurs hiver en édition limitée<span>Cannelle &amp; Menthe poivrée · sept. 2026 → févr. 2027</span></li>
-          <li><b>BodyFlash</b> — balance connectée<span>25 paramètres de santé</span></li>
-          <li><b>Autotest Streptatest</b> — angine à streptocoque A<span>Résultat en 10 minutes</span></li>
-        </ul>
-      </div>
-      <div class="b-img sw-duo">
-        <figure class="sw-it"><figcaption>SuperWhite Cannelle</figcaption><img src="assets/sw_cannelle.png" alt="SuperWhite Cannelle" /><span class="sw-p">1,02 € <small>HT</small></span><span class="sw-rm">prix remisé</span></figure>
-        <figure class="sw-it"><figcaption>SuperWhite Menthe poivrée</figcaption><img src="assets/sw_menthe.png" alt="SuperWhite Menthe poivrée" /><span class="sw-p">1,02 € <small>HT</small></span><span class="sw-rm">prix remisé</span></figure>
-        <figure class="sw-it"><figcaption>BodyFlash</figcaption><img src="assets/bx_bodyflash.png" alt="Balance connectée BodyFlash" /><span class="sw-p">18,60 € <small>HT</small></span><span class="sw-rm">prix remisé</span></figure>
-        <figure class="sw-it"><figcaption>Autotest Streptatest</figcaption><img src="assets/bx_strepta.png" alt="Autotest Streptatest" /><span class="sw-p">2,40 € <small>HT</small></span><span class="sw-rm">prix remisé</span></figure>
-      </div>
-      <div class="b-cta">
-        <a class="b-btn" href="https://drive.google.com/file/d/1Ljq56a0TfsG-zJf_GnIuqAO_xnASBnR7/view" target="_blank" rel="noopener">Voir les nouveautés <span class="arr">→</span></a>
       </div>
     </div>
 

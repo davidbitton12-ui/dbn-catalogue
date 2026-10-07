@@ -331,6 +331,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 @media(max-width:420px){.dbn-wm span{display:none}.dbn-brand img{height:44px}.dbn-links a{font-size:14px}}
 @media print{.dbn-hdr,.dbn-sub{display:none!important}}
 </style>
+<style id="cgv-css">.cgv{margin:14px 0 4px;background:#FBF5EB;border:1px solid #EBE0CE;border-radius:14px;padding:13px 14px;font-size:12.5px;line-height:1.5;color:#6E6557}.cgv b.cgvT{display:block!important;height:auto!important;font-size:13px;color:#1C1611;margin-bottom:5px}.cgv p{margin:0 0 6px}.cgv p strong{color:#1C1611}.cgv label{display:flex;align-items:flex-start;gap:8px;margin-top:8px;font-weight:700;color:#1C1611;cursor:pointer;font-size:13px}.cgv input{width:18px;height:18px;flex:none;margin:1px 0 0;accent-color:#1206A6}</style>
 </head>
 <body>
 
@@ -361,7 +362,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     <div class="step"><b>3</b> Envoyez la commande</div>
     <div class="step"><b>4</b> Confirmation après vérification</div>
   </div>
-  <div class="liv-hl"><span class="ic">🚚</span><span>Livraison des commandes Tina : <b>fin octobre 2026</b></span></div>
+  <div class="liv-hl"><span class="ic">🚚</span><span>Livraison des commandes Tina : <b>début novembre 2026</b></span></div>
 </div>
 
 <div class="wrap">
@@ -398,7 +399,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         <p class="hint">8 tailles, du 10/11 ans au XXL. Commande à partir de <b>12 unités</b>, toutes tailles confondues.</p>
         <div class="sizes" id="sizeList"></div>
         <div class="terms">
-          <div class="term"><span class="tk">Livraison</span><span class="tv">Fin octobre 2026</span></div>
+          <div class="term"><span class="tk">Livraison</span><span class="tv">Début novembre 2026</span></div>
           <div class="term"><span class="tk">Franco de port</span><span class="tv">150 € HT</span></div>
           <div class="term"><span class="tk">Remboursement</span><span class="tv">Dès octobre 2026</span></div>
           <div class="term"><span class="tk">Délivrance</span><span class="tv">Exclusive officine</span></div>
@@ -434,6 +435,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
           <div class="ft" id="fTxt">Franco de port à <b>150 € HT</b>.</div>
           <div class="track"><div class="fill" id="fFill"></div></div>
         </div>
+        <div class="cgv"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
         <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
       </div>
     </aside>
@@ -456,7 +458,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       <div class="bc-hero">
         <span class="bc-eye">Sisters Republic · Culotte Tina</span>
         <h2>Merci <em id="bcName">!</em></h2>
-        <div class="bc-liv">🚚 Livraison de votre commande : <b>fin octobre 2026</b></div>
+        <div class="bc-liv">🚚 Livraison de votre commande : <b>début novembre 2026</b></div>
         <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Merci de votre confiance !</p>
       </div>
       <div class="bc-body">
@@ -472,7 +474,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       </div>
       <div class="bc-foot">
         <div class="bc-terms">
-          <span><b>Livraison</b> fin octobre 2026</span>
+          <span><b>Livraison</b> début novembre 2026</span>
           <span><b>Franco</b> 150 € HT</span>
           <span><b>Remboursement</b> dès octobre 2026</span>
           <span><b>Délivrance</b> exclusive officine</span>
@@ -612,7 +614,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       'Total : '+total+' unités','Prix net unitaire : '+eur(pu)+' HT'+(tr&&tr.l?' ('+tr.l+')':''),
       (remise(total,pu)>0?'Sous-total avant remise : '+eur(total*P_BASE)+' HT\n'+remLbl(pu)+' : − '+eur(remise(total,pu)):'Pas de remise (remise 10 % dès 24 u)'),
       'TOTAL HT : '+eur(ht),'TVA 5,5 % : '+eur(ht*0.055),'TOTAL TTC : '+eur(ht*TVA),
-      'Franco de port : '+(ht>=FRANCO?'ATTEINT (150 € HT)':'non atteint — il manque '+eur(FRANCO-ht)),'Livraison : fin octobre 2026'];
+      'Franco de port : '+(ht>=FRANCO?'ATTEINT (150 € HT)':'non atteint — il manque '+eur(FRANCO-ht)),'Livraison : début novembre 2026'];
     var m=v('message'); if(m){L.push('','--- MESSAGE ---',m);}
     L.push('','Prix public conseillé 19,00 € TTC · remboursement dès octobre 2026.','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
     return L.join('\n');
@@ -624,9 +626,9 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     return {labo:'Sisters Republic',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
       contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),ref:(window.DBN_REF||''),
       lignes:lignes,total:total,formule:(priceInfo(total).l||''),remise:(remise(total,pu)>0?'− '+eur(remise(total,pu)):''),prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.055),totalTTC:eur(ht*TVA),
-      franco:(ht>=FRANCO?'atteint (150 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))+' \u00b7 livraison fin octobre 2026',
-      alerte:'\ud83d\ude9a Livraison de votre commande : FIN OCTOBRE 2026',
-      conditions:'<b>Livraison</b> fin octobre 2026 &nbsp;&middot;&nbsp; <b>Franco</b> 150 EUR HT &nbsp;&middot;&nbsp; <b>Remboursement</b> des octobre 2026'};
+      franco:(ht>=FRANCO?'atteint (150 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))+' \u00b7 livraison début novembre 2026',
+      alerte:'\ud83d\ude9a Livraison de votre commande : DÉBUT NOVEMBRE 2026',
+      conditions:'<b>Livraison</b> début novembre 2026 &nbsp;&middot;&nbsp; <b>Franco</b> 150 EUR HT &nbsp;&middot;&nbsp; <b>Remboursement</b> des octobre 2026'};
   }
 
   function gwSend(data,done,fail){
