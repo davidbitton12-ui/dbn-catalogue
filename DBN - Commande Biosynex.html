@@ -651,7 +651,7 @@ window.PKP=window.PKP||[{n:'Présentoir sol',min:120,img:'assets/bxp_pk_sol.png'
   /* t = seuils de la famille (total panaché) · p = prix nets HT par seuil */
   var GROUPS=window.BX.GROUPS, POOLS=window.BX.POOLS||{}, CHOICE={};
   /* produits en rupture (EAN) — afficher alerte + gestion du reliquat */
-  var RUPT={'3532678606187':'21 octobre','3532678591131':'3 novembre'};
+  var RUPT={'3532678606187':'21 octobre','3532678591131':'3 novembre','3532678607610':'8 novembre'};
   function rlqVal(){var r=document.querySelector('input[name="reliquat"]:checked');return r?r.value:'';}
   var CHOSEN={},FREE_REST=0;
   GROUPS.forEach(function(g){if(g.opts)CHOICE[g.k]=g.opts[0].v;});
