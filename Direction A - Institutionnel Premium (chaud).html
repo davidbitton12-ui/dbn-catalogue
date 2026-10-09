@@ -958,6 +958,39 @@
   @media(max-width:1100px) and (min-width:861px){.band-argan{grid-template-columns:300px 1fr 200px}}
   @media(max-width:860px){.band-argan .argan-duo img{min-height:0;height:200px}}
 
+  /* BONJOUR DRINK — Équilibre hormonal */
+  .band-bjeq{order:-98;grid-template-columns:400px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FFF4F6,#FCE3EA 46%,#F7D2DD 100%);border:2px solid #C2185B}
+  .band-bjeq .bjeq-duo{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:12px 10px 0;position:relative;background:radial-gradient(120% 120% at 50% 20%,#fff,#FBE3EA 75%);align-items:end}
+  .band-bjeq .bjeq-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .band-bjeq .bjeq-fig img{height:150px;width:auto;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(140,20,70,.28))}
+  .band-bjeq .bjeq-fig figcaption{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8E1446;padding-bottom:8px}
+  .band-bjeq .bjeq-badge{position:absolute;top:10px;left:10px;z-index:2;background:#C2185B;color:#fff;border-color:#C2185B;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .band-bjeq .b-copy{background:transparent;color:var(--ink)}
+  .band-bjeq h3{color:#7A1038}
+  .band-bjeq h3 em{color:#C2185B}
+  .band-bjeq .bsub{color:#5E3A47}
+  .band-bjeq .b-chip{background:#fff;color:#8E1446;border-color:#F0B8CB}
+  .band-bjeq .bjeq-chal{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#C2185B;color:#fff;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700}
+  .band-bjeq .bjeq-chal b{font-family:var(--serif);font-size:18px}
+  .band-bjeq .b-cta{background:#FBE3EA;border-left:1px solid #F0B8CB}
+  .band-bjeq .b-price{color:#8E1446}
+  .band-bjeq .b-btn{background:#C2185B;color:#fff}
+  .band-bjeq .b-btn:hover{background:#9A1248}
+  .band-bjeq .bjeq-btn{font-size:17px;padding:16px 22px;width:100%;justify-content:center;border-radius:14px;box-shadow:0 12px 24px -10px rgba(194,24,91,.7)}
+  .band-bjeq .b-copy{position:relative}
+  .band-bjeq .bjeq-30{position:absolute;top:14px;right:16px;width:84px;height:84px;border-radius:50%;background:#C2185B;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;transform:rotate(-8deg);box-shadow:0 0 0 4px #FFF4F6,0 0 0 6px #C2185B,0 10px 20px -8px rgba(194,24,91,.6)}
+  .band-bjeq .bjeq-30 b{font-family:var(--serif);font-size:32px;letter-spacing:0}
+  .band-bjeq .bjeq-30 small{font-size:9.5px;font-weight:600;text-transform:none;letter-spacing:0;opacity:.9;margin-top:2px}
+  .band-bjeq .b-copy h3,.band-bjeq .b-copy .bsub{margin-right:100px}
+  .band-bjeq .bjeq-new{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;background:#FF000A;color:#fff;font-size:14px;font-weight:900;letter-spacing:.12em;padding:7px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 18px -6px rgba(255,0,10,.6);animation:bjeqNew 1.6s ease-in-out infinite}
+  @keyframes bjeqNew{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.08)}}
+  @media(prefers-reduced-motion:reduce){.band-bjeq .bjeq-new{animation:none}}
+  .band-bjeq .bjeq-duo{padding-top:46px}
+  @media(max-width:860px){.band-bjeq .bjeq-30{width:66px;height:66px}.band-bjeq .bjeq-30 b{font-size:24px}.band-bjeq .b-copy h3,.band-bjeq .b-copy .bsub{margin-right:76px}}
+  .band-bjeq .b-cat{color:#8E1446}
+  @media(max-width:1100px) and (min-width:861px){.band-bjeq{grid-template-columns:300px 1fr 200px}.band-bjeq .bjeq-fig img{height:124px}}
+  @media(max-width:860px){.band-bjeq .bjeq-fig img{height:130px}}
+
   /* SISTERS TINA */
   .band-tina{order:-99;grid-template-columns:230px 1fr 236px}
   .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:12px}
@@ -1532,6 +1565,29 @@
         <a class="b-cat" href="https://drive.google.com/file/d/1EgJ1SIfSUz_Ut1ki4z0_dCKhlvVpktLI/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
         <span class="cmd-new">Nouveau</span>
         <a class="b-btn" href="DBN - Commande SAMPAR.html">Commander ici <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- BONJOUR DRINK — ÉQUILIBRE HORMONAL -->
+    <div class="band band-bjeq" id="bonjour-equilibre">
+      <div class="b-img bjeq-duo">
+        <span class="bjeq-new">★ NOUVEAUTÉ ★</span>
+        <figure class="bjeq-fig"><img src="assets/bjr_cycle.png" alt="Bonjour Drink Formule Cycle" /><figcaption>Cycle</figcaption></figure>
+        <figure class="bjeq-fig"><img src="assets/bjr_meno.png" alt="Bonjour Drink Formule Ménopause" /><figcaption>Ménopause</figcaption></figure>
+      </div>
+      <div class="b-copy">
+        <span class="bjeq-30"><b>30</b> doses<small>sachet</small></span>
+        <h3><em>Bonjour Drink</em> — la nouvelle gamme Équilibre hormonal.</h3>
+        <p class="bsub"><b>Formule Cycle</b> (SPM, règles, énergie) et <b>Formule Ménopause</b> (bouffées, sérénité, métabolisme) · 30 doses · saveur Hibiscus Framboise.</p>
+        <div class="b-chips">
+          <span class="b-chip">PPC 34,90 € TTC</span>
+          <span class="b-chip">Franco 245 € HT</span>
+        </div>
+        <div class="bjeq-chal">🏆 Challenge 90 jours : jusqu'à <b>2,50 €</b> par sachet vendu</div>
+      </div>
+      <div class="b-cta">
+        <div class="b-price">19,40 €<small>HT / u · par 8</small></div>
+        <a class="b-btn bjeq-btn" href="DBN - Commande Bonjour Drink.html">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
 
