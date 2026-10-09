@@ -625,7 +625,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     SIZES.forEach(function(s){var q=qty[s]||0;if(q>0)lignes.push({modele:'Tina',coloris:'Noir',correction:s,taille:s,ean:ean(s),qte:q});});
     return {labo:'Sisters Republic',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
       contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),ref:(window.DBN_REF||''),
-      lignes:lignes,total:total,formule:(priceInfo(total).l||''),remise:(remise(total,pu)>0?'− '+eur(remise(total,pu)):''),prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.055),totalTTC:eur(ht*TVA),
+      lignes:lignes,total:total,formule:(priceInfo(total).l||''),remise:(remise(total,pu)>0?'− '+eur(remise(total,pu)):''),prixUnitaire:eur(pu),totalHT:eur(ht),tva:eur(ht*0.055),tvaTaux:'5,5 %',totalTTC:eur(ht*TVA),
       franco:(ht>=FRANCO?'atteint (150 \u20ac HT)':'non atteint \u2014 il manque '+eur(FRANCO-ht))+' \u00b7 livraison à partir du 7 novembre 2026',
       alerte:'\ud83d\ude9a Livraison de votre commande : À PARTIR DU 7 NOVEMBRE 2026',
       conditions:'<b>Livraison</b> à partir du 7 novembre 2026 &nbsp;&middot;&nbsp; <b>Franco</b> 150 EUR HT &nbsp;&middot;&nbsp; <b>Remboursement</b> des octobre 2026'};
@@ -724,5 +724,6 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 })();
 </script>
 
+<script src="avis.js"></script>
 </body>
 </html>
