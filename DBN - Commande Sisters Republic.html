@@ -724,6 +724,28 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 })();
 </script>
 
+<!-- bouton Envoyer en bas des coordonnées -->
+<script>
+(function(){
+  function go(){
+    var main=document.getElementById('sendBtn'),msg=document.querySelector('[name="message"]');
+    if(!main||!msg||document.getElementById('sendBtn2'))return;
+    var fld=msg.closest('.field')||msg;
+    var w=document.createElement('div');w.className='send2';
+    w.innerHTML='<button type="button" class="btn" id="sendBtn2"></button><p class="send2n" id="send2n"></p>';
+    fld.parentNode.insertBefore(w,fld.nextSibling);
+    var b=document.getElementById('sendBtn2'),n=document.getElementById('send2n');
+    function sync(){b.textContent=main.textContent;b.disabled=main.disabled;
+      n.textContent=main.disabled?'Complétez votre sélection de produits pour activer l\'envoi.':'Vérifiez le récapitulatif, puis envoyez.';}
+    sync();
+    new MutationObserver(sync).observe(main,{attributes:true,childList:true,characterData:true,subtree:true});
+    b.addEventListener('click',function(){if(main.disabled)return;var f=main.form||main.closest('form');
+      if(f&&f.reportValidity&&!f.reportValidity())return;main.click();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
+</script>
+<style>.send2{margin-top:18px}.send2 .btn{width:100%;justify-content:center;font-size:17px;padding:16px 20px}.send2n{font-size:12.5px;color:var(--slate,#6E6557);text-align:center;margin:8px 0 0}@media print{.send2{display:none}}</style>
 <script src="avis.js"></script>
 </body>
 </html>
