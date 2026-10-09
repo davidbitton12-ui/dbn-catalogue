@@ -539,10 +539,10 @@
   .cta-bar .btn-main .arr{transition:transform .22s}.cta-bar .btn-main:hover .arr{transform:translateX(4px)}
   .cta-bar .btn-sec{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--blue);border:2px solid var(--line);border-radius:16px;padding:18px 16px;font-size:15px;font-weight:700;text-decoration:none;transition:border-color .18s,background .18s}
   .cta-bar .btn-sec:hover{border-color:var(--blue);background:var(--blue-mist)}
-  .cta-bar .btn-cmd{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:12px;background:#E8442A;color:#fff;border-radius:16px;padding:12px 24px;font-size:26px;font-weight:800;line-height:1.1;text-decoration:none;animation:cmd-glow 1.8s ease-in-out infinite}
-  .cta-bar .btn-cmd:hover{background:#c8331c;color:#fff}
+  .cta-bar .btn-cmd{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--blue);color:#fff;border-radius:16px;padding:12px 24px;font-size:26px;font-weight:800;line-height:1.1;text-decoration:none;animation:btn-pulse 2s ease-in-out infinite}
+  .cta-bar .btn-cmd:hover{background:#0c0488;color:#fff}
   .cta-bar .btn-cmd::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg);animation:cmd-shine 2.6s ease-in-out infinite;pointer-events:none}
-  .cta-bar .btn-cmd .nv{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#1C1611;color:#fff;border-radius:999px;padding:5px 11px;animation:cmdNvBlink 1.2s steps(1) infinite}
+  .cta-bar .btn-cmd .nv{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#E8442A;color:#fff;border-radius:999px;padding:5px 11px;animation:cmdNvBlink 1.2s steps(1) infinite}
   .cta-bar .btn-cmd .arr{transition:transform .2s}.cta-bar .btn-cmd:hover .arr{transform:translateX(4px)}
   @keyframes cmdNvBlink{0%,49%{background:#1C1611}50%,100%{background:#fff;color:#E8442A}}
   @media(prefers-reduced-motion:reduce){.cta-bar .btn-cmd,.cta-bar .btn-cmd::after,.cta-bar .btn-cmd .nv{animation:none}}
@@ -698,6 +698,8 @@
   .band-oops .b-btn,.band-tina .b-btn,.band-chamb .b-btn{position:relative;overflow:hidden;white-space:nowrap;background:#E8442A;color:#fff;font-weight:800;font-size:14.5px;padding:13px 20px;border-radius:12px;box-shadow:0 12px 26px -10px rgba(232,68,42,.85);animation:cmd-beat 1.25s ease-in-out infinite,cmd-glow 1.25s ease-in-out infinite}
   .band-oops .b-btn::after,.band-tina .b-btn::after,.band-chamb .b-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:cmd-shine 2.4s ease-in-out infinite}
   .band-oops .b-btn:hover,.band-tina .b-btn:hover,.band-chamb .b-btn:hover{background:#c8331c;transform:translateY(-1px)}
+  .band.band-tina .b-cta .b-btn{font-size:19px!important;padding:15px 16px!important}
+  @media(max-width:600px){.band.band-tina .b-cta .b-btn{font-size:17px!important}}
   @keyframes cmd-beat{0%,100%{transform:scale(1)}50%{transform:scale(1.075)}}
   @keyframes cmd-glow{0%,100%{box-shadow:0 12px 26px -10px rgba(232,68,42,.85),0 0 0 0 rgba(232,68,42,.6)}55%{box-shadow:0 12px 30px -8px rgba(232,68,42,1),0 0 0 14px rgba(232,68,42,0)}}
   @keyframes cmd-shine{0%{left:-60%}55%,100%{left:125%}}
@@ -957,7 +959,7 @@
   @media(max-width:860px){.band-argan .argan-duo img{min-height:0;height:200px}}
 
   /* SISTERS TINA */
-  .band-tina{order:-7;grid-template-columns:230px 1fr 236px}
+  .band-tina{order:-99;grid-template-columns:230px 1fr 236px}
   .band-tina .b-img{background:radial-gradient(circle at 50% 42%,#F3E6CF,#EAD9BE);padding:12px}
   .band-tina .b-img img{height:164px;width:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(80,30,22,.4)}
   .band-tina .b-copy{background:linear-gradient(135deg,#FBF5EB,#F7EBDD);color:var(--ink);position:relative}
@@ -1542,7 +1544,7 @@
         <span class="tina-rb" aria-label="Produit remboursé"><b>Produit</b><b>remboursé</b><i>Sécu &amp; mutuelle</i></span>
         <span class="b-badge"><span class="dot"></span> Remboursée dès oct. 2026 · Exclusivité officine</span>
         <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
-        <div class="tina-liv">🚚 Livraison de vos commandes : <b>DÉBUT NOVEMBRE 2026</b></div>
+        <div class="tina-liv">🚚 Livraison <b>À PARTIR DU 7 NOVEMBRE</b></div>
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
           <span class="b-chip">Remise 10 % sur les packs</span>
