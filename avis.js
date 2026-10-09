@@ -35,8 +35,9 @@
   function labo(){var m=(document.title||'').match(/Commande\s+(.+?)\s+[—-]/);return m?m[1]:document.title;}
   function ref(){try{var q=new URLSearchParams(location.search);var r=q.get('ref')||q.get('utm_campaign');if(r)return r;var p=JSON.parse(localStorage.getItem('dbn_prefill')||'{}');return p.ref||'';}catch(e){return '';}}
   var KEY='dbn_avis_done';
-  function already(){if(window.__AVIS_PREVIEW)return false;try{return !!localStorage.getItem(KEY);}catch(e){return false;}}
-  function mark(){if(window.__AVIS_PREVIEW)return;try{localStorage.setItem(KEY,new Date().toISOString());}catch(e){}}
+  var TEST=/[?&]avis=test/.test(location.search);
+  function already(){if(window.__AVIS_PREVIEW||TEST)return false;try{return !!localStorage.getItem(KEY);}catch(e){return false;}}
+  function mark(){if(window.__AVIS_PREVIEW||TEST)return;try{localStorage.setItem(KEY,new Date().toISOString());}catch(e){}}
   function build(box){
     if(built||already())return;built=true;
     var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
