@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Arganicare — David BITTON</title>
+<script src="analytics.js"></script>
+<script src="prefill.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--teal:#B5874B;--teal-dk:#6E4E24;--teal-d:#6E4E24;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.top-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in img{height:64px;width:auto}
+.top-in .wm b{display:block;font-size:19px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .back{margin-left:auto;font-size:14px;font-weight:600}
+.head{padding-top:30px;padding-bottom:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:7px 14px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.08;margin:16px 0 0}
+.head h1 em{font-style:italic;color:var(--teal)}
+.head p{font-size:15px;color:var(--slate);margin:10px 0 0;max-width:64ch;line-height:1.55;text-wrap:pretty}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.step{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--slate)}
+.step b{width:22px;height:22px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px}
+.card .hint{font-size:13px;color:var(--slate);margin:0 0 18px;line-height:1.5}
+/* correction picker */
+.corrs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.corr{background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:9px 15px;font-size:14px;font-weight:700;color:var(--slate);cursor:pointer;transition:all .18s}
+.corr:hover{border-color:var(--teal);color:var(--teal)}
+.corr.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 18px -10px rgba(138,106,16,.75)}
+.corr-note{font-size:12.5px;color:var(--slate);margin:10px 0 0;line-height:1.45;background:var(--ivory);border-radius:10px;padding:10px 12px}
+.corr-note b{color:var(--ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-top:12px}
+.term{background:#FBF4DF;border:1px solid #E8D59A;border-radius:12px;padding:10px 13px}
+.term .tk{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);opacity:.75}
+.term .tv{display:block;font-size:14.5px;font-weight:700;color:var(--teal-d);margin-top:3px}
+/* models */
+.model{border-bottom:1px solid var(--line);padding:16px 0}
+.model:last-of-type{border-bottom:none;padding-bottom:4px}
+.mh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.mh .mn{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.02em}
+.mh .mc{font-size:12px;color:var(--slate)}
+.mh .mt{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--teal)}
+.mh .gtag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;line-height:1;box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:10px;align-items:start}
+.cItem{background:var(--ivory);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.cItem.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.ciHead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:7px 11px 7px 8px;cursor:default;font-family:var(--sans);text-align:left}
+
+.ciHead .cn{font-size:14px;font-weight:600;color:var(--ink)}
+.ciHead .cSum{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--teal-d);opacity:0}
+.ciHead .cSum.on{opacity:1}
+.ciHead .chev{display:none}
+.cItem.open .ciHead .chev{transform:rotate(180deg)}
+.corrPanel{display:none;padding:4px 11px 11px;border-top:1px dashed var(--line);background:#fff}
+.cItem.open .corrPanel{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:7px}
+.crRow{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:5px 6px;min-width:0;overflow:hidden}
+.crRow.has{background:#FAF1D6;border-color:var(--teal)}
+.crRow.soon{background:#EFEDEA;border-style:dashed;border-color:#CFC8BE}
+.crRow.soon .crL{color:#8A8277}
+.crRow.soon .qty{opacity:.7}
+.crRow.soon.has{background:#F1EFEA;border-color:#A89F93;border-style:solid}
+.soonT{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#B0234F;margin-top:1px}
+.soonL{display:block;font-style:normal;font-size:11px;font-weight:700;color:#B0234F;margin-top:2px}
+.soonB{font-size:11px;font-weight:800;color:#B0234F;background:#FBEAEE;border-radius:6px;padding:3px 7px;white-space:nowrap}
+.soon-note{font-size:12.5px;color:#7A2440;margin:12px 0 0;line-height:1.5;background:#FBEAEE;border:1px solid #F0C7D2;border-radius:10px;padding:10px 12px}
+.soon-note b{color:#5E1A31}
+.crRow .crL{font-size:12px;font-weight:700;color:var(--teal-d);min-width:0}
+.crRow .crE{grid-column:1/-1;display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--slate);letter-spacing:.03em;line-height:1.2;white-space:nowrap;padding:0 1px}
+.crRow .qty{border-radius:9px;flex:none}
+.crRow .qty button{width:26px;height:32px;font-size:15px}
+.crRow .qty input{width:32px;height:32px;font-size:13.5px}
+.cItem.has > .ciHead{background:#FBF4DF}
+.cItem .thumb{position:relative;width:99px;height:53px;flex:none;border-radius:7px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cItem .thumb .zi{position:absolute;right:3px;bottom:2px;font-style:normal;font-size:11px;line-height:1;color:#fff;background:rgba(28,22,17,.6);border-radius:4px;padding:2px 4px;pointer-events:none}
+.cItem .thumb.none .zi{display:none}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:14px;width:min(900px,94vw,calc((82vh - 40px) * 1.35))}
+.zbox img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:contain;border-radius:12px;background:#fff}
+.zbox .zl{text-align:center;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin-top:12px}
+.zbox .zx{position:absolute;top:-13px;right:-13px;width:34px;height:34px;border:none;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.zbox .zx:hover{background:var(--teal-d)}
+.zbox .znc{text-align:center;font-size:11.5px;font-style:italic;color:var(--slate);margin-top:4px}
+.prods::after{content:"Photos non contractuelles";display:block;font-size:11.5px;font-style:italic;color:var(--slate);text-align:right;margin-top:10px}
+.cItem .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cItem .thumb.none{background:var(--sand);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--slate);text-align:center;line-height:1.2;padding:2px}
+.cItem .cn{font-size:13.5px;font-weight:600;min-width:0}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;flex:none}
+.qty button{width:34px;height:38px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;line-height:1}
+.qty button:hover{background:#F3E6B8}
+.qty input{width:44px;height:38px;border:none;background:transparent;text-align:center;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-top:13px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:12px 13px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.field textarea{min-height:76px;resize:vertical}
+.sum{position:sticky;top:20px}
+.grid > aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}
+.sum .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.sum .line span:first-child{color:var(--slate);min-width:0}
+.eanL{display:block;font-style:normal;font-size:11px;color:var(--slate);letter-spacing:.03em;margin-top:2px}
+.sum .line b{font-weight:700;white-space:nowrap}
+.sum .rl{display:grid;grid-template-columns:minmax(0,1fr) 46px 72px;gap:8px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.sum .rl.rh{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:4px 0 6px;border-bottom:1.5px solid var(--ink)}
+.sum .rl > div:nth-child(2),.sum .rl > div:nth-child(3){text-align:right}
+.sum .rd b{display:block;font-weight:600;line-height:1.3}
+.sum .rd em,.sum .rp em{display:block;font-style:normal;font-size:10.5px;color:var(--slate);margin-top:2px;letter-spacing:.02em}
+.sum .rd em.ro{color:#B8862F;font-weight:600}
+.sum .rq{font-weight:700;min-width:0;overflow-wrap:anywhere}
+.sum .rp{font-weight:700;min-width:0;white-space:nowrap}
+.sum .rp em{white-space:normal}
+#sumLines{overflow-x:hidden}
+.sum .rp .off{color:#2E7D4F}
+.sum .rl.rpk{background:#FBF3E4;border-bottom:1px solid #E6D3A8;padding:8px 6px;border-radius:6px}
+.sum .rl.rsub{font-size:12px;padding:6px 0 6px 10px;border-left:2px solid #E6D3A8}
+.sum .rl.rsub .rd b{font-weight:500}
+.sum .rl.roff{background:#F1F8F3;border-left-color:#2E7D4F}
+.sum .rcp{list-style:none;margin:6px 0 0;padding:6px 0 0 9px;border-left:2px solid #E6D3A8;font-size:11.5px;color:var(--ink);line-height:1.45}
+.sum .rcp li{position:relative}
+.sum .rcp li:not(.rch)::before{content:"·";position:absolute;left:-7px;color:#B8862F;font-weight:800}
+.sum .rcp .rch{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-bottom:2px}
+.sum .empty{font-size:13.5px;color:var(--slate);text-align:center;padding:20px 0;line-height:1.5}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--ink)}
+.sum .tot .l{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.sum .tot .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--teal);line-height:1}
+.sum .ttc{font-size:12.5px;color:var(--slate);text-align:right;margin-top:5px}
+.fbar{margin-top:13px;background:var(--ivory);border-radius:11px;padding:11px 13px}
+.fbar .ft{font-size:12.5px;color:var(--slate);line-height:1.45}
+.fbar .ft b{color:var(--ink)}
+.fbar .track{height:7px;border-radius:999px;background:#E4DACB;margin-top:8px;overflow:hidden}
+.fbar .fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .3s}
+.fbar.ok .fill{background:#2E9E7A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:700;border:none;border-radius:13px;padding:15px 20px;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--teal-dk)}
+.btn:disabled{background:#D9CFC2;color:#fff;cursor:not-allowed}
+.legal{font-size:11.5px;color:var(--slate);margin-top:11px;line-height:1.45;text-align:center}
+.done{display:none;margin-bottom:60px}
+.done.on{display:block}
+/* bon de commande client */
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(94,72,10,.45)}
+.bc-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-bottom:1px solid var(--line)}
+.bc-brand{display:flex;align-items:center;gap:12px}
+.bc-brand img{height:52px;width:auto}
+.bc-brand b{display:block;font-size:16px;font-weight:700;color:var(--blue);line-height:1.15}
+.bc-brand span{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.bc-ok{margin-left:auto;display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:999px}
+.bc-tick{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px}
+.bc-hero{padding:32px 26px 28px;text-align:center;background:radial-gradient(120% 130% at 50% -20%,#FDF8EA,#F8EDCC 55%,#F2E2B0 100%)}
+.bc-eye{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-d);background:rgba(255,255,255,.72);border-radius:999px;padding:6px 14px}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--teal-d);margin:14px 0 0;line-height:1.1}
+.bc-hero h2 em{font-style:italic;color:var(--teal)}
+.bc-hero p{font-size:15px;color:#4F4326;margin:12px auto 0;max-width:56ch;line-height:1.6}
+.bc-body{padding:26px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-bottom:20px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:11px 14px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.35}
+.bc-items{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bc-row{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:1px solid var(--line);background:#fff}
+.bc-row:nth-child(even){background:var(--ivory)}
+.bc-row:last-child{border-bottom:none}
+.bc-row .tag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:999px;padding:4px 10px;flex:none}
+.bc-row .mn{font-size:14.5px;font-weight:700;white-space:nowrap}
+.bc-row .cn{font-size:13px;color:var(--slate);white-space:nowrap}
+.bc-row .cr{font-size:12.5px;font-weight:800;color:#fff;background:var(--teal);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.bc-row .ce{font-size:11.5px;color:var(--slate);letter-spacing:.03em;white-space:nowrap}
+.bc-row > span:nth-child(2){display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:18px;font-weight:700;color:var(--teal-d);white-space:nowrap}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:18px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);margin-top:4px}
+.bc-tl.big{background:var(--teal);border-color:var(--teal)}
+.bc-tl.big span{color:rgba(255,255,255,.85)}
+.bc-tl.big b{color:#fff;font-size:27px}
+.bc-note{margin-top:16px;font-size:13.5px;line-height:1.55;background:#FFF3F0;border:1px solid #F7D3C9;border-radius:13px;padding:13px 15px;color:#8C2A20}
+.bc-note b{color:#6b1f18}
+.bc-note.ok{background:#FAF1D6;border-color:#B7DFCE;color:#1F5957}
+.bc-note.ok b{color:#14453F}
+.bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
+.bc-contact{font-size:13.5px;color:var(--slate)}
+.bc-contact b{color:var(--ink)}
+.bc-acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bc-print{font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--teal);border:none;border-radius:11px;padding:11px 18px;cursor:pointer}
+.bc-print:hover{background:var(--teal-d)}
+.bc-home{font-size:13px;font-weight:600;color:var(--teal-d)}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.head,#orderForm{display:none!important}
+  .bc{box-shadow:none;border-radius:0;border:none}
+  .bc-acts{display:none}
+}
+@media(max-width:600px){
+  .bc-top,.bc-foot{padding:14px 16px}
+  .bc-hero{padding:24px 16px 22px}
+  .bc-body{padding:18px 16px}
+  .bc-ok{margin-left:0}
+  .bc-acts{margin-left:0;width:100%}
+  .bc-print{flex:1}
+}
+@media(max-width:880px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sum{position:static}
+  .grid > aside{position:static;max-height:none;overflow:visible}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .top-in img{height:52px}
+  .top-in .back{margin-left:0;width:100%}
+  .two{grid-template-columns:1fr}
+  .card{padding:18px 16px}
+  .colors{grid-template-columns:1fr}
+  .corr{padding:9px 13px;font-size:13.5px}
+  .head h1{font-size:25px}
+  .steps{gap:7px}
+  .step{font-size:12px;padding:8px 11px}
+  .terms{grid-template-columns:1fr;gap:7px}
+  .cItem.open .corrPanel{grid-template-columns:1fr 1fr;gap:6px}
+  .crRow{padding:6px 7px}
+  .crRow .qty button{width:34px;height:40px;font-size:17px}
+  .crRow .qty input{width:38px;height:40px;font-size:15px}
+  .cItem .thumb{width:81px;height:46px}
+  .ciHead{padding:8px 10px 8px 7px}
+  .mhead{flex-wrap:wrap;gap:7px}
+  .mhead .mn{font-size:16px}
+  .sum .tot .v{font-size:26px}
+  .btn{font-size:16px;padding:16px 18px}
+  .zbox{padding:10px;border-radius:14px}
+  .zbox{width:94vw}
+  .zbox img{aspect-ratio:1/1}
+  .zbox .zl{font-size:16px;margin-top:9px}
+  .zbox .zx{top:-11px;right:-11px;width:32px;height:32px}
+  .bc-meta{grid-template-columns:1fr;gap:8px}
+  .bc-tot{grid-template-columns:1fr 1fr;gap:8px}
+  .bc-row{flex-wrap:wrap;gap:7px;padding:10px 13px}
+  .bc-row .qn{margin-left:auto}
+  .bc-hero h2{font-size:26px}
+}
+@media(max-width:400px){
+  .cItem.open .corrPanel{grid-template-columns:1fr}
+  .bc-tot{grid-template-columns:1fr}
+}
+@media(max-width:600px){.field input,.field textarea,.qty input{font-size:16px!important}}
+.howto{display:flex;flex-wrap:wrap;gap:4px 18px;margin:6px 0 8px;padding:0;list-style:none;counter-reset:hw;font-size:13px;color:var(--ink)}
+.howto li{display:flex;align-items:center;gap:6px;counter-increment:hw}
+.howto li::before{content:counter(hw);width:18px;height:18px;flex:none;border-radius:50%;background:var(--teal);color:#fff;font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.card .howto + .hint{margin-bottom:0}
+
+.sumHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.sumHead h2{margin:0}
+.resetBtn{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--slate);background:var(--ivory);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.resetBtn:hover{color:#B03A2E;border-color:#E0B79E;background:#FFF3F0}
+.resetBtn[hidden]{display:none}
+
+.prods{display:grid;gap:14px}
+.sp{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;background:var(--ivory);border:1px solid var(--line);border-radius:16px;padding:14px;transition:border-color .2s}
+.sp.has{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal);background:#FFFCF3}
+.spImg{position:relative;width:150px;height:150px;border-radius:12px;background:#F4E7D2;border:1px solid var(--line);cursor:zoom-in;overflow:hidden}
+.spImg img.pres{width:100%;height:100%;object-fit:contain;padding:8px}
+.spImg img.prod{position:absolute;right:4px;bottom:4px;height:62px;width:auto;filter:drop-shadow(0 4px 6px rgba(0,0,0,.2))}
+.spImg .zi{position:absolute;left:6px;top:6px;font-style:normal;font-size:12px;color:#fff;background:rgba(28,22,17,.55);border-radius:4px;padding:1px 5px}
+.spTop{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.spTop b{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.15}
+.av{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.av.ok{background:#E6F4EA;color:#1E7D39}
+.av.soon{background:#FFF1D6;color:#9A5B00}
+.spSub{font-size:13px;color:var(--slate);margin-top:3px;line-height:1.4}
+.cpBtn{white-space:nowrap;width:max-content;display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--teal-d);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.cpBtn:hover{border-color:var(--teal)}
+.cpBtn span{transition:transform .2s}
+.sp.cpOpen .cpBtn span{transform:rotate(180deg)}
+.cpBox{display:none;margin:8px 0 0;padding:10px 14px;list-style:none;background:#fff;border:1px dashed var(--line);border-radius:12px;font-size:13px;color:var(--ink);line-height:1.6}
+.sp.cpOpen .cpBox{display:block}
+.cpBox li::before{content:"• ";color:var(--teal)}
+.cpL{list-style:none;margin:5px 0 2px;padding:6px 0 0 10px;border-left:2px solid var(--line);font-size:11.5px;color:var(--slate);line-height:1.5}
+.cpL .cpH{font-weight:700;color:var(--ink);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.bcCp{flex-basis:100%;font-size:12px;color:var(--slate);line-height:1.5;margin-top:2px}
+.bcCp b{color:var(--ink)}
+.spMeta{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--slate);margin-top:6px}
+.spMeta b{color:var(--ink);font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:11px}
+.opt{position:relative;font-family:var(--sans);text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;transition:all .15s}
+.opt:hover{border-color:var(--teal)}
+.opt.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 22px -12px rgba(138,106,16,.8)}
+.opt .ox{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.opt .ot{display:block;font-family:var(--serif);font-size:19px;font-weight:700;margin-top:2px}
+.opt .ou{display:block;font-size:11.5px;opacity:.85;margin-top:1px}
+.opt .or{position:absolute;top:-8px;right:8px;font-size:10.5px;font-weight:800;color:#fff;background:#E8442A;border-radius:999px;padding:2px 8px}
+.opt .ot small{font-size:11px;font-weight:600;opacity:.75}
+.bjQ{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.bjP{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--teal-d)}
+.bjP small{font-family:var(--sans);font-size:11.5px;font-weight:600;color:var(--slate)}
+.bjT{font-size:13.5px;font-weight:700;color:var(--teal-d)}
+.bjAge{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;border-radius:999px;padding:5px 12px;align-self:center}
+.bjAge.ad{background:#8C5E2C}
+.bjAge.kid{background:#E0874F;box-shadow:0 0 0 3px #FBE3D2}
+.sp:has(.bjAge.kid){border-color:#E0874F;background:#FFF7F1}
+#solBar{margin-top:8px}
+.bjGrp{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 2px;padding-bottom:8px;border-bottom:2px solid var(--teal)}
+.bjGrp:first-child{margin-top:0}
+.bjGrp b{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--teal-d)}
+.bjGrp span{font-size:12.5px;color:var(--slate)}
+.bjPic{background:#fff!important;display:flex;align-items:center;justify-content:center}
+.bjPic img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:6px}
+.bj-plv{background:linear-gradient(135deg,#9DB8D6,#5F7AA0)}
+.sp.locked{opacity:.72}
+.sp.locked .bjT{color:var(--slate);font-weight:600}
+.bjQ button:disabled{opacity:.35;cursor:not-allowed}
+.bjC{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--teal);border-radius:999px;padding:3px 9px}
+.optHint{font-size:11.5px;color:var(--slate);margin-top:6px}
+.bjTile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:10px;cursor:default;color:#fff;border:none}
+.bjTile b{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.1}
+.bjTile i{font-style:normal;font-size:13.5px;font-weight:700;opacity:.95}
+.bjTile small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.bj-jour{background:linear-gradient(135deg,#C0894C,#8C5E2C)}
+.bj-nuit{background:linear-gradient(135deg,#6B6FA8,#3F4378)}
+.bj-enfant{background:linear-gradient(135deg,#E0874F,#B4592A)}
+.bj-pack{background:linear-gradient(135deg,#1206A6,#140A6B)}
+.bj-impl{background:linear-gradient(135deg,#1206A6,#140A6B)}.bj-argan{background:linear-gradient(135deg,#C9963F,#8C5E2C)}.bj-kera{background:linear-gradient(135deg,#8E6BB0,#5B3F7A)}.bj-coll{background:linear-gradient(135deg,#D47C8E,#A04C60)}.bj-men{background:linear-gradient(135deg,#3A3A3A,#141414)}.bj-duo{background:linear-gradient(135deg,#B5874B,#6E4E24)}.bj-voy{background:linear-gradient(135deg,#7FA3C7,#4C6E92)}.bj-masq{background:linear-gradient(135deg,#E39A7A,#B3644A)}
+.argTabs{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;position:sticky;top:72px;z-index:5;background:#fff;padding:8px 0 10px;border-bottom:1px solid var(--line)}
+.argTab{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--teal-d);background:#F6EEDF;border:1.5px solid #E6D3B3;border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.argTab:hover{border-color:var(--teal)}
+.argTab.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.argTab i{font-style:normal;font-size:11px;font-weight:800;min-width:18px;height:18px;border-radius:9px;background:#FF000A;color:#fff;display:none;align-items:center;justify-content:center;padding:0 5px}
+.argTab.has i{display:inline-flex}
+.prods > [hidden]{display:none!important}
+@media(max-width:600px){.argTabs{flex-wrap:nowrap;overflow-x:auto;top:60px}.argTab{white-space:nowrap;flex:none}}
+/* grille 2 colonnes compacte */
+.prods .sp:has(.cpBtn){grid-template-columns:300px minmax(0,1fr)!important;gap:18px!important;padding:14px!important}
+.prods .sp:has(.cpBtn) .spImg{width:300px!important;height:208px!important;border-radius:12px}
+.prods .sp:has(.cpBtn) .spImg img{width:100%;height:100%;object-fit:cover}
+@media(max-width:700px){.prods .sp:has(.cpBtn){grid-template-columns:minmax(0,1fr)!important}.prods .sp:has(.cpBtn) .spImg{width:100%!important;height:200px!important}}
+.prods{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+.prods .bjGrp{grid-column:1/-1}
+.prods .sp:has(.cpBtn){grid-column:1/-1}
+.prods .sp{grid-template-columns:78px minmax(0,1fr);gap:12px;padding:10px 12px;border-radius:14px}
+.prods .spImg{width:78px;height:78px;border-radius:10px}
+.prods .bjTile{gap:2px;padding:6px}.prods .bjTile b{font-size:12.5px}.prods .bjTile i{font-size:10.5px}.prods .bjTile small{font-size:9px}
+.prods .spTop b{font-size:14px;line-height:1.25}
+.prods .spTop .av{display:none}
+.prods .spSub{display:none}
+.prods .sp:has(.cpBtn) .spSub{display:block}
+.prods .spMeta{margin-top:4px;font-size:11.5px;gap:4px 10px}
+.prods .bjQ{margin-top:6px;gap:8px;flex-wrap:wrap}
+.prods .bjQ .qty button{width:30px;height:32px}.prods .bjQ .qty input{width:42px;height:32px}
+.prods .argT{margin-top:5px;gap:4px}.prods .argT span{font-size:10.5px;padding:2px 7px;white-space:nowrap}
+@media(max-width:900px){.prods{grid-template-columns:minmax(0,1fr)}}
+/* fiches produit : paliers + prix sous l'image, pleine largeur */
+.prods .sp:not(:has(.cpBtn)) > div:last-child{display:contents}
+.prods .sp:not(:has(.cpBtn)) .spImg{grid-row:1/3;align-self:start}
+.prods .sp:not(:has(.cpBtn)) .spTop,.prods .sp:not(:has(.cpBtn)) .spSub{grid-column:2}
+.prods .sp:not(:has(.cpBtn)) .spMeta,.prods .sp:not(:has(.cpBtn)) .argT,.prods .sp:not(:has(.cpBtn)) .bjQ{grid-column:1/-1}
+.prods .sp:not(:has(.cpBtn)) .spMeta{flex-wrap:nowrap;white-space:nowrap;margin-top:6px;overflow:hidden}
+.prods .sp:not(:has(.cpBtn)){row-gap:4px;align-content:start}
+.prods .sp:not(:has(.cpBtn)) .argT{flex-wrap:nowrap;margin-top:6px}
+.prods .sp:not(:has(.cpBtn)) .argT span{flex:1;text-align:center;min-width:0}
+.prods .sp:not(:has(.cpBtn)) .bjQ{margin-top:4px}
+.argT{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.argT span{white-space:nowrap;font-size:11.5px;color:var(--teal-d);background:#F6EEDF;border:1px solid #E6D3B3;border-radius:999px;padding:3px 9px}.argT b{font-weight:800}
+@media(max-width:600px){.sp{grid-template-columns:1fr;gap:12px}.spImg{width:100%;height:190px}.opts{grid-template-columns:1fr 1fr}}
+.top-in .cat-pdf{margin-left:auto;font-size:14px;font-weight:700;color:#fff;background:var(--teal);border-radius:11px;padding:10px 16px;white-space:nowrap}
+.top-in .cat-pdf:hover{color:#fff;filter:brightness(.92)}
+.top-in .cat-pdf + .back{margin-left:14px}
+@media(max-width:600px){.top-in .cat-pdf{margin-left:0;width:100%;text-align:center;order:3}.top-in .cat-pdf + .back{margin-left:auto}}
+</style>
+<style id="dbn-petits-ecrans">
+/* PC à petit écran (souris, 861–1440 px) : tout réduit — téléphone et tablette tactile non concernés */
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1440px){html{zoom:.85}}
+@media (hover:hover) and (pointer:fine) and (min-width:861px) and (max-width:1280px){html{zoom:.8}}
+</style>
+<style id="dbn-hdr-css">
+.dbn-hdr{position:sticky;top:0;z-index:60;background:rgba(251,245,235,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #EBE0CE;font-family:'Hanken Grotesk',system-ui,sans-serif}
+.dbn-hdr-in{max-width:1200px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.dbn-brand{display:flex;align-items:center;gap:16px;text-decoration:none;flex:none}
+.dbn-brand img{height:68px;width:auto;display:block}
+.dbn-wm{display:flex;flex-direction:column;line-height:1}
+.dbn-wm b{font-size:22px;color:#1206A6;font-weight:700}
+.dbn-wm span{font-size:10.5px;letter-spacing:.22em;color:#6E6557;font-weight:600;margin-top:5px;text-transform:uppercase}
+.dbn-links{display:flex;align-items:center;gap:40px}
+.dbn-links a{font-size:18px;font-weight:500;color:#6E6557;text-decoration:none;white-space:nowrap;transition:color .2s}
+.dbn-links a:hover,.dbn-links a.on{color:#1206A6}
+.dbn-links a.on{font-weight:600}
+.dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
+.dbn-btn:hover{background:#0c0488;color:#fff}
+.dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}
+.dbn-sub a{font-size:14px;font-weight:700;color:#fff;background:var(--teal,#1206A6);border-radius:11px;padding:10px 16px;white-space:nowrap;text-decoration:none}
+.dbn-sub a:hover{color:#fff;filter:brightness(.92)}
+@media(max-width:1000px){.dbn-links{gap:24px}.dbn-links a{font-size:16px}}
+@media(max-width:820px){
+ .dbn-hdr-in{height:auto;flex-wrap:wrap;padding:10px 18px;gap:8px 12px}
+ .dbn-brand img{height:52px}.dbn-wm b{font-size:17px}.dbn-wm span{font-size:9px;letter-spacing:.16em}
+ .dbn-btn{font-size:13px;padding:10px 16px}
+ .dbn-links{order:3;width:100%;justify-content:space-between;gap:10px;border-top:1px solid #EBE0CE;padding-top:8px}
+ .dbn-links a{font-size:15px}
+ .dbn-sub{padding:12px 18px 0}
+}
+@media(max-width:420px){.dbn-wm span{display:none}.dbn-brand img{height:44px}.dbn-links a{font-size:14px}}
+@media print{.dbn-hdr,.dbn-sub{display:none!important}}
+</style>
+<style id="cgv-css">.cgv{margin:14px 0 4px;background:#FBF5EB;border:1px solid #EBE0CE;border-radius:14px;padding:13px 14px;font-size:12.5px;line-height:1.5;color:#6E6557}.cgv b.cgvT{display:block!important;height:auto!important;font-size:13px;color:#1C1611;margin-bottom:5px}.cgv p{margin:0 0 6px}.cgv p strong{color:#1C1611}.cgv label{display:flex;align-items:flex-start;gap:8px;margin-top:8px;font-weight:700;color:#1C1611;cursor:pointer;font-size:13px}.cgv input{width:18px;height:18px;flex:none;margin:1px 0 0;accent-color:#1206A6}</style>
+</head>
+<body>
+
+<header class="dbn-hdr">
+  <div class="dbn-hdr-in">
+    <a class="dbn-brand" href="Direction A - Institutionnel Premium (chaud).html">
+      <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+      <span class="dbn-wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    </a>
+    <nav class="dbn-links">
+      <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
+      <a href="DBN - Espace Catalogues.html">Catalogues</a>
+      <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
+      <a href="Direction A - Institutionnel Premium (chaud).html#contact">Contact</a>
+    </nav>
+    <a class="dbn-btn" href="Direction A - Institutionnel Premium (chaud).html#contact">Nous contacter <span>→</span></a>
+  </div>
+</header>
+<div class="dbn-sub"><a href="https://drive.google.com/file/d/1XHhqOnl87Z4XvaDrCQknpWGLLsSZzenC/view" target="_blank" rel="noopener">📖 Voir le catalogue Arganicare</a></div>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Arganicare</span>
+  <h1>Les soins capillaires <em>Arganicare</em></h1>
+  <p>Argan, Kératine, Collagène, Ricin, For Men · vegan, sans parabène ni sulfate. <b>Marge minimum × 2,5</b>. Les remises 11 + 1 et 21 + 3 s'appliquent automatiquement à chaque référence.</p>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <h2>Comment commander</h2>
+        <ol class="howto"><li>Ajoutez par <b>conditionnement</b> avec + / −</li><li>Vérifiez le récapitulatif</li><li><b>Envoyez</b> la commande</li><li>Confirmation après vérification</li></ol>
+        <div class="terms">
+          <div class="term"><span class="tk">Règlement</span><span class="tv">LCR 30 jours</span></div>
+          <div class="term"><span class="tk">Franco de port</span><span class="tv">150 € HT</span></div>
+          <div class="term"><span class="tk">Remises</span><span class="tv">11 + 1 · 21 + 3 offerts</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>La gamme Arganicare</h2>
+        <div class="prods" id="prodList"></div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card sum">
+        <div class="sumHead"><h2>Récapitulatif</h2><button type="button" class="resetBtn" id="resetBtn">↺ Tout effacer</button></div>
+        <div id="sumLines"><p class="empty">Aucune référence sélectionnée.<br />Choisissez une quantité.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 20 %</div>
+        <div class="fbar" id="fbar">
+          <div class="ft" id="fTxt">Franco de port à <b>150 € HT</b>.</div>
+          <div class="track"><div class="fill" id="fFill"></div></div>
+        </div>
+        
+        <div class="cgv"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Arganicare" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+    <input type="hidden" name="bon_de_commande" id="bonField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-top">
+        <div class="bc-brand">
+          <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+          <div><b>David BITTON</b><span>DBN Développement</span></div>
+        </div>
+        <div class="bc-ok"><span class="bc-tick">✓</span> Commande enregistrée</div>
+      </div>
+      <div class="bc-hero">
+        <span class="bc-eye">Arganicare · Soins capillaires</span>
+        <h2>Merci <em id="bcName">!</em></h2>
+        <p>Votre commande est <b>enregistrée</b> et part en préparation. Inutile de nous relancer : nous ne reviendrons vers vous <b>qu'en cas de difficulté</b> (rupture de stock ou précision à apporter). Merci de votre confiance !</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Franco 150 € HT</span><b id="bcPort">—</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span>Total TTC · TVA 20 %</span><b id="bcTTC">—</b></div>
+        </div>
+        <div class="bc-note" id="bcFranco"></div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-terms">
+          <span><b>Règlement</b> LCR 30 jours</span>
+          <span><b>Franco</b> 150 € HT</span>
+          <span><b>Remises</b> 11 + 1 · 21 + 3 offerts</span>
+        </div>
+      </div>
+      <div class="bc-foot">
+        <div class="bc-contact">Une question ? <b>06 78 00 78 32</b> · <a href="mailto:dbitton@dbn-pharma.fr">dbitton@dbn-pharma.fr</a></div>
+        <div class="bc-acts">
+          <button type="button" class="bc-print" onclick="window.print()">Imprimer / PDF</button>
+          <a class="bc-home" href="DBN - Espace Catalogues.html">Retour aux catalogues</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FRANCO=150, PORT=0, TVA=1.20;
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var PRODS=[
+    {"k":"impl_ess","g":"impl","per":1,"un":"implantation","pu":84,"cp":[[6,"Shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Après-shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Masque nourrissant · Huile d'Argan · 500 ml"],[6,"Shampooing professionnel · Kératine · 400 ml"],[6,"Après-shampooing réparateur · Kératine · 400 ml"],[6,"Masque réparateur · Kératine · 500 ml"],[6,"Shampooing revitalisant · Collagène · 400 ml"],[6,"Après-shampooing reconstructeur · Collagène · 400 ml"],[6,"Masque reconstructeur · Collagène · 500 ml"],[6,"Shampooing stimulateur de pousse · Huile de Ricin · 400 ml"],[6,"Après-shampooing ultra-nourrissant · Huile de Ricin · 400 ml"],[6,"Masque retexturisant · Huile de Ricin · 500 ml"],[6,"Shampooing anti-chute · Step 1 · For Men · 400 ml"],[6,"Shampooing & gel douche 2-en-1 · For Men · 400 ml"],[12,"flacons shampooing format voyage 100 ml OFFERTS"]],"n":"Implantation Essentielle · 14 références","s":"Shampooing, après-shampooing & masque de chaque gamme + For Men + 12 flacons voyage offerts","c":"14 réf. × 6 · 84 u.","ppc":"","ean":"","av":"Disponible","ok":1,"o":[{"x":1,"u":1,"p":501.9,"t":501.9,"r":""}]},
+    {"k":"impl_conf","g":"impl","per":1,"un":"implantation","pu":132,"cp":[[6,"Shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Après-shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Masque nourrissant · Huile d'Argan · 500 ml"],[6,"Shampooing professionnel · Kératine · 400 ml"],[6,"Après-shampooing réparateur · Kératine · 400 ml"],[6,"Masque réparateur · Kératine · 500 ml"],[6,"Shampooing revitalisant · Collagène · 400 ml"],[6,"Après-shampooing reconstructeur · Collagène · 400 ml"],[6,"Masque reconstructeur · Collagène · 500 ml"],[6,"Shampooing stimulateur de pousse · Huile de Ricin · 400 ml"],[6,"Après-shampooing ultra-nourrissant · Huile de Ricin · 400 ml"],[6,"Masque retexturisant · Huile de Ricin · 500 ml"],[6,"Shampooing anti-chute · Step 1 · For Men · 400 ml"],[6,"Shampooing & gel douche 2-en-1 · For Men · 400 ml"],[6,"Après-shampooing réparateur express · Huile d'Argan · 250 ml"],[6,"Après-shampooing réparateur express · Kératine · 250 ml"],[6,"Après-shampooing sans rinçage ultra-hydratant · Huile de Ricin · 400 ml"],[6,"Après-shampooing réparateur express · Huile de Ricin · 250 ml"],[6,"Brosse lissante douce"],[6,"Brosse brushing volumateur · 25 mm"],[6,"Brosse brushing volumateur · 32 mm"],[6,"Huile à barbe · For Men · 30 ml"],[24,"flacons shampooing format voyage 100 ml OFFERTS"]],"n":"Implantation Confort · 22 références","s":"L'essentielle élargie aux après-shampooings express, brosses & For Men + 24 flacons voyage offerts","c":"22 réf. × 6 · 132 u.","ppc":"","ean":"","av":"Disponible","ok":1,"o":[{"x":1,"u":1,"p":769.2,"t":769.2,"r":""}]},
+    {"k":"impl_comp","g":"impl","per":1,"un":"implantation","pu":180,"cp":[[6,"Shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Après-shampooing réparateur · Huile d'Argan · 400 ml"],[6,"Masque nourrissant · Huile d'Argan · 500 ml"],[6,"Sérum réparateur · Huile d'Argan · 100 ml"],[6,"Après-shampooing réparateur express · Huile d'Argan · 250 ml"],[6,"Shampooing professionnel · Kératine · 400 ml"],[6,"Après-shampooing réparateur · Kératine · 400 ml"],[6,"Masque réparateur · Kératine · 500 ml"],[6,"Sérum réparateur · Kératine · 100 ml"],[6,"Après-shampooing réparateur express · Kératine · 250 ml"],[6,"Brume Elixir Trio Force · Kératine · 200 ml"],[6,"Shampooing revitalisant · Collagène · 400 ml"],[6,"Après-shampooing reconstructeur · Collagène · 400 ml"],[6,"Masque reconstructeur · Collagène · 500 ml"],[6,"Sérum régénérant · Collagène · 100 ml"],[6,"Shampooing stimulateur de pousse · Huile de Ricin · 400 ml"],[6,"Après-shampooing ultra-nourrissant · Huile de Ricin · 400 ml"],[6,"Masque retexturisant · Huile de Ricin · 500 ml"],[6,"Sérum réparateur · Huile de Ricin · 100 ml"],[6,"Après-shampooing sans rinçage ultra-hydratant · Huile de Ricin · 400 ml"],[6,"Soin réparateur sans rinçage 10 en 1 · Huile de Ricin · 150 ml"],[6,"Après-shampooing réparateur express · Huile de Ricin · 250 ml"],[6,"Brosse de massage en silicone"],[6,"Brosse lissante douce"],[6,"Brosse brushing volumateur · 25 mm"],[6,"Brosse brushing volumateur · 32 mm"],[6,"Shampooing anti-chute · Step 1 · For Men · 400 ml"],[6,"Sérum anti-chute · Step 2 · For Men · 60 ml"],[6,"Huile à barbe · For Men · 30 ml"],[6,"Shampooing & gel douche 2-en-1 · For Men · 400 ml"],[40,"flacons shampooing format voyage 100 ml OFFERTS"]],"n":"Implantation Complète · 30 références","s":"La gamme entière au prix « par 6 » + 40 flacons voyage offerts","c":"30 réf. × 6 · 180 u.","ppc":"","ean":"","av":"Disponible","ok":1,"o":[{"x":1,"u":1,"p":1114.2,"t":1114.2,"r":""}]},
+    {"k":"argan_sh","g":"argan","n":"Shampooing réparateur · Huile d'Argan · 400 ml","s":"Nutrition & hydratation · cheveux secs et épais","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000006","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"argan_ap","g":"argan","n":"Après-shampooing réparateur · Huile d'Argan · 400 ml","s":"Nutrition & hydratation · cheveux secs et épais","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000013","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"argan_mq","g":"argan","n":"Masque nourrissant · Huile d'Argan · 500 ml","s":"Nutrition & hydratation · cheveux secs et épais","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000037","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"argan_se","g":"argan","n":"Sérum réparateur · Huile d'Argan · 100 ml","s":"Nutrition & hydratation · cheveux secs et épais","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000051","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"argan_ex","g":"argan","n":"Après-shampooing réparateur express · Huile d'Argan · 250 ml","s":"Nutrition & hydratation · cheveux secs et épais","c":"par 6","ppc":"41,00 € TTC","ean":"3701120000099","av":"Disponible","ok":1,"tp":[[12,4.49,"11 + 1 offert"],[24,4.29,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":4.9,"t":29.4,"r":""}]},
+    {"k":"kera_sh","g":"kera","n":"Shampooing professionnel · Kératine · 400 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000174","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"kera_ap","g":"kera","n":"Après-shampooing réparateur · Kératine · 400 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000181","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"kera_mq","g":"kera","n":"Masque réparateur · Kératine · 500 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000228","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"kera_se","g":"kera","n":"Sérum réparateur · Kératine · 100 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000235","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"kera_ex","g":"kera","n":"Après-shampooing réparateur express · Kératine · 250 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"41,00 € TTC","ean":"3701120013907","av":"Disponible","ok":1,"tp":[[12,4.49,"11 + 1 offert"],[24,4.29,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":4.9,"t":29.4,"r":""}]},
+    {"k":"kera_br","g":"kera","n":"Brume Elixir Trio Force · Kératine · 200 ml","s":"Réparation en profondeur · cheveux abîmés et cassants","c":"par 6","ppc":"39,00 € TTC","ean":"3701120014997","av":"Disponible","ok":1,"tp":[[12,6.33,"11 + 1 offert"],[24,6.04,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":6.9,"t":41.4,"r":""}]},
+    {"k":"coll_sh","g":"coll","n":"Shampooing revitalisant · Collagène · 400 ml","s":"Volume & vitalité · cheveux fins et ternes","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000334","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"coll_ap","g":"coll","n":"Après-shampooing reconstructeur · Collagène · 400 ml","s":"Volume & vitalité · cheveux fins et ternes","c":"par 6","ppc":"31,00 € TTC","ean":"3701120000297","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"coll_mq","g":"coll","n":"Masque reconstructeur · Collagène · 500 ml","s":"Volume & vitalité · cheveux fins et ternes","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000303","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"coll_se","g":"coll","n":"Sérum régénérant · Collagène · 100 ml","s":"Volume & vitalité · cheveux fins et ternes","c":"par 6","ppc":"48,00 € TTC","ean":"3701120000310","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"ricin_sh","g":"ricin","n":"Shampooing stimulateur de pousse · Huile de Ricin · 400 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"31,00 € TTC","ean":"3701120016007","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"ricin_ap","g":"ricin","n":"Après-shampooing ultra-nourrissant · Huile de Ricin · 400 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"31,00 € TTC","ean":"3701120016014","av":"Disponible","ok":1,"tp":[[12,4.67,"11 + 1 offert"],[24,4.46,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.1,"t":30.6,"r":""}]},
+    {"k":"ricin_mq","g":"ricin","n":"Masque retexturisant · Huile de Ricin · 500 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"48,00 € TTC","ean":"3701120016021","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"ricin_se","g":"ricin","n":"Sérum réparateur · Huile de Ricin · 100 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"48,00 € TTC","ean":"3701120016038","av":"Disponible","ok":1,"tp":[[12,7.2,"11 + 1 offert"],[24,6.87,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7.85,"t":47.1,"r":""}]},
+    {"k":"ricin_sr","g":"ricin","n":"Après-shampooing sans rinçage ultra-hydratant · Huile de Ricin · 400 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"41,00 € TTC","ean":"3701120016045","av":"Disponible","ok":1,"tp":[[12,5.04,"11 + 1 offert"],[24,4.81,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.5,"t":33,"r":""}]},
+    {"k":"ricin_d1","g":"ricin","n":"Soin réparateur sans rinçage 10 en 1 · Huile de Ricin · 150 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"41,00 € TTC","ean":"3701120001263","av":"Disponible","ok":1,"tp":[[12,5.23,"11 + 1 offert"],[24,4.99,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.7,"t":34.2,"r":""}]},
+    {"k":"ricin_ex","g":"ricin","n":"Spray démêlant express sans rinçage · Huile de Ricin · 250 ml","s":"Croissance & renforcement · cheveux fragilisés","c":"par 6","ppc":"41,00 € TTC","ean":"3701120000747","av":"Disponible","ok":1,"tp":[[12,4.49,"11 + 1 offert"],[24,4.29,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":4.9,"t":29.4,"r":""}]},
+    {"k":"men_sh","g":"men","n":"Shampooing anti-chute · Step 1 · For Men · 400 ml","s":"Soins homme · anti-chute, barbe & corps","c":"par 6","ppc":"41,00 € TTC","ean":"3701120015000","av":"Disponible","ok":1,"tp":[[12,5.68,"11 + 1 offert"],[24,5.43,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":6.2,"t":37.2,"r":""}]},
+    {"k":"men_se","g":"men","n":"Sérum anti-chute · Step 2 · For Men · 60 ml","s":"Soins homme · anti-chute, barbe & corps","c":"par 6","ppc":"100,00 € TTC","ean":"3701120015017","av":"Disponible","ok":1,"tp":[[12,9.63,"11 + 1 offert"],[24,9.19,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":10.5,"t":63,"r":""}]},
+    {"k":"men_hb","g":"men","n":"Huile à barbe · For Men · 30 ml","s":"Soins homme · anti-chute, barbe & corps","c":"par 6","ppc":"39,00 € TTC","ean":"3701120015024","av":"Disponible","ok":1,"tp":[[12,6.42,"11 + 1 offert"],[24,6.13,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":7,"t":42,"r":""}]},
+    {"k":"men_gd","g":"men","n":"Shampooing & gel douche 2-en-1 · For Men · 400 ml","s":"Soins homme · anti-chute, barbe & corps","c":"par 6","ppc":"29,00 € TTC","ean":"3701120015031","av":"Disponible","ok":1,"tp":[[12,4.81,"11 + 1 offert"],[24,4.59,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.25,"t":31.5,"r":""}]},
+    {"k":"duo_nu","g":"duo","n":"Coffret Duo Nutrition · Argan · 2 × 400 ml","s":"Shampooing + après-shampooing · routine complète","c":"par 6","ppc":"62,00 € TTC","ean":"3701120005599","av":"Disponible","ok":1,"tp":[[12,9.07,"11 + 1 offert"],[24,8.66,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":9.9,"t":59.4,"r":""}]},
+    {"k":"duo_re","g":"duo","n":"Coffret Duo Réparation · Kératine · 2 × 400 ml","s":"Shampooing + après-shampooing · routine complète","c":"par 6","ppc":"62,00 € TTC","ean":"3701120005612","av":"Disponible","ok":1,"tp":[[12,9.07,"11 + 1 offert"],[24,8.66,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":9.9,"t":59.4,"r":""}]},
+    {"k":"duo_vo","g":"duo","n":"Coffret Duo Revitalisant & Volume · Collagène · 2 × 400 ml","s":"Shampooing + après-shampooing · routine complète","c":"par 6","ppc":"62,00 € TTC","ean":"3701120005636","av":"Disponible","ok":1,"tp":[[12,9.07,"11 + 1 offert"],[24,8.66,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":9.9,"t":59.4,"r":""}]},
+    {"k":"duo_pp","g":"duo","n":"Coffret Duo Accélérateur de pousse · Ricin · 2 × 400 ml","s":"Shampooing + après-shampooing · routine complète","c":"par 6","ppc":"62,00 € TTC","ean":"3701120005643","av":"Disponible","ok":1,"tp":[[12,9.07,"11 + 1 offert"],[24,8.66,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":9.9,"t":59.4,"r":""}]},
+    {"k":"voy_argan","g":"voy","n":"Shampooing nourrissant hydratant · Argan · 100 ml","s":"Format voyage · mise en avant caisse & découverte","c":"par 12","ppc":"16,00 € TTC","ean":"3701120014409","av":"Disponible","ok":1,"tp":[[24,1.38,"22 + 2 offerts"],[48,1.31,"42 + 6 offerts"]],"o":[{"x":1,"u":12,"p":1.5,"t":18,"r":""}]},
+    {"k":"voy_kera","g":"voy","n":"Shampooing réparateur et nutritif · Kératine · 100 ml","s":"Format voyage · mise en avant caisse & découverte","c":"par 12","ppc":"16,00 € TTC","ean":"3701120014461","av":"Disponible","ok":1,"tp":[[24,1.38,"22 + 2 offerts"],[48,1.31,"42 + 6 offerts"]],"o":[{"x":1,"u":12,"p":1.5,"t":18,"r":""}]},
+    {"k":"voy_ricin","g":"voy","n":"Shampooing accélérateur de croissance · Ricin · 100 ml","s":"Format voyage · mise en avant caisse & découverte","c":"par 12","ppc":"16,00 € TTC","ean":"3701120014430","av":"Disponible","ok":1,"tp":[[24,1.38,"22 + 2 offerts"],[48,1.31,"42 + 6 offerts"]],"o":[{"x":1,"u":12,"p":1.5,"t":18,"r":""}]},
+    {"k":"voy_sol","g":"voy","n":"Shampooing Après-Soleil · 100 ml","s":"Format voyage · mise en avant caisse & découverte","c":"par 12","ppc":"16,00 € TTC","ean":"3701120014546","av":"Disponible","ok":1,"tp":[[24,1.38,"22 + 2 offerts"],[48,1.31,"42 + 6 offerts"]],"o":[{"x":1,"u":12,"p":1.5,"t":18,"r":""}]},
+    {"k":"masq_vitc","g":"masq","n":"Masque tissu illuminateur · Vitamine C · 20 g","s":"Soin visage · usage unique","c":"par 10","ppc":"10,00 € TTC","ean":"3701120004837","av":"Disponible","ok":1,"tp":[[50,1.62,"45 + 5 offerts"],[120,1.58,"105 + 15 offerts"],[200,1.53,"170 + 30 offerts"]],"o":[{"x":1,"u":10,"p":1.8,"t":18,"r":""}]},
+    {"k":"masq_aa","g":"masq","n":"Masque tissu anti-âge · 20 g","s":"Soin visage · usage unique","c":"par 10","ppc":"10,00 € TTC","ean":"3701120004844","av":"Disponible","ok":1,"tp":[[50,1.62,"45 + 5 offerts"],[120,1.58,"105 + 15 offerts"],[200,1.53,"170 + 30 offerts"]],"o":[{"x":1,"u":10,"p":1.8,"t":18,"r":""}]},
+    {"k":"acc_mas","g":"acc","n":"Brosse de massage en silicone","s":"Accessoire capillaire","c":"par 6","ppc":"19,00 € TTC","ean":"3701120012399","av":"Disponible","ok":1,"tp":[[12,2.75,"11 + 1 offert"],[24,2.62,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":3,"t":18,"r":""}]},
+    {"k":"acc_lis","g":"acc","n":"Brosse lissante douce","s":"Accessoire capillaire","c":"par 6","ppc":"28,00 € TTC","ean":"3701120015710","av":"Disponible","ok":1,"tp":[[12,4.54,"11 + 1 offert"],[24,4.33,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":4.95,"t":29.7,"r":""}]},
+    {"k":"acc_b25","g":"acc","n":"Brosse brushing volumateur · 25 mm","s":"Accessoire capillaire","c":"par 6","ppc":"31,00 € TTC","ean":"3701120015727","av":"Disponible","ok":1,"tp":[[12,5.45,"11 + 1 offert"],[24,5.21,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":5.95,"t":35.7,"r":""}]},
+    {"k":"acc_b32","g":"acc","n":"Brosse brushing volumateur · 32 mm","s":"Accessoire capillaire","c":"par 6","ppc":"34,00 € TTC","ean":"3701120015734","av":"Disponible","ok":1,"tp":[[12,5.91,"11 + 1 offert"],[24,5.64,"21 + 3 offerts"]],"o":[{"x":1,"u":6,"p":6.45,"t":38.7,"r":""}]},
+    {"k":"acc_dem","g":"acc10","n":"Brosse démêlante","s":"Accessoire · vendu par 10","c":"par 10","ppc":"","ean":"3701120000952","av":"Disponible","ok":1,"o":[{"x":1,"u":10,"p":5,"t":50,"r":""}]},
+    {"k":"acc_sil","g":"acc10","n":"Brosse en silicone pour shampooing","s":"Accessoire · vendu par 10","c":"par 10","ppc":"","ean":"3701120000945","av":"Disponible","ok":1,"o":[{"x":1,"u":10,"p":3,"t":30,"r":""}]}
+  ];
+  var sel={};
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function cpItems(p,q){if(!p.cp)return [];return p.cp.map(function(c){return (p.per?c[0]:c[0]*(q||1))+' × '+c[1];});}
+  function cpHead(p){return p.g==='impl'?'Chaque implantation contient':(p.per?'Chaque coffret contient':'Contenu');}
+
+  var AIMG={men_gd:'assets/arg_men_gd.png',men_sh:'assets/arg_men_sh.png',men_se:'assets/arg_men_se.png',men_hb:'assets/arg_men_hb.png',masq_vitc:'assets/arg_masq_vitc.png',masq_aa:'assets/arg_masq_aa.png',acc_lis:'assets/arg_acc_lis.png',acc_b25:'assets/arg_acc_ronde.png',acc_b32:'assets/arg_acc_ronde.png',acc_dem:'assets/arg_acc_dem.png',acc_mas:'assets/arg_acc_mas.png',acc_sil:'assets/arg_acc_sil.png',voy_ricin:'assets/arg_voy_ricin.png',voy_argan:'assets/arg_voy_ricin.png',voy_kera:'assets/arg_voy_ricin.png',voy_sol:'assets/arg_voy_ricin.png',duo_nu:'assets/arg_duo_nu.png',duo_re:'assets/arg_duo_re.png',duo_vo:'assets/arg_duo_vo.png',duo_pp:'assets/arg_duo_pp.png',coll_sh:'assets/arg_coll_sh.png',coll_ap:'assets/arg_coll_ap.png',coll_mq:'assets/arg_coll_mq.png',argan_sh:'assets/arg_argan_sh.png',argan_ap:'assets/arg_argan_ap.png',argan_mq:'assets/arg_argan_mq.png',argan_se:'assets/arg_argan_se.png',argan_ex:'assets/arg_argan_ex.png',ricin_sh:'assets/arg_ricin_sh2.png',ricin_ap:'assets/arg_ricin_ap2.png',ricin_mq:'assets/arg_ricin_mq2.png',ricin_se:'assets/arg_ricin_se2.png',ricin_sr:'assets/arg_ricin_sr3.png',ricin_d1:'assets/arg_ricin_d14.png',ricin_ex:'assets/arg_ricin_curls.png',impl_ess:'assets/arg_impl.png',impl_conf:'assets/arg_impl.png',impl_comp:'assets/arg_impl.png',kera_br:'assets/arg_kera_br.png',kera_ap:'assets/arg_kera_ap.png',kera_sh:'assets/arg_kera_sh.png',kera_mq:'assets/arg_kera_mq.png',kera_ex:'assets/arg_kera_ex.png',kera_se:'assets/arg_kera_se.png'};
+  function bjImg(p){if(AIMG[p.k])return AIMG[p.k];if(p.g==='ricin')return 'assets/argan_ricin.png';if(p.g==='acc'||p.g==='acc10')return 'assets/argan_brosses.png';return '';}
+  function puOf(p,q){var pu=p.o[0].p,l='';if(p.tp)p.tp.forEach(function(t){if(q>=t[0]){pu=t[1];l=t[2];}});return {p:pu,l:l};}
+  var box=document.getElementById('prodList');
+  var GRP={impl:'<b>Implantations · prix « par 6 »</b><span>Flacons voyage offerts · franco dès 150 € HT</span>',argan:'<b>Gamme Argan</b><span>Nutrition &amp; hydratation · cheveux secs et épais</span>',kera:'<b>Gamme Kératine</b><span>Réparation en profondeur · cheveux abîmés et cassants</span>',coll:'<b>Gamme Collagène</b><span>Volume &amp; vitalité · cheveux fins et ternes</span>',ricin:'<b>Gamme Ricin</b><span>Croissance &amp; renforcement · cheveux fragilisés</span>',men:'<b>Gamme For Men</b><span>Anti-chute, barbe &amp; corps</span>',duo:'<b>Coffrets Duo</b><span>Shampooing + après-shampooing</span>',voy:'<b>Format voyage 100 ml</b><span>Mise en avant caisse · par 12 · 22 + 2 · 42 + 6</span>',masq:'<b>Masques tissu</b><span>Par 10 · 45 + 5 · 105 + 15 · 170 + 30</span>',acc:'<b>Accessoires</b><span>Brosses · par 6</span>',acc10:'<b>Accessoires par 10</b><span>Prix net</span>'}, lastG='';
+  PRODS.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='sp'; d.id='sp'+i;
+    var im=bjImg(p);
+    d.innerHTML=(im?'<span class="spImg bjPic" data-i="'+i+'" title="Cliquez pour agrandir"><img src="'+im+'" alt="'+p.n+'" /><i class="zi">⌕</i></span>':'<span class="spImg bjTile bj-'+p.k.split('_')[0]+'"><b>'+p.n.split(' · ')[0]+'</b><i>'+(p.n.split(' · ')[1]||'')+'</i><small>'+(p.n.split(' · ')[2]||'')+'</small></span>')+
+      '<div><div class="spTop"><b>'+p.n+'</b>'+(p.tg==='adulte'?'<span class="bjAge ad">Version adulte</span>':p.tg==='enfant'?'<span class="bjAge kid">Version enfant · dès 3 ans</span>':'')+'<span class="av '+(p.ok?'ok':'soon')+'">'+p.av+'</span></div>'+
+      '<div class="spSub">'+p.s+'</div>'+
+      (p.cp?'<button type="button" class="cpBtn" aria-expanded="false">Voir le détail des produits <span>▾</span></button><ul class="cpBox">'+cpItems(p,1).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>':'')+
+      '<div class="spMeta">'+(p.ean?'<span>EAN <b>'+p.ean+'</b></span>':'')+(p.g==='plv'?'<span><b>Offert</b> · à l’unité</span>':(p.ppc?'<span>PPC <b>'+p.ppc+'</b></span>':''))+'</div>'+(p.tp?'<div class="argT"><span>par '+p.o[0].u+' · <b>'+eur(p.o[0].p)+'</b></span>'+p.tp.map(function(t){return '<span>'+t[2].replace(/ offerts?/,'')+' · <b>'+eur(t[1])+'</b></span>';}).join('')+'</div>':'')+
+      '<div class="bjQ"><span class="bjP">'+(p.o[0].p>0?eur(p.o[0].p)+' <small>HT / '+(p.un||'u.')+'</small>':'Offert')+'</span>'+
+        '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
+        '<input type="number" min="0" step="'+p.o[0].u+'" value="0" aria-label="Quantité '+p.n+'" />'+
+        '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>'+
+        (p.o[0].u>1?'<span class="bjC">par '+p.o[0].u+'</span>':'')+'<span class="bjT" id="bt'+i+'"></span></div></div>';
+    var inp=d.querySelector('.bjQ input');
+    var cb=d.querySelector('.cpBtn'); if(cb) cb.addEventListener('click',function(){var o=d.classList.toggle('cpOpen');cb.setAttribute('aria-expanded',o);});
+    var COL=p.o[0].u;
+    var MINS={plv_comptoir:245,plv_sol:600}; var MIN=MINS[p.k]||0;
+    function setQ(v,snap){v=parseInt(v,10);if(isNaN(v)||v<0)v=0;if(MIN&&paidSub()<MIN){v=0;}if(p.g==='plv'&&v>1)v=1;if(snap)v=Math.ceil(v/COL)*COL;inp.value=v;sel[p.k]=v||undefined;render();}
+    d.querySelectorAll('.bjQ button').forEach(function(b){
+      b.addEventListener('click',function(){var v=parseInt(inp.value,10)||0;setQ(b.dataset.a==='+'?v+COL:v-COL,true);});
+    });
+    inp.addEventListener('change',function(){setQ(inp.value,true);});
+    if(p.g!==lastG){lastG=p.g;var gh=document.createElement('div');gh.className='bjGrp';gh.innerHTML=GRP[p.g];box.appendChild(gh);}
+    box.appendChild(d);
+  });
+
+  /* onglets familles */
+  var TABS=[['impl','Implantations'],['argan','Huile d’Argan'],['kera','Kératine'],['coll','Collagène'],['ricin','Huile de Ricin'],['men','For Men'],['duo','Coffrets Duo'],['voy','Format voyage'],['masq','Masques tissu'],['acc','Brosses']];
+  function tabOf(g){return g==='acc10'?'acc':g;}
+  var curTab='impl', tabBar=document.createElement('div');tabBar.className='argTabs';
+  TABS.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='argTab';b.dataset.t=t[0];b.innerHTML=t[1]+'<i></i>';
+    b.addEventListener('click',function(){showTab(t[0]);var top=tabBar.getBoundingClientRect().top+window.scrollY-90;if(window.scrollY>top)window.scrollTo({top:top,behavior:'smooth'});});tabBar.appendChild(b);});
+  box.parentNode.insertBefore(tabBar,box);
+  (function(){var g='';Array.prototype.forEach.call(box.children,function(el){if(el.classList.contains('bjGrp')){var i=PRODS.findIndex(function(p,ix){return document.getElementById('sp'+ix)&&document.getElementById('sp'+ix).previousElementSibling===el;});g=i>=0?tabOf(PRODS[i].g):g;}el.dataset.tab=g;});})();
+  function showTab(t){curTab=t;Array.prototype.forEach.call(box.children,function(el){el.hidden=el.dataset.tab!==t;});tabBar.querySelectorAll('.argTab').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});}
+  function updTabs(){var n={};PRODS.forEach(function(p){if(sel[p.k])n[tabOf(p.g)]=(n[tabOf(p.g)]||0)+1;});tabBar.querySelectorAll('.argTab').forEach(function(b){var c=n[b.dataset.t]||0;b.querySelector('i').textContent=c?c:'';b.classList.toggle('has',c>0);});}
+  showTab('impl');
+
+  function freeOf(p,q){if(!p.tp||p.un)return 0;var f=0;p.tp.forEach(function(t){var m=/(\d+)\s*\+\s*(\d+)/.exec(t[2]);if(m&&q>=t[0])f=0;});
+    var t24=p.tp.filter(function(t){return /21\s*\+\s*3/.test(t[2]);})[0],t12=p.tp.filter(function(t){return /11\s*\+\s*1/.test(t[2]);})[0];
+    if(t24&&q>=24){f=Math.floor(q/24)*3+(t12?Math.floor((q%24)/12):0);}else if(t12&&q>=12){f=Math.floor(q/12);}return f;}
+  function lineTot(p,q){var f=freeOf(p,q);return f>0?(q-f)*p.o[0].p:q*puOf(p,q).p;}
+  function paidSub(){var s=0;PRODS.forEach(function(p){var q=sel[p.k]||0;s+=lineTot(p,q);});return s;}
+  function lines(){
+    var L=[];
+    PRODS.forEach(function(p){var q=sel[p.k]||0;if(q>0){var r=puOf(p,q);var fr=freeOf(p,q);
+      if(fr>0&&!p.un){var b=p.o[0].p,pd=q-fr;L.push({p:p,o:{x:1,u:pd,p:b,t:Math.round(pd*b*100)/100,l:r.l}});L.push({p:p,free:1,o:{x:1,u:fr,p:0,t:0,l:'offert'}});}
+      else L.push({p:p,o:{x:1,u:q,p:r.p,t:Math.round(q*r.p*100)/100,l:r.l}});}});
+    return L;
+  }
+
+  function qL(l){return l.p.un?(l.o.u+' '+l.p.un+(l.o.u>1?'s':'')+' ('+(l.o.u*l.p.pu)+' u.)'):(l.o.u+' u.');}
+  function calc(){
+    var L=lines(), sub=0, units=0;
+    L.forEach(function(l){sub+=l.o.t;if(l.o.p>0||l.free)units+=l.o.u*(l.p.pu||1);});
+    var port=(sub>0&&sub<FRANCO)?PORT:0;
+    return {L:L,sub:sub,units:units,port:port,ht:sub+port};
+  }
+
+  function render(){
+    var c=calc(), html='', recap='';
+    PRODS.forEach(function(p,i){
+      var MN={plv_comptoir:245,plv_sol:600}[p.k]||0;
+      if(MN&&c.sub<MN&&sel[p.k]){sel[p.k]=undefined;var ii=document.querySelector('#sp'+i+' .bjQ input');if(ii)ii.value=0;}
+      var q=sel[p.k]||0, d=document.getElementById('sp'+i);
+      if(MN){var pl=d.querySelector('.bjQ button[data-a="+"]');if(pl)pl.disabled=c.sub<MN;d.classList.toggle('locked',c.sub<MN);
+      }
+      d.classList.toggle('has',q>0);
+      var bt=document.getElementById('bt'+i); if(bt) var tq=puOf(p,q);bt.textContent=q>0?('= '+eur(Math.round(lineTot(p,q)*100)/100)+' HT'+(tq.l?' · '+tq.l:'')):'';
+      if(MN&&bt&&c.sub<MN) bt.textContent='Débloqué dès '+MN+' € HT (encore '+eur(MN-c.sub)+')';
+    });
+    c.L.forEach(function(l){
+      if(l.p.cp){var nq=l.o.u,pay=[],off=[];l.p.cp.forEach(function(c){var qq=l.p.per?c[0]*nq:c[0]*nq;var m=null;PRODS.forEach(function(x){if(x.n===c[1])m=x;});if(/OFFERT/i.test(c[1])||!m)off.push([qq,c[1].replace(/\s*OFFERTS?/i,'')]);else pay.push([qq,m]);});
+        html+='<div class="rl rpk"><div class="rd"><b>'+l.p.n+'</b>'+(nq>1?'<em>× '+nq+'</em>':'')+'</div><div class="rq">'+nq+'</div><div class="rp">'+eur(l.o.t)+'</div></div>';
+        pay.forEach(function(a){html+='<div class="rl rsub"><div class="rd"><b>'+a[1].n+'</b>'+(a[1].ean?'<em>EAN '+a[1].ean+'</em>':'')+'</div><div class="rq">'+a[0]+'</div><div class="rp">'+eur(a[0]*a[1].o[0].p)+'</div></div>';});
+        off.forEach(function(a){html+='<div class="rl rsub roff"><div class="rd"><b>'+a[1]+'</b></div><div class="rq">'+a[0]+'</div><div class="rp"><span class="off">Offert</span></div></div>';});
+      }else html+='<div class="rl"><div class="rd"><b>'+l.p.n+'</b>'+(l.p.ean?'<em>EAN '+l.p.ean+'</em>':'')+(l.o.l?'<em class="ro">'+l.o.l+'</em>':'')+'</div><div class="rq">'+l.o.u+'</div><div class="rp">'+(l.o.p?eur(l.o.t):'<span class="off">Offert</span>')+'</div></div>';
+      recap+='- '+l.p.n+' · '+qL(l)+(l.p.ean?' · EAN '+l.p.ean:'')+' · '+(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+' = '+eur(l.o.t)+' HT':'Offert')+(l.o.l?' · '+l.o.l:'')+'\n'+(l.p.cp?'    '+cpHead(l.p)+' :\n'+cpItems(l.p,l.o.u).map(function(t){return '      · '+t;}).join('\n')+'\n':'');
+    });
+    var sl=document.getElementById('sumLines');
+    if(!c.L.length){sl.innerHTML='<p class="empty">Aucune référence sélectionnée.<br />Choisissez une quantité.</p>';}
+    else{sl.innerHTML='<div class="rl rh"><div>Désignation</div><div>Qté</div><div>Prix HT</div></div>'+html+'<div class="line"><span>Total unités</span><b>'+c.units+' u.</b></div>'+
+      '<div class="line"><span>Franco 150 € HT</span><b>'+(c.sub>=FRANCO?'atteint':'non atteint')+'</b></div>';}
+    document.getElementById('totHT').textContent=eur(c.ht);
+    document.getElementById('totTTC').textContent='soit '+eur(c.ht*TVA)+' TTC · TVA 20 %';
+    var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt'),fill=document.getElementById('fFill');
+    fill.style.width=Math.min(100,c.sub/FRANCO*100)+'%';
+    if(c.sub>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco de port atteint</b> (150 € HT).';}
+    else{fb.classList.remove('ok');ft.innerHTML=c.sub===0?'Franco de port à <b>150 € HT</b>.':'Il manque <b>'+eur(FRANCO-c.sub)+'</b> pour le franco de port (150 € HT).';}
+    updTabs();
+    document.getElementById('sendBtn').disabled=!c.L.length;
+    document.getElementById('resetBtn').hidden=!c.L.length;
+    document.getElementById('recapField').value=recap+'\nTotal : '+c.units+' unités\nFranco : '+(c.sub>=FRANCO?'atteint':'non atteint')+'\nTotal HT : '+eur(c.ht);
+    document.getElementById('totalField').value=eur(c.ht);
+    document.getElementById('bonField').value=buildBon(c,recap);
+  }
+
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+
+  function buildBon(c,recap){
+    var L=['BON DE COMMANDE — ARGANICARE','Soins capillaires','Date : '+today(),'',
+      '--- OFFICINE ---','Officine : '+v('officine'),'Adresse : '+v('adresse'),'Ville : '+v('code_postal')+' '+v('ville'),
+      'Contact : '+v('contact'),'Téléphone : '+v('telephone'),'E-mail : '+v('email'),'',
+      '--- COMMANDE ---','',recap.trim()||'(aucune référence)','',
+      'Total : '+c.units+' unités','Franco de port : '+(c.sub>=FRANCO?'atteint':'non atteint (150 € HT)'),
+      'TOTAL HT : '+eur(c.ht),'TVA 20 % : '+eur(c.ht*0.20),'TOTAL TTC : '+eur(c.ht*TVA),'',
+      '--- CONDITIONS ---','Franco de port : 150 € HT','Remises : 11 + 1 et 21 + 3 offerts par référence','Règlement : LCR 30 jours'];
+    var m=v('message'); if(m){L.push('','--- MESSAGE ---',m);}
+    L.push('','Commande transmise à David BITTON — DBN Développement','06 78 00 78 32 · dbitton@dbn-pharma.fr');
+    return L.join('\n');
+  }
+
+  function buildPayload(c){
+    var lignes=c.L.map(function(l){return {modele:l.p.n+(l.p.cp?' — '+cpHead(l.p).toLowerCase()+' : '+cpItems(l.p,l.o.u).join(', '):''),coloris:qL(l)+(l.o.l?' · '+l.o.l:'')+(l.o.p?' à '+eur(l.o.p)+' HT':' · offert')+(l.p.g==='pack'?' · livraison mi-novembre':''),correction:(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert'),ean:l.p.ean,qte:l.o.u};});
+    return {labo:'Arganicare',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
+      contact:v('contact'),tel:v('telephone'),email:v('email'),message:v('message'),ref:(window.DBN_REF||''),
+      lignes:lignes,total:c.units,prixUnitaire:'selon référence',totalHT:eur(c.ht),tva:eur(c.ht*0.20),tvaTaux:'20 %',totalTTC:eur(c.ht*TVA),
+      franco:(c.sub>=FRANCO?'atteint (150 \u20ac HT)':'non atteint (150 \u20ac HT)')};
+  }
+
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(), s=document.createElement('script');
+    /* la passerelle Apps Script peut mettre 20-40 s au démarrage : on attend 60 s avant de basculer sur Formspree (évite les doublons) */
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, btn=document.getElementById('sendBtn');
+    render();
+    var c=calc();
+    if(!c.L.length) return;
+    btn.disabled=true; btn.textContent='Envoi en cours… merci de patienter';
+    function success(){
+      fillBon(c);
+      f.style.display='none';
+      document.getElementById('doneBox').classList.add('on');
+      window.scrollTo(0,0);
+      if(window.gtag) gtag('event','commande_envoyee',{labo:'Arganicare'});
+    }
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){if(!r.ok)throw new Error('fail');success();})
+        .catch(function(){btn.disabled=false;btn.textContent='Envoyer ma commande →';
+          alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});
+    }
+    gwSend(buildPayload(c),success,viaFormspree);
+  });
+
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(c){
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent=first?(first+' !'):'!';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+
+      mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+
+      mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    var rows='';
+    c.L.forEach(function(l){
+      rows+='<div class="bc-row"><span class="tag" style="background:#A8733A">'+(l.p.un?l.o.u+' '+l.p.un+(l.o.u>1?'s':''):l.o.u+' u.')+'</span>'+
+        '<span><span class="mn">'+l.p.n+'</span> <span class="cn">· '+qL(l)+' · '+(l.o.p?eur(l.o.p)+' HT/'+(l.p.un||'u')+'':'Offert')+(l.o.l?' · '+l.o.l:'')+(l.p.g==='pack'?' · livraison mi-novembre':'')+'</span>'+(l.p.ean?'<span class="ce">EAN '+l.p.ean+'</span>':'')+(l.p.cp?'<span class="bcCp"><b>'+cpHead(l.p)+' :</b> '+cpItems(l.p,l.o.u).join(' · ')+'</span>':'')+'</span>'+
+        '<span class="qn">'+(l.o.p?eur(l.o.t):'Offert')+'</span></div>';
+    });
+    document.getElementById('bcItems').innerHTML=rows;
+    document.getElementById('bcQty').textContent=c.units+' u.';
+    document.getElementById('bcPort').textContent=c.sub>=FRANCO?'Atteint':'Non atteint';
+    document.getElementById('bcHT').textContent=eur(c.ht);
+    document.getElementById('bcTTC').textContent=eur(c.ht*TVA);
+    var fr=document.getElementById('bcFranco');
+    if(c.sub>=FRANCO){fr.className='bc-note ok';fr.innerHTML='✓ <b>Franco de port atteint</b> — aucun frais de livraison sur cette commande.';}
+    else{fr.className='bc-note';fr.innerHTML='Franco de port à <b>150 € HT</b> — il manque <b>'+eur(FRANCO-c.sub)+'</b>. Nous en reparlons ensemble si vous souhaitez compléter.';}
+    var m=v('message'); if(m) fr.insertAdjacentHTML('afterend','<div class="bc-note ok" style="margin-top:10px"><b>Votre message :</b> '+m.replace(/[<>]/g,'')+'</div>');
+  }
+
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Effacer toutes les quantités et repartir à zéro ?')) return;
+    sel={}; document.querySelectorAll('.bjQ input').forEach(function(i){i.value=0;}); render();
+  });
+
+  (function(){
+    var ov=document.createElement('div'); ov.id='zoomOv'; ov.className='zoomOv';
+    ov.innerHTML='<div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div><div class="znc">Photo non contractuelle</div></div>';
+    document.body.appendChild(ov);
+    function close(){ov.classList.remove('on');}
+    ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    document.querySelectorAll('.spImg:not(.bjTile)').forEach(function(t){
+      t.addEventListener('click',function(){
+        var p=PRODS[parseInt(t.dataset.i,10)];
+        var zi=ov.querySelector('img'),zb=ov.querySelector('.zbox');
+        zi.style.cssText='opacity:0';zb.style.width='';
+        zi.onload=function(){
+          /* image basse définition : on limite l'agrandissement (×2,5 max) pour rester net */
+          var k=2.5,w=zi.naturalWidth*k,hh=Math.min(zi.naturalHeight*k,window.innerHeight*0.7);
+          w=Math.min(w,hh*zi.naturalWidth/zi.naturalHeight);
+          zi.style.cssText='width:'+Math.round(w)+'px;height:auto;max-width:100%;aspect-ratio:auto;margin:0 auto;opacity:1';
+          zb.style.width='min(94vw,'+Math.max(340,Math.round(w)+28)+'px)';
+        };
+        zi.src=bjImg(p);
+        ov.querySelector('.zl').textContent=p.n+' · '+p.c;
+        ov.classList.add('on');
+      });
+    });
+  })();
+
+  render();
+})();
+</script>
+
+<!-- bouton Envoyer en bas des coordonnées -->
+<script>
+(function(){
+  function go(){
+    var main=document.getElementById('sendBtn'),msg=document.querySelector('[name="message"]');
+    if(!main||!msg||document.getElementById('sendBtn2'))return;
+    var fld=msg.closest('.field')||msg;
+    var w=document.createElement('div');w.className='send2';
+    w.innerHTML='<button type="button" class="btn" id="sendBtn2"></button><p class="send2n" id="send2n"></p>';
+    fld.parentNode.insertBefore(w,fld.nextSibling);
+    var b=document.getElementById('sendBtn2'),n=document.getElementById('send2n');
+    function sync(){b.textContent=main.textContent;b.disabled=main.disabled;
+      n.textContent=main.disabled?'Complétez votre sélection de produits pour activer l\'envoi.':'Vérifiez le récapitulatif, puis envoyez.';}
+    sync();
+    new MutationObserver(sync).observe(main,{attributes:true,childList:true,characterData:true,subtree:true});
+    b.addEventListener('click',function(){if(main.disabled)return;var f=main.form||main.closest('form');
+      if(f&&f.reportValidity&&!f.reportValidity())return;main.click();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
+</script>
+<style>.send2{margin-top:18px}.send2 .btn{width:100%;justify-content:center;font-size:17px;padding:16px 20px}.send2n{font-size:12.5px;color:var(--slate,#6E6557);text-align:center;margin:8px 0 0}@media print{.send2{display:none}}</style>
+<script src="avis.js"></script>
+</body>
+</html>

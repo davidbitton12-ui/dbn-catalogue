@@ -28,6 +28,7 @@
   '.avis .ab button{background:#1206A6;color:#fff;border:none;border-radius:12px;padding:12px 22px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}'+
   '.avis .ab button:hover{background:#0c0488}.avis .ab button:disabled{background:#D9CFC2;cursor:not-allowed}'+
   '.avis .ab span{font-size:12.5px;color:#6E6557}'+
+  '.avis .af{font-size:12.5px;line-height:1.45;color:#5A4F44;background:#F4E7D2;border-radius:10px;padding:8px 11px;margin:0 0 12px}.avis .af b{color:#1C1611}'+
   '.avis .ok{text-align:center;padding:8px 0}.avis .ok b{display:block;font-family:Spectral,Georgia,serif;font-size:21px;color:#1206A6;margin-bottom:4px}'+
   '@media print{.avisOv{display:none!important}}@media(max-width:600px){.avis{padding:18px 14px 16px;border-radius:16px}.avis .aq{grid-template-columns:1fr 1fr}.avis .ahd img{height:36px}}';
   var built=false;
@@ -45,7 +46,7 @@
     var w=document.createElement('div');w.className='avis';ov.appendChild(w);
     var rows=Q.map(function(q){return '<div class="ar'+(q[0]==='globale'?' gl':'')+'"><span class="al">'+q[1]+'</span><div class="st" data-k="'+q[0]+'">'+
       [1,2,3,4,5].map(function(n){return '<button type="button" data-n="'+n+'" aria-label="'+n+' sur 5">★</button>';}).join('')+'</div></div>';}).join('');
-    w.innerHTML='<button type="button" class="ax" aria-label="Fermer">✕</button><div class="ahd"><img src="assets/dbn-logo-tight.png" alt="" /><h3>Votre avis est important pour moi</h3></div><p class="as">Il m\'aide à vous apporter un meilleur service.</p>'+
+    w.innerHTML='<button type="button" class="ax" aria-label="Fermer">✕</button><div class="ahd"><img src="assets/dbn-logo-tight.png" alt="" /><h3>Votre avis est important pour moi</h3></div><p class="as">Il m\'aide à vous apporter un meilleur service.</p><p class="af">Cette enquête a un seul but : m\'améliorer. N\'hésitez pas à être <b>franc</b>, même si ce n\'est pas positif — vos remarques comptent plus que des compliments.</p>'+
       '<div class="aq">'+rows+'</div><textarea placeholder="Une idée à explorer ? Vous souhaitez que je modifie ou rajoute quelque chose ? (facultatif)"></textarea>'+
       '<div class="ab"><button type="button" class="go" disabled>Envoyer mon avis</button><button type="button" class="later">Plus tard</button><span>Merci — David</span></div>';
     var notes={};var send=w.querySelector('.ab .go');
