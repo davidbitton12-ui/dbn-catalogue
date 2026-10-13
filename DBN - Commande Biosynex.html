@@ -808,6 +808,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     var t=[];
     if(it.pl&&typeof POOLS!=='undefined'&&POOLS[it.pl]&&POOLS[it.pl].min)t.push('−'+Math.round(POOLS[it.pl].pct*100)+' % dès '+POOLS[it.pl].min+' achetées (panachables)');
     if(it.ug)t.push(it.ug[0]+' achetés + '+it.ug[1]+' offert'+(it.ug[1]>1?'s':''));
+    if(it.on)t.push(it.on);
     if(it.gift)t.push('dès '+it.gift[0]+' : '+it.gift[1]+' × '+it.gift[2]+' offert'+(it.gift[1]>1?'s':''));
     if(it.tp)it.tp.forEach(function(s){t.push('dès '+s[0]+' u : '+eur(s[1])+' HT');});
     return t.length?'<span class="ix-off">🎁 '+t.join(' · ')+'</span>':'';
