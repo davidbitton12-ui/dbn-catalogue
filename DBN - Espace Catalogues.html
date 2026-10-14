@@ -45,7 +45,9 @@
   @media(max-width:1300px){nav.links{gap:26px}nav.links a{font-size:16.5px}}
   nav.links a{font-size:18px;font-weight:500;color:var(--slate);transition:color .2s}
   nav.links a:hover,nav.links a.active{color:var(--blue)}
-  nav.links a.active{font-weight:600}
+  nav.links a.active{font-weight:700}
+  nav.links a{position:relative}
+  nav.links a.active::after{content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:4px;border-radius:4px;background:currentColor}
   .btn{white-space:nowrap;flex:none;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:.22s}
   .btn-primary{background:var(--blue);color:#fff}
   .btn-primary:hover{background:#0c0488;transform:translateY(-1px)}

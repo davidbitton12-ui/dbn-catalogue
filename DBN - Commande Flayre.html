@@ -164,6 +164,10 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
 .dbn-links a:hover,.dbn-links a.on{color:#1206A6}
 .dbn-links a.on{font-weight:600}
 .dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-links a{position:relative}
+.dbn-links a.on{color:#1206A6;font-weight:700}
+.dbn-links a.cmd.on{color:#E8442A}
+.dbn-links a.on::after{content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:4px;border-radius:4px;background:currentColor}
 .dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
 .dbn-btn:hover{background:#0c0488;color:#fff}
 .dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}

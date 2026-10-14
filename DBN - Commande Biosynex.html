@@ -346,6 +346,10 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .dbn-links a:hover,.dbn-links a.on{color:#1206A6}
 .dbn-links a.on{font-weight:600}
 .dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-links a{position:relative}
+.dbn-links a.on{color:#1206A6;font-weight:700}
+.dbn-links a.cmd.on{color:#E8442A}
+.dbn-links a.on::after{content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:4px;border-radius:4px;background:currentColor}
 .dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
 .dbn-btn:hover{background:#0c0488;color:#fff}
 .dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}
@@ -509,6 +513,21 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 </style>
 <style id="cgv-css">.ruptTag{display:inline-block;margin-top:4px;font-size:10.5px;font-weight:800;letter-spacing:.03em;color:#fff;background:#E8442A;border-radius:6px;padding:3px 8px}
 .ix-p.rupt .ix-n{color:#8C2A20}
+.ruptAlert{display:inline-flex;align-items:center;gap:6px;margin:5px 0 0 6px;font-family:inherit;font-size:11.5px;font-weight:700;color:#E8442A;background:#FFF1EE;border:1.5px solid #E8442A;border-radius:8px;padding:3px 9px;cursor:pointer;white-space:nowrap}
+.ruptAlert:hover{background:#E8442A;color:#fff}
+.ruptAlert.done{color:#1F7A4D;border-color:#1F7A4D;background:#E6F4EC;cursor:default}
+.raOv{position:fixed;inset:0;background:rgba(28,22,17,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:3000}
+.raOv.on{display:flex}
+.raMd{background:#fff;border-radius:20px;max-width:420px;width:100%;padding:24px 24px 20px;box-shadow:0 40px 80px -30px rgba(0,0,0,.5);font-family:'Hanken Grotesk',system-ui,sans-serif}
+.raMd h3{font-family:'Spectral',Georgia,serif;font-size:21px;font-weight:600;margin:0 0 6px;color:#1C1611}
+.raMd p{font-size:13.5px;color:#6E6557;margin:0 0 14px;line-height:1.5}
+.raMd label{display:block;font-size:12px;font-weight:700;color:#6E6557;margin-bottom:5px}
+.raMd input{width:100%;font-family:inherit;font-size:16px;border:1px solid #EBE0CE;background:#FBF5EB;border-radius:11px;padding:12px}
+.raMd .raErr{color:#E8442A;font-size:12.5px;margin-top:6px;display:none}
+.raMd .raActs{display:flex;gap:10px;margin-top:16px}
+.raMd .raOk{flex:1;font-family:inherit;font-size:14.5px;font-weight:700;color:#fff;background:#E8442A;border:0;border-radius:12px;padding:13px;cursor:pointer}
+.raMd .raOk:disabled{opacity:.6;cursor:wait}
+.raMd .raNo{font-family:inherit;font-size:14px;font-weight:600;color:#6E6557;background:none;border:0;cursor:pointer;padding:13px 6px}
 .rlq{margin:14px 0 4px;background:#FFF3F0;border:2px solid #E8442A;border-radius:14px;padding:13px 14px;font-size:12.5px;line-height:1.5;color:#5A2A22}
 .rlq[hidden]{display:none}
 .rlq .rlqT{display:block;font-size:13.5px;color:#B3301B;margin-bottom:4px}
@@ -530,12 +549,10 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
       <a href="DBN - Espace Catalogues.html">Catalogues</a>
       <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
-      <a href="Direction A - Institutionnel Premium (chaud).html#contact">Contact</a>
     </nav>
     <a class="dbn-btn" href="Direction A - Institutionnel Premium (chaud).html#contact">Nous contacter <span>→</span></a>
   </div>
 </header>
-<div class="dbn-sub"><a href="https://drive.google.com/file/d/12tZKopK9d5wvkbOI6Opdzl0gohtz0O7u/view" target="_blank" rel="noopener">📖 Catalogue Innoxa</a> · <a href="https://drive.google.com/file/d/1-NqzxMp_Z2rvxqx3argcWDkVhzR7Bcqb/view" target="_blank" rel="noopener">📖 Catalogue chambres</a></div>
 
 <div class="wrap head">
   <span class="eyebrow" style="font-size:clamp(17px,2vw,22px);padding:11px 22px;letter-spacing:.1em;gap:10px">Prise de commande · Biosynex</span>
@@ -789,7 +806,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       var r=document.createElement('div');r.className='ix-p';r.id='p'+key(g,i);
       var u=it.u||1;
       var ph=PIMG[it.e];
-      r.innerHTML='<div class="ix-nw">'+(ph?'<button type="button" class="ix-th" data-z="'+ph+'" data-l="'+it.n.replace(/"/g,'')+'" aria-label="Agrandir la photo"><img src="'+ph+'" alt="" loading="lazy" /><i>⌕</i></button>':'')+'<div><span class="ix-n">'+it.n+'</span><span class="ix-e">EAN '+it.e+' · <b>par '+u+'</b>'+'</span>'+(RUPT[it.e]?'<span class="ruptTag">⚠ Petite rupture ! Livré à partir du '+RUPT[it.e]+'</span>':'')+offTag(it)+'</div></div>'+
+      r.innerHTML='<div class="ix-nw">'+(ph?'<button type="button" class="ix-th" data-z="'+ph+'" data-l="'+it.n.replace(/"/g,'')+'" aria-label="Agrandir la photo"><img src="'+ph+'" alt="" loading="lazy" /><i>⌕</i></button>':'')+'<div><span class="ix-n">'+it.n+'</span><span class="ix-e">EAN '+it.e+' · <b>par '+u+'</b>'+'</span>'+(RUPT[it.e]?'<span class="ruptTag">⚠ Petite rupture ! Livré à partir du '+RUPT[it.e]+'</span><button type="button" class="ruptAlert" data-e="'+it.e+'" data-n="'+it.n.replace(/"/g,'')+'" data-d="'+RUPT[it.e]+'">🔔 Prévenez-moi du retour</button>':'')+offTag(it)+'</div></div>'+
         '<div class="ix-pr"><span class="now" id="pr'+key(g,i)+'">'+eur(it.p[0])+'</span><span class="old">'+eur(it.b)+'</span><span class="rmk" id="rm'+key(g,i)+'">'+pct(it.p[0],it.b)+'</span></div>'+
         '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
         '<input type="number" min="0" step="'+u+'" value="0" aria-label="'+it.n+'" />'+
@@ -1069,5 +1086,59 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 </script>
 <style>.send2{margin-top:18px}.send2 .btn{width:100%;justify-content:center;font-size:17px;padding:16px 20px}.send2n{font-size:12.5px;color:var(--slate,#6E6557);text-align:center;margin:8px 0 0}@media print{.send2{display:none}}</style>
 <script src="avis.js"></script>
+
+<div class="raOv" id="raOv">
+  <div class="raMd" role="dialog" aria-modal="true" aria-labelledby="raT">
+    <h3 id="raT">🔔 Petite rupture</h3>
+    <p id="raP"></p>
+    <label for="raE">Votre e-mail</label>
+    <input id="raE" type="email" autocomplete="email" placeholder="contact@pharmacie.fr" />
+    <div class="raErr" id="raErr">Merci d'indiquer une adresse e-mail valide.</div>
+    <div class="raActs">
+      <button type="button" class="raNo" id="raNo">Annuler</button>
+      <button type="button" class="raOk" id="raOk">Me prévenir</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var GW='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var MOIS={janvier:1,'février':2,fevrier:2,mars:3,avril:4,mai:5,juin:6,juillet:7,'août':8,aout:8,septembre:9,octobre:10,novembre:11,'décembre':12,decembre:12};
+  function iso(s){var m=String(s).toLowerCase().match(/(\d{1,2})\s+([a-zéûè]+)(?:\s+(\d{4}))?/);if(!m||!MOIS[m[2]])return '';var y=m[3]?+m[3]:new Date().getFullYear(),mo=MOIS[m[2]],d=+m[1];var t=new Date(y,mo-1,d);if(!m[3]&&t<new Date(new Date().setHours(0,0,0,0)))y++;return y+'-'+('0'+mo).slice(-2)+'-'+('0'+d).slice(-2);}
+  function fv(n){var el=document.querySelector('[name="'+n+'"]');return el&&el.value?el.value.trim():'';}
+  function pre(k){try{var p=JSON.parse(localStorage.getItem('dbn_prefill')||'{}');return p[k]||'';}catch(e){return '';}}
+  function done(){try{return JSON.parse(localStorage.getItem('dbn_alertes')||'[]');}catch(e){return [];}}
+  function mark(){var d=done();document.querySelectorAll('.ruptAlert').forEach(function(b){if(d.indexOf(b.dataset.e)>=0&&!b.classList.contains('done')){b.classList.add('done');b.textContent='✓ Vous serez prévenu';}});}
+  var ov=document.getElementById('raOv'),cur=null;
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.ruptAlert');if(!b||b.classList.contains('done'))return;
+    e.preventDefault();cur=b;
+    document.getElementById('raT').textContent='🔔 '+b.dataset.n;
+    document.getElementById('raP').innerHTML='Petite rupture : retour prévu le <b>'+b.dataset.d+'</b>. Laissez votre e-mail, je vous préviens dès qu\'il est de nouveau disponible, avec un lien pour commander.';
+    document.getElementById('raE').value=fv('email')||pre('email');
+    document.getElementById('raErr').style.display='none';
+    ov.classList.add('on');setTimeout(function(){document.getElementById('raE').focus();},50);
+  });
+  function close(){ov.classList.remove('on');}
+  document.getElementById('raNo').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.getElementById('raOk').addEventListener('click',function(){
+    var em=document.getElementById('raE').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){document.getElementById('raErr').style.display='block';return;}
+    var ok=this;ok.disabled=true;ok.textContent='Envoi…';
+    var data={labo:'Biosynex',produit:cur.dataset.n,ean:cur.dataset.e,retour:cur.dataset.d,retourISO:iso(cur.dataset.d),officine:fv('officine')||pre('officine'),cp:fv('code_postal')||pre('cp'),email:em};
+    function fin(){var d=done();if(d.indexOf(data.ean)<0)d.push(data.ean);try{localStorage.setItem('dbn_alertes',JSON.stringify(d));}catch(e){}mark();ok.disabled=false;ok.textContent='Me prévenir';close();if(window.gtag)gtag('event','alerte_stock',{produit:data.produit});}
+    function secours(){var f=new FormData();f.append('_subject','Alerte retour stock — '+data.produit);Object.keys(data).forEach(function(k){f.append(k,data[k]);});fetch('https://formspree.io/f/mwvjnpak',{method:'POST',body:f,headers:{Accept:'application/json'}}).then(fin,fin);}
+    var cb='dbnRa'+Date.now(),s=document.createElement('script'),to=setTimeout(function(){clean();secours();},60000);
+    function clean(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(r){clean();(r&&r.ok)?fin():secours();};
+    s.onerror=function(){clean();secours();};
+    s.src=GW+'?action=alerte&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  });
+  mark();new MutationObserver(mark).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
