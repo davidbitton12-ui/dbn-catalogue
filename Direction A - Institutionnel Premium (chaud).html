@@ -959,7 +959,7 @@
   @media(max-width:860px){.band-argan .argan-duo img{min-height:0;height:200px}}
 
   /* BONJOUR DRINK — Équilibre hormonal */
-  .band-bjeq{order:-98;grid-template-columns:400px 1fr 236px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FFF4F6,#FCE3EA 46%,#F7D2DD 100%);border:2px solid #C2185B}
+  .band-bjeq{order:-98;grid-template-columns:380px 1fr 280px;min-height:190px;background:radial-gradient(120% 130% at 78% -12%,#FFF4F6,#FCE3EA 46%,#F7D2DD 100%);border:2px solid #C2185B}
   .band-bjeq .bjeq-duo{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:12px 10px 0;position:relative;background:radial-gradient(120% 120% at 50% 20%,#fff,#FBE3EA 75%);align-items:end}
   .band-bjeq .bjeq-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
   .band-bjeq .bjeq-fig img{height:150px;width:auto;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(140,20,70,.28))}
@@ -970,13 +970,18 @@
   .band-bjeq h3 em{color:#C2185B}
   .band-bjeq .bsub{color:#5E3A47}
   .band-bjeq .b-chip{background:#fff;color:#8E1446;border-color:#F0B8CB}
+  .band-bjeq .bjeq-pre{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;background:#FF000A;color:#fff;border-radius:12px;padding:9px 16px;box-shadow:0 10px 22px -10px rgba(255,0,10,.7);animation:bjeqPre 2.2s ease-in-out infinite;width:max-content;max-width:100%}
+  .band-bjeq .bjeq-pre span{font-size:13px;font-weight:900;letter-spacing:.1em}
+  .band-bjeq .bjeq-pre b{font-family:var(--serif);font-size:21px;font-weight:700}
+  @keyframes bjeqPre{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+  @media(prefers-reduced-motion:reduce){.band-bjeq .bjeq-pre{animation:none}}
   .band-bjeq .bjeq-chal{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#C2185B;color:#fff;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700}
   .band-bjeq .bjeq-chal b{font-family:var(--serif);font-size:18px}
   .band-bjeq .b-cta{background:#FBE3EA;border-left:1px solid #F0B8CB}
   .band-bjeq .b-price{color:#8E1446}
   .band-bjeq .b-btn{background:#C2185B;color:#fff}
   .band-bjeq .b-btn:hover{background:#9A1248}
-  .band-bjeq .bjeq-btn{font-size:17px;padding:16px 22px;width:100%;justify-content:center;border-radius:14px;box-shadow:0 12px 24px -10px rgba(194,24,91,.7)}
+  .band-bjeq .bjeq-btn{font-size:19px;padding:17px 14px;white-space:nowrap;width:100%;justify-content:center;border-radius:14px;box-shadow:0 12px 24px -10px rgba(194,24,91,.7)}
   .band-bjeq .b-copy{position:relative}
   .band-bjeq .bjeq-30{position:absolute;top:14px;right:16px;width:84px;height:84px;border-radius:50%;background:#C2185B;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;transform:rotate(-8deg);box-shadow:0 0 0 4px #FFF4F6,0 0 0 6px #C2185B,0 10px 20px -8px rgba(194,24,91,.6)}
   .band-bjeq .bjeq-30 b{font-family:var(--serif);font-size:32px;letter-spacing:0}
@@ -988,7 +993,7 @@
   .band-bjeq .bjeq-duo{padding-top:46px}
   @media(max-width:860px){.band-bjeq .bjeq-30{width:66px;height:66px}.band-bjeq .bjeq-30 b{font-size:24px}.band-bjeq .b-copy h3,.band-bjeq .b-copy .bsub{margin-right:76px}}
   .band-bjeq .b-cat{color:#8E1446}
-  @media(max-width:1100px) and (min-width:861px){.band-bjeq{grid-template-columns:300px 1fr 200px}.band-bjeq .bjeq-fig img{height:124px}}
+  @media(max-width:1100px) and (min-width:861px){.band-bjeq{grid-template-columns:280px 1fr 240px}.band-bjeq .bjeq-btn{font-size:17px}.band-bjeq .bjeq-fig img{height:124px}}
   @media(max-width:860px){.band-bjeq .bjeq-fig img{height:130px}}
 
   /* SISTERS TINA */
@@ -1584,11 +1589,12 @@
           <span class="b-chip">PPC 34,90 € TTC</span>
           <span class="b-chip">Franco 245 € HT</span>
         </div>
+        <div class="bjeq-pre"><span>🚚 PRÉCOMMANDE</span><b>Livraison le 15 décembre 2026</b></div>
         <div class="bjeq-chal">🏆 Challenge 90 jours : jusqu'à <b>2,50 €</b> par sachet vendu</div>
       </div>
       <div class="b-cta">
         <div class="b-price">19,40 €<small>HT / u · par 8</small></div>
-        <a class="b-btn bjeq-btn" href="DBN - Commande Bonjour Drink.html">Commander ici <span class="arr">→</span></a>
+        <a class="b-btn bjeq-btn" href="DBN - Commande Bonjour Drink.html">Précommander ici <span class="arr">→</span></a>
       </div>
     </div>
 

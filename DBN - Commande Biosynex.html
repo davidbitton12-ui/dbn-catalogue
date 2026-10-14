@@ -185,6 +185,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .bc-note.ok{background:#FCECE8;border-color:#B7DFCE;color:#1F5957}
 .bc-note.ok b{color:#14453F}
 .bc-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 26px;background:var(--sand);border-top:1px solid var(--line)}
+.regl{margin-top:10px;font-size:12.5px;color:var(--slate);background:var(--sand);border-radius:10px;padding:8px 11px;line-height:1.4}
+.regl b{color:var(--ink);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.08em;margin-right:4px}
 .bc-terms{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
 .bc-terms b{color:var(--teal-d);font-weight:800;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em;display:block}
 .bc-contact{font-size:13.5px;color:var(--slate)}
@@ -579,6 +581,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
         <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 20 %</div>
         <div class="minNote" id="minNote">Commande minimum par famille : voir les seuils.</div>
+        <div class="regl"><b>Règlement</b> 30 jours chèque ou virement · 60 jours LCR</div>
         <div class="fbar" id="fbar">
           <div class="ft" id="fTxt">Franco de port à <b>180 € HT</b>.</div>
           <div class="track"><div class="fill" id="fFill"></div></div>
@@ -630,6 +633,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         <div class="bc-terms">
           <span><b>Franco</b> 180 € HT</span>
           <span><b>Port</b> 4,90 € (100–179,90 €) · 9,90 € (&lt; 100 €)</span>
+          <span><b>Règlement</b> 30 jours chèque ou virement · 60 jours LCR</span>
         </div>
       </div>
       <div class="bc-foot">
@@ -940,7 +944,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       'Contact : '+v('contact'),'Téléphone : '+v('telephone'),'E-mail : '+v('email'),'',
       '--- COMMANDE ---','',rc||'(aucun produit)','',
       'Total : '+c.total+' unités','Sous-total HT : '+eur(c.ht),'Frais de port : '+(c.port?eur(c.port)+' HT':'offerts (franco atteint)'),
-      'TOTAL HT : '+eur(tot),'TVA 20 % : '+eur(tot*0.20),'TOTAL TTC : '+eur(tot*TVA)];
+      'TOTAL HT : '+eur(tot),'TVA 20 % : '+eur(tot*0.20),'TOTAL TTC : '+eur(tot*TVA),'','Règlement : 30 jours chèque ou virement · 60 jours LCR'];
     var rr=(c.lines||[]).filter(function(l){return RUPT[l.it.e];});
     if(rr.length){L.push('','--- PRODUIT EN RUPTURE ---');rr.forEach(function(l){L.push(l.it.n+' · EAN '+l.it.e+' : '+l.q+' u (retour le '+RUPT[l.it.e]+')');});L.push('Choix de la pharmacie : '+rlqVal());}
     var m=v('message');if(m){L.push('','--- MESSAGE ---',m);}
@@ -953,7 +957,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       contact:v('contact'),tel:v('telephone'),email:v('email'),message:(function(){var rr=(c.lines||[]).filter(function(l){return RUPT[l.it.e];});var m=v('message');if(rr.length){m=(m?m+'\n\n':'')+'RUPTURE : '+rr.map(function(l){return l.it.n+' ('+l.q+' u)';}).join(', ')+' → '+rlqVal();}return m;})(),ref:(window.DBN_REF||''),
       lignes:c.lines.map(function(l){return {modele:l.it.n,coloris:'',correction:eur(l.pu)+' HT ('+l.rem+')',ean:l.it.e,qte:l.q};}),
       total:c.total,prixUnitaire:'selon famille',totalHT:eur(tot),tva:eur(tot*0.20),totalTTC:eur(tot*TVA),
-      franco:(c.ht>=FRANCO?'atteint (180 \u20ac HT)':'non atteint \u2014 port '+eur(c.port)+' HT')};
+      franco:(c.ht>=FRANCO?'atteint (180 \u20ac HT)':'non atteint \u2014 port '+eur(c.port)+' HT')+' \u00b7 R\u00e8glement : 30 jours ch\u00e8que ou virement / 60 jours LCR'};
   }
   function gwSend(data,done,fail){
     var cb='dbnCb'+Date.now(),s=document.createElement('script');
