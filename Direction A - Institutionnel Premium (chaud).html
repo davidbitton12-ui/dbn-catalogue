@@ -972,6 +972,41 @@
   .band-strep{order:-200;grid-template-columns:auto minmax(0,1fr);min-height:0;background:radial-gradient(120% 140% at 85% -15%,#F1F7FD,#E1EDF9 46%,#D2E3F5 100%);border:2px solid #1D63B0}
   .band-strep .st-img{order:3;position:relative;background:#fff;padding:12px 16px 8px;display:flex;align-items:center;justify-content:center;border-left:1px solid #BCD3EC}
   .band-strep .st-img img{width:100%;max-width:470px;height:auto;display:block;margin:0 auto}
+  .band-strep.band-hyd{order:-199;background:radial-gradient(120% 140% at 85% -15%,#FFF8EE,#FFE9CF 46%,#FFD9A8 100%);border-color:#E8780F}
+  .band-strep.band-hyd .st-badge{background:#E8780F;border-color:#E8780F}
+  .band-strep.band-hyd .b-copy h3{color:#9A4A06}
+  .band-strep.band-hyd h3 em{color:#E8780F}
+  .band-strep.band-hyd .st-btn{background:#E8780F!important}
+  .band-strep.band-hyd .st-btn:hover{background:#B85C08!important}
+  .band-strep.band-hyd .st-badge{background:#E8780F!important;border-color:#E8780F!important}
+  .band-strep.band-hyd .st-sub{color:#8A5A2E}
+  .band-strep.band-hyd .st-pts span{border-color:#F6C990}
+  .band-strep.band-hyd .st-pts b{color:#9A4A06}
+  .band-strep.band-hyd .st-fr b{color:#9A4A06}
+  .band-strep.band-hyd .st-btn{background:#E8780F}
+  .band-strep.band-hyd .st-btn:hover{background:#B85C08}
+  .band-strep.band-hyd .st-img{border-left-color:#F6C990}
+  .hy-pre{margin-top:9px;font-size:13px;font-weight:700;color:#fff;background:#E8780F;border-radius:10px;padding:7px 11px;display:inline-block}
+  .hy-pre b{font-weight:900}
+  .hy-packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+  .hy-packs span{min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;background:#fff;border:1px solid #F6C990;border-radius:12px;padding:7px 10px;font-size:11px;color:var(--slate);line-height:1.25}
+  .hy-packs span.top{border:2px solid #E8780F}
+  .hy-packs em{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#E8780F}
+  .hy-packs b{font-family:var(--serif);font-size:17px;font-weight:700;color:#9A4A06;margin-top:2px}
+  .hy-packs i{font-style:normal;font-weight:700;color:#9A4A06;margin-top:3px}
+  .hy-price{margin-top:9px;font-size:13px;color:#8A5A2E}
+  .hy-price b{color:#9A4A06;font-weight:800}
+  @media(max-width:600px){.hy-packs{grid-template-columns:1fr}}
+  .band-strep.band-hyd .st-img{background:#CFE3F1;padding:0;overflow:hidden}
+  .band-strep.band-hyd .st-img img{max-width:520px;width:100%;height:100%;object-fit:cover}
+  .band-strep.band-hyd{position:relative}.band-strep.band-hyd .st-new{top:10px;left:12px;bottom:auto;font-size:15px;padding:6px 14px}
+  .band-strep.band-hyd .b-copy{padding-top:16px}
+  .band-strep.band-hyd h3.hy-arr{text-align:center;font-size:clamp(34px,4.4vw,56px);line-height:1.04;margin:4px 0 8px}
+  .band-hyd .hy-top{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+  .band-hyd .hy-top .st-new{position:static;transform:none;left:auto;top:auto}
+  .band-hyd .hy-top .st-badge{margin:0}
+  
+  @media(max-width:860px){.band-strep.band-hyd .st-new{top:10px;left:10px}.band-strep.band-hyd .st-img{padding-top:0}}
   .band-strep .b-copy{justify-content:flex-start;padding-top:14px;padding-bottom:14px}
   .band-strep .st-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
   .band-strep .st-cta .st-btn{padding:12px 22px;font-size:17px}
@@ -1463,6 +1498,28 @@
         <div class="st-cta">
           <a class="b-btn st-btn" href="DBN - Commande Biosynex.html">Commander ici <span class="arr">→</span></a>
           <span class="st-fr">Franco <b>180 € HT</b> commun Biosynex</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HYDRATIS — NOUVEAUTÉ SANS SUCRES (2e position) -->
+    <div class="band band-strep band-hyd" id="hydratis-ss">
+      <div class="b-img st-img">
+        <img src="assets/hydratis_sanssucres.png" alt="Hydratis sans sucres — Fruits des bois, Pêche, Citron &amp; fleur de sureau" />
+      </div>
+      <div class="b-copy">
+        <div class="hy-top"><span class="b-badge st-badge"><span class="dot"></span> Hydratis · N°1 de l'hydratation</span><span class="st-new">★ NOUVEAUTÉ ★</span></div>
+        <h3 class="hy-arr">Hydratis <em>sans sucres</em> arrive…</h3>
+        <p class="st-sub">Les pastilles d'hydratation effervescentes, désormais sans sucres · 3 saveurs · arôme naturel</p>
+        <div class="hy-pre">📦 Précommande · livraison du <b>5 au 15 janvier 2027</b> · offre valable jusqu'au 31/12/2026</div>
+        <div class="hy-packs">
+          <span><em>Découverte</em><b>48 + 4</b>offerts<i>Présentoir comptoir</i></span>
+          <span><em>Essentielle</em><b>72 + 16</b>offerts<i>Comptoir + display sol</i></span>
+          <span class="top"><em>Premium</em><b>120 + 32</b>offerts<i>Comptoir + display sol</i></span>
+        </div>
+        <div class="hy-price"><b>5,40 € HT</b> l'unité (−40 %) · PVC 9,90 € TTC</div>
+        <div class="st-cta">
+          <a class="b-btn st-btn" href="DBN - Commande Hydratis.html">Commander ici <span class="arr">→</span></a>
         </div>
       </div>
     </div>
