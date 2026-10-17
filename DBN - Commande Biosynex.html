@@ -972,7 +972,8 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     var tot=c.ht+c.port;
     return {labo:'Biosynex',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),
       contact:v('contact'),tel:v('telephone'),email:v('email'),message:(function(){var rr=(c.lines||[]).filter(function(l){return RUPT[l.it.e];});var m=v('message');if(rr.length){m=(m?m+'\n\n':'')+'RUPTURE : '+rr.map(function(l){return l.it.n+' ('+l.q+' u)';}).join(', ')+' → '+rlqVal();}return m;})(),ref:(window.DBN_REF||''),
-      lignes:c.lines.map(function(l){return {modele:l.it.n,coloris:'',correction:eur(l.pu)+' HT ('+l.rem+')',ean:l.it.e,qte:l.q};}),
+      lignes:c.lines.map(function(l){return l.pu===0?{modele:l.it.n.replace(' — offert',''),coloris:'',correction:'OFFERT',ean:l.it.e,qte:l.q}:{modele:l.it.n,coloris:'',correction:eur(l.pu)+' HT ('+l.rem+')',ean:l.it.e,qte:l.q};}),
+      conditions:'<b>Reglement</b> 30 jours cheque ou virement / 60 jours LCR &nbsp;&middot;&nbsp; <b>Franco</b> 180 EUR HT',
       total:c.total,prixUnitaire:'selon famille',totalHT:eur(tot),tva:eur(tot*0.20),totalTTC:eur(tot*TVA),
       franco:(c.ht>=FRANCO?'atteint (180 \u20ac HT)':'non atteint \u2014 port '+eur(c.port)+' HT')+' \u00b7 R\u00e8glement : 30 jours ch\u00e8que ou virement / 60 jours LCR'};
   }
@@ -1086,6 +1087,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 </script>
 <style>.send2{margin-top:18px}.send2 .btn{width:100%;justify-content:center;font-size:17px;padding:16px 20px}.send2n{font-size:12.5px;color:var(--slate,#6E6557);text-align:center;margin:8px 0 0}@media print{.send2{display:none}}</style>
 <script src="avis.js"></script>
+<script src="panier.js"></script>
 
 <div class="raOv" id="raOv">
   <div class="raMd" role="dialog" aria-modal="true" aria-labelledby="raT">

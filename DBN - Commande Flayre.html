@@ -371,7 +371,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     return {labo:'Flayre',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),ref:(window.DBN_REF||''),
       message:(s.c.w?'Pack Essentiel −20 %. ':'')+(s.frais?'Frais logistiques 10 € HT. ':'')+v('message'),
       lignes:s.c.lines.map(function(x){return {modele:x.r.n,coloris:x.l,correction:eur(x.u)+' HT',ean:x.r.e,qte:x.q};}),
-      total:s.c.total,prixUnitaire:'selon référence',totalHT:eur(s.tot),tva:eur(s.tot*0.2),totalTTC:eur(s.tot*TVA),
+      total:s.c.total,prixUnitaire:'selon référence',totalHT:eur(s.tot),tva:eur(s.tot*0.2),conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 130 EUR HT',totalTTC:eur(s.tot*TVA),
       franco:(s.c.ht>=FRANCO?'atteint (130 \u20ac HT)':'non atteint \u2014 10 \u20ac HT de frais logistiques')};
   }
   function gwSend(data,done,fail){
@@ -435,5 +435,6 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
 </script>
 <style>.send2{margin-top:18px}.send2 .btn{width:100%;justify-content:center;font-size:17px;padding:16px 20px}.send2n{font-size:12.5px;color:var(--slate,#6E6557);text-align:center;margin:8px 0 0}@media print{.send2{display:none}}</style>
 <script src="avis.js"></script>
+<script src="panier.js"></script>
 </body>
 </html>

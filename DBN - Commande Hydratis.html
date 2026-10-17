@@ -411,7 +411,7 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
     var lignes=c.lines.map(function(x){return {modele:'Hydratis '+x.p.n,coloris:(x.p.s||'20 pastilles'),correction:eur(pu(x.p))+' HT',ean:x.p.e,qte:x.q};});
     PRES.forEach(function(r){if(r.q)lignes.push({modele:r.n,coloris:'Offert',correction:'0,00 € HT',ean:'',qte:1});});
     return {labo:'Hydratis',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),ref:(window.DBN_REF||''),
-      message:v('message'),lignes:lignes,total:c.total,prixUnitaire:'5,40 € HT (tubes) · 9,06 € HT (gourdes)'+((qty.trousse||0)?' · '+eur(trP(qty.trousse))+' HT (trousse Cherry, '+trR(qty.trousse)+')':''),totalHT:eur(c.ht),tva:eur(c.tva),tvaTaux:c.tx,totalTTC:eur(c.ttc),
+      message:v('message'),lignes:lignes,total:c.total,prixUnitaire:'5,40 € HT (tubes) · 9,06 € HT (gourdes)'+((qty.trousse||0)?' · '+eur(trP(qty.trousse))+' HT (trousse Cherry, '+trR(qty.trousse)+')':''),totalHT:eur(c.ht),tva:eur(c.tva),tvaTaux:c.tx,conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 216 EUR HT',totalTTC:eur(c.ttc),
       franco:fGroups().map(function(g){return g.n+' : '+(g.ok?'atteint':'non atteint \u2014 '+g.miss);}).join(' \u00b7 ')};
   }
   function gwSend(data,done,fail){
@@ -459,5 +459,6 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
 })();
 </script>
 <script src="avis.js"></script>
+<script src="panier.js"></script>
 </body>
 </html>
