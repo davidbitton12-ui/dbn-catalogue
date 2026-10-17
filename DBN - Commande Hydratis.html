@@ -41,7 +41,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .pr{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:10px;background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:4px 10px;transition:border-color .2s}
 .pr.has{background:#E6F6F8;border-color:var(--hy);box-shadow:0 0 0 1px var(--hy)}
 .pr .th{width:44px;height:74px;border:none;background:none;padding:0;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
-.pr .th img{max-width:100%;max-height:100%;object-fit:contain}
+.pr .th{overflow:hidden}.th img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
 .pr .pn{font-size:14px;font-weight:700;line-height:1.2}
 .pr .pm{font-size:11px;color:var(--slate);margin-top:1px;line-height:1.3}
 .pr .pp{font-size:12.5px;margin-top:2px}
@@ -380,6 +380,7 @@ aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);o
 
   var FREE={ss_peche:0,ss_fdb:0,ss_citron:0};
   function freeSum(){return FREE.ss_peche+FREE.ss_fdb+FREE.ss_citron;}
+  window.DBN_PANIER_EXTRA={get:function(){return {free:FREE};},set:function(o){if(o&&o.free){for(var k in FREE){FREE[k]=+o.free[k]||0;}render();}}};
   function freeLines(){return P.filter(function(p){return p.ss&&FREE[p.k];}).map(function(p){return {p:p,q:FREE[p.k]};});}
   document.addEventListener('click',function(e){var b=e.target.closest('[data-fk]');if(!b)return;var c=calc();if(!c.tier)return;var k=b.dataset.fk,s=+b.dataset.fs;
     if(c.tier.f===4){if(s>0){FREE={ss_peche:0,ss_fdb:0,ss_citron:0};FREE[k]=4;}else FREE[k]=0;}
