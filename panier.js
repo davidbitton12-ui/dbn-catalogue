@@ -40,7 +40,7 @@
     var file=decodeURIComponent(location.pathname.split('/').pop()||'');
     var labo=(file.match(/Commande (.+)\.html/)||[])[1]||document.title;
     var d={labo:labo,officine:fv(['officine']),cp:fv(['code_postal','cp']),ville:fv(['ville']),contact:fv(['contact','nom']),tel:fv(['telephone','tel']),email:email,
-      unites:n,lignes:lignes,lien:location.origin+location.pathname,ref:fv(['ref'])};
+      unites:n,lignes:lignes,total:((document.getElementById('totHT')||{}).textContent||'').trim(),lien:location.origin+location.pathname,ref:fv(['ref'])};
     try{var cb='pnrCb'+Date.now();window[cb]=function(){try{delete window[cb];}catch(e){}};
       var s=document.createElement('script');s.src=GW+'?action=panier&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(d));s.onerror=function(){s.remove();};document.body.appendChild(s);}catch(e){}
     if(window.gtag)gtag('event','panier_attente',{labo:labo,unites:n});

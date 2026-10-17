@@ -62,4 +62,21 @@
   if (ref) {
     gtag('event', 'visite_pharmacie', { pharmacie: ref, canal: medium || source || '(direct)' });
   }
+
+  /* --- Site sécurisé (Cloudflare) : la pharmacie est connue grâce à sa clé d'accès --- */
+  var host = location.hostname;
+  if (host.indexOf('github.io') === -1 && location.protocol !== 'file:') {
+    if (host.indexOf('dbn-test') === 0) gtag('set', 'user_properties', { site: 'test' });
+    fetch('/api/me', { credentials: 'same-origin', cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (me) {
+        if (!me || !me.ok || !me.ref) return;
+        gtag('set', 'user_properties', { pharmacie: me.ref });
+        var seen = ''; try { seen = sessionStorage.getItem('dbn_me') || ''; } catch (e) {}
+        if (seen !== me.ref) {
+          gtag('event', 'visite_pharmacie', { pharmacie: me.ref, canal: 'acces' });
+          try { sessionStorage.setItem('dbn_me', me.ref); } catch (e) {}
+        }
+      }).catch(function () {});
+  }
 })();

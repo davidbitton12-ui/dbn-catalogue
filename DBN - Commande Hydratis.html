@@ -110,7 +110,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--hy);background:#fff}
 .field textarea{min-height:70px;resize:vertical}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow-y:auto}
+aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);overflow-y:auto}
 .rh,.rl{display:grid;grid-template-columns:minmax(0,1fr) 34px 76px;gap:6px;align-items:start}
 .rh{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--line);padding-bottom:5px}
 .rh span:not(:first-child),.rl > span:not(:first-child){text-align:right}
@@ -166,14 +166,57 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
 @media(max-width:880px){.grid{grid-template-columns:minmax(0,1fr)}aside{position:static;max-height:none}}
 @media(max-width:600px){.wrap{padding:0 16px}.two,.pres{grid-template-columns:1fr}.prods{grid-template-columns:1fr}.top-in .cat-pdf{margin-left:0}.field input,.field textarea,.qty input{font-size:16px}}
 </style>
+<style id="dbn-hdr-css">
+.dbn-hdr{position:sticky;top:0;z-index:60;background:rgba(251,245,235,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #EBE0CE;font-family:'Hanken Grotesk',system-ui,sans-serif}
+.dbn-hdr-in{max-width:1200px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.dbn-brand{display:flex;align-items:center;gap:16px;text-decoration:none;flex:none}
+.dbn-brand img{height:68px;width:auto;display:block}
+.dbn-wm{display:flex;flex-direction:column;line-height:1}
+.dbn-wm b{font-size:22px;color:#1206A6;font-weight:700}
+.dbn-wm span{font-size:10.5px;letter-spacing:.22em;color:#6E6557;font-weight:600;margin-top:5px;text-transform:uppercase}
+.dbn-links{display:flex;align-items:center;gap:40px}
+.dbn-links a{font-size:18px;font-weight:500;color:#6E6557;text-decoration:none;white-space:nowrap;transition:color .2s}
+.dbn-links a:hover,.dbn-links a.on{color:#1206A6}
+.dbn-links a.on{font-weight:600}
+.dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-links a{position:relative}
+.dbn-links a.on{color:#1206A6;font-weight:700}
+.dbn-links a.cmd.on{color:#E8442A}
+.dbn-links a.on::after{content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:4px;border-radius:4px;background:currentColor}
+.dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
+.dbn-btn:hover{background:#0c0488;color:#fff}
+.dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}
+.dbn-sub a{font-size:14px;font-weight:700;color:#fff;background:var(--teal,#1206A6);border-radius:11px;padding:10px 16px;white-space:nowrap;text-decoration:none}
+.dbn-sub a:hover{color:#fff;filter:brightness(.92)}
+@media(max-width:1000px){.dbn-links{gap:24px}.dbn-links a{font-size:16px}}
+@media(max-width:820px){
+ .dbn-hdr-in{height:auto;flex-wrap:wrap;padding:10px 18px;gap:8px 12px}
+ .dbn-brand img{height:52px}.dbn-wm b{font-size:17px}.dbn-wm span{font-size:9px;letter-spacing:.16em}
+ .dbn-btn{font-size:13px;padding:10px 16px}
+ .dbn-links{order:3;width:100%;justify-content:space-between;gap:10px;border-top:1px solid #EBE0CE;padding-top:8px}
+ .dbn-links a{font-size:15px}
+ .dbn-sub{padding:12px 18px 0}
+}
+@media(max-width:420px){.dbn-wm span{display:none}.dbn-brand img{height:44px}.dbn-links a{font-size:14px}}
+@media print{.dbn-hdr,.dbn-sub{display:none!important}}
+
+.pkPres{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}.pkPres .buPres{margin:0}.pkPres .buPres img{max-height:96px;width:auto}
+.dbn-cat{background:#1FA8BE}.dbn-cat:hover{background:#178a9c}
+</style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap top-in">
-    <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
-    <span class="wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
-    <a class="cat-pdf" href="https://drive.google.com/file/d/1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m/view" target="_blank" rel="noopener">Voir le catalogue →</a>
-    <a class="back" href="DBN - Commander en ligne.html">← Bons de commande</a>
+<header class="dbn-hdr">
+  <div class="dbn-hdr-in">
+    <a class="dbn-brand" href="Direction A - Institutionnel Premium (chaud).html">
+      <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+      <span class="dbn-wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    </a>
+    <nav class="dbn-links">
+      <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
+      <a href="DBN - Espace Catalogues.html">Catalogues</a>
+      <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
+    </nav>
+    <a class="dbn-btn dbn-cat" href="https://drive.google.com/file/d/1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m/view" target="_blank" rel="noopener">Voir le catalogue <span>→</span></a>
   </div>
 </header>
 
