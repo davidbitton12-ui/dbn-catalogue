@@ -63,14 +63,14 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .ssT i{display:block;font-style:normal;color:#E8442A;font-size:12px}
 .ssOff small{display:block;color:var(--slate)}
 .ssS{margin-top:6px;font-size:12.5px}.ssS.ok{color:#14453F}
-.ssP{display:none;margin-top:10px;background:#fff;border-radius:12px;padding:10px 12px;border:1px solid #F3C9BC}
+.ssP{display:none;align-self:stretch;background:#FFF3DC;border-radius:13px;padding:9px 12px;border:2px dashed #E39A1F}
 .ssP.on{display:block}
-.ssP>b{display:block;font-size:13px;margin-bottom:6px}.ssP>b em{font-style:normal;color:#E8442A}
-.ssP .fr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px dashed var(--line)}
+.ssP>b{display:block;font-size:12.5px;margin-bottom:3px;line-height:1.3}.ssP>b em{font-style:normal;color:#E8442A}
+.ssP .fr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-top:1px dashed var(--line)}
 .ssP .fr:first-of-type{border-top:0}
-.ssP .fr span{font-size:13px;font-weight:600;min-width:0}
+.ssP .fr span{font-size:12.5px;font-weight:600;min-width:0}
 .ssP .fq{display:flex;align-items:center;gap:6px;flex:none}
-.ssP .fq button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--ivory);font-weight:800;font-size:16px;cursor:pointer}
+.ssP .fq button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--ivory);font-weight:800;font-size:16px;cursor:pointer}
 .ssP .fq button:disabled{opacity:.35;cursor:not-allowed}
 .ssP .fq output{min-width:28px;text-align:center;font-weight:800;color:#E8442A}
 .ssP .fh{font-size:11.5px;color:var(--slate);margin-top:6px}.ssP .fh.ok{color:#14453F;font-weight:700}.ssP .fh.ko{color:#E8442A;font-weight:700}
@@ -312,7 +312,7 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
     if(p.tr){}else
     if(!p.g&&!p.ss&&!tHead){tHead=true;var th=document.createElement('div');th.className='gh';th.innerHTML='<b>Tubes de 20 pastilles</b><span>5,40 € HT · box de 8 · TVA 5,5 %</span>';box.appendChild(th);}
     if(p.ss&&!sHead){sHead=true;var sh=document.createElement('div');sh.className='gh ssh';sh.innerHTML='<b>Nouveau · Sans sucres</b><span>5,40 € HT · box de 8 · TVA 5,5 %</span>';box.appendChild(sh);
-      var so=document.createElement('div');so.className='ssOff';so.innerHTML='<div class="ssPre">🚚 PRÉCOMMANDE · livraison du 5 au 15 janvier 2027</div><b>🎁 Offre de lancement jusqu\'au 31/12/2026</b><div class="ssT"><span><em>Découverte</em>48 u <i>+4 offertes</i></span><span><em>Essentielle</em>72 u <i>+2 × 8 offertes</i></span><span><em>Premium</em>120 u <i>+4 × 8 offertes</i></span></div><small>Vous choisissez la saveur de vos unités offertes ci-dessous · présentoir comptoir dès 48 u, display sol dès 72 u (tous tubes) · 🚚 livraison du 5 au 15 janvier 2027</small><div class="ssS" id="ssState"></div><div class="ssP" id="ssPick"></div>';box.appendChild(so);}
+      var so=document.createElement('div');so.className='ssOff';so.innerHTML='<div class="ssPre">🚚 PRÉCOMMANDE · livraison du 5 au 15 janvier 2027</div><b>🎁 Offre de lancement jusqu\'au 31/12/2026</b><div class="ssT"><span><em>Découverte</em>48 u <i>+4 offertes</i></span><span><em>Essentielle</em>72 u <i>+2 × 8 offertes</i></span><span><em>Premium</em>120 u <i>+4 × 8 offertes</i></span></div><small>Vous choisissez la saveur de vos unités offertes ci-dessous · présentoir comptoir dès 48 u, display sol dès 72 u (tous tubes) · 🚚 livraison du 5 au 15 janvier 2027</small><div class="ssS" id="ssState"></div>';box.appendChild(so);}
     if(p.g&&!gHead){gHead=true;var hh=document.createElement('div');hh.className='gh';hh.innerHTML='<b>Gourdes isothermes</b><span>9,06 € HT · par 1 · TVA 20 %</span>';box.appendChild(hh);}
     var d=document.createElement('div');d.className='pr'+(p.k==='trousse'?' trow':'')+(p.ss?' ssr':'');
     d.innerHTML='<button type="button" class="th" aria-label="Agrandir"><img src="'+img(p)+'" alt="Hydratis '+p.n+'" /></button>'+
@@ -323,6 +323,7 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
     inp.addEventListener('change',function(){var x=parseInt(inp.value,10)||0;inp.value=Math.max(0,Math.ceil(x/uu(p))*uu(p));set(p,inp,d);});
     d.querySelector('.th').addEventListener('click',function(){zoom(img(p),'Hydratis '+p.n+' · '+(p.s||'20 pastilles'));});
     box.appendChild(d);
+    if(p.ss&&!(P[P.indexOf(p)+1]||{}).ss){var sp=document.createElement('div');sp.className='ssP';sp.id='ssPick';box.appendChild(sp);}
   });
   function set(p,inp,d){var x=parseInt(inp.value,10)||0;qty[p.k]=x;d.classList.toggle('has',x>0);if(p.tr){d.querySelector('.pu').textContent=(x>0?eur(pu(p)):'dès '+eur(8.74))+' HT';d.querySelector('.rm').textContent=x>0?trR(x):'jusqu\'à −45 %';}render();}
 
@@ -409,9 +410,10 @@ aside{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);ov
 
   function payload(c){
     var lignes=c.lines.map(function(x){return {modele:'Hydratis '+x.p.n,coloris:(x.p.s||'20 pastilles'),correction:eur(pu(x.p))+' HT',ean:x.p.e,qte:x.q};});
-    PRES.forEach(function(r){if(r.q)lignes.push({modele:r.n,coloris:'Offert',correction:'0,00 € HT',ean:'',qte:1});});
+    (c.tier?freeLines():[]).forEach(function(x){lignes.push({modele:'Hydratis '+x.p.n+' · OFFERT',coloris:'Offre de lancement '+c.tier.n,correction:'Offert',ean:x.p.e,qte:x.q});});
+    PRES.forEach(function(r){if(r.q)lignes.push({modele:r.n,coloris:'Offert',correction:'Offert',ean:'',qte:1});});
     return {labo:'Hydratis',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),ref:(window.DBN_REF||''),
-      message:v('message'),lignes:lignes,total:c.total,prixUnitaire:'5,40 € HT (tubes) · 9,06 € HT (gourdes)'+((qty.trousse||0)?' · '+eur(trP(qty.trousse))+' HT (trousse Cherry, '+trR(qty.trousse)+')':''),totalHT:eur(c.ht),tva:eur(c.tva),tvaTaux:c.tx,conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 216 EUR HT',totalTTC:eur(c.ttc),
+      message:v('message'),lignes:lignes,total:c.total+(c.tier?c.tier.f:0),prixUnitaire:'5,40 € HT (tubes) · 9,06 € HT (gourdes)'+((qty.trousse||0)?' · '+eur(trP(qty.trousse))+' HT (trousse Cherry, '+trR(qty.trousse)+')':''),totalHT:eur(c.ht),tva:eur(c.tva),tvaTaux:c.tx,conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 216 EUR HT',totalTTC:eur(c.ttc),
       franco:fGroups().map(function(g){return g.n+' : '+(g.ok?'atteint':'non atteint \u2014 '+g.miss);}).join(' \u00b7 ')};
   }
   function gwSend(data,done,fail){
