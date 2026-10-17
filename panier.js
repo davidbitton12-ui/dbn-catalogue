@@ -60,5 +60,5 @@
   var done=document.getElementById('doneBox');
   if(done&&window.MutationObserver)new MutationObserver(function(){if(done.classList.contains('on')){try{localStorage.removeItem(KEY);}catch(e){}}}).observe(done,{attributes:true,attributeFilter:['class']});
   var tries=0;function boot(){if(!inputs().length&&tries++<40){setTimeout(boot,150);return;}restore();ready=true;}
-  if(document.readyState==='complete')setTimeout(boot,300);else window.addEventListener('load',function(){setTimeout(boot,300);});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,50);});else setTimeout(boot,50);
 })();
