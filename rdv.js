@@ -78,7 +78,10 @@
     h+='<h4 style="margin-top:14px">Heure · '+lbl(S.day)+'</h4><div class="rdvSl">'+S.day.sl.map(function(s){return '<button type="button" data-t="'+s.t+'"'+(S.t===s.t?' class="on"':'')+(s.ok?'':' disabled')+'>'+hh(s.t)+'<small>'+(s.ok?'≈ 1 h':'indisponible')+'</small></button>';}).join('')+'</div>';
     h+='<p class="rdvHint">Rendez-vous d\'environ 1 heure dans votre officine, le lundi ou le mardi. Vous recevez un e-mail de confirmation de votre demande, puis ma confirmation sous 24 h.</p>';
     h+='<div class="rdvRow"><button class="rdvGo" type="button" id="rdvN1"'+(S.t?'':' disabled')+'>Continuer →</button></div>';
+    var old=bb.querySelector('.rdvDays'),sl=old?old.scrollLeft:null;
     bb.innerHTML=h;
+    var nd=bb.querySelector('.rdvDays'),on=nd&&nd.querySelector('.rdvDay.on');
+    if(nd){if(sl!==null)nd.scrollLeft=sl;if(on){var l=on.offsetLeft-nd.offsetLeft,r=l+on.offsetWidth;if(l<nd.scrollLeft||r>nd.scrollLeft+nd.clientWidth)nd.scrollLeft=Math.max(0,l-(nd.clientWidth-on.offsetWidth)/2);}}
     bb.querySelectorAll('.rdvDay').forEach(function(b){b.onclick=function(){S.day=DAYS[+b.dataset.i];S.t=null;step1();};});
     bb.querySelectorAll('.rdvSl button').forEach(function(b){b.onclick=function(){S.t=b.dataset.t;step1();};});
     bb.querySelector('#rdvN1').onclick=step2;}
