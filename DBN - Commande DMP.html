@@ -607,6 +607,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .mgMd .pc{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:12px;color:#6E6557}.mgMd .pc b{color:#1C1611}.mgMd .pc button{font-family:inherit;font-size:11.5px;font-weight:700;color:#1206A6;background:#E4ECF6;border:0;border-radius:8px;padding:4px 9px;cursor:pointer}
 </style>
 <style id="lab-cat">.ix-off{white-space:normal}.ix-p .ix-pr .now{white-space:nowrap}</style>
+<style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
 </head>
 <body>
 
@@ -1071,7 +1072,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
     document.body.appendChild(s);
   }
-  var UPSELL_DONE=false;
+  var UPSELL_DONE=true;
   var UPS=[{t:'Chambres d\'inhalation',s:'Remboursées (LPPR 14,30 €) · panachables 3 âges',img:'assets/bx_chambre2.png',e:['3532678604367','3532678604374','3532678604381'],l:['Nourrisson','Enfant','Adulte'],tiers:[[1,'1 à 12 : 6,00 €'],[13,'13 à 47 : 5,50 €'],[48,'48 et + : 5,00 €']]},
              {t:'Innoxa Gouttes Formule Bleue',s:'Yeux rouges & fatigués · par 6 · panachables',img:'assets/innoxa_flacon2.png',e:['3532678607191','3532678607405'],l:['10 ml','Lot 2 × 10 ml'],min:6,step:6,tiers:[[6,'dès 6 : −40 %'],[12,'dès 12 : −43 %'],[18,'dès 18 : −45 %']]},
              {t:'Streptatest · boîte de 25',s:'22,50 € HT net la boîte · TROD angine à streptocoque A',img:'assets/bx_strepta.png',e:['3532679226605'],l:['Boîte de 25']},
@@ -1236,12 +1237,12 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     <div class="fl">
       <div class="f"><label for="mgPa">Prix d'achat remisé</label><div class="in"><input id="mgPa" inputmode="decimal" /><span class="u">€ HT</span></div></div>
       <div class="f"><label for="mgTva">TVA</label><div class="in"><select id="mgTva"><option value="20">20 %</option><option value="10">10 %</option><option value="5.5">5,5 %</option><option value="2.1">2,1 %</option></select></div></div>
-      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label><div class="seg" role="group" aria-label="Prix de vente saisi en"><button type="button" data-m="ttc" class="on">TTC</button><button type="button" data-m="ht">HT</button></div></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="pc" id="mgPc"></div></div>
+      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="pc" id="mgPc"></div></div>
     </div>
     <div class="res">
       <div class="rb win wide" id="mgRbM"><span>Marge par unité</span><b id="mgM">—</b><i id="mgMt"></i></div>
-      <div class="rb"><span>Coef. sur PV TTC</span><b id="mgC">—</b><i>vente TTC ÷ achat HT</i></div>
-      <div class="rb"><span>Coef. sur PV HT</span><b id="mgC2">—</b><i>vente HT ÷ achat HT</i></div>
+      <div class="rb"><span>Coefficient</span><b id="mgC">—</b><i>PV TTC ÷ achat HT</i></div>
+      <b id="mgC2" hidden></b>
     </div>
     <div class="up" id="mgUp"></div>
     <div class="sub"><span>Vente HT : <b id="mgH">—</b></span><span>Vente TTC : <b id="mgV">—</b></span><span>Taux de marque : <b id="mgTm">—</b></span></div>
@@ -1253,7 +1254,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 <script>
 (function(){
   var ov=document.getElementById('mgOv'),pa=document.getElementById('mgPa'),tva=document.getElementById('mgTva'),pv=document.getElementById('mgPv');
-  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE=localStorage.getItem('dbn_marge_mode')||'ttc';}catch(e){}
+  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE='ttc';}catch(e){}
   function num(v){v=String(v).replace(/\s/g,'').replace(',','.');var n=parseFloat(v);return isNaN(n)?null:n;}
   function fr(n){return n.toFixed(2).replace('.',',');}
   function eur(n){return fr(n)+' €';}

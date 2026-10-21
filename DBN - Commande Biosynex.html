@@ -495,7 +495,10 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .ix-grp .ix-warn{margin:0 12px 10px}
 .ix-p{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:4px 14px;padding:9px 4px;border-bottom:1px solid var(--line)}
 .ix-p:last-child{border-bottom:none}
-.ix-p.has{background:color-mix(in oklab,var(--gc) 12%,#fff)}
+.ix-p.has{background:color-mix(in oklab,var(--gc) 26%,#fff);box-shadow:inset 5px 0 0 var(--gc);border-bottom-color:color-mix(in oklab,var(--gc) 35%,#fff)}
+.ix-p.has .ix-n{font-weight:800}
+.ix-p.has .qty input{font-weight:800;color:var(--gc)}
+.portInd{display:block;font-size:11.5px;font-weight:600;color:var(--slate);margin-top:2px;line-height:1.35}
 .gjump{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 12px;padding:10px 12px;background:#EAF1FA;border:1px solid #C6D8EE;border-radius:12px}
 .gjump span{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#154A85}
 .gjump button{font-family:var(--sans);font-size:13px;font-weight:700;color:#fff;background:#1D63B0;border:none;border-radius:999px;padding:7px 14px;cursor:pointer}
@@ -606,6 +609,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .ix-p .mgBtn{display:flex;width:max-content;margin:5px 0 4px;font-size:11.5px;padding:4px 9px}
 .mgMd .pc{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:12px;color:#6E6557}.mgMd .pc b{color:#1C1611}.mgMd .pc button{font-family:inherit;font-size:11.5px;font-weight:700;color:#1206A6;background:#E4ECF6;border:0;border-radius:8px;padding:4px 9px;cursor:pointer}
 </style>
+<style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
 </head>
 <body>
 
@@ -1009,9 +1013,9 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     else{
       sl.innerHTML='<div class="rcHead"><span>Produit</span><span>Qté</span><span>P.U. net</span><span>Total</span></div>'+c.lines.map(function(l){var off=l.pu===0;return '<div class="rcRow'+(off?' lnOff':'')+'"><span class="rcN">'+l.it.n.replace(' — offert','')+'<em class="eanL">EAN '+l.it.e+'</em></span><span class="rcQ">'+l.q+'</span><span class="rcPu">'+(off?'—':eur(l.pu))+'</span><b class="rcT">'+(off?'Offert':eur(l.q*l.pu))+'</b></div>';}).join('')+
         '<div class="line"><span>Total unités</span><b>'+c.total+' u</b></div>'+
-        '<div class="line"><span>Frais de port</span><b>'+(c.port?eur(c.port)+' HT':'offerts')+'</b></div>';
+        (c.port?'<div class="line"><span>Frais de port <i class="portInd">indicatif · ajoutés seulement si vous validez sous le franco</i></span><b>'+eur(c.port)+' HT</b></div>':'<div class="line"><span>Frais de port</span><b>offerts</b></div>');
     }
-    var tot=c.ht+c.port;
+    var tot=c.ht;
     document.getElementById('totHT').textContent=eur(tot);
     document.getElementById('totTTC').textContent='soit '+eur(tot*TVA)+' TTC · TVA 20 %';
     var mn=document.getElementById('minNote');
@@ -1025,8 +1029,8 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     document.getElementById('sendBtn').disabled=!c.total||c.blocked;
     document.getElementById('resetBtn').hidden=!c.total;
     var rc=recap(c);
-    document.getElementById('recapField').value=rc+'\n\nTotal : '+c.total+' unités\nSous-total HT : '+eur(c.ht)+'\nPort : '+eur(c.port)+'\nTotal HT : '+eur(tot);
-    document.getElementById('totalField').value=eur(tot);
+    document.getElementById('recapField').value=rc+'\n\nTotal : '+c.total+' unités\nSous-total HT : '+eur(c.ht)+'\nPort : '+eur(c.port)+'\nTotal HT : '+eur(c.ht+c.port);
+    document.getElementById('totalField').value=eur(c.ht+c.port);
     document.getElementById('bonField').value=buildBon(rc,c);
     updAlerts();
   }
@@ -1066,7 +1070,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
     document.body.appendChild(s);
   }
-  var UPSELL_DONE=false;
+  var UPSELL_DONE=false,PORT_OK=false;
   var UPS=[{t:'Chambres d\'inhalation',s:'Remboursées (LPPR 14,30 €) · panachables 3 âges',img:'assets/bx_chambre2.png',e:['3532678604367','3532678604374','3532678604381'],l:['Nourrisson','Enfant','Adulte'],tiers:[[1,'1 à 12 : 6,00 €'],[13,'13 à 47 : 5,50 €'],[48,'48 et + : 5,00 €']]},
              {t:'Innoxa Gouttes Formule Bleue',s:'Yeux rouges & fatigués · par 6 · panachables',img:'assets/innoxa_flacon2.png',e:['3532678607191','3532678607405'],l:['10 ml','Lot 2 × 10 ml'],min:6,step:6,tiers:[[6,'dès 6 : −40 %'],[12,'dès 12 : −43 %'],[18,'dès 18 : −45 %']]},
              {t:'Streptatest · boîte de 25',s:'22,50 € HT net la boîte · TROD angine à streptocoque A',img:'assets/bx_strepta.png',e:['3532679226605'],l:['Boîte de 25']},
@@ -1102,6 +1106,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     e.preventDefault();
     var f=e.target,btn=document.getElementById('sendBtn');
     render();var c=compute();if(!c.total||c.blocked)return;
+    if(c.port&&!PORT_OK){if(!confirm('Votre commande ('+eur(c.ht)+' HT) est sous le franco de '+FRANCO+' € HT.\n\nDes frais de port de '+eur(c.port)+' HT seront ajoutés.\n\nOK = valider avec les frais de port\nAnnuler = compléter ma commande'))return;PORT_OK=true;}
     if(!UPSELL_DONE){var ul=upsellList();if(ul.length){UPSELL_DONE=true;showUpsell(ul,function(){f.requestSubmit?f.requestSubmit():f.dispatchEvent(new Event('submit',{cancelable:true}));});return;}}
     btn.disabled=true;btn.textContent='Envoi en cours… merci de patienter';
     function success(){fillBon(c);f.style.display='none';document.getElementById('doneBox').classList.add('on');window.scrollTo(0,0);
@@ -1231,12 +1236,12 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     <div class="fl">
       <div class="f"><label for="mgPa">Prix d'achat remisé</label><div class="in"><input id="mgPa" inputmode="decimal" /><span class="u">€ HT</span></div></div>
       <div class="f"><label for="mgTva">TVA</label><div class="in"><select id="mgTva"><option value="20">20 %</option><option value="10">10 %</option><option value="5.5">5,5 %</option><option value="2.1">2,1 %</option></select></div></div>
-      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label><div class="seg" role="group" aria-label="Prix de vente saisi en"><button type="button" data-m="ttc" class="on">TTC</button><button type="button" data-m="ht">HT</button></div></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="pc" id="mgPc"></div></div>
+      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="pc" id="mgPc"></div></div>
     </div>
     <div class="res">
       <div class="rb win wide" id="mgRbM"><span>Marge par unité</span><b id="mgM">—</b><i id="mgMt"></i></div>
-      <div class="rb"><span>Coef. sur PV TTC</span><b id="mgC">—</b><i>vente TTC ÷ achat HT</i></div>
-      <div class="rb"><span>Coef. sur PV HT</span><b id="mgC2">—</b><i>vente HT ÷ achat HT</i></div>
+      <div class="rb"><span>Coefficient</span><b id="mgC">—</b><i>PV TTC ÷ achat HT</i></div>
+      <b id="mgC2" hidden></b>
     </div>
     <div class="up" id="mgUp"></div>
     <div class="sub"><span>Vente HT : <b id="mgH">—</b></span><span>Vente TTC : <b id="mgV">—</b></span><span>Taux de marque : <b id="mgTm">—</b></span></div>
@@ -1248,7 +1253,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 <script>
 (function(){
   var ov=document.getElementById('mgOv'),pa=document.getElementById('mgPa'),tva=document.getElementById('mgTva'),pv=document.getElementById('mgPv');
-  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE=localStorage.getItem('dbn_marge_mode')||'ttc';}catch(e){}
+  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE='ttc';}catch(e){}
   function num(v){v=String(v).replace(/\s/g,'').replace(',','.');var n=parseFloat(v);return isNaN(n)?null:n;}
   function fr(n){return n.toFixed(2).replace('.',',');}
   function eur(n){return fr(n)+' €';}

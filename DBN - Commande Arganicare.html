@@ -484,6 +484,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .mgToast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 @media print{.mgBtn,.mgOv,.mgToast{display:none!important}}
 </style>
+<style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
 </head>
 <body>
 
@@ -497,7 +498,6 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
       <a href="DBN - Espace Catalogues.html">Catalogues</a>
       <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
-      <a href="Direction A - Institutionnel Premium (chaud).html#contact">Contact</a>
     </nav>
     <a class="dbn-btn" href="Direction A - Institutionnel Premium (chaud).html#contact">Nous contacter <span>→</span></a>
   </div>
@@ -717,9 +717,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   };
   showTab('impl');
 
-  function freeOf(p,q){if(!p.tp||p.un)return 0;var f=0;p.tp.forEach(function(t){var m=/(\d+)\s*\+\s*(\d+)/.exec(t[2]);if(m&&q>=t[0])f=0;});
-    var t24=p.tp.filter(function(t){return /21\s*\+\s*3/.test(t[2]);})[0],t12=p.tp.filter(function(t){return /11\s*\+\s*1/.test(t[2]);})[0];
-    if(t24&&q>=24){f=Math.floor(q/24)*3+(t12?Math.floor((q%24)/12):0);}else if(t12&&q>=12){f=Math.floor(q/12);}return f;}
+  function freeOf(p,q){if(!p.tp||p.un)return 0;return (function(it,q){if(!it.tp)return 0;var T=it.tp.map(function(t){var m=/(\d+)\s*\+\s*(\d+)/.exec(t[2]||'');return m?{s:t[0],f:+m[2]}:null;}).filter(Boolean).sort(function(a,b){return b.s-a.s;});var f=0,r=q;T.forEach(function(t){var n=Math.floor(r/t.s);f+=n*t.f;r-=n*t.s;});return f;})(p,q);}
   function lineTot(p,q){var f=freeOf(p,q);return f>0?(q-f)*p.o[0].p:q*puOf(p,q).p;}
   function paidSub(){var s=0;PRODS.forEach(function(p){var q=sel[p.k]||0;s+=lineTot(p,q);});return s;}
   function lines(){
@@ -928,12 +926,12 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     <div class="fl">
       <div class="f"><label for="mgPa">Prix d'achat remisé</label><div class="in"><input id="mgPa" inputmode="decimal" /><span class="u">€ HT</span></div></div>
       <div class="f"><label for="mgTva">TVA</label><div class="in"><select id="mgTva"><option value="20">20 %</option><option value="10">10 %</option><option value="5.5">5,5 %</option><option value="2.1">2,1 %</option></select></div></div>
-      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label><div class="seg" role="group" aria-label="Prix de vente saisi en"><button type="button" data-m="ttc" class="on">TTC</button><button type="button" data-m="ht">HT</button></div></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="hint" id="mgHint"></div></div>
+      <div class="f wide pv"><div class="pvTop"><label for="mgPv">Votre prix de vente</label></div><div class="in"><input id="mgPv" inputmode="decimal" placeholder="ex. 24,90" /><span class="u" id="mgPvU">€ TTC</span></div><div class="hint" id="mgHint"></div></div>
     </div>
     <div class="res">
       <div class="rb win wide" id="mgRbM"><span>Marge par unité</span><b id="mgM">—</b><i id="mgMt"></i></div>
-      <div class="rb"><span>Coef. sur PV TTC</span><b id="mgC">—</b><i>vente TTC ÷ achat HT</i></div>
-      <div class="rb"><span>Coef. sur PV HT</span><b id="mgC2">—</b><i>vente HT ÷ achat HT</i></div>
+      <div class="rb"><span>Coefficient</span><b id="mgC">—</b><i>PV TTC ÷ achat HT</i></div>
+      <b id="mgC2" hidden></b>
     </div>
     <div class="up" id="mgUp"></div>
     <div class="sub"><span>Vente HT : <b id="mgH">—</b></span><span>Vente TTC : <b id="mgV">—</b></span><span>Taux de marque : <b id="mgTm">—</b></span></div>
@@ -945,7 +943,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <script>
 (function(){
   var ov=document.getElementById('mgOv'),pa=document.getElementById('mgPa'),tva=document.getElementById('mgTva'),pv=document.getElementById('mgPv');
-  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE=localStorage.getItem('dbn_marge_mode')||'ttc';}catch(e){}
+  var TP=[],SEL=0,CUR=null,MODE='ttc';try{MODE='ttc';}catch(e){}
   function num(v){v=String(v).replace(/\s/g,'').replace(',','.');var n=parseFloat(v);return isNaN(n)?null:n;}
   function fr(n){return n.toFixed(2).replace('.',',');}
   function eur(n){return fr(n)+' €';}
