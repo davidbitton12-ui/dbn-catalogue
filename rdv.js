@@ -11,7 +11,15 @@
   /* --- bouton dans le menu, « Contact » retiré --- */
   document.querySelectorAll('nav a').forEach(function(a){if(/^\s*Contact\s*$/.test(a.textContent))a.remove();});
   var st=document.createElement('style');st.textContent=
-   '.rdvBtn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;background:#E8442A;color:#fff!important;font:800 19px "Hanken Grotesk",system-ui,sans-serif;padding:14px 26px;cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 10px 22px -10px rgba(232,68,42,.75);flex:none}'+
+   '.dbn-hdr .dbn-links{gap:14px!important}'+
+   '.dbn-hdr .dbn-links a{display:inline-flex!important;align-items:center;min-height:54px;padding:0 28px!important;border-radius:99px;border:1.5px solid #E2D6C3;background:#fff;color:#1C1611!important;font:700 19px "Hanken Grotesk",system-ui,sans-serif!important;box-shadow:0 6px 16px -12px rgba(28,22,17,.5);transition:background .15s,border-color .15s,color .15s}'+
+   '.dbn-hdr .dbn-links a::after{display:none!important}'+
+   '.dbn-hdr .dbn-links a:hover{border-color:#1206A6;color:#1206A6!important}'+
+   '.dbn-hdr .dbn-links a.on,.dbn-hdr .dbn-links a.active{background:#1206A6;border-color:#1206A6;color:#fff!important}'+
+   '.dbn-hdr .dbn-links a.cmd:not(.on){border-color:#E8442A;color:#E8442A!important}'+
+   '.dbn-hdr .dbn-links a.cmd.on{background:#E8442A;border-color:#E8442A;color:#fff!important}'+
+   '@media(max-width:820px){.dbn-hdr .dbn-links{justify-content:center!important;gap:8px!important}.dbn-hdr .dbn-links a{min-height:46px;padding:0 16px!important;font-size:16px!important}}'+
+   '@media(max-width:420px){.dbn-hdr .dbn-links a{min-height:44px;padding:0 12px!important;font-size:14.5px!important}}'+'.rdvBtn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;background:#E8442A;color:#fff!important;font:800 19px "Hanken Grotesk",system-ui,sans-serif;padding:14px 26px;cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 10px 22px -10px rgba(232,68,42,.75);flex:none}'+
    '.rdvBtn:hover{background:#c93820}.rdvBtn .ic{font-size:22px;line-height:1}'+
    '@media(max-width:700px){.rdvBtn{font-size:14px;padding:9px 14px}.rdvBtn .tx2{display:none}}'+
    '.rdvOv{position:fixed;inset:0;z-index:3000;background:rgba(28,22,17,.55);display:none;align-items:flex-start;justify-content:center;padding:28px 14px;overflow:auto;font-family:"Hanken Grotesk",system-ui,sans-serif;color:#1C1611}.rdvOv.on{display:flex}'+

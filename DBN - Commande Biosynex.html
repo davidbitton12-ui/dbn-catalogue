@@ -804,6 +804,7 @@ window.PKP=window.PKP||[{n:'Présentoir sol',min:120,img:'assets/bxp_pk_sol.png'
     tabs.appendChild(b);
     var p=document.createElement('div');p.className='famPane';p.hidden=fi!==0;panes[F.f]=p;root.appendChild(p);
   });
+  (function(){var m=location.hash.match(/fam=([a-z]+)/);if(!m)return;var t=tabs.querySelector('.famTab[data-f="'+m[1]+'"]');if(t)setTimeout(function(){t.click();var y=tabs.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:y,behavior:'smooth'});},300);})();
   /* barre de familles collante */
   var bar=document.createElement('div');bar.className='famBar';bar.setAttribute('aria-hidden','true');
   var barIn=document.createElement('div');barIn.className='famBar-in';bar.appendChild(barIn);document.body.appendChild(bar);
