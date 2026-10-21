@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commande Hydratis — David BITTON</title>
+<script src="analytics.js"></script>
+<script src="prefill.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1206A6;--hy:#1FA8BE;--hy-d:#127585;--ink:#1C1611;--slate:#6E6557;--line:#EBE0CE;--sand:#F4E7D2;--ivory:#FBF5EB;--red:#E8442A;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);font-family:var(--sans);color:var(--ink);-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:12px 0}
+.top-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top-in img{height:56px;width:auto}
+.top-in .wm b{display:block;font-size:18px;font-weight:700;color:var(--blue);line-height:1.1}
+.top-in .wm span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.top-in .cat-pdf{margin-left:auto;font-size:14px;font-weight:700;color:#fff;background:var(--hy);border-radius:11px;padding:10px 16px;white-space:nowrap}
+.top-in .cat-pdf:hover{color:#fff;filter:brightness(.92)}
+.top-in .back{margin-left:14px;font-size:14px;font-weight:600}
+.head{padding-top:22px;padding-bottom:14px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--hy);padding:6px 13px;border-radius:999px}
+.head h1{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.1;margin:12px 0 0}
+.head h1 em{font-style:italic;color:var(--hy-d)}
+.head p{font-size:14.5px;color:var(--slate);margin:8px 0 0;max-width:70ch;line-height:1.5}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start;padding-bottom:50px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:0 24px 50px -40px rgba(80,50,20,.4)}
+.card + .card{margin-top:18px}
+.card h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0}
+.card .hint{font-size:13px;color:var(--slate);margin:4px 0 12px;line-height:1.45}
+.terms{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.terms span{font-size:12px;color:var(--hy-d);background:#E6F6F8;border:1px solid #B9E3EA;border-radius:999px;padding:5px 11px;font-weight:600}
+.terms b{font-weight:800}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pr{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:10px;background:var(--ivory);border:1px solid var(--line);border-radius:13px;padding:4px 10px;transition:border-color .2s}
+.pr.has{background:#E6F6F8;border-color:var(--hy);box-shadow:0 0 0 1px var(--hy)}
+.pr .th{width:44px;height:74px;border:none;background:none;padding:0;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
+.pr .th{overflow:hidden}.th img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.pr .pn{font-size:14px;font-weight:700;line-height:1.2}
+.pr .pm{font-size:11px;color:var(--slate);margin-top:1px;line-height:1.3}
+.pr .pp{font-size:12.5px;margin-top:2px}
+.pr .pp b{color:var(--hy-d)}
+.pr .pp s{color:var(--slate);margin-left:4px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.qty button{width:30px;height:32px;border:none;background:transparent;font-size:17px;font-weight:700;color:var(--hy-d);cursor:pointer}
+.qty button:hover{background:#E6F6F8}
+.qty button:disabled{color:#C9C1B4;cursor:not-allowed;background:transparent}
+.qty input{width:40px;height:36px;border:none;text-align:center;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink);background:transparent;-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.ssh b{color:#E8442A}
+.ssOff{grid-column:1/-1;background:#FFF3DC;border:2px dashed #E39A1F;border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink)}
+.ssOff>b{display:block;color:#B86E00;font-size:14px;margin-bottom:8px}
+.ssPre{display:flex;width:fit-content;align-items:center;gap:6px;background:#E8442A;color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.02em;border-radius:999px;padding:5px 12px;margin:0 0 9px}
+.ssT{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.ssT span{background:#fff;border-radius:10px;padding:7px 8px;text-align:center;font-weight:800;font-size:14px;line-height:1.25}
+.ssT em{display:block;font-style:normal;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.ssT i{display:block;font-style:normal;color:#E8442A;font-size:12px}
+.ssOff small{display:block;color:var(--slate)}
+.ssS{margin-top:6px;font-size:12.5px}.ssS.ok{color:#14453F}
+.ssP{display:none;align-self:stretch;background:#FFF3DC;border-radius:13px;padding:9px 12px;border:2px dashed #E39A1F}
+.ssP.on{display:block}
+.ssP>b{display:block;font-size:12.5px;margin-bottom:3px;line-height:1.3}.ssP>b em{font-style:normal;color:#E8442A}
+.ssP .fr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;border-top:1px dashed var(--line)}
+.ssP .fr:first-of-type{border-top:0}
+.ssP .fr span{font-size:12.5px;font-weight:600;min-width:0}
+.ssP .fq{display:flex;align-items:center;gap:6px;flex:none}
+.ssP .fq button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--ivory);font-weight:800;font-size:16px;cursor:pointer}
+.ssP .fq button:disabled{opacity:.35;cursor:not-allowed}
+.ssP .fq output{min-width:28px;text-align:center;font-weight:800;color:#E8442A}
+.ssP .fh{font-size:11.5px;color:var(--slate);margin-top:6px}.ssP .fh.ok{color:#14453F;font-weight:700}.ssP .fh.ko{color:#E8442A;font-weight:700}
+.gh{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden;margin:14px 0 2px;padding-top:12px;border-top:1px solid var(--line)}
+.gh.trh{flex-wrap:wrap;white-space:normal;row-gap:2px}.gh.trh span{white-space:normal;overflow:visible;text-overflow:clip}.trh b{color:#8B0E2E}
+.pr.ssr{background:#FFF3DC;border-color:#F0D7A6}
+.fmh{font-size:11.5px;font-weight:800;color:#E8442A;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.fg+.fg{margin-top:9px}.fg .ft{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 5px}.fg .ft span{font-size:11px;color:var(--slate)}.fg .ft em{font-style:normal;margin-left:auto;font-size:11.5px;font-weight:700;color:#E8442A}
+.fg.ok .ft em{color:#14453F}.fg.ok .fill{background:#2E9E7A}
+.pr.trow{background:linear-gradient(135deg,#FCE4EA,#F7D0DB);border-color:#E7A9BA}
+.pr.trow.has{background:linear-gradient(135deg,#F9D3DE,#F2B8C8);border-color:#8B0E2E;box-shadow:0 0 0 1px #8B0E2E}
+.pr.ssr.has{background:#FFE8BA;border-color:#E39A1F;box-shadow:0 0 0 1px #E39A1F}
+.pr.trow{grid-column:1/-1;grid-template-columns:150px minmax(0,1fr) auto;gap:16px;padding:8px 14px}.pr.trow .th{width:150px;height:112px}
+@media(max-width:600px){.pr.trow{grid-template-columns:96px minmax(0,1fr) auto;gap:10px}.pr.trow .th{width:96px;height:72px}}.trOff{grid-column:1/-1;background:linear-gradient(135deg,#FCE4EA,#F7D0DB);border:2px solid #8B0E2E;border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.45;color:#3A0A18}
+.trOff .trT{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:9px 0 6px}
+.trOff .trT span{background:#fff;border-radius:10px;padding:7px 8px;text-align:center;font-size:12px}
+.trOff .trT b{display:block;color:#8B0E2E;font-family:var(--serif);font-size:15px}
+.trOff small{color:#6B2A3A}
+.trPre{display:flex;width:fit-content;align-items:center;gap:6px;background:#8B0E2E;color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.02em;border-radius:999px;padding:5px 12px;margin:0 0 9px}
+@media(max-width:600px){.trOff .trT{grid-template-columns:minmax(0,1fr)}}
+.gh b{font-family:var(--serif);font-size:17px;color:var(--ink)}.gh span{font-size:12px;color:var(--slate);overflow:hidden;text-overflow:ellipsis}
+.pres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.ps{min-width:0}
+.pn .psub{display:block;font-size:11.5px;font-weight:600;color:var(--slate);margin-top:1px}
+.pp .rm{font-style:normal;font-size:10.5px;font-weight:800;color:#fff;background:#E8442A;border-radius:999px;padding:2px 7px;margin-left:6px}.ps .pt{min-width:0;flex:1}
+@media(max-width:1000px){.pres{grid-template-columns:minmax(0,1fr)}}
+.ps{display:flex;align-items:center;gap:10px;background:#FFF6EC;border:1px dashed #E8A85C;border-radius:13px;padding:10px 12px}
+.ps .psi{width:46px;height:96px;object-fit:contain;flex:none;cursor:zoom-in}
+.ps.has{border-style:solid;border-color:#E8780F;background:#FFEEDB}
+.ps.off{opacity:.55}
+.ps .pt{flex:1;min-width:0;font-size:12px;color:var(--slate);line-height:1.35}
+.ps .pt b{display:block;font-size:14px;color:var(--ink)}
+.ps .pt i{font-style:normal;font-weight:800;color:#B85C08}
+.field{margin-top:11px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:11px 12px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--hy);background:#fff}
+.field textarea{min-height:70px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);overflow-y:auto}
+.rh,.rl{display:grid;grid-template-columns:minmax(0,1fr) 34px 76px;gap:6px;align-items:start}
+.rh{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--line);padding-bottom:5px}
+.rh span:not(:first-child),.rl > span:not(:first-child){text-align:right}
+.rl{font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.rl small{display:block;font-size:10.5px;color:var(--slate);margin-top:1px}
+.rl .of{color:#1A7A3A;font-weight:800}
+.empty{font-size:13px;color:var(--slate);text-align:center;padding:16px 0;line-height:1.5}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:12px;border-top:2px solid var(--ink)}
+.tot .l{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.tot .v{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--hy-d)}
+.ttc{font-size:12px;color:var(--slate);text-align:right;margin-top:4px}
+.fbar{margin-top:12px;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.fbar .ft{font-size:12.5px;color:var(--slate)}
+.fbar .track{height:7px;background:#E7DED0;border-radius:99px;overflow:hidden;margin-top:7px}
+.fbar .fill{height:100%;width:0;background:var(--hy);transition:width .3s}
+.fbar.ok{background:#E6F6F8;border-color:#B9E3EA}
+.fbar.ok .ft{color:var(--hy-d)}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px;background:var(--hy);color:#fff;font-family:var(--sans);font-size:15.5px;font-weight:800;border:none;border-radius:13px;padding:15px 18px;cursor:pointer}
+.btn:hover{background:var(--hy-d)}
+.btn:disabled{background:#D9CFC2;cursor:not-allowed}
+.reset{display:block;width:100%;margin-top:8px;background:none;border:none;font-family:var(--sans);font-size:12.5px;color:var(--slate);text-decoration:underline;cursor:pointer}
+.zoomOv{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,22,17,.88);align-items:center;justify-content:center;padding:18px}
+.zoomOv.on{display:flex}
+.zbox{position:relative;background:#fff;border-radius:18px;padding:18px;max-width:94vw}
+.zbox img{display:block;max-height:76vh;max-width:86vw;margin:0 auto}
+.zbox .zl{text-align:center;font-weight:700;margin-top:8px}
+.zbox .zx{position:absolute;top:8px;right:8px;width:32px;height:32px;border:none;border-radius:50%;background:var(--ink);color:#fff;font-size:15px;cursor:pointer}
+.done{display:none;margin-bottom:50px}
+.done.on{display:block}
+.bc{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.bc-hero{padding:28px 24px;text-align:center;background:linear-gradient(135deg,#E6F6F8,#C9EDF2)}
+.bc-hero h2{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--hy-d);margin:0}
+.bc-hero p{font-size:14.5px;color:#30525A;margin:10px auto 0;max-width:58ch;line-height:1.55}
+.bc-body{padding:22px 24px}
+.bc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:16px}
+.bc-mi{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 13px}
+.bc-mi .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.bc-mi .v{font-size:14px;font-weight:600;margin-top:3px;line-height:1.35}
+.bc-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.bc-row img{width:20px;height:44px;object-fit:contain}
+.bc-row .ce{font-size:11.5px;color:var(--slate)}
+.bc-row .qn{margin-left:auto;font-family:var(--serif);font-size:17px;font-weight:700;color:var(--hy-d);white-space:nowrap}
+.bc-items{border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.bc-tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.bc-tl{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:11px 13px;text-align:center}
+.bc-tl span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.bc-tl b{display:block;font-family:var(--serif);font-size:21px;margin-top:4px}
+.bc-tl.big{background:var(--hy);border-color:var(--hy)}
+.bc-tl.big span,.bc-tl.big b{color:#fff}
+.bc-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 24px;background:var(--sand);border-top:1px solid var(--line);font-size:13px;color:var(--slate)}
+.bc-foot button{margin-left:auto;font-family:var(--sans);font-size:13.5px;font-weight:700;color:#fff;background:var(--hy);border:none;border-radius:11px;padding:10px 16px;cursor:pointer}
+@media print{.top,.head,#orderForm{display:none!important}.bc-foot button{display:none}}
+@media(max-width:880px){.grid{grid-template-columns:minmax(0,1fr)}aside{position:static;max-height:none}}
+@media(max-width:600px){.wrap{padding:0 16px}.two,.pres{grid-template-columns:1fr}.prods{grid-template-columns:1fr}.top-in .cat-pdf{margin-left:0}.field input,.field textarea,.qty input{font-size:16px}}
+</style>
+<style id="dbn-hdr-css">
+.dbn-hdr{position:sticky;top:0;z-index:60;background:rgba(251,245,235,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #EBE0CE;font-family:'Hanken Grotesk',system-ui,sans-serif}
+.dbn-hdr-in{max-width:1200px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.dbn-brand{display:flex;align-items:center;gap:16px;text-decoration:none;flex:none}
+.dbn-brand img{height:68px;width:auto;display:block}
+.dbn-wm{display:flex;flex-direction:column;line-height:1}
+.dbn-wm b{font-size:22px;color:#1206A6;font-weight:700}
+.dbn-wm span{font-size:10.5px;letter-spacing:.22em;color:#6E6557;font-weight:600;margin-top:5px;text-transform:uppercase}
+.dbn-links{display:flex;align-items:center;gap:40px}
+.dbn-links a{font-size:18px;font-weight:500;color:#6E6557;text-decoration:none;white-space:nowrap;transition:color .2s}
+.dbn-links a:hover,.dbn-links a.on{color:#1206A6}
+.dbn-links a.on{font-weight:600}
+.dbn-links a.cmd{color:#E8442A;font-weight:700}
+.dbn-links a{position:relative}
+.dbn-links a.on{color:#1206A6;font-weight:700}
+.dbn-links a.cmd.on{color:#E8442A}
+.dbn-links a.on::after{content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:4px;border-radius:4px;background:currentColor}
+.dbn-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:#1206A6;color:#fff;text-decoration:none;white-space:nowrap;flex:none;transition:background .2s}
+.dbn-btn:hover{background:#0c0488;color:#fff}
+.dbn-sub{max-width:1200px;margin:0 auto;padding:14px 40px 0;display:flex;justify-content:flex-end}
+.dbn-sub a{font-size:14px;font-weight:700;color:#fff;background:var(--teal,#1206A6);border-radius:11px;padding:10px 16px;white-space:nowrap;text-decoration:none}
+.dbn-sub a:hover{color:#fff;filter:brightness(.92)}
+@media(max-width:1000px){.dbn-links{gap:24px}.dbn-links a{font-size:16px}}
+@media(max-width:820px){
+ .dbn-hdr-in{height:auto;flex-wrap:wrap;padding:10px 18px;gap:8px 12px}
+ .dbn-brand img{height:52px}.dbn-wm b{font-size:17px}.dbn-wm span{font-size:9px;letter-spacing:.16em}
+ .dbn-btn{font-size:13px;padding:10px 16px}
+ .dbn-links{order:3;width:100%;justify-content:space-between;gap:10px;border-top:1px solid #EBE0CE;padding-top:8px}
+ .dbn-links a{font-size:15px}
+ .dbn-sub{padding:12px 18px 0}
+}
+@media(max-width:420px){.dbn-wm span{display:none}.dbn-brand img{height:44px}.dbn-links a{font-size:14px}}
+@media print{.dbn-hdr,.dbn-sub{display:none!important}}
+
+.pkPres{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}.pkPres .buPres{margin:0}.pkPres .buPres img{max-height:96px;width:auto}
+.dbn-cat{background:#1FA8BE}.dbn-cat:hover{background:#178a9c}
+</style>
+</head>
+<body>
+<header class="dbn-hdr">
+  <div class="dbn-hdr-in">
+    <a class="dbn-brand" href="Direction A - Institutionnel Premium (chaud).html">
+      <img src="assets/dbn-logo-tight.png" alt="DBN Développement" />
+      <span class="dbn-wm"><b>David BITTON</b><span>Partenaire pharmaceutique</span></span>
+    </a>
+    <nav class="dbn-links">
+      <a href="Direction A - Institutionnel Premium (chaud).html">Accueil</a>
+      <a href="DBN - Espace Catalogues.html">Catalogues</a>
+      <a href="DBN - Commander en ligne.html" class="on cmd">Commander</a>
+    </nav>
+    <a class="dbn-btn dbn-cat" href="https://drive.google.com/file/d/1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m/view" target="_blank" rel="noopener">Voir le catalogue <span>→</span></a>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="eyebrow">Prise de commande · Hydratis</span>
+  <h1>Pastilles d'hydratation <em>Hydratis</em> — tubes de 20</h1>
+  <p>Choisissez vos saveurs : <b>5,40 € HT</b> le tube au lieu de 9,00 € (−40 %). Le récapitulatif et le franco se calculent automatiquement.</p>
+</div>
+
+<div class="wrap">
+  <form id="orderForm" class="grid" action="https://formspree.io/f/mwvjnpak" method="POST">
+    <div>
+      <div class="card">
+        <h2>12 saveurs · 3 sans sucres · 2 éditions limitées · 8 gourdes</h2>
+        <p class="hint">Cliquez sur un produit pour l'agrandir. Tubes de 20 pastilles par <b>box de 8</b> d'une même saveur · trousses Cherry <b>par 6</b> · gourdes <b>par 1</b>.</p>
+        <div class="terms"><span>Tarif <b>9,00 € HT</b> → <b>5,40 € HT</b> (−40 %)</span><span>TVA <b>5,5 %</b></span><span>Franco <b>216 € HT</b></span></div>
+        <div class="prods" id="prodList"></div>
+        <div class="pres" id="presList"></div>
+      </div>
+
+      <div class="card">
+        <h2>Vos coordonnées</h2>
+        <p class="hint">Pour établir la commande et vous confirmer la livraison.</p>
+        <div class="field"><label>Nom de l'officine *</label><input type="text" name="officine" required placeholder="Pharmacie…" /></div>
+        <div class="field"><label>Adresse de livraison *</label><input type="text" name="adresse" required placeholder="12 rue de la République" /></div>
+        <div class="two">
+          <div class="field"><label>Code postal *</label><input type="text" name="code_postal" required inputmode="numeric" placeholder="75005" /></div>
+          <div class="field"><label>Ville *</label><input type="text" name="ville" required placeholder="Paris" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Votre nom *</label><input type="text" name="contact" required placeholder="Prénom Nom" /></div>
+          <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="01 23 45 67 89" /></div>
+        </div>
+        <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
+        <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+        <button class="btn" type="submit" id="sendBtn2" disabled>Envoyer ma commande →</button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h2>Récapitulatif</h2>
+        <div id="sumLines"><p class="empty">Aucun produit sélectionné.</p></div>
+        <div class="tot"><span class="l">Total HT</span><span class="v" id="totHT">0,00 €</span></div>
+        <div class="ttc" id="totTTC">soit 0,00 € TTC · TVA 5,5 %</div>
+        <div class="fbar" id="fbar"><div class="ft" id="fTxt">Franco de port à <b>216 € HT</b>.</div><div class="track"><div class="fill" id="fFill"></div></div></div>
+        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
+        <button class="reset" type="button" id="resetBtn">Tout effacer et repartir à zéro</button>
+      </div>
+    </aside>
+
+    <input type="hidden" name="_subject" value="Commande Hydratis" />
+    <input type="hidden" name="recapitulatif" id="recapField" />
+    <input type="hidden" name="total_ht" id="totalField" />
+  </form>
+
+  <div class="done" id="doneBox">
+    <div class="bc">
+      <div class="bc-hero">
+        <h2 id="bcName">Merci !</h2>
+        <p>Votre commande est <b>enregistrée</b>. Oups ! Si une erreur s'est glissée ou en cas de rupture de stock, je reviens vers vous sous 24 h.</p>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta" id="bcMeta"></div>
+        <div class="bc-items" id="bcItems"></div>
+        <div class="bc-tot">
+          <div class="bc-tl"><span>Total unités</span><b id="bcQty">—</b></div>
+          <div class="bc-tl"><span>Prix unitaire</span><b>Tubes 5,40 € HT</b></div>
+          <div class="bc-tl big"><span>Total HT</span><b id="bcHT">—</b></div>
+          <div class="bc-tl"><span id="bcTvaL">TTC · TVA 5,5 %</span><b id="bcTTC">—</b></div>
+        </div>
+      </div>
+      <div class="bc-foot"><span>Une question ? <b>06 78 00 78 32</b> · dbitton@dbn-pharma.fr</span><button type="button" onclick="window.print()">Imprimer / PDF</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="zoomOv" id="zoomOv"><div class="zbox"><button type="button" class="zx" aria-label="Fermer">✕</button><img alt="" /><div class="zl"></div></div></div>
+
+<script>
+(function(){
+  var FRANCO=216, TVA=1.055, BASE=9.00, PU=5.40, U=8, SOL_MIN=72;
+  var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
+  var P=[
+    {k:'trousse',tr:1,n:'Trousse Cherry Hydratis × Merci Handy',e:'3760304104459',u:6,tv:0.20,tc:0,b:15.90,ppc:'17,90 € TTC',s:'Tube Cherry 20 pastilles + spray mains Merci Handy + charm + trousse velours'},
+    {k:'cherry',n:'Cherry · édition limitée',e:'3760304103940',s:'Série limitée à 200 000 exemplaires'},
+    {k:'ananas',n:'Ananas',e:'3760304101465',acl:'6387034'},
+    {k:'citron',n:'Citron fleurs de sureau',e:'3760304100017',acl:'6244729'},
+    {k:'citronnelle',n:'Citronnelle gingembre',e:'3760304100291',acl:'6294520'},
+    {k:'coco',n:'Coco',e:'3760304100819',acl:'6345206'},
+    {k:'fdb',n:'Fruits des bois',e:'3760304100000',acl:'6244731'},
+    {k:'kiwi',n:'Kiwi',e:'3760304101625',acl:'6421438'},
+    {k:'menthe',n:'Menthe',e:'3760304101670',acl:'6424143'},
+    {k:'neutre',n:'Neutre',e:'3760304101120',acl:'6363972'},
+    {k:'pasteque',n:'Pastèque',e:'3760304101021',acl:'6363973'},
+    {k:'peche',n:'Pêche',e:'3760304100024',acl:'6244730'},
+    {k:'mangue',n:'Mangue passion',e:'3760304103452',acl:'6432253'},
+    {k:'ss_peche',ss:1,n:'Pêche sans sucres',e:'3760304104589',s:'Sans sucres · 20 pastilles'},
+    {k:'ss_fdb',ss:1,n:'Fruits des bois sans sucres',e:'3760304104565',s:'Sans sucres · 20 pastilles'},
+    {k:'ss_citron',ss:1,n:'Citron fleurs de sureau sans sucres',e:'3760304104572',s:'Sans sucres · 20 pastilles'},
+    {k:'g_blanche',n:'Gourde Blanc',e:'3760304100208',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_jaune',n:'Gourde Jaune',e:'3760304100406',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_verte',n:'Gourde Vert',e:'3760304101274',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_bleu',n:'Gourde Bleu',e:'3760304100154',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_rouge',n:'Gourde Rouge',e:'3760304100161',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_noire',n:'Gourde Noir',e:'3760304100178',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_chrome',n:'Gourde Noir chromé',e:'3760304101755',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,},
+    {k:'g_rose',n:'Gourde Rose',e:'3760304101748',g:1,pu:9.06,b:15.10,u:1,tv:0.20,tc:0,}
+  ];
+  var PRES=[{k:'cpt',img:'assets/hyd_pres_cpt.png',n:'Présentoir comptoir',d:'Offert sur demande · 1 maximum',min:0,q:0},{k:'sol',img:'assets/hyd_pres_sol.png',n:'Présentoir sol',d:'Offert dès '+SOL_MIN+' tubes · 1 maximum',min:SOL_MIN,q:0}];
+  var qty={};
+  function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function v(n){var el=document.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+  function today(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();}
+  function img(p){if(p.tr)return 'assets/hyd_trousse.png';return p.ss?'assets/hyd_'+p.k+'.png':'assets/hyd_'+p.k+'2.png';}
+  function trP(q){return q>=24?8.74:q>=12?9.22:9.54;}
+  function trR(q){return q>=24?'−45 %':q>=12?'−42 %':'−40 %';}
+  function pu(p){if(p.tr)return trP(qty[p.k]||0);return p.pu||PU;}
+  function francoOk(c){return fGroups().every(function(g){return g.ok;});}
+  function fGroups(){
+    var G=[{k:'i',n:'Livraison immédiate',d:'tubes & gourdes',ht:0,q:0},{k:'t',n:'Trousses Cherry',d:'précommande · à partir du 2 nov.',ht:0,q:0},{k:'s',n:'Sans Sucres',d:'précommande · 5-15 janv. 2027',ht:0,q:0}];
+    P.forEach(function(p){var q=qty[p.k]||0;if(!q)return;var g=G[p.tr?1:p.ss?2:0];g.ht+=q*pu(p);g.q+=q;});
+    return G.filter(function(g){return g.q>0;}).map(function(g){
+      if(g.k==='t'){g.ok=g.q>=6||g.ht>=FRANCO;g.pct=g.ok?100:Math.min(100,g.ht/FRANCO*100);g.miss=g.ok?'':'il manque '+eur(FRANCO-g.ht)+' (ou 6 trousses)';}
+      else{g.ok=g.ht>=FRANCO;g.pct=Math.min(100,g.ht/FRANCO*100);g.miss=g.ok?'':'il manque '+eur(FRANCO-g.ht);}
+      return g;});
+  }
+  function uu(p){return p.u||U;}
+
+  var box=document.getElementById('prodList');
+  var gHead=false,tHead=false,sHead=false;
+  var trHead=false;
+  P.slice().sort(function(a,b){return ((b.tr?2:0)+(b.ss?1:0))-((a.tr?2:0)+(a.ss?1:0));}).forEach(function(p){
+    if(p.tr&&!trHead){trHead=true;var t=document.createElement('div');t.className='gh trh';t.innerHTML='<b>🍒 Exclusivité pharma · édition limitée</b><span>Précommande · livraison à partir du 2 novembre 2026</span>';box.appendChild(t);
+      var to=document.createElement('div');to.className='trOff';to.innerHTML='<div class="trPre">🚚 PRÉCOMMANDE · livraison à partir du 2 novembre 2026</div><b>Seulement 20 000 exemplaires.</b> Contenu : 1 tube Hydratis Cherry 20 pastilles (9,90 €) · 1 spray mains Merci Handy Cherry (7,90 €) · 1 charm Cherry (3 €) · 1 trousse en velours (7,90 €), soit environ <b>29 € de valeur pour un PV conseillé de 17,90 €</b>.<div class="trT"><span><b>6 trousses</b> −40 % · 9,54 € HT</span><span><b>12 trousses</b> −42 % · 9,22 € HT</span><span><b>24 trousses et +</b> −45 % · 8,74 € HT</span></div><small>Prix tarif 15,90 € HT · franco atteint dès 6 trousses</small>';box.appendChild(to);}
+    if(p.tr){}else
+    if(!p.g&&!p.ss&&!tHead){tHead=true;var th=document.createElement('div');th.className='gh';th.innerHTML='<b>Tubes de 20 pastilles</b><span>5,40 € HT · box de 8 · TVA 5,5 %</span>';box.appendChild(th);}
+    if(p.ss&&!sHead){sHead=true;var sh=document.createElement('div');sh.className='gh ssh';sh.innerHTML='<b>Nouveau · Sans sucres</b><span>5,40 € HT · box de 8 · TVA 5,5 %</span>';box.appendChild(sh);
+      var so=document.createElement('div');so.className='ssOff';so.innerHTML='<div class="ssPre">🚚 PRÉCOMMANDE · livraison du 5 au 15 janvier 2027</div><b>🎁 Offre de lancement jusqu\'au 31/12/2026</b><div class="ssT"><span><em>Découverte</em>48 u <i>+4 offertes</i></span><span><em>Essentielle</em>72 u <i>+2 × 8 offertes</i></span><span><em>Premium</em>120 u <i>+4 × 8 offertes</i></span></div><small>Vous choisissez la saveur de vos unités offertes ci-dessous · présentoir comptoir dès 48 u, display sol dès 72 u (tous tubes) · 🚚 livraison du 5 au 15 janvier 2027</small><div class="ssS" id="ssState"></div>';box.appendChild(so);}
+    if(p.g&&!gHead){gHead=true;var hh=document.createElement('div');hh.className='gh';hh.innerHTML='<b>Gourdes isothermes</b><span>9,06 € HT · par 1 · TVA 20 %</span>';box.appendChild(hh);}
+    var d=document.createElement('div');d.className='pr'+(p.k==='trousse'?' trow':'')+(p.ss?' ssr':'');
+    d.innerHTML='<button type="button" class="th" aria-label="Agrandir"><img src="'+img(p)+'" alt="Hydratis '+p.n+'" /></button>'+
+      '<div><div class="pn">'+p.n+(p.s?'<small class="psub">'+p.s+'</small>':'')+'</div><div class="pm">EAN '+p.e+(p.tr?' · par 6':'')+(p.ppc?' · PV conseillé '+p.ppc:'')+'</div><div class="pp"><b class="pu">'+(p.tr?'dès '+eur(8.74):eur(pu(p)))+' HT</b><s>'+eur(p.b||BASE)+'</s><em class="rm">'+(p.tr?'jusqu\'à −45 %':'−40 %')+'</em></div></div>'+
+      '<div class="qty"><button type="button" data-a="-">−</button><input type="number" min="0" step="'+uu(p)+'" value="0" aria-label="'+p.n+'" /><button type="button" data-a="+">+</button></div>';
+    var inp=d.querySelector('input');
+    d.querySelectorAll('.qty button').forEach(function(b){b.addEventListener('click',function(){var x=parseInt(inp.value,10)||0;inp.value=b.dataset.a==='+'?x+uu(p):Math.max(0,x-uu(p));set(p,inp,d);});});
+    inp.addEventListener('change',function(){var x=parseInt(inp.value,10)||0;inp.value=Math.max(0,Math.ceil(x/uu(p))*uu(p));set(p,inp,d);});
+    d.querySelector('.th').addEventListener('click',function(){zoom(img(p),'Hydratis '+p.n+' · '+(p.s||'20 pastilles'));});
+    box.appendChild(d);
+    if(p.ss&&!(P[P.indexOf(p)+1]||{}).ss){var sp=document.createElement('div');sp.className='ssP';sp.id='ssPick';box.appendChild(sp);}
+  });
+  function set(p,inp,d){var x=parseInt(inp.value,10)||0;qty[p.k]=x;d.classList.toggle('has',x>0);if(p.tr){d.querySelector('.pu').textContent=(x>0?eur(pu(p)):'dès '+eur(8.74))+' HT';d.querySelector('.rm').textContent=x>0?trR(x):'jusqu\'à −45 %';}render();}
+
+  var pbox=document.getElementById('presList');
+  PRES.forEach(function(r){
+    var d=document.createElement('div');d.className='ps';d.id='ps_'+r.k;
+    d.innerHTML=(r.img?'<img class="psi" src="'+r.img+'" alt="'+r.n+'" />':'')+'<div class="pt"><b>🎁 '+r.n+'</b>'+r.d+'<br /><i class="pi"></i></div><div class="qty"><button type="button" data-a="-">−</button><input type="number" value="0" readonly aria-label="'+r.n+'" /><button type="button" data-a="+">+</button></div>';
+    d.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){r.q=b.dataset.a==='+'?1:0;render();});});
+    pbox.appendChild(d);
+  });
+
+  var FREE={ss_peche:0,ss_fdb:0,ss_citron:0};
+  function freeSum(){return FREE.ss_peche+FREE.ss_fdb+FREE.ss_citron;}
+  window.DBN_PANIER_EXTRA={get:function(){return {free:FREE};},set:function(o){if(o&&o.free){for(var k in FREE){FREE[k]=+o.free[k]||0;}render();}}};
+  function freeLines(){return P.filter(function(p){return p.ss&&FREE[p.k];}).map(function(p){return {p:p,q:FREE[p.k]};});}
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-fk]');if(!b)return;var c=calc();if(!c.tier)return;var k=b.dataset.fk,s=+b.dataset.fs;
+    if(c.tier.f===4){if(s>0){FREE={ss_peche:0,ss_fdb:0,ss_citron:0};FREE[k]=4;}else FREE[k]=0;}
+    else{var v=FREE[k]+8*s;if(v<0||freeSum()+8*s>c.tier.f)return;FREE[k]=v;}
+    render();});
+  function calc(){
+    var lines=[],t=0;
+    var ht=0,tb=0,tv=0,has20=false,has55=false;P.forEach(function(p){var q=qty[p.k]||0;if(q>0){lines.push({p:p,q:q});t+=q;ht+=q*pu(p);tb+=q*(p.tc===0?0:(p.tc||1));tv+=q*pu(p)*(p.tv||0.055);if(p.tv)has20=true;else has55=true;}});var mix=has20&&has55;var txLbl=has20&&has55?'5,5 % / 20 %':has20?'20 %':'5,5 %';
+    var sq=0;P.forEach(function(p){if(p.ss)sq+=qty[p.k]||0;});
+    var tier=sq>=120?{n:'Premium',f:32}:sq>=72?{n:'Essentielle',f:16}:sq>=48?{n:'Découverte',f:4}:null;
+    var nxt=sq<48?{n:'Découverte',m:48}:sq<72?{n:'Essentielle',m:72}:sq<120?{n:'Premium',m:120}:null;
+    if(tier){tb+=tier.f;}
+    return {lines:lines,total:t,ht:ht,tubes:tb,tva:tv,ttc:ht+tv,tx:txLbl,sq:sq,tier:tier,nxt:nxt,free:tier?freeLines():[],freeOk:!tier||freeSum()===tier.f};
+  }
+
+  function render(){
+    var c=calc();
+    PRES.forEach(function(r){
+      var ok=c.tubes>=r.min||(r.k==='sol'&&c.sq>=72);if(!ok)r.q=0;
+      var d=document.getElementById('ps_'+r.k);
+      d.classList.toggle('off',!ok);d.classList.toggle('has',r.q>0);
+      d.querySelector('input').value=r.q;
+      var bs=d.querySelectorAll('button');bs[0].disabled=r.q<=0;bs[1].disabled=!ok||r.q>=1;
+      d.querySelector('.pi').textContent=ok?(r.q?'✓ ajouté à la commande':'disponible'):'encore '+(r.min-c.tubes)+' tubes';
+    });
+    var st=document.getElementById('ssState');
+    if(st){st.innerHTML=c.tier?'✓ Offre <b>'+c.tier.n+'</b> atteinte : <b>+'+c.tier.f+' tubes offerts</b>'+(c.nxt?' · encore '+(c.nxt.m-c.sq)+' u pour l\'offre '+c.nxt.n:''):(c.sq?'Encore <b>'+(48-c.sq)+' u</b> sans sucres pour l\'offre Découverte (+4 offertes)':'');st.classList.toggle('ok',!!c.tier);}
+    var pk=document.getElementById('ssPick');
+    if(pk){
+      if(!c.tier){FREE={ss_peche:0,ss_fdb:0,ss_citron:0};pk.classList.remove('on');pk.innerHTML='';}
+      else{
+        if(freeSum()>c.tier.f||(c.tier.f===4&&freeSum()!==4&&freeSum()!==0)||(c.tier.f!==4&&freeSum()%8))FREE={ss_peche:0,ss_fdb:0,ss_citron:0};
+        var one=c.tier.f===4,fs=freeSum(),rest=c.tier.f-fs;
+        pk.classList.add('on');
+        pk.innerHTML='<b>Choisissez vos <em>'+c.tier.f+' unités offertes</em>'+(one?' · 1 saveur au choix':' · '+(c.tier.f/8)+' lots de 8 au choix')+'</b>'+
+          P.filter(function(p){return p.ss;}).map(function(p){var v=FREE[p.k];return '<div class="fr"><span>'+p.n+'</span><div class="fq"><button type="button" data-fk="'+p.k+'" data-fs="-1"'+(v?'':' disabled')+' aria-label="Retirer">−</button><output>'+v+'</output><button type="button" data-fk="'+p.k+'" data-fs="1"'+(one?(v?' disabled':''):(rest<8?' disabled':''))+' aria-label="Ajouter">+</button></div></div>';}).join('')+
+          '<div class="fh '+(rest?'ko':'ok')+'">'+(rest?'Encore '+rest+' unités offertes à choisir':'✓ Vos '+c.tier.f+' unités offertes sont choisies')+'</div>';
+      }
+    }
+    c.free=c.tier?freeLines():[];c.freeOk=!c.tier||freeSum()===c.tier.f;
+    var sl=document.getElementById('sumLines');
+    if(!c.total){sl.innerHTML='<p class="empty">Aucun produit sélectionné.</p>';}
+    else{
+      sl.innerHTML='<div class="rh"><span>Désignation</span><span>Qté</span><span>Total</span></div>'+
+        c.lines.map(function(x){return '<div class="rl"><span>'+x.p.n+'<small>EAN '+x.p.e+' · '+eur(pu(x.p))+' HT</small></span><span>'+x.q+'</span><span>'+eur(x.q*pu(x.p))+'</span></div>';}).join('')+
+        (c.tier?(c.free.length?c.free.map(function(x){return '<div class="rl"><span>'+x.p.n+' · offert<small>EAN '+x.p.e+' · offre '+c.tier.n+'</small></span><span>+'+x.q+'</span><span class="of">Offert</span></div>';}).join(''):'')+(c.freeOk?'':'<div class="rl"><span>Offre '+c.tier.n+'<small>Choisissez la saveur de vos unités offertes</small></span><span>'+(c.tier.f-freeSum())+'</span><span class="of">À choisir</span></div>'):'')+
+        PRES.filter(function(r){return r.q;}).map(function(r){return '<div class="rl"><span>'+r.n+'</span><span>1</span><span class="of">Offert</span></div>';}).join('');
+    }
+    document.getElementById('totHT').textContent=eur(c.ht);
+    document.getElementById('totTTC').textContent='soit '+eur(c.ttc)+' TTC · TVA '+c.tx;
+    var fb=document.getElementById('fbar'),FG=fGroups();
+    if(!FG.length){fb.classList.remove('ok');fb.innerHTML='<div class="ft">Franco de port à <b>216 € HT</b> par livraison.</div><div class="track"><div class="fill" style="width:0"></div></div>';}
+    else{fb.classList.toggle('ok',francoOk(c));fb.innerHTML=(FG.length>1?'<div class="fmh">'+FG.length+' livraisons séparées · franco 216 € HT chacune</div>':'')+FG.map(function(g){return '<div class="fg'+(g.ok?' ok':'')+'"><div class="ft">'+(g.ok?'✓ ':'')+'<b>'+g.n+'</b> <span>· '+g.d+'</span><em>'+(g.ok?'franco atteint':g.miss)+'</em></div><div class="track"><div class="fill" style="width:'+g.pct+'%"></div></div></div>';}).join('');}
+    document.getElementById('sendBtn').disabled=!c.total||!c.freeOk;
+    document.getElementById('sendBtn2').disabled=!c.total||!c.freeOk;
+    var rc=c.lines.map(function(x){return '- Hydratis '+x.p.n+' '+(x.p.s||'20 pastilles')+' · EAN '+x.p.e+' : '+x.q+' × '+eur(pu(x.p))+' HT = '+eur(x.q*pu(x.p));}).join('\n');
+    if(c.tier){rc+='\n- Offre de lancement Sans Sucres '+c.tier.n+' : +'+c.tier.f+' tubes offerts · livraison du 5 au 15 janvier 2027';c.free.forEach(function(x){rc+='\n- Hydratis '+x.p.n+' · EAN '+x.p.e+' : '+x.q+' (offert)';});}
+    PRES.forEach(function(r){if(r.q)rc+='\n- '+r.n+' : 1 (offert)';});
+    document.getElementById('recapField').value=rc+'\n\nTotal : '+c.total+' unités\nTotal HT : '+eur(c.ht)+'\nTVA ('+c.tx+') : '+eur(c.tva)+'\nTotal TTC : '+eur(c.ttc);
+    document.getElementById('totalField').value=eur(c.ht);
+    return c;
+  }
+
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Effacer toutes les quantités saisies ?'))return;
+    qty={};PRES.forEach(function(r){r.q=0;});
+    document.querySelectorAll('#prodList input').forEach(function(i){i.value=0;});
+    document.querySelectorAll('.pr').forEach(function(d){d.classList.remove('has');});
+    render();
+  });
+
+  function payload(c){
+    var lignes=c.lines.map(function(x){return {modele:'Hydratis '+x.p.n,coloris:(x.p.s||'20 pastilles'),correction:eur(pu(x.p))+' HT',ean:x.p.e,qte:x.q};});
+    (c.tier?freeLines():[]).forEach(function(x){lignes.push({modele:'Hydratis '+x.p.n+' · OFFERT',coloris:'Offre de lancement '+c.tier.n,correction:'Offert',ean:x.p.e,qte:x.q});});
+    PRES.forEach(function(r){if(r.q)lignes.push({modele:r.n,coloris:'Offert',correction:'Offert',ean:'',qte:1});});
+    return {labo:'Hydratis',officine:v('officine'),adresse:v('adresse'),cp:v('code_postal'),ville:v('ville'),contact:v('contact'),tel:v('telephone'),email:v('email'),ref:(window.DBN_REF||''),
+      message:v('message'),lignes:lignes,total:c.total+(c.tier?c.tier.f:0),prixUnitaire:'5,40 € HT (tubes) · 9,06 € HT (gourdes)'+((qty.trousse||0)?' · '+eur(trP(qty.trousse))+' HT (trousse Cherry, '+trR(qty.trousse)+')':''),totalHT:eur(c.ht),tva:eur(c.tva),tvaTaux:c.tx,conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 216 EUR HT',totalTTC:eur(c.ttc),
+      franco:fGroups().map(function(g){return g.n+' : '+(g.ok?'atteint':'non atteint \u2014 '+g.miss);}).join(' \u00b7 ')};
+  }
+  function gwSend(data,done,fail){
+    var cb='dbnCb'+Date.now(),s=document.createElement('script');
+    var to=setTimeout(function(){cleanup();fail();},60000);
+    function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    window[cb]=function(res){cleanup();(res&&res.ok)?done():fail();};
+    s.onerror=function(){cleanup();fail();};
+    s.src=GATEWAY_BREVO+'?action=order&callback='+cb+'&payload='+encodeURIComponent(JSON.stringify(data));
+    document.body.appendChild(s);
+  }
+  function mi(k,val){return '<div class="bc-mi"><div class="k">'+k+'</div><div class="v">'+(val||'—')+'</div></div>';}
+  function fillBon(c){
+    var tl=document.getElementById('bcTvaL');if(tl)tl.textContent='TTC · TVA '+(c.tx||'5,5 %');
+    var first=(v('contact')||'').split(' ')[0];
+    document.getElementById('bcName').textContent='Merci'+(first?' '+first:'')+' !';
+    document.getElementById('bcMeta').innerHTML=mi('Officine',v('officine'))+mi('Livraison',v('adresse')+'<br />'+v('code_postal')+' '+v('ville'))+mi('Contact',v('contact')+'<br />'+v('telephone'))+mi('Date',today());
+    document.getElementById('bcItems').innerHTML=c.lines.map(function(x){return '<div class="bc-row"><img src="'+img(x.p)+'" alt="" /><span><b>'+x.p.n+'</b> <span class="ce">EAN '+x.p.e+' · '+eur(pu(x.p))+' HT</span></span><span class="qn">'+x.q+' u</span></div>';}).join('')+
+      c.free.map(function(x){return '<div class="bc-row"><img src="'+img(x.p)+'" alt="" /><span><b>'+x.p.n+'</b> <span class="ce">EAN '+x.p.e+' · offert · offre '+c.tier.n+'</span></span><span class="qn">+'+x.q+'</span></div>';}).join('')+
+      PRES.filter(function(r){return r.q;}).map(function(r){return '<div class="bc-row"><span>🎁</span><span><b>'+r.n+'</b> <span class="ce">offert</span></span><span class="qn">1</span></div>';}).join('');
+    document.getElementById('bcQty').textContent=c.total;
+    document.getElementById('bcHT').textContent=eur(c.ht);
+    document.getElementById('bcTTC').textContent=eur(c.ttc);
+  }
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target,c=render();if(!c.total)return;
+    var btns=[document.getElementById('sendBtn'),document.getElementById('sendBtn2')];
+    btns.forEach(function(b){b.disabled=true;b.textContent='Envoi en cours… merci de patienter';});
+    function success(){fillBon(c);f.style.display='none';document.getElementById('doneBox').classList.add('on');window.scrollTo(0,0);if(window.gtag)gtag('event','commande_envoyee',{labo:'Hydratis'});}
+    function viaFormspree(){
+      fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+        .then(function(r){if(!r.ok)throw new Error('fail');success();})
+        .catch(function(){btns.forEach(function(b){b.disabled=false;b.textContent='Envoyer ma commande →';});alert("L'envoi a échoué. Vous pouvez me joindre au 06 78 00 78 32 ou par e-mail à dbitton@dbn-pharma.fr.");});
+    }
+    gwSend(payload(c),success,viaFormspree);
+  });
+
+  var ov=document.getElementById('zoomOv');
+  function zoom(src,l){ov.querySelector('img').src=src;ov.querySelector('.zl').textContent=l;ov.classList.add('on');}
+  document.querySelectorAll('.psi').forEach(function(im){im.addEventListener('click',function(){zoom(im.src,im.alt);});});
+  ov.addEventListener('click',function(e){if(e.target===ov||e.target.classList.contains('zx'))ov.classList.remove('on');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')ov.classList.remove('on');});
+  render();
+})();
+</script>
+<script src="avis.js"></script>
+<script src="panier.js"></script>
+</body>
+</html>
