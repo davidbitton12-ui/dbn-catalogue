@@ -890,7 +890,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       var u=it.u||1;
       var ph=PIMG[it.e]||it.img,gl=it.imgs&&it.imgs.length>1?it.imgs:null;
       r.innerHTML='<div class="ix-nw">'+(ph?'<button type="button" class="ix-th" data-z="'+ph+'"'+(gl?' data-gal="'+gl.join('|')+'"':'')+' data-l="'+it.n.replace(/"/g,'')+'" aria-label="Agrandir la photo"><img src="'+ph+'" alt="" loading="lazy" />'+(gl?'<b class="galN">1/'+gl.length+'</b>':'')+'<i>⌕</i></button>':'')+'<div><span class="ix-n">'+it.n+'</span><span class="ix-e">EAN '+it.e+' · <b>par '+u+'</b>'+'</span>'+mgB(g,it)+(RUPT[it.e]?'<span class="ruptTag">⚠ Petite rupture ! Livré à partir du '+RUPT[it.e]+'</span><button type="button" class="ruptAlert" data-e="'+it.e+'" data-n="'+it.n.replace(/"/g,'')+'" data-d="'+RUPT[it.e]+'">🔔 Prévenez-moi du retour</button>':'')+offTag(it)+'</div></div>'+
-        '<div class="ix-pr"><span class="now" id="pr'+key(g,i)+'">'+eur(it.p[0])+'</span><span class="old">'+eur(it.b)+'</span><span class="rmk" id="rm'+key(g,i)+'">'+pct(it.p[0],it.b)+'</span></div>'+
+        '<div class="ix-pr"><span class="now" id="pr'+key(g,i)+'">'+eur(it.p[0])+'</span><span class="old">'+eur(it.b)+'</span><span class="rmk" id="rm'+key(g,i)+'">'+(it.rm?'−'+it.rm+' %':pct(it.p[0],it.b))+'</span></div>'+
         '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
         '<input type="number" min="0" step="'+u+'" value="0" aria-label="'+it.n+'" />'+
         '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>';
@@ -963,11 +963,11 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
         if(it.best){var bt=(it.ug&&q>=it.ug[0])?'ug':((it.gift&&q>=it.gift[0])?'gift':'tp');ok=function(t){return t===bt;};}
         if(it.tp&&ok('tp'))it.tp.forEach(function(s){if(q>=s[0]){pu=s[1];orem='offre dès '+s[0];}});
         if(it.pl&&POOLS[it.pl]&&POOLS[it.pl].min&&pool[it.pl]>=POOLS[it.pl].min){pu=r2(it.b*(1-POOLS[it.pl].pct));orem='offre −'+Math.round(POOLS[it.pl].pct*100)+' %';}
-        if(it.ug&&ok('ug')&&q>=it.ug[0])addFree(it.n,it.e,Math.floor(q/it.ug[0])*it.ug[1]);
+        var qf=0;if(it.ug&&ok('ug')&&q>=it.ug[0]){qf=it.ui?Math.floor(q/(it.ug[0]+it.ug[1]))*it.ug[1]:Math.floor(q/it.ug[0])*it.ug[1];if(qf)addFree(it.n,it.e,qf);}if(!it.ui)qf=0;
         if(it.gift&&ok('gift')&&q>=it.gift[0])addFree(it.gift[2],it.gift[3]||'',Math.floor(q/it.gift[0])*it.gift[1]);
         document.getElementById('pr'+key(g,i)).textContent=eur(pu);
-        var rmEl=document.getElementById('rm'+key(g,i));if(rmEl&&it.b)rmEl.textContent=pct(pu,it.b);
-        if(q>0){total+=q;ht+=q*pu;lines.push({g:g,it:it,q:q,pu:pu,rem:orem||(x>=0?g.l[x]:g.l[0])});}
+        var rmEl=document.getElementById('rm'+key(g,i));if(rmEl&&it.b)rmEl.textContent=(it.rm&&pu===it.p[0])?'−'+it.rm+' %':pct(pu,it.b);
+        if(q>0){total+=q-qf;ht+=(q-qf)*pu;if(q-qf>0)lines.push({g:g,it:it,q:q-qf,pu:pu,rem:orem||(x>=0?g.l[x]:g.l[0])});}
       });
     });
     Object.keys(POOLS).forEach(function(k){var P=POOLS[k],t=pool[k]||0;
@@ -1320,5 +1320,6 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 })();
 </script>
 <script src="galerie.js"></script>
+<script src="rdv.js"></script>
 </body>
 </html>
