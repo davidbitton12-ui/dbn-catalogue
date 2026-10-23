@@ -610,6 +610,14 @@
   .band-univ .b-price{color:#B03A2E}
   .band-univ .b-btn{background:#B03A2E;color:#fff}
   .band-univ .b-btn:hover{background:#8C2A20}
+  .bjeq-cat{font-size:12.5px;font-weight:700;text-decoration:none;color:#7A5600;text-align:center;opacity:.9}.bjeq-cat:hover{text-decoration:underline;opacity:1}
+  .bx-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+  .bx-lab{display:inline-flex;align-items:baseline;gap:6px;background:#EF7A12;color:#fff;border-radius:8px;padding:5px 10px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1}
+  .bx-lab b{font-size:15px;font-weight:900;letter-spacing:.06em;order:-1}
+  .bx-row .b-badge{margin:0}
+  .band-univ .b-cat,.band-eau .b-cat{font-size:12.5px;font-weight:700;text-decoration:none;color:inherit;opacity:.85;text-align:center}
+  .band-univ .b-cat:hover,.band-eau .b-cat:hover{text-decoration:underline;opacity:1}
+  .band-univ .b-cat{color:#8C2A20}.band-eau .b-cat{color:#7E3A2E}
   .band-eau{order:-2;grid-template-columns:370px 1fr 230px;min-height:180px;background:radial-gradient(120% 130% at 22% -10%,#FFF6EE,#F3E9E0 48%,#EDE0D4 100%);border:2px solid #9C4A3C;border-top:1px dashed rgba(156,74,60,.45);border-radius:0 0 18px 18px;margin-top:-10px}
   .band-eau .b-price{font-size:44px!important;line-height:1;white-space:nowrap}
   .band-eau .b-price small{font-size:12px!important;display:block;margin-top:5px;opacity:.8}
@@ -688,9 +696,9 @@
   @media(prefers-reduced-motion:reduce){.band-oops .b-badge{animation:none}}
   .band-oops .b-chip{background:#fff;color:#1F5957;border-color:#9CC9C8}
   .band-oops .b-chip.hot{background:#2B7A78;color:#fff;border-color:#2B7A78;font-weight:700}
-  .band-oops .b-cta{background:linear-gradient(160deg,#FFF3F0,#FFE4DD);border-left:2px dashed #E8442A;padding:16px 18px;gap:7px}
-  .band-oops .b-price{color:#1F5957;font-size:30px!important;line-height:1;white-space:nowrap}
-  .band-oops .b-price small{font-size:11px!important;display:block;margin-top:3px;opacity:.85}
+  .band-oops .b-cta{background:linear-gradient(160deg,#FFF3F0,#FFE4DD);border-left:2px dashed #E8442A;padding:12px 18px;gap:8px;justify-content:center}
+  .band-oops .b-price{color:#1F5957;font-size:60px!important;line-height:.95;white-space:nowrap;letter-spacing:-.01em}
+  .band-oops .b-price small{font-size:13px!important;display:block;margin-top:4px;opacity:.85;letter-spacing:0}
   .band-oops .cmd-new,.band-tina .cmd-new,.band-chamb .cmd-new{display:inline-flex;align-items:center;gap:6px;align-self:center;white-space:nowrap;background:#1F5957;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:2px 0 0;animation:cmd-blink 1.25s steps(1,end) infinite}
   @keyframes cmd-blink{0%,49%{background:#1F5957;color:#fff}50%,100%{background:#E8442A;color:#fff}}
   @media(prefers-reduced-motion:reduce){.band-oops .cmd-new,.band-tina .cmd-new,.band-chamb .cmd-new{animation:none}}
@@ -715,7 +723,7 @@
     .band-oops{padding:0}
     .band-oops .b-img{min-height:150px}
     .band-oops .b-cta{border-left:none;border-top:2px dashed #E8442A}
-    .band-oops .b-price{font-size:28px!important}
+    .band-oops .b-price{font-size:48px!important}
   }
   .band-bxnew{order:-5;display:block;padding:18px 26px 14px;position:relative;min-height:0;background:radial-gradient(120% 130% at 80% -10%,#EFFBF2,#DFF4E6 45%,#D3EFDC 100%);border:2px solid #2FA84F}
   .band-bxnew .b-cta{position:absolute;top:16px;right:22px;background:transparent;border-left:none;padding:0;margin:0;display:flex;justify-content:flex-end}
@@ -819,6 +827,8 @@
   .band-chamb .b-chip{background:#fff;color:#4B3F8C;border-color:#D3CCEE}
   .band-chamb .b-chip.hot{background:linear-gradient(90deg,#F07A2B,#E8442A);color:#fff;border-color:transparent;font-weight:800}
   .band-chamb .b-cta{background:#E8E3F7;border-left:1px solid #D3CCEE}
+  .band-sampar .b-cat{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:transparent;color:#E9D6A0;border:1.5px solid #C9A227;font-size:13px;font-weight:700;padding:9px 16px;border-radius:10px;text-decoration:none}
+  .band-sampar .b-cat:hover{background:#C9A227;color:#1C1611}
   .band-chamb .b-cat{background:#6A5AB4!important;color:#fff!important}
   .band-chamb .b-cat:hover{background:#4B3F8C!important}
   .band-chamb .b-price{color:#4B3F8C;font-size:60px!important;line-height:1;white-space:nowrap}
@@ -1439,6 +1449,28 @@
 @media(max-width:420px){.dbn-hdr .dbn-links{gap:30px}.dbn-hdr .dbn-links a{font-size:16px}}
 @media print{.dbn-hdr,.dbn-sub{display:none!important}}
 </style>
+<style id="oops-first">.band.band-oops{order:-300!important}</style>
+<style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.b-btn2,.b-cat,.oc-sec{min-height:40px;display:inline-flex;align-items:center}.foot a{display:inline-block;padding:8px 0}}</style>
+<style id="cta-commun">
+/* Boutons identiques sur toutes les mises en avant */
+.bandeaux .band :is(.b-cta,.st-cta){align-items:center!important;justify-content:center!important;gap:9px!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-cat,.bandeaux .band :is(.b-cta,.st-cta) .b-btn{box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:210px!important;max-width:100%!important;margin:0!important;align-self:center!important;white-space:nowrap!important;text-decoration:none!important;font-family:var(--sans)!important;letter-spacing:0!important;text-transform:none!important;flex:0 0 auto!important;transform:none!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-cat{height:42px!important;padding:0 16px!important;border-radius:11px!important;background:#fff!important;color:#1C1611!important;border:1.5px solid rgba(28,22,17,.22)!important;font-size:14px!important;font-weight:700!important;box-shadow:0 2px 6px -3px rgba(0,0,0,.25)!important;opacity:1!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-cat:hover{background:#1C1611!important;color:#fff!important;border-color:#1C1611!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-btn{position:relative!important;overflow:hidden!important;height:50px!important;padding:0 18px!important;border-radius:12px!important;background:#E8442A!important;color:#fff!important;border:0!important;font-size:16px!important;font-weight:800!important;box-shadow:0 10px 22px -10px rgba(232,68,42,.85)!important;animation:ctaPulse 2.6s ease-in-out infinite!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-btn:hover{background:#C93820!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-btn::before,.bandeaux .band :is(.b-cta,.st-cta) .b-btn::after{display:none!important}
+.bandeaux .band :is(.b-cta,.st-cta) .arr{display:inline-block;transition:transform .18s}.bandeaux .band :is(.b-cta,.st-cta) a:hover .arr{transform:translateX(3px)}
+@keyframes ctaPulse{0%,100%{box-shadow:0 10px 22px -10px rgba(232,68,42,.85),0 0 0 0 rgba(232,68,42,.45)}50%{box-shadow:0 10px 22px -10px rgba(232,68,42,.85),0 0 0 7px rgba(232,68,42,0)}}
+@media(prefers-reduced-motion:reduce){.bandeaux .band :is(.b-cta,.st-cta) .b-btn{animation:none!important}}
+@media(max-width:860px){.bandeaux .band :is(.b-cta,.st-cta) .b-cat,.bandeaux .band :is(.b-cta,.st-cta) .b-btn{width:260px!important}}
+/* colonne de droite identique sur toutes les mises en avant */
+@media(min-width:1101px){.bandeaux .band.band-univ{grid-template-columns:300px minmax(0,1fr) 236px!important}.bandeaux .band.band-eau{grid-template-columns:370px minmax(0,1fr) 236px!important}.bandeaux .band.band-sampar{grid-template-columns:300px minmax(0,1fr) 236px!important}.bandeaux .band.band-oops{grid-template-columns:470px minmax(0,1fr) 236px!important}.bandeaux .band.band-argan{grid-template-columns:400px minmax(0,1fr) 236px!important}.bandeaux .band.band-bjeq{grid-template-columns:380px minmax(0,1fr) 236px!important}.bandeaux .band.band-tina{grid-template-columns:230px minmax(0,1fr) 236px!important}}
+@media(max-width:1100px) and (min-width:861px){.bandeaux .band.band-univ{grid-template-columns:230px minmax(0,1fr) 210px!important}.bandeaux .band.band-eau{grid-template-columns:300px minmax(0,1fr) 210px!important}.bandeaux .band.band-sampar{grid-template-columns:230px minmax(0,1fr) 210px!important}.bandeaux .band.band-oops{grid-template-columns:330px minmax(0,1fr) 210px!important}.bandeaux .band.band-argan{grid-template-columns:300px minmax(0,1fr) 210px!important}.bandeaux .band.band-bjeq{grid-template-columns:280px minmax(0,1fr) 210px!important}.bandeaux .band.band-tina{grid-template-columns:200px minmax(0,1fr) 210px!important}}
+.bandeaux .band :is(.b-cta,.st-cta){padding-left:14px!important;padding-right:14px!important}
+.bandeaux .band :is(.b-cta,.st-cta) .b-cat,.bandeaux .band :is(.b-cta,.st-cta) .b-btn{width:182px!important;max-width:none!important}
+@media(max-width:860px){.bandeaux .band :is(.b-cta,.st-cta) .b-cat,.bandeaux .band :is(.b-cta,.st-cta) .b-btn{width:260px!important;max-width:100%!important}}
+</style>
 </head>
 <body>
 
@@ -1496,7 +1528,8 @@
           <span><b>Tout inclus</b>écouvillon stérile, tube &amp; réactifs</span>
         </div>
         <div class="st-cta">
-          <a class="b-btn st-btn" href="DBN - Commande Biosynex.html">Commander ici <span class="arr">→</span></a>
+          <a class="b-cat" href="https://drive.google.com/file/d/1Ljq56a0TfsG-zJf_GnIuqAO_xnASBnR7/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-btn st-btn" href="DBN - Commande Biosynex.html">Commander ici <span class="arr">→</span></a>
           <span class="st-fr">Franco <b>180 € HT</b> commun Biosynex</span>
         </div>
       </div>
@@ -1519,7 +1552,8 @@
         </div>
         <div class="hy-price"><b>5,40 € HT</b> l'unité (−40 %) · PVC 9,90 € TTC</div>
         <div class="st-cta">
-          <a class="b-btn st-btn" href="DBN - Commande Hydratis.html">Commander ici <span class="arr">→</span></a>
+          <a class="b-cat" href="https://drive.google.com/file/d/1rnUSNyeXWoUDWU6a7qchT0BQ91B-vl0m/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-btn st-btn" href="DBN - Commande Hydratis.html">Commander ici <span class="arr">→</span></a>
         </div>
       </div>
     </div>
@@ -1576,8 +1610,8 @@
           <span class="b-badge"><span class="dot"></span> Nouveau laboratoire</span>
           <h3><em>OOPS Optics</em></h3>
         </div>
-        <p class="bsub">Les lunettes de lecture qui font vendre. <b>10 modèles, 40 références</b> — Femme, Homme &amp; Mixte, corrections de +1,00 à +3,50. Pochette et chiffonnette incluses. Commande <b>à l'unité, au choix</b>.</p>        <div class="b-chips">
-          <span class="b-chip">40 références</span>
+        <p class="bsub">Les lunettes de lecture qui font vendre. <b>13 modèles, 64 coloris</b> — Femme, Homme &amp; Mixte, corrections de +1,00 à +3,50. Pochette et chiffonnette incluses. Commande <b>à l'unité, au choix</b>.</p>        <div class="b-chips">
+          <span class="b-chip">64 coloris</span>
           <span class="b-chip">Franco 150 € HT</span>
           <span class="b-chip">Pochette + chiffonnette</span>
         </div>
@@ -1585,7 +1619,6 @@
       <div class="b-cta">
         <div class="b-price">2,95 €<small>HT / u · prix unique</small></div>
         <a class="b-cat" href="https://drive.google.com/file/d/1XNftMrGd7sHcTaE4yPf8Fc4ywLS-PTes/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
-        <span class="cmd-new">Nouveau</span>
         <a class="b-btn" href="DBN - Commande OOPS Optics.html">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
@@ -1597,7 +1630,7 @@
         <img src="assets/univ_furie.png" alt="Bouillotte peluche Furie Éclair" />
       </div>
       <div class="b-copy">
-        <span class="b-badge"><span class="dot"></span> Disponibles · livraison immédiate</span>
+        <div class="bx-row"><span class="bx-lab"><b>BIOSYNEX</b>Laboratoire</span><span class="b-badge"><span class="dot"></span> Disponibles · livraison immédiate</span></div>
         <h3>Bouillottes <em>Universal</em> — prêtes pour l'hiver.</h3>
         <p class="bsub">10 personnages DreamWorks déhoussables &amp; micro-ondables, sachet de billes d'argile, <b>convient dès la naissance</b>. Nouveauté 2026 : <b>Furie Éclair</b>. Livrées en boîte unitaire.</p>
         <div class="b-chips">
@@ -1608,7 +1641,9 @@
         </div>
       </div>
       <div class="b-cta">
-        <div class="b-price">13,04 €<small>HT / u · tarif 25 €</small></div>        <a class="b-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Bon de commande <span class="arr">→</span></a>
+        <div class="b-price">13,04 €<small>HT / u · tarif 25 €</small></div>
+        <a class="b-cat" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-btn" href="DBN - Commande Biosynex.html#fam=bp">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
 
@@ -1620,7 +1655,7 @@
         <figure><img src="assets/eau_grisetaupe.png" alt="Bouillotte à eau 2 L housse grise &amp; taupe" /><figcaption>Grise &amp; taupe</figcaption></figure>
       </div>
       <div class="b-copy">
-        <span class="b-badge"><span class="dot"></span> Aussi au bon de commande · livraison immédiate</span>
+        <div class="bx-row"><span class="bx-lab"><b>BIOSYNEX</b>Laboratoire</span><span class="b-badge"><span class="dot"></span> Livraison immédiate</span></div>
         <h3>Bouillottes <em>à eau 2 L</em> — le classique de l'hiver.</h3>
         <p class="bsub">Caoutchouc naturel <b>conforme à la norme BS1970:2012</b>, housses <b>Oeko-Tex® lavables</b>. Vendues par lot de 2 : sans housse beige &amp; rouge, housse blanche &amp; rouge, ou housse grise &amp; taupe.</p>
         <div class="b-chips">
@@ -1632,7 +1667,8 @@
       </div>
       <div class="b-cta">
         <div class="b-price">3,50 €<small>HT / u · sans housse</small></div>
-        <a class="b-btn" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Bon de commande <span class="arr">→</span></a>
+        <a class="b-cat" href="https://drive.google.com/file/d/13aUmlY_jiuXjSTvU7WgJuRp5U9F8lFY5/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
+        <a class="b-btn" href="DBN - Commande Biosynex.html#fam=be">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
 
@@ -1657,7 +1693,6 @@
       <div class="b-cta">
         <div class="b-price" style="font-size:20px">Offre rentrée<br/><small style="font-size:12px;opacity:.75">présentoirs comptoir</small></div>
         <a class="b-cat" href="https://drive.google.com/file/d/1EgJ1SIfSUz_Ut1ki4z0_dCKhlvVpktLI/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
-        <span class="cmd-new">Nouveau</span>
         <a class="b-btn" href="DBN - Commande SAMPAR.html">Commander ici <span class="arr">→</span></a>
       </div>
     </div>
@@ -1682,6 +1717,7 @@
       </div>
       <div class="b-cta">
         <div class="b-price">19,40 €<small>HT / u · par 8</small></div>
+        <a class="b-cat bjeq-cat" href="https://drive.google.com/file/d/1HLq0fMmpQykqnJWxS0uN7zYXi6TIu_vb/view" target="_blank" rel="noopener">Voir le catalogue <span class="arr">→</span></a>
         <a class="b-btn bjeq-btn" href="DBN - Commande Bonjour Drink.html">Précommander ici <span class="arr">→</span></a>
       </div>
     </div>
@@ -1695,7 +1731,7 @@
         <span class="tina-rb" aria-label="Produit remboursé"><b>Produit</b><b>remboursé</b><i>Sécu &amp; mutuelle</i></span>
         <span class="b-badge"><span class="dot"></span> Remboursée dès oct. 2026 · Exclusivité officine</span>
         <h3><em>Sisters Republic</em> · Culotte Tina — gamme remboursée</h3>
-        <div class="tina-liv">🚚 Livraison <b>SEMAINE DU 15 NOVEMBRE</b></div>
+        <div class="tina-liv">🚚 Livraison <b>À PARTIR DU 20 NOVEMBRE</b></div>
         <p class="bsub">Coton bio GOTS · 8 tailles · Exclusivité officine jusqu'en 2028 · Décret 17/04/2026</p>
         <div class="b-chips">
           <span class="b-chip">Remise 10 % sur les packs</span>
@@ -1806,5 +1842,6 @@
 
 
 <script src="rappel-panier.js"></script>
+<script src="rdv.js"></script>
 </body>
 </html>

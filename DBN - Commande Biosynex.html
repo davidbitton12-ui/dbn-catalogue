@@ -610,6 +610,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 .mgMd .pc{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:12px;color:#6E6557}.mgMd .pc b{color:#1C1611}.mgMd .pc button{font-family:inherit;font-size:11.5px;font-weight:700;color:#1206A6;background:#E4ECF6;border:0;border-radius:8px;padding:4px 9px;cursor:pointer}
 </style>
 <style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
+<style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.qty button,.cq button{min-width:44px!important;min-height:44px!important}.oc-sec,.b-btn2,.b-cat,.ix-th+a,.zx{min-height:40px;display:inline-flex;align-items:center}.zx{min-width:40px;justify-content:center}}</style>
 </head>
 <body>
 
@@ -755,7 +756,7 @@ window.PKP=window.PKP||[{n:'Présentoir sol',min:120,img:'assets/bxp_pk_sol.png'
   /* t = seuils de la famille (total panaché) · p = prix nets HT par seuil */
   var GROUPS=window.BX.GROUPS, POOLS=window.BX.POOLS||{}, CHOICE={};
   /* produits en rupture (EAN) — afficher alerte + gestion du reliquat */
-  var RUPT={'3532678606187':'21 octobre','3532678591131':'3 novembre','3532678607610':'8 novembre'};
+  var RUPT={'3532678606187':'21 octobre','3532678591131':'3 novembre','3532678607610':'8 novembre','3532678610870':'31 janvier 2027'};var RSUC={'3532678610870':1};
   function rlqVal(){var r=document.querySelector('input[name="reliquat"]:checked');return r?r.value:'';}
   var CHOSEN={},FREE_REST=0;
   GROUPS.forEach(function(g){if(g.opts)CHOICE[g.k]=g.opts[0].v;});
@@ -803,6 +804,7 @@ window.PKP=window.PKP||[{n:'Présentoir sol',min:120,img:'assets/bxp_pk_sol.png'
     tabs.appendChild(b);
     var p=document.createElement('div');p.className='famPane';p.hidden=fi!==0;panes[F.f]=p;root.appendChild(p);
   });
+  (function(){var m=location.hash.match(/fam=([a-z]+)/);if(!m)return;var t=tabs.querySelector('.famTab[data-f="'+m[1]+'"]');if(t)setTimeout(function(){t.click();var y=tabs.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:y,behavior:'smooth'});},300);})();
   /* barre de familles collante */
   var bar=document.createElement('div');bar.className='famBar';bar.setAttribute('aria-hidden','true');
   var barIn=document.createElement('div');barIn.className='famBar-in';bar.appendChild(barIn);document.body.appendChild(bar);
@@ -889,8 +891,8 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       var r=document.createElement('div');r.className='ix-p';r.id='p'+key(g,i);
       var u=it.u||1;
       var ph=PIMG[it.e]||it.img,gl=it.imgs&&it.imgs.length>1?it.imgs:null;
-      r.innerHTML='<div class="ix-nw">'+(ph?'<button type="button" class="ix-th" data-z="'+ph+'"'+(gl?' data-gal="'+gl.join('|')+'"':'')+' data-l="'+it.n.replace(/"/g,'')+'" aria-label="Agrandir la photo"><img src="'+ph+'" alt="" loading="lazy" />'+(gl?'<b class="galN">1/'+gl.length+'</b>':'')+'<i>⌕</i></button>':'')+'<div><span class="ix-n">'+it.n+'</span><span class="ix-e">EAN '+it.e+' · <b>par '+u+'</b>'+'</span>'+mgB(g,it)+(RUPT[it.e]?'<span class="ruptTag">⚠ Petite rupture ! Livré à partir du '+RUPT[it.e]+'</span><button type="button" class="ruptAlert" data-e="'+it.e+'" data-n="'+it.n.replace(/"/g,'')+'" data-d="'+RUPT[it.e]+'">🔔 Prévenez-moi du retour</button>':'')+offTag(it)+'</div></div>'+
-        '<div class="ix-pr"><span class="now" id="pr'+key(g,i)+'">'+eur(it.p[0])+'</span><span class="old">'+eur(it.b)+'</span><span class="rmk" id="rm'+key(g,i)+'">'+pct(it.p[0],it.b)+'</span></div>'+
+      r.innerHTML='<div class="ix-nw">'+(ph?'<button type="button" class="ix-th" data-z="'+ph+'"'+(gl?' data-gal="'+gl.join('|')+'"':'')+' data-l="'+it.n.replace(/"/g,'')+'" aria-label="Agrandir la photo"><img src="'+ph+'" alt="" loading="lazy" />'+(gl?'<b class="galN">1/'+gl.length+'</b>':'')+'<i>⌕</i></button>':'')+'<div><span class="ix-n">'+it.n+'</span><span class="ix-e">EAN '+it.e+' · <b>par '+u+'</b>'+'</span>'+mgB(g,it)+(RUPT[it.e]?'<span class="ruptTag">'+(RSUC[it.e]?'🔥 Victime de son succès ! Retour le ':'⚠ Petite rupture ! Livré à partir du ')+RUPT[it.e]+'</span><button type="button" class="ruptAlert" data-e="'+it.e+'" data-n="'+it.n.replace(/"/g,'')+'" data-d="'+RUPT[it.e]+'">🔔 Prévenez-moi du retour</button>':'')+offTag(it)+'</div></div>'+
+        '<div class="ix-pr"><span class="now" id="pr'+key(g,i)+'">'+eur(it.p[0])+'</span><span class="old">'+eur(it.b)+'</span><span class="rmk" id="rm'+key(g,i)+'">'+(it.rm?'−'+it.rm+' %':pct(it.p[0],it.b))+'</span></div>'+
         '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
         '<input type="number" min="0" step="'+u+'" value="0" aria-label="'+it.n+'" />'+
         '<button type="button" data-a="+" aria-label="Ajouter">+</button></div>';
@@ -963,11 +965,11 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
         if(it.best){var bt=(it.ug&&q>=it.ug[0])?'ug':((it.gift&&q>=it.gift[0])?'gift':'tp');ok=function(t){return t===bt;};}
         if(it.tp&&ok('tp'))it.tp.forEach(function(s){if(q>=s[0]){pu=s[1];orem='offre dès '+s[0];}});
         if(it.pl&&POOLS[it.pl]&&POOLS[it.pl].min&&pool[it.pl]>=POOLS[it.pl].min){pu=r2(it.b*(1-POOLS[it.pl].pct));orem='offre −'+Math.round(POOLS[it.pl].pct*100)+' %';}
-        if(it.ug&&ok('ug')&&q>=it.ug[0])addFree(it.n,it.e,Math.floor(q/it.ug[0])*it.ug[1]);
+        var qf=0;if(it.ug&&ok('ug')&&q>=it.ug[0]){qf=it.ui?Math.floor(q/(it.ug[0]+it.ug[1]))*it.ug[1]:Math.floor(q/it.ug[0])*it.ug[1];if(qf)addFree(it.n,it.e,qf);}if(!it.ui)qf=0;
         if(it.gift&&ok('gift')&&q>=it.gift[0])addFree(it.gift[2],it.gift[3]||'',Math.floor(q/it.gift[0])*it.gift[1]);
         document.getElementById('pr'+key(g,i)).textContent=eur(pu);
-        var rmEl=document.getElementById('rm'+key(g,i));if(rmEl&&it.b)rmEl.textContent=pct(pu,it.b);
-        if(q>0){total+=q;ht+=q*pu;lines.push({g:g,it:it,q:q,pu:pu,rem:orem||(x>=0?g.l[x]:g.l[0])});}
+        var rmEl=document.getElementById('rm'+key(g,i));if(rmEl&&it.b)rmEl.textContent=(it.rm&&pu===it.p[0])?'−'+it.rm+' %':pct(pu,it.b);
+        if(q>0){total+=q-qf;ht+=(q-qf)*pu;if(q-qf>0)lines.push({g:g,it:it,q:q-qf,pu:pu,rem:orem||(x>=0?g.l[x]:g.l[0])});}
       });
     });
     Object.keys(POOLS).forEach(function(k){var P=POOLS[k],t=pool[k]||0;
@@ -1320,5 +1322,6 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 })();
 </script>
 <script src="galerie.js"></script>
+<script src="rdv.js"></script>
 </body>
 </html>
