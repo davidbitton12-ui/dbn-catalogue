@@ -609,6 +609,9 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <style id="lab-cat">.ix-off{white-space:normal}.ix-p .ix-pr .now{white-space:nowrap}</style>
 <style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
 <style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.qty button,.cq button{min-width:44px!important;min-height:44px!important}.oc-sec,.b-btn2,.b-cat,.ix-th+a,.zx{min-height:40px;display:inline-flex;align-items:center}.zx{min-width:40px;justify-content:center}}</style>
+<style id="rcqCss">.rcRow,.rcHead{grid-template-columns:minmax(0,1fr) 76px 52px 64px!important;align-items:center!important}.rcRow .rcQ,.rcHead span:nth-child(2){text-align:center!important}.rcq{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;max-width:100%}.rcq button{width:20px;height:22px;flex:none;border:0;background:none;color:var(--blue);font:800 14px "Hanken Grotesk",sans-serif;cursor:pointer;padding:0;line-height:1}.rcq button:hover{background:#EEF0FB}.rcq b{min-width:0;flex:1;padding:0 2px;text-align:center;font-size:12.5px}.rcRow .rcPu{font-size:12.5px}</style>
+<style id="sumScroll">@media(min-width:861px){#sumLines{max-height:max(170px,calc(100vh - var(--stickTop,96px) - 430px));overflow-y:auto;overscroll-behavior:contain;margin-right:-6px;padding-right:6px;scrollbar-width:thin}#sumLines .rcHead{position:sticky;top:0;background:#fff;z-index:1}}#sumLines .rcRow{font-size:12.5px;padding:7px 0!important}#sumLines .rcN{font-size:12.5px;line-height:1.3}#sumLines .eanL{font-size:10.5px}#sumLines .rcPu{font-size:11.5px!important}#sumLines .rcT{font-size:12.5px}#sumLines .line{font-size:12.5px;padding:5px 0}#sumLines .rcHead{font-size:9.5px}#sumLines .rcQ,#sumLines .rcq b{font-size:15px!important;font-weight:800}#sumLines .rcq button{width:24px;height:26px;font-size:16px}</style>
+<style id="cgvIn">.cgv.cgv-in{margin:12px 0 0}.btn.btn-in{display:block;width:100%;margin-top:12px}</style>
 </head>
 <body>
 
@@ -661,6 +664,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         </div>
         <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
         <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+        <div class="cgv cgv-in"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
+        <button class="btn btn-in" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
       </div>
     </div>
 
@@ -683,8 +688,6 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
           <label><input type="radio" name="reliquat" value="Livrer dès son retour (reliquat)" checked /> <span><b>Me le livrer dès son retour</b> (envoyé à part)</span></label>
           <label><input type="radio" name="reliquat" value="Annuler le produit en rupture" /> <span><b>Annuler ce produit</b></span></label>
         </div>
-        <div class="cgv"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
-        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
       </div>
     </aside>
 
@@ -905,6 +908,8 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
   function famBadges(){FAMS.forEach(function(F){var t=0;GROUPS.forEach(function(g){if(g.f===F.f)t+=gTot(g);});var el=document.getElementById('fq'+F.f);if(el){el.textContent=t>0?t+' u':'';el.classList.toggle('on',t>0);}
     var eb=document.getElementById('fb'+F.f);if(eb){eb.textContent=t>0?t:'';eb.classList.toggle('on',t>0);}});}
   function set(k,inp,r){var v=parseInt(inp.value,10);if(isNaN(v)||v<0)v=0;var _it=ITM[k];if(_it&&_it.max&&v>_it.max)v=_it.max;if(_it&&_it.mh&&CUR_HT<_it.mh)v=0;inp.value=v;qty[k]=v;r.classList.toggle('has',v>0);render();famBadges();}
+  document.getElementById('sumLines').addEventListener('click',function(e){var b=e.target.closest('[data-ck]');if(!b)return;e.preventDefault();var k=b.dataset.ck,r=document.getElementById('p'+k),inp=r&&r.querySelector('input');if(!inp)return;var u=parseInt(inp.step,10)||1;inp.value=Math.max(0,(parseInt(inp.value,10)||0)+(+b.dataset.cs)*u);set(k,inp,r);inp.dispatchEvent(new Event('change',{bubbles:true}));});
+
 
   var ITM={},CUR_HT=0;GROUPS.forEach(function(g){g.items.forEach(function(it,i){ITM[key(g,i)]=it;});});
   function offTag(it){
@@ -1013,7 +1018,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     var sl=document.getElementById('sumLines');
     if(!c.total){sl.innerHTML='<p class="empty">Aucune quantité sélectionnée.<br />Saisissez vos quantités pour voir le total.</p>';}
     else{
-      sl.innerHTML='<div class="rcHead"><span>Produit</span><span>Qté</span><span>P.U. net</span><span>Total</span></div>'+c.lines.map(function(l){var off=l.pu===0;return '<div class="rcRow'+(off?' lnOff':'')+'"><span class="rcN">'+l.it.n.replace(' — offert','')+'<em class="eanL">EAN '+l.it.e+'</em></span><span class="rcQ">'+l.q+'</span><span class="rcPu">'+(off?'—':eur(l.pu))+'</span><b class="rcT">'+(off?'Offert':eur(l.q*l.pu))+'</b></div>';}).join('')+
+      sl.innerHTML='<div class="rcHead"><span>Produit</span><span>Qté</span><span>P.U. net</span><span>Total</span></div>'+c.lines.map(function(l){var off=l.pu===0;return '<div class="rcRow'+(off?' lnOff':'')+'"><span class="rcN">'+l.it.n.replace(' — offert','')+'<em class="eanL">EAN '+l.it.e+'</em></span><span class="rcQ">'+(l.pu===0?l.q:'<span class="rcq"><button type="button" data-ck="'+key(l.g,l.g.items.indexOf(l.it))+'" data-cs="-1" aria-label="Retirer">−</button><b>'+l.q+'</b><button type="button" data-ck="'+key(l.g,l.g.items.indexOf(l.it))+'" data-cs="1" aria-label="Ajouter">+</button></span>')+'</span><span class="rcPu">'+(off?'—':eur(l.pu))+'</span><b class="rcT">'+(off?'Offert':eur(l.q*l.pu))+'</b></div>';}).join('')+
         '<div class="line"><span>Total unités</span><b>'+c.total+' u</b></div>'+
         '<div class="line"><span>Frais de port</span><b>'+(c.port?eur(c.port)+' HT':'offerts')+'</b></div>';
     }
@@ -1022,9 +1027,9 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
     document.getElementById('totTTC').textContent='soit '+eur(tot*TVA)+' TTC · TVA 20 %';
     var mn=document.getElementById('minNote');
     if(c.blocked&&LAB.port==='block'&&c.ht<FRANCO){mn.className='minNote';mn.innerHTML='Commande à partir de <b>'+eur(FRANCO)+' HT</b> (franco) : encore <b>'+eur(FRANCO-c.ht)+'</b>.';}
-    else if(c.blocked){mn.className='minNote';mn.innerHTML='Une famille n\'atteint pas son minimum : voir l\'alerte sous la famille.';}
-    else if(c.next.length){mn.className='minNote ok';mn.innerHTML='Palier suivant — '+c.next.join(' · ');}
-    else{mn.className='minNote';mn.innerHTML=c.total?'Meilleure remise atteinte sur vos familles.':'Commande minimum par famille : voir les seuils.';if(c.total)mn.className='minNote ok';}
+    else if(c.blocked){mn.style.display='';mn.className='minNote';mn.innerHTML='Une famille n\'atteint pas son minimum : voir l\'alerte sous la famille.';}
+    else if(c.next.length){mn.style.display='';mn.className='minNote ok';mn.innerHTML='Palier suivant — '+c.next.join(' · ');}
+    else{mn.className='minNote';mn.innerHTML=c.total?'':'Commande minimum par famille : voir les seuils.';mn.style.display=c.total?'none':'';}
     var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt');
     document.getElementById('fFill').style.width=Math.min(100,c.ht/FRANCO*100)+'%';
     if(c.ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ <b>Franco atteint</b> ('+FRANCO+' € HT).';}
@@ -1155,7 +1160,7 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
 (function(){
   function go(){
     var main=document.getElementById('sendBtn'),msg=document.querySelector('[name="message"]');
-    if(!main||!msg||document.getElementById('sendBtn2'))return;
+    if(!main||!msg||document.getElementById('sendBtn2')||main.classList.contains('btn-in'))return;
     var fld=msg.closest('.field')||msg;
     var w=document.createElement('div');w.className='send2';
     w.innerHTML='<button type="button" class="btn" id="sendBtn2"></button><p class="send2n" id="send2n"></p>';

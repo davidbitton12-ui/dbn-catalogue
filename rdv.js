@@ -20,7 +20,8 @@
    '.dbn-hdr .dbn-links a.cmd.on{background:#E8442A;border-color:#E8442A;color:#fff!important}'+
    '@media(max-width:820px){.dbn-hdr .dbn-links{justify-content:center!important;gap:8px!important}.dbn-hdr .dbn-links a{min-height:46px;padding:0 16px!important;font-size:16px!important}}'+
    '@media(max-width:420px){.dbn-hdr .dbn-links a{min-height:44px;padding:0 12px!important;font-size:14.5px!important}}'+'.rdvBtn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;background:#E8442A;color:#fff!important;font:800 19px "Hanken Grotesk",system-ui,sans-serif;padding:14px 26px;cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 10px 22px -10px rgba(232,68,42,.75);flex:none}'+
-   '.rdvBtn:hover{background:#c93820}.rdvBtn .ic{font-size:22px;line-height:1}'+
+   '.rdvBtn:hover{background:#c93820}.rdvBtn .ic{font-size:22px;line-height:1}.rdvBtn{padding:9px 24px!important}.rdvTx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05}.rdvTx b{font-size:19px;font-weight:800}.rdvTx small{font-size:12px;font-weight:600;opacity:.9;margin-top:2px;letter-spacing:.02em}@media(max-width:700px){.rdvTx b{font-size:15px}.rdvTx small{font-size:10.5px}}'+
+   '@media(max-width:1180px){.hdr-in .rdvBtn{padding:7px 14px!important;gap:6px;box-shadow:none}.hdr-in .rdvBtn .ic{font-size:17px}.hdr-in .rdvTx b{font-size:14.5px}.hdr-in .rdvTx small{display:none}}'+
    '@media(max-width:700px){.rdvBtn{font-size:14px;padding:9px 14px}.rdvBtn .tx2{display:none}}'+
    '.rdvOv{position:fixed;inset:0;z-index:3000;background:rgba(28,22,17,.55);display:none;align-items:flex-start;justify-content:center;padding:28px 14px;overflow:auto;font-family:"Hanken Grotesk",system-ui,sans-serif;color:#1C1611}.rdvOv.on{display:flex}'+
    '.rdvBox{width:100%;max-width:740px;background:#fff;border-radius:22px;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);overflow:hidden;font-size:16px;line-height:1.5}'+
@@ -31,7 +32,7 @@
    '.rdvDay small{display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;color:#6E6557}.rdvDay b{display:block;font-family:Spectral,Georgia,serif;font-size:24px;line-height:1.1}.rdvDay em{display:block;font-style:normal;font-size:11.5px;font-weight:700;color:#1F7A5C}'+
    '.rdvDay.full{opacity:.5;cursor:default}.rdvDay.full em{color:#6E6557}.rdvDay.on{border-color:#1206A6;background:#E4ECF6}'+
    '.rdvSl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 4px}.rdvSl button{position:relative;border:1.5px solid #EBE0CE;border-radius:12px;background:#fff;padding:12px 6px;text-align:center;font:800 17px "Hanken Grotesk",sans-serif;cursor:pointer;color:#1C1611}'+
-   '.rdvSl button small{display:block;font-size:11.5px;font-weight:600;color:#6E6557}.rdvSl button:hover:not(:disabled){border-color:#1206A6}.rdvSl button.on{background:#1206A6;border-color:#1206A6;color:#fff}.rdvSl button.on small{color:#E4ECF6}.rdvSl button:disabled{background:#F6F2EB;color:#B9AE9D;text-decoration:line-through;cursor:default}'+
+   '.rdvSl button small{display:block;font-size:13.5px;font-weight:800;color:#E8442A;margin-top:2px}.rdvSl button:disabled small{color:#B9AE9D;font-weight:600}.rdvSl button:hover:not(:disabled){border-color:#1206A6}.rdvSl button.on{background:#1206A6;border-color:#1206A6;color:#fff}.rdvSl button.on small{color:#E4ECF6}.rdvSl button:disabled{background:#F6F2EB;color:#B9AE9D;text-decoration:line-through;cursor:default}'+
    '.rdvHint{font-size:13px;color:#6E6557;margin:6px 0 0}.rdvLd{padding:30px 0;text-align:center;color:#6E6557}'+
    '.rdvF2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.rdvF3{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.2fr);gap:10px}'+
    '.rdvFl{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}.rdvFl span{font-size:13px;font-weight:700}.rdvFl input,.rdvFl textarea{font:inherit;font-size:16px;border:1.5px solid #EBE0CE;border-radius:11px;padding:10px 12px;background:#FBF5EB;color:#1C1611}.rdvFl input:focus,.rdvFl textarea:focus{outline:none;border-color:#1206A6;background:#fff}'+
@@ -43,10 +44,11 @@
    '.rdvDone{text-align:center;padding:16px 4px 6px}.rdvDone .ok{width:72px;height:72px;margin:0 auto 12px;border-radius:50%;background:#E7F5EF;color:#1F7A5C;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800}.rdvDone h4{font-family:Spectral,Georgia,serif;font-size:26px;text-transform:none;letter-spacing:0;color:#1C1611;margin:0 0 6px}'+
    '@media(max-width:700px){.rdvF2,.rdvF3{grid-template-columns:minmax(0,1fr)}}@media print{.rdvBtn,.rdvOv{display:none!important}}';
   document.head.appendChild(st);
-  var btn=document.createElement('button');btn.type='button';btn.className='rdvBtn';btn.innerHTML='<span class="ic">📅</span><span>Prendre<span class="tx2"> rendez-vous</span></span>';
-  var spot=document.querySelector('.dbn-hdr-in,.nav-in,header .wrap');
+  var btn=document.createElement('button');btn.type='button';btn.className='rdvBtn';btn.innerHTML='<span class="ic">📅</span><span class="rdvTx"><b>Voyons-nous !</b><small>Prendre rendez-vous</small></span>';
+  var spot=document.querySelector('.dbn-hdr-in,.nav-in,.hdr-in,header .wrap');
   var old=spot&&[].slice.call(spot.querySelectorAll('a')).find(function(a){return /Nous contacter/.test(a.textContent);});
-  if(old)old.replaceWith(btn);else if(spot)spot.appendChild(btn);
+  var me=spot&&spot.querySelector('.me');if(old)old.replaceWith(btn);else if(me)spot.insertBefore(btn,me);else if(spot)spot.appendChild(btn);
+  [].slice.call(document.querySelectorAll('.hdr-in')).forEach(function(h){if(h===spot||h.querySelector('.rdvBtn'))return;var c=btn.cloneNode(true),m=h.querySelector('.me');if(m)h.insertBefore(c,m);else h.appendChild(c);c.addEventListener('click',function(){btn.click();});});
   document.querySelectorAll('a').forEach(function(a){if(a!==btn&&/^\s*Nous contacter/.test(a.textContent)&&!a.closest('footer,#contact'))a.remove();});
   if(spot&&getComputedStyle(spot).display!=='flex'){spot.style.display='flex';spot.style.alignItems='center';spot.style.gap='18px';}
 
@@ -64,7 +66,7 @@
   function lbl(x){return J[x.d.getDay()]+' '+x.d.getDate()+' '+M[x.d.getMonth()];}
   function hh(t){return t.replace(':00','h');}
   function jsonp(params,ok,ko){var cb='rdvCb'+Date.now()+Math.floor(Math.random()*1e3),s=document.createElement('script'),done=false;
-    var tm=setTimeout(function(){if(!done){done=true;ko();}},9000);
+    var tm=setTimeout(function(){if(!done){done=true;ko();}},25000);
     window[cb]=function(r){if(done)return;done=true;clearTimeout(tm);try{delete window[cb];}catch(e){}s.remove();ok(r);};
     s.onerror=function(){if(!done){done=true;clearTimeout(tm);ko();}};
     s.src=GW+'?'+Object.keys(params).map(function(k){return k+'='+encodeURIComponent(params[k]);}).join('&')+'&callback='+cb;document.head.appendChild(s);}
@@ -75,7 +77,7 @@
   function step1(){steps(1);bt.textContent='Choisissez un créneau';
     if(!S.day||DAYS.indexOf(S.day)<0)S.day=DAYS.find(function(x){return x.sl.some(function(s){return s.ok;});})||DAYS[0];
     var h='<h4>Jour</h4><div class="rdvDays">'+DAYS.map(function(x,i){var n=x.sl.filter(function(s){return s.ok;}).length;return '<button type="button" class="rdvDay'+(n?'':' full')+(x===S.day?' on':'')+'" data-i="'+i+'"'+(n?'':' disabled')+'><small>'+J[x.d.getDay()]+'</small><b>'+x.d.getDate()+'</b><small>'+M[x.d.getMonth()]+'</small><em>'+(n?n+' créneau'+(n>1?'x':''):'complet')+'</em></button>';}).join('')+'</div>';
-    h+='<h4 style="margin-top:14px">Heure · '+lbl(S.day)+'</h4><div class="rdvSl">'+S.day.sl.map(function(s){return '<button type="button" data-t="'+s.t+'"'+(S.t===s.t?' class="on"':'')+(s.ok?'':' disabled')+'>'+hh(s.t)+'<small>'+(s.ok?'≈ 1 h':'indisponible')+'</small></button>';}).join('')+'</div>';
+    h+='<h4 style="margin-top:14px">Heure · '+lbl(S.day)+'</h4><div class="rdvSl">'+S.day.sl.map(function(s){return '<button type="button" data-t="'+s.t+'"'+(S.t===s.t?' class="on"':'')+(s.ok?'':' disabled')+'>'+hh(s.t)+'<small>'+(s.ok?(s.t==='10:00'?'avec les croissants !':s.t==='14:00'?'pour le café !':'≈ 1 h'):'indisponible')+'</small></button>';}).join('')+'</div>';
     h+='<p class="rdvHint">Rendez-vous d\'environ 1 heure dans votre officine, le lundi ou le mardi. Vous recevez un e-mail de confirmation de votre demande, puis ma confirmation sous 24 h.</p>';
     h+='<div class="rdvRow"><button class="rdvGo" type="button" id="rdvN1"'+(S.t?'':' disabled')+'>Continuer →</button></div>';
     var old=bb.querySelector('.rdvDays'),sl=old?old.scrollLeft:null;

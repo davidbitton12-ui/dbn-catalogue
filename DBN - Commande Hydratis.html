@@ -204,6 +204,7 @@ aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);o
 .dbn-cat{background:#1FA8BE}.dbn-cat:hover{background:#178a9c}
 </style>
 <style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.qty button,.cq button{min-width:44px!important;min-height:44px!important}.oc-sec,.b-btn2,.b-cat,.ix-th+a,.zx{min-height:40px;display:inline-flex;align-items:center}.zx{min-width:40px;justify-content:center}}</style>
+<style id="sumScroll">@media(min-width:861px){#sumLines{max-height:max(170px,calc(100vh - var(--stickTop,96px) - 430px));overflow-y:auto;overscroll-behavior:contain;margin-right:-6px;padding-right:6px;scrollbar-width:thin}#sumLines .rcHead{position:sticky;top:0;background:#fff;z-index:1}}#sumLines .rcRow{font-size:12.5px;padding:7px 0!important}#sumLines .rcN{font-size:12.5px;line-height:1.3}#sumLines .eanL{font-size:10.5px}#sumLines .rcPu{font-size:11.5px!important}#sumLines .rcT{font-size:12.5px}#sumLines .line{font-size:12.5px;padding:5px 0}#sumLines .rcHead{font-size:9.5px}#sumLines .rcQ,#sumLines .rcq b{font-size:15px!important;font-weight:800}#sumLines .rcq button{width:24px;height:26px;font-size:16px}</style>
 </head>
 <body>
 <header class="dbn-hdr">
@@ -360,7 +361,7 @@ aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);o
     if(p.g&&!gHead){gHead=true;var hh=document.createElement('div');hh.className='gh';hh.innerHTML='<b>Gourdes isothermes</b><span>9,06 € HT · par 1 · TVA 20 %</span>';box.appendChild(hh);}
     var d=document.createElement('div');d.className='pr'+(p.k==='trousse'?' trow':'')+(p.ss?' ssr':'');
     d.innerHTML='<button type="button" class="th" aria-label="Agrandir"><img src="'+img(p)+'" alt="Hydratis '+p.n+'" /></button>'+
-      '<div><div class="pn">'+p.n+(p.s?'<small class="psub">'+p.s+'</small>':'')+'</div><div class="pm">EAN '+p.e+(p.tr?' · par 6':'')+(p.ppc?' · PV conseillé '+p.ppc:'')+'</div><div class="pp"><b class="pu">'+(p.tr?'dès '+eur(8.74):eur(pu(p)))+' HT</b><s>'+eur(p.b||BASE)+'</s><em class="rm">'+(p.tr?'jusqu\'à −45 %':'−40 %')+'</em></div></div>'+
+      '<div><div class="pn">'+p.n+(p.s?'<small class="psub">'+p.s+'</small>':'')+'</div><div class="pm">EAN '+p.e+(p.tr?' · par 6':'')+(p.ppc?' · PV conseillé '+p.ppc:'')+'</div><div class="pp"><b class="pu">'+(p.tr?'dès '+eur(8.74):eur(pu(p)))+' HT</b><s>'+eur(p.b||BASE)+'</s><em class="rm">'+(p.tr?'jusqu\'à −45 %':'−40 %')+' · remise maximale</em></div></div>'+
       '<div class="qty"><button type="button" data-a="-">−</button><input type="number" min="0" step="'+uu(p)+'" value="0" aria-label="'+p.n+'" /><button type="button" data-a="+">+</button></div>';
     var inp=d.querySelector('input');
     d.querySelectorAll('.qty button').forEach(function(b){b.addEventListener('click',function(){var x=parseInt(inp.value,10)||0;inp.value=b.dataset.a==='+'?x+uu(p):Math.max(0,x-uu(p));set(p,inp,d);});});

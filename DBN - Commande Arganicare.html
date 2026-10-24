@@ -486,6 +486,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 </style>
 <style id="mgResFix">#mgOv .res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch}#mgOv .res .rb{grid-column:auto!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px 9px!important;border-radius:14px}#mgOv .res .rb span{display:block!important;font-size:10.5px!important}#mgOv .res .rb b{display:block!important;font-size:24px!important;margin-top:2px!important;line-height:1.15}#mgOv .res .rb i{display:block!important;font-size:11px;margin-top:3px}#mgOv .res .rb:not(.win){background:#E4ECF6;border-color:#C7D5EA}#mgOv .res .rb:not(.win) span{color:#1206A6}#mgOv .res .rb:not(.win) b{color:#1206A6}#mgOv .res .rb:not(.win) i{color:#55607A}</style>
 <style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.qty button,.cq button{min-width:44px!important;min-height:44px!important}.oc-sec,.b-btn2,.b-cat,.ix-th+a,.zx{min-height:40px;display:inline-flex;align-items:center}.zx{min-width:40px;justify-content:center}}</style>
+<style id="sumScroll">@media(min-width:861px){#sumLines{max-height:max(170px,calc(100vh - var(--stickTop,96px) - 430px));overflow-y:auto;overscroll-behavior:contain;margin-right:-6px;padding-right:6px;scrollbar-width:thin}#sumLines .rcHead{position:sticky;top:0;background:#fff;z-index:1}}#sumLines .rcRow{font-size:12.5px;padding:7px 0!important}#sumLines .rcN{font-size:12.5px;line-height:1.3}#sumLines .eanL{font-size:10.5px}#sumLines .rcPu{font-size:11.5px!important}#sumLines .rcT{font-size:12.5px}#sumLines .line{font-size:12.5px;padding:5px 0}#sumLines .rcHead{font-size:9.5px}#sumLines .rcQ,#sumLines .rcq b{font-size:15px!important;font-weight:800}#sumLines .rcq button{width:24px;height:26px;font-size:16px}</style>
+<style id="cgvIn">.cgv.cgv-in{margin:12px 0 0}.btn.btn-in{display:block;width:100%;margin-top:12px}</style>
 </head>
 <body>
 
@@ -544,6 +546,8 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         </div>
         <div class="field"><label>E-mail *</label><input type="email" name="email" required placeholder="contact@pharmacie.fr" /></div>
         <div class="field"><label>Message / précisions</label><textarea name="message" placeholder="Date de livraison souhaitée, remarques…"></textarea></div>
+        <div class="cgv cgv-in"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
+        <button class="btn btn-in" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
       </div>
     </div>
 
@@ -557,9 +561,6 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
           <div class="ft" id="fTxt">Franco de port à <b>150 € HT</b>.</div>
           <div class="track"><div class="fill" id="fFill"></div></div>
         </div>
-        
-        <div class="cgv"><b class="cgvT">Bon à savoir</b><p>Votre commande m'est transmise directement. Et si jamais… <strong>oups</strong> 🙊 une <strong>erreur de remise</strong> s'est glissée, un produit est en <strong>rupture de stock</strong> ou quelque chose change, pas de panique : je reviens vers vous <strong>sous 24 h</strong>.</p><p><strong>Membre d'un groupement ?</strong> Vos conditions groupement seront appliquées.</p><label><input type="checkbox" name="conditions" value="Information lue" required /> J'ai bien noté</label></div>
-        <button class="btn" type="submit" id="sendBtn" disabled>Envoyer ma commande →</button>
       </div>
     </aside>
 
@@ -668,7 +669,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   function cpItems(p,q){if(!p.cp)return [];return p.cp.map(function(c){return (p.per?c[0]:c[0]*(q||1))+' × '+c[1];});}
   function cpHead(p){return p.g==='impl'?'Chaque implantation contient':(p.per?'Chaque coffret contient':'Contenu');}
 
-  var AIMG={men_gd:'assets/arg_men_gd.png',men_sh:'assets/arg_men_sh.png',men_se:'assets/arg_men_se.png',men_hb:'assets/arg_men_hb.png',masq_vitc:'assets/arg_masq_vitc.png',masq_aa:'assets/arg_masq_aa.png',acc_lis:'assets/arg_acc_lis.png',acc_b25:'assets/arg_acc_ronde.png',acc_b32:'assets/arg_acc_ronde.png',acc_dem:'assets/arg_acc_dem.png',acc_mas:'assets/arg_acc_mas.png',acc_sil:'assets/arg_acc_sil.png',voy_ricin:'assets/arg_voy_ricin.png',voy_argan:'assets/arg_voy_ricin.png',voy_kera:'assets/arg_voy_ricin.png',voy_sol:'assets/arg_voy_ricin.png',duo_nu:'assets/arg_duo_nu.png',duo_re:'assets/arg_duo_re.png',duo_vo:'assets/arg_duo_vo.png',duo_pp:'assets/arg_duo_pp.png',coll_sh:'assets/arg_coll_sh.png',coll_ap:'assets/arg_coll_ap.png',coll_mq:'assets/arg_coll_mq.png',argan_sh:'assets/arg_argan_sh.png',argan_ap:'assets/arg_argan_ap.png',argan_mq:'assets/arg_argan_mq.png',argan_se:'assets/arg_argan_se.png',argan_ex:'assets/arg_argan_ex.png',ricin_sh:'assets/arg_ricin_sh2.png',ricin_ap:'assets/arg_ricin_ap2.png',ricin_mq:'assets/arg_ricin_mq2.png',ricin_se:'assets/arg_ricin_se2.png',ricin_sr:'assets/arg_ricin_sr3.png',ricin_d1:'assets/arg_ricin_d14.png',ricin_ex:'assets/arg_ricin_curls.png',impl_ess:'assets/arg_impl.png',impl_conf:'assets/arg_impl.png',impl_comp:'assets/arg_impl.png',kera_br:'assets/arg_kera_br.png',kera_ap:'assets/arg_kera_ap.png',kera_sh:'assets/arg_kera_sh.png',kera_mq:'assets/arg_kera_mq.png',kera_ex:'assets/arg_kera_ex.png',kera_se:'assets/arg_kera_se.png'};
+  var AIMG={coll_se:'assets/arg_coll_se.png',men_gd:'assets/arg_men_gd.png',men_sh:'assets/arg_men_sh.png',men_se:'assets/arg_men_se.png',men_hb:'assets/arg_men_hb.png',masq_vitc:'assets/arg_masq_vitc.png',masq_aa:'assets/arg_masq_aa.png',acc_lis:'assets/arg_acc_lis.png',acc_b25:'assets/arg_acc_ronde.png',acc_b32:'assets/arg_acc_ronde.png',acc_dem:'assets/arg_acc_dem.png',acc_mas:'assets/arg_acc_mas.png',acc_sil:'assets/arg_acc_sil.png',voy_ricin:'assets/arg_voy_ricin.png',voy_argan:'assets/arg_voy_ricin.png',voy_kera:'assets/arg_voy_ricin.png',voy_sol:'assets/arg_voy_ricin.png',duo_nu:'assets/arg_duo_nu.png',duo_re:'assets/arg_duo_re.png',duo_vo:'assets/arg_duo_vo.png',duo_pp:'assets/arg_duo_pp.png',coll_sh:'assets/arg_coll_sh.png',coll_ap:'assets/arg_coll_ap.png',coll_mq:'assets/arg_coll_mq.png',argan_sh:'assets/arg_argan_sh.png',argan_ap:'assets/arg_argan_ap.png',argan_mq:'assets/arg_argan_mq.png',argan_se:'assets/arg_argan_se.png',argan_ex:'assets/arg_argan_ex.png',ricin_sh:'assets/arg_ricin_sh2.png',ricin_ap:'assets/arg_ricin_ap2.png',ricin_mq:'assets/arg_ricin_mq2.png',ricin_se:'assets/arg_ricin_se2.png',ricin_sr:'assets/arg_ricin_sr3.png',ricin_d1:'assets/arg_ricin_d14.png',ricin_ex:'assets/arg_ricin_curls.png',impl_ess:'assets/arg_impl.png',impl_conf:'assets/arg_impl.png',impl_comp:'assets/arg_impl.png',kera_br:'assets/arg_kera_br.png',kera_ap:'assets/arg_kera_ap.png',kera_sh:'assets/arg_kera_sh.png',kera_mq:'assets/arg_kera_mq.png',kera_ex:'assets/arg_kera_ex.png',kera_se:'assets/arg_kera_se.png'};
   function bjImg(p){if(AIMG[p.k])return AIMG[p.k];if(p.g==='ricin')return 'assets/argan_ricin.png';if(p.g==='acc'||p.g==='acc10')return 'assets/argan_brosses.png';return '';}
   function puOf(p,q){var pu=p.o[0].p,l='';if(p.tp)p.tp.forEach(function(t){if(q>=t[0]){pu=t[1];l=t[2];}});return {p:pu,l:l};}
   var box=document.getElementById('prodList');
@@ -897,7 +898,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 (function(){
   function go(){
     var main=document.getElementById('sendBtn'),msg=document.querySelector('[name="message"]');
-    if(!main||!msg||document.getElementById('sendBtn2'))return;
+    if(!main||!msg||document.getElementById('sendBtn2')||main.classList.contains('btn-in'))return;
     var fld=msg.closest('.field')||msg;
     var w=document.createElement('div');w.className='send2';
     w.innerHTML='<button type="button" class="btn" id="sendBtn2"></button><p class="send2n" id="send2n"></p>';
