@@ -211,7 +211,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
 <div class="wrap head">
   <span class="eyebrow">Prise de commande · Flayre</span>
   <h1>Brume Intense mains <em>rechargeable</em> — 38 ml</h1>
-  <p>Désinfecte, hydrate, parfume : 9 fragrances à actifs naturels, plus de 500 sprays, et ses étuis en silicone. Vendu <b>par 6 unités</b>, toutes références panachables, avec <b>−20 % sur toute la commande</b>.</p>
+  <p>Désinfecte, hydrate, parfume : 6 fragrances à actifs naturels, plus de 500 sprays, et ses étuis en silicone. Vendu <b>par 6 unités</b>, toutes références panachables, avec <b>−20 % sur toute la commande</b>.</p>
 </div>
 
 <div class="wrap">
@@ -219,8 +219,8 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     <div>
       <div class="card">
         <div class="welcome" id="welcome">
-          <div class="wt"><b>Pack Essentiel · les 9 brumes</b><span>6 unités de chacune des 9 Brumes Intenses, soit 54 unités, remise de 20 % incluse.</span></div>
-          <div class="wp"><s id="wOld">232,74 € HT</s> <i>−20 %</i><b id="wNew">186,30 € HT</b></div>
+          <div class="wt"><b>Pack Essentiel · les 6 brumes</b><span>6 unités de chacune des 6 Brumes Intenses, soit 36 unités, remise de 20 % incluse.</span></div>
+          <div class="wp"><s id="wOld">155,16 € HT</s> <i>−20 %</i><b id="wNew">124,20 € HT</b></div>
           <button type="button" id="welcomeBtn">Choisir ce pack</button>
         </div>
 
@@ -301,14 +301,11 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
   var PB={base:4.31,p6:3.66,p12:3.45}, PE={base:2.50,p6:2.13,p12:2.00};
   var REFS=[
     {k:'agrume',n:'Brume Agrume vitaminée',e:'3770041225003',c:'#F2A33A',t:'b'},
-    {k:'aloe',n:'Brume Aloé neutre',e:'3770041225010',c:'#9CC98A',t:'b'},
-    {k:'lavande',n:'Brume Lavande ensoleillée',e:'3770041225027',c:'#A58BC9',t:'b'},
     {k:'vanille',n:'Brume Vanille ambrée',e:'3770041225034',c:'#E9C98E',t:'b',best:1},
     {k:'caramel',n:'Brume Caramel beurre salé',e:'3770041225041',c:'#C98A4B',t:'b'},
     {k:'fraise',n:'Brume Fraise acidulée',e:'3770041225058',c:'#E5566B',t:'b'},
     {k:'coco',n:'Brume Coco nacré',e:'3770041225065',c:'#F3EEE4',t:'b'},
     {k:'menthe',n:'Brume Menthe givrée',e:'3770041225072',c:'#6CC8B8',t:'b'},
-    {k:'melon',n:'Brume Melon sorbet',e:'3770041225089',c:'#F4A07A',t:'b'},
     {k:'blanc',n:'Étui silicone Blanc',e:'3770041225119',c:'#FFFFFF',t:'e'},
     {k:'noir',n:'Étui silicone Noir',e:'3770041225096',c:'#1C1611',t:'e'},
     {k:'rose',n:'Étui silicone Rose',e:'3770041225126',c:'#F2B7C2',t:'e'},
@@ -362,7 +359,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     if(c.ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ Franco de port atteint (130 € HT).';}
     else{fb.classList.remove('ok');ft.innerHTML=c.total?'Il manque <b>'+eur(FRANCO-c.ht)+'</b> pour le franco (130 € HT). En dessous : 10 € HT de frais logistiques.':'Franco de port à <b>130 € HT</b>.';}
     document.getElementById('sendBtn').disabled=!c.total;
-    document.getElementById('recapField').value=(c.w?'PACK ESSENTIEL (9 brumes × 6) −20 %\n\n':'')+rc+'\nTotal : '+c.total+' unités'+(frais?'\nFrais logistiques : 10,00 € HT':'')+'\nTotal HT : '+eur(tot);
+    document.getElementById('recapField').value=(c.w?'PACK ESSENTIEL (6 brumes × 6) −20 %\n\n':'')+rc+'\nTotal : '+c.total+' unités'+(frais?'\nFrais logistiques : 10,00 € HT':'')+'\nTotal HT : '+eur(tot);
     document.getElementById('totalField').value=eur(tot);
     return {c:c,frais:frais,tot:tot};
   }
