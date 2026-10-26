@@ -219,7 +219,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     <div>
       <div class="card">
         <div class="welcome" id="welcome">
-          <div class="wt"><b>Pack Essentiel · les 6 brumes</b><span>6 unités de chacune des 6 Brumes Intenses, soit 36 unités, remise de 20 % incluse.</span></div>
+          <div class="wt"><b>Pack Essentiel · les 6 brumes</b><span>6 unités de chacune des 6 Brumes Intenses, soit 36 unités, remise de 20 % incluse. <b style="color:#1F7A5C">Franco exceptionnel</b> : livré sans frais.</span></div>
           <div class="wp"><s id="wOld">155,16 € HT</s> <i>−20 %</i><b id="wNew">124,20 € HT</b></div>
           <button type="button" id="welcomeBtn">Choisir ce pack</button>
         </div>
@@ -350,13 +350,13 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     });
     document.getElementById('sumLines').innerHTML=c.total?html+'<div class="line"><span>Total unités</span><b>'+c.total+' u</b></div>':'<p class="empty">Aucune quantité sélectionnée.</p>';
     document.getElementById('welcome').classList.toggle('on',c.w);
-    var frais=(c.total&&c.ht<FRANCO)?FRAIS:0, tot=c.ht+frais;
+    var frOk=c.ht>=FRANCO||c.w,frais=(c.total&&!frOk)?FRAIS:0, tot=c.ht+frais;
     document.getElementById('totHT').textContent=eur(tot);
     document.getElementById('totTTC').textContent='soit '+eur(tot*TVA)+' TTC · TVA 20 %'+(frais?' · dont 10 € HT de frais logistiques':'');
     document.getElementById('saveTxt').textContent=(c.full-c.ht>0.005)?'Vous économisez '+eur(c.full-c.ht)+' HT':'';
     var fb=document.getElementById('fbar'),ft=document.getElementById('fTxt');
-    document.getElementById('fFill').style.width=Math.min(100,c.ht/FRANCO*100)+'%';
-    if(c.ht>=FRANCO){fb.classList.add('ok');ft.innerHTML='✓ Franco de port atteint (130 € HT).';}
+    document.getElementById('fFill').style.width=(c.w?100:Math.min(100,c.ht/FRANCO*100))+'%';
+    if(frOk){fb.classList.add('ok');ft.innerHTML=c.ht>=FRANCO?'✓ Franco de port atteint (130 € HT).':'✓ <b>Franco exceptionnel</b> accordé avec le Pack Essentiel.';}
     else{fb.classList.remove('ok');ft.innerHTML=c.total?'Il manque <b>'+eur(FRANCO-c.ht)+'</b> pour le franco (130 € HT). En dessous : 10 € HT de frais logistiques.':'Franco de port à <b>130 € HT</b>.';}
     document.getElementById('sendBtn').disabled=!c.total;
     document.getElementById('recapField').value=(c.w?'PACK ESSENTIEL (6 brumes × 6) −20 %\n\n':'')+rc+'\nTotal : '+c.total+' unités'+(frais?'\nFrais logistiques : 10,00 € HT':'')+'\nTotal HT : '+eur(tot);
@@ -371,7 +371,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
       message:(s.c.w?'Pack Essentiel −20 %. ':'')+(s.frais?'Frais logistiques 10 € HT. ':'')+v('message'),
       lignes:s.c.lines.map(function(x){return {modele:x.r.n,coloris:x.l,correction:eur(x.u)+' HT',ean:x.r.e,qte:x.q};}),
       total:s.c.total,prixUnitaire:'selon référence',totalHT:eur(s.tot),tva:eur(s.tot*0.2),conditions:'<b>Reglement</b> LCR a 30 jours &nbsp;&middot;&nbsp; <b>Franco</b> 130 EUR HT',totalTTC:eur(s.tot*TVA),
-      franco:(s.c.ht>=FRANCO?'atteint (130 \u20ac HT)':'non atteint \u2014 10 \u20ac HT de frais logistiques')};
+      franco:(s.c.ht>=FRANCO?'atteint (130 \u20ac HT)':(s.c.w?'atteint \u2014 franco exceptionnel Pack Essentiel':'non atteint \u2014 10 \u20ac HT de frais logistiques'))};
   }
   function gwSend(data,done,fail){
     var cb='dbnCb'+Date.now(),s=document.createElement('script');
@@ -392,7 +392,7 @@ aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);ov
     document.getElementById('bcHT').textContent=eur(s.tot);
     document.getElementById('bcTTC').textContent=eur(s.tot*TVA);
     var fr=document.getElementById('bcFranco');
-    if(s.c.ht>=FRANCO){fr.className='bc-note';fr.innerHTML='✓ <b>Franco de port atteint</b>'+(s.c.w?' · Pack Essentiel −20 %':'')+'.';}
+    if(s.c.ht>=FRANCO||s.c.w){fr.className='bc-note';fr.innerHTML=s.c.ht>=FRANCO?'✓ <b>Franco de port atteint</b>'+(s.c.w?' · Pack Essentiel −20 %':'')+'.':'✓ <b>Franco exceptionnel</b> accordé avec le Pack Essentiel −20 %.';}
     else{fr.className='bc-note warn';fr.innerHTML='Franco à 130 € HT non atteint : <b>10 € HT de frais logistiques</b> inclus dans le total.';}
   }
   document.getElementById('orderForm').addEventListener('submit',function(e){
