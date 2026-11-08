@@ -1068,6 +1068,14 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
       franco:(c.ht>=FRANCO?'atteint (180 \u20ac HT)':'non atteint \u2014 port '+eur(c.port)+' HT')+' \u00b7 R\u00e8glement : 30 jours ch\u00e8que ou virement / 60 jours LCR'};
   }
   function gwSend(data,done,fail){
+    /* commandes longues : POST d'abord (doPost), puis GET JSONP en secours, puis Formspree */
+    var fini=false,t=setTimeout(function(){if(fini)return;fini=true;fail();},45000);
+    fetch(GATEWAY_BREVO+'?action=order',{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})
+      .then(function(r){return r.json();})
+      .then(function(j){if(fini)return;fini=true;clearTimeout(t);if(j&&j.ok)done();else gwSendJ(data,done,fail);})
+      .catch(function(){if(fini)return;fini=true;clearTimeout(t);gwSendJ(data,done,fail);});
+  }
+  function gwSendJ(data,done,fail){
     var cb='dbnCb'+Date.now(),s=document.createElement('script');
     /* la passerelle Apps Script peut mettre 20-40 s au démarrage : 60 s avant Formspree (évite les doublons) */
     var to=setTimeout(function(){cleanup();fail();},60000);

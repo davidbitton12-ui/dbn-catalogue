@@ -624,6 +624,14 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   }
 
   function gwSend(data,done,fail){
+    /* commandes longues : POST d'abord (doPost), puis GET JSONP en secours, puis Formspree */
+    var fini=false,t=setTimeout(function(){if(fini)return;fini=true;fail();},45000);
+    fetch(GATEWAY_BREVO+'?action=order',{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})
+      .then(function(r){return r.json();})
+      .then(function(j){if(fini)return;fini=true;clearTimeout(t);if(j&&j.ok)done();else gwSendJ(data,done,fail);})
+      .catch(function(){if(fini)return;fini=true;clearTimeout(t);gwSendJ(data,done,fail);});
+  }
+  function gwSendJ(data,done,fail){
     var cb='dbnCb'+Date.now(), s=document.createElement('script');
     /* la passerelle Apps Script peut mettre 20-40 s au démarrage : on attend 60 s avant de basculer sur Formspree (évite les doublons) */
     var to=setTimeout(function(){cleanup();fail();},60000);

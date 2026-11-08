@@ -463,6 +463,14 @@ aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);o
       franco:fGroups().map(function(g){return g.n+' : '+(g.ok?'atteint':'non atteint \u2014 '+g.miss);}).join(' \u00b7 ')};
   }
   function gwSend(data,done,fail){
+    /* commandes longues : POST d'abord (doPost), puis GET JSONP en secours, puis Formspree */
+    var fini=false,t=setTimeout(function(){if(fini)return;fini=true;fail();},45000);
+    fetch(GATEWAY_BREVO+'?action=order',{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})
+      .then(function(r){return r.json();})
+      .then(function(j){if(fini)return;fini=true;clearTimeout(t);if(j&&j.ok)done();else gwSendJ(data,done,fail);})
+      .catch(function(){if(fini)return;fini=true;clearTimeout(t);gwSendJ(data,done,fail);});
+  }
+  function gwSendJ(data,done,fail){
     var cb='dbnCb'+Date.now(),s=document.createElement('script');
     var to=setTimeout(function(){cleanup();fail();},60000);
     function cleanup(){clearTimeout(to);try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
