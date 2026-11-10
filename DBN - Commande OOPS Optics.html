@@ -427,7 +427,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <script>
 (function(){
   var PRICE=2.95, FRANCO=150, TVA=1.20;
-  var CORRS=['+1,00','+1,50','+2,00','+2,50','+3,00','+3,50'];
+  var CORRS=['+1,00','+1,50','+2,00','+2,50','+3,00','+3,50','au choix du labo'];
   var TOP=["jade_turquoise","jade_rose","jade_noir","jade_terracota","jade_sunset","jade_bleu","jade_carmin","onyx_bordeaux","onyx_noir","onyx_havane","saphir_chocolat-noir","saphir_sable","saphir_noir","ambre_noir","ambre_kaki","ambre_bleu","ambre_prune","quartz_noir","quartz_bleu","agate_olive","agate_demi","agate_rouge","agate_prune","agate_noir","topaze_gris","topaze_noir","topaze_marron-ecaille","grenat_brume","grenat_noir","hematite_noir","lapis_noir","lapis_crystal","lapis_demi","jaspe_noir","jaspe_bleu"],NO1=["rubis_lagoon","rubis_leopard","rubis_neon","rubis_tropical"],R35=[];
   var QPH=["agate_demi","agate_noir","agate_olive","agate_prune","agate_rouge","ambre_bleu","ambre_bordeaux","ambre_kaki","ambre_noir","ambre_prune","ambre_rose","ambre_turquoise","ambre_violet","grenat_brume","grenat_orange","grenat_vert","hematite_bleu","hematite_violette","jade_bleu","jade_carmin","jade_noir","jade_rose","jade_sunset","jade_terracota","jade_turquoise","jaspe_bleu","jaspe_ecaille","jaspe_marron","jaspe_noir","jaspe_verte","lapis_bleu","lapis_crystal","lapis_demi","lapis_grise","lapis_noir","lapis_vert","onyx_bleu","onyx_bordeaux","onyx_havane","onyx_noir","onyx_vert","opale_noir","opale_rose","quartz_arlequin","quartz_bleu","quartz_marbre","quartz_mariniere","quartz_nebuleuse","quartz_noir","rubis_lagoon","rubis_leopard","rubis_neon","rubis_tropical","saphir_chocolat-noir","saphir_noir","saphir_rose","saphir_sable","saphir_turquoise","topaze_gris","topaze_marron-ecaille","topaze_marron","topaze_noir"];
   var MODELS=[
@@ -443,10 +443,12 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     {n:'GRENAT', s:'grenat', g:'M', c:['Brume','Orange','Noir','Vert']},
     {n:'HÉMATITE', s:'hematite', g:'M', c:['Bleu','Noir','Violette']},
     {n:'LAPIS', s:'lapis', g:'H', c:['Noir','Crystal','Écaille','Bleu','Vert','Gris']},
-    {n:'JASPE', s:'jaspe', g:'H', c:['Écaille','Noir','Vert','Bleu','Marron']}
+    {n:'JASPE', s:'jaspe', g:'H', c:['Écaille','Noir','Vert','Bleu','Marron']},
+    {n:'BEST-SELLERS', s:'bs', g:'S', c:['Femme','Homme','Mixte'], virt:1},
+    {n:'ASSORTIMENT COMPLET', s:'all', g:'S', c:['Oops'], virt:1}
   ];
   var IMGA={'jade_noir':'noire','onyx_noir':'noire','onyx_vert':'verte','saphir_noir':'noire','ambre_violet':'violette','agate_olive':'vert-olive','agate_noir':'noire','lapis_noir':'noire','lapis_gris':'grise','jaspe_noir':'noire','jaspe_vert':'verte','jaspe_bleu':'bleue'};
-  var GENDER={F:{l:'Femme',c:'#B0234F'},M:{l:'Mixte',c:'#1F5957'},H:{l:'Homme',c:'#14489C'}};
+  var GENDER={F:{l:'Femme',c:'#B0234F'},M:{l:'Mixte',c:'#1F5957'},H:{l:'Homme',c:'#14489C'},S:{l:'choix du labo',c:'#2B7A78'}};
   function slug(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
   var GATEWAY_BREVO='https://script.google.com/macros/s/AKfycbx3f6RYXm3y6_T_hqE4hZU-_J5sTNUKUOFSm81xwn5u25tic32LxBkrmK8jyofwYb7Atg/exec';
   var EANS={'+1,00':'3770042179787','+1,50':'3770042179008','+2,00':'3770042179022','+2,50':'3770042179039','+3,00':'3770042179046','+3,50':'3770042179053'};
@@ -461,7 +463,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   var mbox=document.getElementById('modelList');
   MODELS.forEach(function(m,mi){
     var d=document.createElement('div');
-    d.className='model';
+    d.className='model';if(m.virt)d.style.display='none';
     var g=GENDER[m.g];
     var html='<div class="mh"><span class="mn">'+m.n+'</span>'+
       '<span class="gtag" style="background:'+g.c+'">'+g.l+'</span>'+
@@ -477,7 +479,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
         '<span class="cSum" id="cs'+cid+'"></span>'+
         '<span class="chev">▾</span></button>'+
         '<div class="corrPanel" id="cp'+cid+'">'+
-        CORRS.filter(function(cr){return !(NO1.indexOf(_k)>=0&&cr==='+1,00');}).map(function(cr){var rp=cr==='+3,50'&&R35.indexOf(_k)>=0;
+        CORRS.filter(function(cr){return cr!=='au choix du labo'&&!(NO1.indexOf(_k)>=0&&cr==='+1,00');}).map(function(cr){var rp=cr==='+3,50'&&R35.indexOf(_k)>=0;
           return '<div class="crRow'+(rp?' soon rupt':'')+'" data-cr="'+cr+'"><span class="crL">'+cr+(rp?'<b class="soonT">Rupture</b>':'')+'</span>'+
             '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
             '<input type="number" min="0" step="1" value="0" aria-label="'+m.n+' '+col+' '+cr+'" />'+
@@ -513,6 +515,37 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
     });
     mbox.appendChild(d);
   });
+
+  /* ---------- 3 façons de commander : 1 Je choisis · 2 Oops choisit pour moi · 3 Oops s'occupe de tout ---------- */
+  (function(){
+    var V=CORRS.filter(function(c){return c!=='au choix du labo';}),UN=[['Femme','👩','F'],['Homme','👨','H'],['Mixte','👥','M']],MODE=1,OPEN={0:1};
+    var BEST={F:[],H:[],M:[]};MODELS.forEach(function(m){if(m.virt)return;m.c.forEach(function(col){var k=m.s+'_'+slug(col);if(TOP.indexOf(k)>=0&&BEST[m.g])BEST[m.g].push(m.n+' '+col);});});
+    var st=document.createElement('style');st.textContent='.omode{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.omode button{min-height:52px;padding:6px 16px;border-radius:14px;border:1.5px solid #DADDF0;background:#fff;color:#1206A6;font:800 15px inherit;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2}'+
+      '.omode button small{font-size:11.5px;font-weight:700;opacity:.8}.omode button.on{background:#2B7A78;border-color:#2B7A78;color:#fff}.omode .nb{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:99px;background:#1206A6;color:#fff;font-size:13px;margin-right:8px}.omode button.on .nb{background:#fff;color:#2B7A78}'+
+      '.opan[hidden]{display:none}.ohero{display:flex;gap:12px;align-items:center;background:#E6F2F1;border:1.5px solid #B9DAD7;border-radius:14px;padding:12px 14px;margin-bottom:12px}.ohero .ic{font-size:28px}.ohero b{display:block;font-size:17px}.ohero span{font-size:13.5px;color:#5B5E73}'+
+      '.oun{border:1.5px solid #DADDF0;border-radius:14px;margin-top:10px;overflow:hidden}.oun.has{border-color:#2B7A78}.ouh{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;color:#141233}.oun.has .ouh{background:#E6F2F1}'+
+      '.ouh .ue{font-size:26px}.ouh .ut{flex:1}.ouh .ut b{font-size:17px}.ouh .ut small{display:block;font-size:12px;color:#5B5E73}.ouh .un2{font-weight:800;color:#2B7A78}.oub{display:none;padding:12px 14px;border-top:1px solid #DADDF0}.oun.op .oub{display:block}'+
+      '.odio{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}.od{border:1.5px solid #DADDF0;border-radius:12px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:6px}.od.on{border-color:#2B7A78;background:#E6F2F1}'+
+      '.od b{font-size:15px}.od .s{display:flex;align-items:center;gap:4px}.od .s button{width:28px;height:28px;border:0;border-radius:8px;background:#EEF0FB;color:#141233;font:800 16px inherit;font-family:inherit;cursor:pointer}'+
+      '.od input,.oqi{width:48px;height:30px;border:1.5px solid #DADDF0;border-radius:8px;text-align:center;font:800 15px inherit;font-family:inherit;color:#141233;background:#fff}.oqi{width:90px;height:46px;font-size:18px;border-color:#2B7A78}'+
+      '.opn{margin:8px 0 0;font-size:12.5px;color:#5B5E73}.oall{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}';
+    document.head.appendChild(st);
+    var bar=document.createElement('div');bar.className='omode';
+    bar.innerHTML='<button type="button" data-m="1" class="on"><span><i class="nb">1</i>👓 Je choisis mes modèles</span></button><button type="button" data-m="2"><span><i class="nb">2</i>✨ Oops choisit pour moi</span></button><button type="button" data-m="3"><span><i class="nb">3</i>🎁 Oops s\'occupe de tout</span><small>Choix basé sur les plus vendus en pharmacie</small></button>';
+    var p2=document.createElement('div');p2.className='opan';p2.hidden=true;var p3=document.createElement('div');p3.className='opan';p3.hidden=true;
+    p3.innerHTML='<div class="ohero"><span class="ic">🎁</span><div><b>Oops s\'occupe de tout</b><span>Indiquez seulement le nombre de paires : le laboratoire compose tout l\'assortiment (styles Femme, Homme, Mixte et corrections) avec ses meilleures ventes.</span></div></div><label class="oall"><input type="number" min="0" class="oqi" id="oAll" value="0" /> paires au total</label><p class="opn">Le laboratoire répartit les styles et les corrections selon ses meilleures ventes.</p>';
+    mbox.parentNode.insertBefore(bar,mbox);mbox.parentNode.insertBefore(p2,mbox);mbox.parentNode.insertBefore(p3,mbox);
+    var KA='ASSORTIMENT COMPLET|Oops|au choix du labo';
+    function tu(u){return V.reduce(function(s,c){return s+(qty['BEST-SELLERS|'+u+'|'+c]||0);},0);}
+    function draw2(){p2.innerHTML='<div class="ohero"><span class="ic">✨</span><div><b>Sélection Best-sellers</b><span>Indiquez le nombre de paires par style et par correction : le laboratoire compose votre assortiment avec ses meilleures ventes. Les styles se cumulent.</span></div></div>'+
+      UN.map(function(u,i){var n=tu(u[0]),op=OPEN[i]||n>0;return '<div class="oun'+(op?' op':'')+(n?' has':'')+'"><button type="button" class="ouh" data-ou="'+i+'"><span class="ue">'+u[1]+'</span><span class="ut"><b>'+u[0]+'</b><small>'+BEST[u[2]].slice(0,5).join(', ')+'…</small></span><span class="un2">'+(n?n+' paires':'Ajouter')+'</span><span>'+(op?'▴':'▾')+'</span></button>'+
+        '<div class="oub"><div class="odio">'+V.map(function(c){var k='BEST-SELLERS|'+u[0]+'|'+c,q=qty[k]||0;return '<div class="od'+(q?' on':'')+'"><b>'+c+'</b><span class="s"><button type="button" data-ok="'+k+'" data-os="-1">−</button><input type="number" min="0" data-ok="'+k+'" value="'+q+'" /><button type="button" data-ok="'+k+'" data-os="1">+</button></span></div>';}).join('')+'</div><p class="opn">Le labo choisit parmi ses best-sellers '+u[0].toLowerCase()+'.</p></div></div>';}).join('');}
+    p2.addEventListener('click',function(e){var h=e.target.closest('[data-ou]');if(h){var i=+h.dataset.ou;OPEN[i]=!(OPEN[i]||tu(UN[i][0])>0);draw2();return;}var b=e.target.closest('button[data-ok]');if(!b)return;var k=b.dataset.ok;qty[k]=Math.max(0,(qty[k]||0)+(+b.dataset.os));render();draw2();});
+    p2.addEventListener('change',function(e){var i=e.target.closest('input[data-ok]');if(!i)return;qty[i.dataset.ok]=Math.max(0,parseInt(i.value,10)||0);render();draw2();});
+    p3.addEventListener('input',function(e){if(e.target.id!=='oAll')return;qty[KA]=Math.max(0,parseInt(e.target.value,10)||0);render();});
+    bar.addEventListener('click',function(e){var b=e.target.closest('button[data-m]');if(!b)return;MODE=+b.dataset.m;bar.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+      mbox.style.display=MODE!==1?'none':'';p2.hidden=MODE!==2;p3.hidden=MODE!==3;if(MODE===2)draw2();if(MODE===3)document.getElementById('oAll').value=qty[KA]||0;});
+  })();
 
   function set(key,inp,item,mi,cid){
     var v=parseInt(inp.value,10); if(isNaN(v)||v<0){v=0;}
