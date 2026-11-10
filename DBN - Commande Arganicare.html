@@ -488,7 +488,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <style id="mob-touch">@media(max-width:600px){.dbn-hdr .dbn-links a,nav.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}.qty button,.cq button{min-width:44px!important;min-height:44px!important}.oc-sec,.b-btn2,.b-cat,.ix-th+a,.zx{min-height:40px;display:inline-flex;align-items:center}.zx{min-width:40px;justify-content:center}}</style>
 <style id="sumScroll">@media(min-width:861px){#sumLines{max-height:max(170px,calc(100vh - var(--stickTop,96px) - 430px));overflow-y:auto;overscroll-behavior:contain;margin-right:-6px;padding-right:6px;scrollbar-width:thin}#sumLines .rcHead{position:sticky;top:0;background:#fff;z-index:1}}#sumLines .rcRow{font-size:12.5px;padding:7px 0!important}#sumLines .rcN{font-size:12.5px;line-height:1.3}#sumLines .eanL{font-size:10.5px}#sumLines .rcPu{font-size:11.5px!important}#sumLines .rcT{font-size:12.5px}#sumLines .line{font-size:12.5px;padding:5px 0}#sumLines .rcHead{font-size:9.5px}#sumLines .rcQ,#sumLines .rcq b{font-size:15px!important;font-weight:800}#sumLines .rcq button{width:24px;height:26px;font-size:16px}</style>
 <style id="cgvIn">.cgv.cgv-in{margin:12px 0 0}.btn.btn-in{display:block;width:100%;margin-top:12px}</style>
-</head>
+<style id="ofB">.ofB{background:linear-gradient(90deg,#E8442A,#F27A3D)!important;color:#fff!important;border-radius:10px!important;padding:7px 10px!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;margin:6px 0 4px!important;text-align:left!important}.ofB i{font-style:normal!important}.ofB .ofG{font-size:20px;line-height:1;flex:none}.ofB .ofX{display:flex!important;flex-direction:column!important;min-width:0}.ofB .ofT{font-size:14.5px!important;font-weight:900!important;line-height:1.15!important;color:#fff!important}.ofB .ofS{font-size:11px!important;font-weight:700!important;opacity:.95;color:#fff!important;line-height:1.25}</style></head>
 <body>
 
 <header class="dbn-hdr">
@@ -666,6 +666,9 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
   ];
   var sel={};
   function eur(n){return n.toFixed(2).replace('.',',')+' €';}
+  function ofBan(t,s){return '<div class="ofB"><i class="ofG">🎁</i><i class="ofX"><b class="ofT">'+t+'</b><i class="ofS">'+s+'</i></i></div>';}
+  function ofO(n){return n>1?'offerts':'offert';}
+  function argB(p){if(!p.tp)return '';var L=[];p.tp.forEach(function(x){var r=/(\d+)\s*\+\s*(\d+)/.exec(x[2]||'');if(r)L.push(r);});if(!L.length)return '';return ofBan(L[0][1]+' achetés = '+L[0][2]+' '+ofO(+L[0][2]),L.length>1?L.slice(1).map(function(r){return 'et '+r[1]+' achetés = '+r[2]+' '+ofO(+r[2]);}).join(' · '):'soit '+Math.round(L[0][2]/L[0][1]*100)+' % de produits en plus');}
   function cpItems(p,q){if(!p.cp)return [];return p.cp.map(function(c){return (p.per?c[0]:c[0]*(q||1))+' × '+c[1];});}
   function cpHead(p){return p.g==='impl'?'Chaque implantation contient':(p.per?'Chaque coffret contient':'Contenu');}
 
@@ -681,7 +684,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
       '<div><div class="spTop"><b>'+p.n+'</b>'+(p.tg==='adulte'?'<span class="bjAge ad">Version adulte</span>':p.tg==='enfant'?'<span class="bjAge kid">Version enfant · dès 3 ans</span>':'')+'<span class="av '+(p.ok?'ok':'soon')+'">'+p.av+'</span></div>'+
       '<div class="spSub">'+p.s+'</div>'+
       (p.cp?'<button type="button" class="cpBtn" aria-expanded="false">Voir le détail des produits <span>▾</span></button><ul class="cpBox">'+cpItems(p,1).map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>':'')+
-      '<div class="spMeta">'+(p.ean?'<span>EAN <b>'+p.ean+'</b></span>':'')+(p.g==='plv'?'<span><b>Offert</b> · à l’unité</span>':(p.ppc?'<span>PPC <b>'+p.ppc+'</b></span>':''))+((p.g!=='plv'&&p.g!=='impl'&&p.o[0].p>0)?'<button type="button" class="mgBtn" data-n="'+p.n.replace(/"/g,'')+'" data-pa="'+p.o[0].p+'" data-pv="'+(p.ppc?parseFloat(String(p.ppc).replace(',','.')):'')+'" data-tp="'+encodeURIComponent(JSON.stringify([['par '+p.o[0].u,p.o[0].u,p.o[0].p]].concat((p.tp||[]).map(function(t){return [t[2],t[0],t[1]];}))))+'">🧮 Simulateur de marge</button>':'')+'</div>'+(p.tp?'<div class="argT"><span>par '+p.o[0].u+' · <b>'+eur(p.o[0].p)+'</b></span>'+p.tp.map(function(t){return '<span>'+t[2].replace(/ offerts?/,'')+' · <b>'+eur(t[1])+'</b></span>';}).join('')+'</div>':'')+
+      '<div class="spMeta">'+(p.ean?'<span>EAN <b>'+p.ean+'</b></span>':'')+(p.g==='plv'?'<span><b>Offert</b> · à l’unité</span>':(p.ppc?'<span>PPC <b>'+p.ppc+'</b></span>':''))+((p.g!=='plv'&&p.g!=='impl'&&p.o[0].p>0)?'<button type="button" class="mgBtn" data-n="'+p.n.replace(/"/g,'')+'" data-pa="'+p.o[0].p+'" data-pv="'+(p.ppc?parseFloat(String(p.ppc).replace(',','.')):'')+'" data-tp="'+encodeURIComponent(JSON.stringify([['par '+p.o[0].u,p.o[0].u,p.o[0].p]].concat((p.tp||[]).map(function(t){return [t[2],t[0],t[1]];}))))+'">🧮 Simulateur de marge</button>':'')+'</div>'+argB(p)+(p.tp?'<div class="argT"><span>par '+p.o[0].u+' · <b>'+eur(p.o[0].p)+'</b></span>'+p.tp.map(function(t){return '<span>'+t[2].replace(/ offerts?/,'')+' · <b>'+eur(t[1])+'</b></span>';}).join('')+'</div>':'')+
       '<div class="bjQ"><span class="bjP">'+(p.o[0].p>0?eur(p.o[0].p)+' <small>HT / '+(p.un||'u.')+'</small>':'Offert')+'</span>'+
         '<div class="qty"><button type="button" data-a="-" aria-label="Retirer">−</button>'+
         '<input type="number" min="0" step="'+p.o[0].u+'" value="0" aria-label="Quantité '+p.n+'" />'+

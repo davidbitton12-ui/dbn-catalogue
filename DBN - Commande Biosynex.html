@@ -614,7 +614,7 @@ a{color:var(--blue);text-decoration:none}a:hover{color:#0c0488}
 <style id="rcqCss">.rcRow,.rcHead{grid-template-columns:minmax(0,1fr) 76px 52px 64px!important;align-items:center!important}.rcRow .rcQ,.rcHead span:nth-child(2){text-align:center!important}.rcq{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;max-width:100%}.rcq button{width:20px;height:22px;flex:none;border:0;background:none;color:var(--blue);font:800 14px "Hanken Grotesk",sans-serif;cursor:pointer;padding:0;line-height:1}.rcq button:hover{background:#EEF0FB}.rcq b{min-width:0;flex:1;padding:0 2px;text-align:center;font-size:12.5px}.rcRow .rcPu{font-size:12.5px}</style>
 <style id="sumScroll">@media(min-width:861px){#sumLines{max-height:max(170px,calc(100vh - var(--stickTop,96px) - 430px));overflow-y:auto;overscroll-behavior:contain;margin-right:-6px;padding-right:6px;scrollbar-width:thin}#sumLines .rcHead{position:sticky;top:0;background:#fff;z-index:1}}#sumLines .rcRow{font-size:12.5px;padding:7px 0!important}#sumLines .rcN{font-size:12.5px;line-height:1.3}#sumLines .eanL{font-size:10.5px}#sumLines .rcPu{font-size:11.5px!important}#sumLines .rcT{font-size:12.5px}#sumLines .line{font-size:12.5px;padding:5px 0}#sumLines .rcHead{font-size:9.5px}#sumLines .rcQ,#sumLines .rcq b{font-size:15px!important;font-weight:800}#sumLines .rcq button{width:24px;height:26px;font-size:16px}</style>
 <style id="cgvIn">.cgv.cgv-in{margin:12px 0 0}.btn.btn-in{display:block;width:100%;margin-top:12px}</style>
-</head>
+<style id="ofB">.ofB{background:linear-gradient(90deg,#E8442A,#F27A3D)!important;color:#fff!important;border-radius:10px!important;padding:7px 10px!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;margin:6px 0 4px!important;text-align:left!important}.ofB i{font-style:normal!important}.ofB .ofG{font-size:20px;line-height:1;flex:none}.ofB .ofX{display:flex!important;flex-direction:column!important;min-width:0}.ofB .ofT{font-size:14.5px!important;font-weight:900!important;line-height:1.15!important;color:#fff!important}.ofB .ofS{font-size:11px!important;font-weight:700!important;opacity:.95;color:#fff!important;line-height:1.25}</style></head>
 <body>
 
 <header class="dbn-hdr">
@@ -915,14 +915,18 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
   document.getElementById('sumLines').addEventListener('click',function(e){var b=e.target.closest('[data-ck]');if(!b)return;e.preventDefault();var k=b.dataset.ck,r=document.getElementById('p'+k),inp=r&&r.querySelector('input');if(!inp)return;var u=parseInt(inp.step,10)||1;inp.value=Math.max(0,(parseInt(inp.value,10)||0)+(+b.dataset.cs)*u);set(k,inp,r);inp.dispatchEvent(new Event('change',{bubbles:true}));});
 
 
+  function ofBan(t,s){return '<div class="ofB"><i class="ofG">🎁</i><i class="ofX"><b class="ofT">'+t+'</b><i class="ofS">'+s+'</i></i></div>';}
+  function ofO(n){return n>1?'offerts':'offert';}
   function offTag(it){
-    var t=[];
+    var t=[],mb='';
+    if(it.ug)mb=ofBan(it.ug[0]+' achetés = '+it.ug[1]+' '+ofO(it.ug[1]),'soit '+Math.round(it.ug[1]/it.ug[0]*100)+' % de produits en plus');
+    else if(it.gift)mb=ofBan(it.gift[0]+' achetés = '+it.gift[1]+' '+ofO(it.gift[1]),it.gift[2]);
     if(it.pl&&typeof POOLS!=='undefined'&&POOLS[it.pl]&&POOLS[it.pl].min)t.push('−'+Math.round(POOLS[it.pl].pct*100)+' % dès '+POOLS[it.pl].min+' achetées (panachables)');
-    if(it.ug)t.push(it.ug[0]+' achetés + '+it.ug[1]+' offert'+(it.ug[1]>1?'s':''));
+
     if(it.on)t.push(it.on);
-    if(it.gift)t.push('dès '+it.gift[0]+' : '+it.gift[1]+' × '+it.gift[2]+' offert'+(it.gift[1]>1?'s':''));
+
     if(it.tp)it.tp.forEach(function(s){t.push('dès '+s[0]+' u : '+eur(s[1])+' HT');});
-    return t.length?'<span class="ix-off">🎁 '+t.join(' · ')+'</span>':'';
+    return mb+(t.length?'<span class="ix-off">🎁 '+t.join(' · ')+'</span>':'');
   }
   var FREEPICK={},BU_NF=-1;
   function buItems(){var g=GROUPS.find(function(x){return x.k==='bu';});return g?g.items.filter(function(it){return it.pl==='bu'&&!it.w;}):[];}
