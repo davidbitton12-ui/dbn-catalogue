@@ -1092,9 +1092,9 @@ pr.querySelector('#presQ').addEventListener('input',function(){PRES=Math.min(PMA
   var UPSELL_DONE=false,PORT_OK=false;
   var UPS=[{t:'Chambres d\'inhalation',s:'Remboursées (LPPR 14,30 €) · panachables 3 âges',img:'assets/bx_chambre2.png',e:['3532678604367','3532678604374','3532678604381'],l:['Nourrisson','Enfant','Adulte'],tiers:[[1,'1 à 12 : 6,00 €'],[13,'13 à 47 : 5,50 €'],[48,'48 et + : 5,00 €']]},
              {t:'Innoxa Gouttes Formule Bleue',s:'Yeux rouges & fatigués · par 6 · panachables',img:'assets/innoxa_flacon2.png',e:['3532678607191','3532678607405'],l:['10 ml','Lot 2 × 10 ml'],min:6,step:6,tiers:[[6,'dès 6 : −40 %'],[12,'dès 12 : −43 %'],[18,'dès 18 : −45 %']]},
-             {t:'Streptatest · boîte de 25',s:'22,50 € HT net la boîte · TROD angine à streptocoque A',img:'assets/bx_strepta.png',e:['3532679226605'],l:['Boîte de 25']},
+             {t:'Streptatest · boîte de 25',s:'22,50 € HT net la boîte · TROD angine à streptocoque A',img:'assets/bxp_dg_strepta.png',e:['3532679226605'],l:['Boîte de 25']},
              {t:'Bouillottes à eau 2 L · vendues par lot de 2',s:'Caoutchouc naturel · à partir de 3,50 € HT la bouillotte',img:'assets/bxp_be_blancrouge.png',e:['3532678610894','3532678610900','3532678610887'],l:['Housse blanche + rouge (5,90 € l\'unité)','Housse taupe + grise (5,90 € l\'unité)','Sans housse (3,50 € l\'unité)']},
-             {t:'Minimints · pastilles boîte de 50',s:'1,02 € HT la boîte (−40 %) · par 12 · tous les parfums',img:'assets/bxp_sw_intense.png',e:['3532678587936','3532678589091','3532678610801','3532678609720','3532678609706','3532678609713','3532678610795'],l:['Menthe intense','Menthe glaciale','Menthe poivrée','Citron','Fruits rouges','Pêche','Cannelle'],step:12}];
+             {t:'Minimints · présentoir 5 parfums',s:'60 boîtes de 50 pastilles · 61,20 € HT le présentoir (−40 %) · soit 1,02 € HT la boîte',img:'assets/bxp_sw_plv.png',e:['3532678609737'],l:['Présentoir 60 boîtes'],step:1}];
   function rowOf(e){return [].slice.call(document.querySelectorAll('.ix-p')).find(function(p){return p.textContent.indexOf(e)>=0;});}
   function qOf(e){var r=rowOf(e);return r?(parseInt(r.querySelector('input').value,10)||0):0;}
   function setQ(e,v){var r=rowOf(e);if(!r)return;var i=r.querySelector('input');i.value=Math.max(0,v);i.dispatchEvent(new Event('input',{bubbles:true}));}
